@@ -1,23 +1,149 @@
-<?php
- include_once("Login.html");
- error_reporting(E_ALL ^ E_NOTICE);
- $mysqli = new mysqli("localhost", "root", "", "db_eread");
+<!doctype html>
+<html lang="en">
 
- if($mysqli === false){
- die("ERROR: Could not connect. " . $mysqli->connect_error);
- }
-  
-    $user = $mysqli->real_escape_string($_POST["UserName"]);
-    $password = $mysqli->real_escape_string($_POST["Password"]);
+<head>
+  <link rel="shortcut icon" type="text/css" href="img/274180804_484398516425599_1154015131267114154_n.png">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    $sql = "SELECT * FROM login_tbl WHERE username = '".$user."' AND password = '".$password."' ";
-    
-    $result = $mysqli-> query($sql);
+  <!-- Log In CSS-->
+  <link rel="stylesheet" type="text/css" href="Login.css">
 
-    if(mysqli_num_rows($result) == 1 ){
-        echo "Successfully login";
-    }
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 
-$mysqli->close();
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fjalla+One&family=Prompt:wght@500&display=swap" rel="stylesheet">
 
-?>
+  <!-- Animation Css-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+  <!-- FontAwesome Icon-->
+  <script src="https://kit.fontawesome.com/d75cefc660.js" crossorigin="anonymous"></script>
+
+  <title>E-Read: Digital Library and Online Social reading</title>
+</head>
+
+<body>
+  <!--- Registration Form --->
+  <div class="form1 col-lg-12">
+    <section class="Registration m-auto mt-5 col-lg-5">
+      <div class="col-lg-12 p-3">
+
+        <div class="form-row pl-1">
+          <div class="offset-1 col-lg-9">
+            <i class="fas fa-times" id="exit"></i>
+          </div>
+        </div>
+        <h1>Create an Account</h1>
+
+        <form method="POST" action="../functions&db/signup-function.php">
+
+          <div class="form">
+            <div class="offset-1 col-lg-12 m-auto">
+              <label for="validationTooltip01" class="form-label">First Name: </label>
+              <input type="text" class="form-control" placeholder="First Name" name="first" required>
+            </div>
+          </div>
+
+          <div class="form py-1">
+            <div class="offset-1 col-lg-12">
+              <label for="validationTooltip01" class="form-label">Last Name: </label>
+              <input type="text" class="form-control" placeholder="Last Name" name="last" required>
+            </div>
+          </div>
+
+          <div class="mb-1">
+            <label for="exampleInputEmail1" class="form-label">Username</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Username" name="email">
+            <div id="emailHelp" class="form-text">We'll never share your Username with anyone else.</div>
+          </div>
+
+          <label for="inputPassword5" class="form-label">Password</label>
+          <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock" placeholder="Password" name="pass">
+          <div id="passwordHelpBlock" class="form-text">
+            Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+          </div>
+
+          <div class="form-row py-4">
+            <div class="offset-1 col-lg-20">
+              <button class="btn1" name="submit">Sign Up</button>
+            </div>
+          </div>
+
+          <div class="form">
+            <div class="col-lg-15">
+              <p class="text-secondary">Already have an account?<a class="nav-link" id="Login">Log in</a></p>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+  </div>
+
+
+
+  <!--- Log In Form --->
+  <section class="login m-auto py-5 ">
+    <div class="container">
+      <div class="row g-0">
+        <div class="col-md-5">
+          <img src="img/photo-1580820267682-426da823b514.jfif" class="img-fluid">
+        </div>
+        <div class="col-lg-7 p-4 py-5 text-center">
+          <h1>Welcome</h1>
+
+          <form method="POST" action="../functions&db/login-function.php">
+            <div class="form-row py-4">
+              <div class="offset-1 col-lg-10">
+                <i class="fas fa-user"></i><input type="text" class="inp" placeholder="UserName" required name="username">
+              </div>
+            </div>
+
+
+            <div class="form-row py-3">
+              <div class="offset-1 col-lg-10">
+                <i class="fas fa-lock"></i><input type="password" class="inp" placeholder="Password" required name="pass">
+              </div>
+            </div>
+
+
+            <div class="form-row py-3">
+              <div class="offset-1 col-lg-20">
+                <button class="btn1" href="LandingPage.html" name="submit">Log in</button>
+              </div>
+            </div>
+
+            <div class="form-row py-2">
+              <div class="col-lg-15">
+                <p class="text-secondary">Don't have account?<a class="nav-link" id="Signup" href="#">Sign Up</a></p>
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.getElementById("Signup").addEventListener("click", function() {
+      document.querySelector(".form1 ").style.display = "flex";
+    })
+    document.querySelector(".fa-times").addEventListener("click", function() {
+      document.querySelector(".form1").style.display = "none";
+    })
+    document.getElementById("Login").addEventListener("click", function() {
+      document.querySelector(".form1").style.display = "none";
+    })
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>
