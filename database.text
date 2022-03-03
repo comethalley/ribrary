@@ -10,3 +10,104 @@ CREATE TABLE tbl_user (
     password char(60) NOT NULL,
     PRIMARY KEY (User_id)
 );
+
+------------------------------------------------------------
+
+-- Indexes for table `tbl_user` -- 
+
+ALTER TABLE `tbl_user`
+  ADD PRIMARY KEY (`User_id`);
+
+------------------------------------------------------------
+
+-- Table structure for table `tbl_audiobook` -- 
+
+
+CREATE TABLE `tbl_audiobook` (
+  `Audiobook_id` int(255) NOT NULL,
+  `AudiobookName` varchar(255) NOT NULL,
+  `AudiobookFile` blob NOT NULL,
+  `createdBy` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+------------------------------------------------------------
+
+-- Table structure for table `tbl_book` -- 
+
+
+CREATE TABLE `tbl_book` (
+  `Book_id` int(255) NOT NULL,
+  `BookName` varchar(255) NOT NULL,
+  `BookFile` blob NOT NULL,
+  `createdBy` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+------------------------------------------------------------
+
+-- Table structure for table `tbl_magazines` --
+
+
+CREATE TABLE `tbl_magazines` (
+  `Magz_id` int(255) NOT NULL,
+  `MagzName` varchar(255) NOT NULL,
+  `MagzFile` blob NOT NULL,
+  `createdBy` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+------------------------------------------------------------
+
+-- Table structure for table `tbl_music` --
+
+
+CREATE TABLE `tbl_music` (
+  `Music_id` int(255) NOT NULL,
+  `MusicName` varchar(255) NOT NULL,
+  `MusicFile` blob NOT NULL,
+  `createdBy` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+------------------------------------------------------------
+------------------------------------------------------------
+------------------------------------------------------------
+------------------------------------------------------------
+------------------------------------------------------------
+
+INDEXES
+
+-- Indexes for table `tbl_audiobook` --
+
+ALTER TABLE `tbl_audiobook`
+  ADD PRIMARY KEY (`Audiobook_id`),
+  ADD KEY `AudiobookCreatedBy` (`createdBy`);
+
+------------------------------------------------------------
+
+-- Indexes for table `tbl_book` -- 
+
+ALTER TABLE `tbl_book`
+  ADD PRIMARY KEY (`Book_id`),
+  ADD KEY `createdBy` (`createdBy`);
+
+------------------------------------------------------------
+
+-- Indexes for table `tbl_magazines` -- 
+
+ALTER TABLE `tbl_magazines`
+  ADD PRIMARY KEY (`Magz_id`),
+  ADD KEY `MagzCreatedBy` (`createdBy`);
+
+------------------------------------------------------------
+
+-- Indexes for table `tbl_music` -- 
+
+ALTER TABLE `tbl_music`
+  ADD PRIMARY KEY (`Music_id`),
+  ADD KEY `MusicCreatedBy` (`createdBy`);
+
+------------------------------------------------------------
+
+
+
+
+
+
