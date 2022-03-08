@@ -146,3 +146,26 @@ function loginUser($connect,$username,$pass){
     }
 
 }
+
+function upload_docu($connect, $fileName, $fileTmpName, $createdBy) {
+    //template
+    $sql = "INSERT INTO tbl_book (BookName,BookFile,createdBy) VALUES (?,?,?);";
+    //prepared statement
+    $stmt = mysqli_stmt_init($connect);
+
+    //check if preparation fail 
+    if(!mysqli_stmt_prepare($stmt,$sql)){
+        header("Location: ../webpage/upload-document.php?uploadfailed");
+    exit();
+    }
+
+    //assign the variable to the placeholder and execute
+    mysqli_stmt_bind_param($stmt,$fileName, $fileTmpName, $createdBy);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+
+
+    //if sucess uploading file, go to this 👇 page
+    header("Location: ../webpage/upload-document.php?uploadsuccess");
+    exit();
+}
