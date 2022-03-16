@@ -71,7 +71,7 @@ function emailExist($connect,$email) {
     if($result = mysqli_fetch_assoc($result)){
 
         return $result;
-        
+
     }else{
         $result = false;
         return $result;
@@ -229,7 +229,7 @@ function loginAdmin($connect,$username,$pass){
 
     }else{
         //if password not match from user
-        header("Location:../webpage/admin-login.php?error=passNotMatch");
+        header("Location:../webpage/admin-login.php?error=wrongPassword");
         exit();
     }
 
