@@ -12,11 +12,23 @@ CREATE TABLE tbl_user (
 );
 
 ------------------------------------------------------------
-
 -- Indexes for table `tbl_user` -- 
 
 ALTER TABLE `tbl_user`
   ADD PRIMARY KEY (`User_id`);
+
+
+------------------------------------------------------------
+   -- Table structure for table `tbl_admin` --
+
+CREATE TABLE tbl_user (
+    admin_id int (20) NOT NULL AUTO_INCREMENT,
+    username varchar(32) NOT NULL,
+    password char(60) NOT NULL,
+    PRIMARY KEY (admin_id)
+);
+
+
 
 ------------------------------------------------------------
 
