@@ -13,9 +13,10 @@ function emptyInputSignUp($first, $last, $email, $pass)
 }
 
 //Empty field
-function emptyInputLogin($user,$pass){
+function emptyInputLogin($user, $pass)
+{
     $result = "";
-    if (empty($user) || empty($pass) ) {
+    if (empty($user) || empty($pass)) {
         $result = true;
     } else {
         $result = false;
@@ -24,7 +25,8 @@ function emptyInputLogin($user,$pass){
 }
 
 // if not valid email 
-function invalidEmail($email) {
+function invalidEmail($email)
+{
     $result = "";
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $result = true;
@@ -47,89 +49,77 @@ function invalidEmail($email) {
 
 
 //if email exist 
-function emailExist($connect,$email) {
-    //template
-    $sql = "SELECT * FROM tbl_user WHERE  Username = ?;";
+function emailExist($connect, $email)
+{
+    // prepared statement
+    $stmt = $connect->prepare("SELECT * FROM tbl_user WHERE  Username = ?");
 
-    //prepared statement
-    $stmt = mysqli_stmt_init($connect);
-
-    //check if preparation fail 
-    if(!mysqli_stmt_prepare($stmt,$sql)){
+    //if did not execute error, else continue
+    if (!$stmt->execute([$email])) {
         header("Location:../login.php?error=stmtfail");
         exit();
     }
 
-    //assign the variable to the placeholder and execute
-    mysqli_stmt_bind_param($stmt,"s",$email);
-    mysqli_stmt_execute($stmt);
+    //fetch the result 
+    $result = $stmt->fetch();
 
-    //get the result from database 
-    $result = mysqli_stmt_get_result($stmt);
-
-    // fetch the result then return it
-    if($result = mysqli_fetch_assoc($result)){
-
+    // if has result return it, else return false 
+    if ($result) {
         return $result;
-
-    }else{
+    } else {
         $result = false;
         return $result;
     }
-    mysqli_stmt_close($stmt);
+
+    //close connection
+    $connect = null;
 }
 
 
 // create new user to database
-function createUser($connect,$first, $last, $email,$pass) {
-    //template
-    $sql = "INSERT INTO tbl_user (firstname,lastname,Username, password) VALUES (?,?,?,?);";
-    //prepared statement
-    $stmt = mysqli_stmt_init($connect);
+function createUser($connect, $first, $last, $email, $pass)
+{
+    // sql statement
+    $sql = "INSERT INTO tbl_user (firstname, lastname, Username,password) VALUES (?,?,?,?)";
 
-    //check if preparation fail 
-    if(!mysqli_stmt_prepare($stmt,$sql)){
+    // prepared statement
+    $stmt = $connect->prepare($sql);
+
+    //hashed the password
+    $hashedpwd = password_hash($pass, PASSWORD_DEFAULT);
+
+    //if execution fail
+    if(!$stmt->execute([$first, $last, $email,$hashedpwd])){
         header("Location:../login.php?error=stmtfail");
+        $connect = null;
         exit();
     }
-    //hash the password 
-    $hashedpwd = password_hash($pass,PASSWORD_DEFAULT);
-
-    //assign the variable to the placeholder and execute
-    mysqli_stmt_bind_param($stmt,"ssss",$first, $last, $email,$hashedpwd);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
-
-    //pass the data to userExist
-    $userExist = emailExist($connect,$email,$pass);
-
-    //start session and get data from userExist then store in session   
-    session_start();
-    $_SESSION["userFirst"] = $userExist["First_Name"];
-    $_SESSION["userLast"] = $userExist["Last_Name"];
 
     //if sucess creating user, go to this 👇 page
     header("Location:../webpage/LandingPage.html?RegisteredSucesfully!");
+    $connect = null;
     exit();
 }
 
 //login user 
-function loginUser($connect,$username,$pass){
+function loginUser($connect, $username, $pass)
+{
     //pass the data to userExst
-    $userExist = emailExist($connect,$username);
+    $userExist = emailExist($connect, $username);
 
     //check if it has data if not return false 
-    if($userExist == false){
+    if ($userExist == false) {
         header("Location:../webpage/Login.php?error=wrongUser");
+        $connect = null;
         exit();
     }
 
     //hashed the password from database 
     $pwdHashed = $userExist['password'];
-    $checkpwd = password_verify($pass,$pwdHashed)."\n";
+    $checkpwd = password_verify($pass, $pwdHashed) . "\n";
 
     //if checkpwd has vale and equals 1
-    if($checkpwd !== '' && $checkpwd == 1){
+    if ($checkpwd !== '' && $checkpwd == 1) {
 
         //start session and get data from userExist then store in session   
         session_start();
@@ -138,76 +128,70 @@ function loginUser($connect,$username,$pass){
 
         //if sucess creating user, go to this 👇 page
         header("Location:../webpage/LandingPage.html?LoginSucesfully!");
+        $connect = null;
         exit();
-
-    }else{
+    } else {
         //if password not match from user
         header("Location:../webpage/Login.php?error=wrongPassword");
+        $connect = null;
         exit();
     }
-
 }
 
-function upload_docu($connect, $fileName, $fileTmpName, $createdBy) {
-    //template
+function upload_docu($connect, $fileName, $fileTmpName, $createdBy)
+{
+    //sql
     $sql = "INSERT INTO tbl_book (BookName,BookFile,createdBy) VALUES (?,?,?);";
-    //prepared statement
-    $stmt = mysqli_stmt_init($connect);
+    
+    // prepared statement
+    $stmt = $connect->prepare($sql);
 
-    //check if preparation fail 
-    if(!mysqli_stmt_prepare($stmt,$sql)){
-        header("Location: ../webpage/upload-document.php?uploadfailed");
-    exit();
+    //if execution fail
+    if(!$stmt->execute([$fileName, $fileTmpName, $createdBy])){
+        header("Location:../login.php?error=stmtfail");
+        $connect = null;
+        exit();
     }
-
-    //assign the variable to the placeholder and execute
-    mysqli_stmt_bind_param($stmt,'sss',$fileName, $fileTmpName, $createdBy);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
-
-
+ 
     //if sucess uploading file, go to this 👇 page
     header("Location: ../webpage/upload-document.php?uploadsuccess");
     exit();
 }
 
 
-function adminExist($connect,$username) {
-    //template
-    $sql = "SELECT * FROM tbl_admin WHERE  username = ?;";
-
+function adminExist($connect, $username)
+{
     //prepared statement
-    $stmt = mysqli_stmt_init($connect);
+    $stmt = $connect->prepare("SELECT * FROM tbl_admin WHERE username=?");
 
-    //check if preparation fail 
-    if(!mysqli_stmt_prepare($stmt,$sql)){
+    //if execution fail
+    if(!$stmt->execute([$username])){
         header("Location:../admin-login.php?error=stmtfail");
         exit();
     }
 
-    //assign the variable to the placeholder and execute
-    mysqli_stmt_bind_param($stmt,"s",$username);
-    mysqli_stmt_execute($stmt);
+    //fetch the result
+    $result = $stmt->fetch();
 
-    //get the result from database 
-    $result = mysqli_stmt_get_result($stmt);
-
-    // fetch the result from database and return it
-    if($result = mysqli_fetch_assoc($result)){
+    //if has result return it, else return false
+    if ($result) {
         return $result;
-    }else{
+    } else {
         $result = false;
         return $result;
     }
-    mysqli_stmt_close($stmt);
+    
+    //close connection
+    $connect = null;
 }
 
-function loginAdmin($connect,$username,$pass){
+function loginAdmin($connect, $username, $pass)
+{
     //pass the data to userExst
-    $userExist = adminExist($connect,$username);
+    $userExist = adminExist($connect, $username);
 
     //check if it has data if not return false 
-    if($userExist == false){
+    if ($userExist == false) {
         header("Location:../webpage/admin-login.php?error=wrongUser");
         exit();
     }
@@ -215,8 +199,8 @@ function loginAdmin($connect,$username,$pass){
     //hashed the password from database 
     $passFromDB = $userExist['password'];
 
-    //conditional
-    if($passFromDB == $pass){
+    //if pass from DB is same password from input
+    if ($passFromDB == $pass) {
 
         //start session and get data from userExist then store in session   
         session_start();
@@ -226,12 +210,9 @@ function loginAdmin($connect,$username,$pass){
         //if sucess creating user, go to this 👇 page
         header("Location:../webpage/LandingPage.html?LoginSucesfully!");
         exit();
-
-    }else{
+    } else {
         //if password not match from user
         header("Location:../webpage/admin-login.php?error=wrongPassword");
         exit();
     }
-
-
 }

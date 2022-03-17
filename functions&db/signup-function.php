@@ -30,7 +30,7 @@ if (isset($_POST['submit'])) {
     // }
 
     //if email alreadu exist return true
-    if (emailExist($connect, $email) === true) {
+    if (emailExist($connect, $email)) {
         header("Location:../webpage/Login.php?error=emailExist");
         exit();
     }
