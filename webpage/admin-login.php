@@ -42,7 +42,26 @@
                     </div>
 
                     <button class="sign-in" name="btnSubmit">SIGN IN</button>
+
+
                 </form>
+                <div class="loading">
+                    
+                </div>
+
+                <p class="logging-in">Signing In</p>
+                <?php
+                if (isset($_GET["error"])) {
+                    if ($_GET["error"] == "wrongPassword") {
+                        echo '<p class="errorMessage">Wrong password!</p>';
+                    } else if ($_GET["error"] == "wrongUser") {
+                        echo '<p class="errorMessage">Username does not exist!!</p>';
+                    } else if ($_GET["error"] == "emptyInput") {
+                        echo '<p class="errorMessage">Empty fields !!</p>';
+                    }
+                }
+                ?>
+
             </div>
         </div>
     </main>
