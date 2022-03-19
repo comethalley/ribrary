@@ -1,0 +1,24 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+main{
+    background-color: brown;
+    display: grid;
+    grid-template-columns: 15% 85%;
+    height: 100vh;
+}
+.sidebar-container{
+    background-color: #1e1e2d;
+}
+
+.main-container{
+    background-color: #f6f7fb;
+    padding: 5em;
+    
+}
+
+.user-count-container{
+    background-color: white;
+}

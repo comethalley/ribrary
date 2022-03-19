@@ -28,9 +28,10 @@
             </div>
 
             <div class="login-container">
-                <img src="img/admin-logo.png" alt="admin-logo" class="admin-logo">
 
-                <form action="../functions&db/admin-login.php" method="POST" class="admin-form">
+                <img src="../webpage/img/admin-logo.png" alt="admin-logo" class="admin-logo">
+
+                <form action="../functions&db/admin-login-function.php" method="POST" class="admin-form">
                     <!-- <label for="username"></label> -->
                     <div class="input-container">
                         <span class="icon"><i class="fa fa-solid fa-user"></i></span>

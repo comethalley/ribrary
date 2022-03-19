@@ -11,7 +11,7 @@ if($_POST['username'] !== '' && $_POST['password'] !== ''){
 
      //If any of the field is empty function will return true
      if (emptyInputLogin($username,$password) === true) {
-        header("Location:../webpage/admin-login.php?error=emptyField");
+        header("Location:../admin/admin-login.php?error=emptyField");
         exit();
     }
 
@@ -19,6 +19,6 @@ if($_POST['username'] !== '' && $_POST['password'] !== ''){
 
 
 }else{
-    header("Location:../webpage/admin-login.php?error=emptyInput");
+    header("Location:../admin/admin-login.php?error=emptyInput");
     exit();
 }

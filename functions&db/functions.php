@@ -1,4 +1,5 @@
 <?php
+require_once 'database.php';
 
 //Empty field
 function emptyInputSignUp($first, $last, $email, $pass)
@@ -166,7 +167,7 @@ function adminExist($connect, $username)
 
     //if execution fail
     if(!$stmt->execute([$username])){
-        header("Location:../admin-login.php?error=stmtfail");
+        header("Location:../admin/admin-login.php?error=stmtfail");
         exit();
     }
 
@@ -192,7 +193,7 @@ function loginAdmin($connect, $username, $pass)
 
     //check if it has data if not return false 
     if ($userExist == false) {
-        header("Location:../webpage/admin-login.php?error=wrongUser");
+        header("Location:../admin/admin-login.php?error=wrongUser");
         exit();
     }
 
@@ -204,15 +205,30 @@ function loginAdmin($connect, $username, $pass)
 
         //start session and get data from userExist then store in session   
         session_start();
-        $_SESSION["userFirst"] = $userExist["First_Name"];
-        $_SESSION["userLast"] = $userExist["Last_Name"];
+        $_SESSION["admin"] = $userExist["username"];
+      
 
         //if sucess creating user, go to this 👇 page
-        header("Location:../webpage/admin-dashboard.html?LoginSucesfully!");
+        header("Location:../admin/admin-dashboard.php?LoginSucesfully!");
         exit();
     } else {
         //if password not match from user
-        header("Location:../webpage/admin-login.php?error=wrongPassword");
+        header("Location:../admin/admin-login.php?error=wrongPassword");
         exit();
     }
+}
+
+// get total user in database
+function getTotalUser($connect){
+    $count = $connect->query("SELECT count(*) FROM tbl_user")->fetchColumn();
+
+    return $count;
+    exit();
+}
+
+function displayUser($connect){
+    $data = $connect->query("SELECT * FROM tbl_user")->fetchAll();
+
+    return $data;
+    exit();
 }
