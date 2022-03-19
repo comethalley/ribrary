@@ -21,13 +21,16 @@ ALTER TABLE `tbl_user`
 ------------------------------------------------------------
    -- Table structure for table `tbl_admin` --
 
-CREATE TABLE tbl_user (
+CREATE TABLE tbl_admin (
     admin_id int (20) NOT NULL AUTO_INCREMENT,
     username varchar(32) NOT NULL,
     password char(60) NOT NULL,
     PRIMARY KEY (admin_id)
 );
 
+---- Then use this query --- 
+INSERT INTO tbl_admin (admin,password)
+VALUES ('admin','admin123');
 
 
 ------------------------------------------------------------
