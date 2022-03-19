@@ -76,6 +76,7 @@ body{
     cursor: pointer;
     padding: 0.8em 0em;
     font-size: 1.3rem;
+    border-radius: 2rem;
     transition: 300ms ease-in-out;
 }
 .admin-form button:hover{
@@ -88,4 +89,44 @@ body{
     border-radius: 10px 0px 0px 10px;
     width: 50%;
     background-color: rgb(197, 131, 131);
+}
+
+.errorMessage{
+    color: red;
+    font-weight: 600;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    margin-top: 3rem;
+}
+
+.loading{
+    display: none;
+    justify-content: center;
+    margin-top: 30%;
+}
+.loading::after{
+    content: "";
+    width: 3rem;
+    height: 3rem;
+    border: 15px solid rgb(226, 218, 218);
+    border-top-color: rgb(0, 0, 0);
+    border-radius: 50%;
+    animation: loading 1s ease infinite;
+}
+.logging-in{
+    display: none;
+    margin-top: 2rem;
+    font-size: 1.5rem;
+
+}
+
+@keyframes loading{
+    to{
+        transform: rotate(1turn);
+    }
+}
+/* -------------- */
+
+.hideDisplay{
+    display: none;
 }

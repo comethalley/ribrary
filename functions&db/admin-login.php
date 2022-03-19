@@ -19,6 +19,6 @@ if($_POST['username'] !== '' && $_POST['password'] !== ''){
 
 
 }else{
-    header("Location:../webpage/admin-login.php?error=error");
+    header("Location:../webpage/admin-login.php?error=emptyInput");
     exit();
 }
