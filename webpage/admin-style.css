@@ -76,6 +76,7 @@ body{
     cursor: pointer;
     padding: 0.8em 0em;
     font-size: 1.3rem;
+    border-radius: 2rem;
     transition: 300ms ease-in-out;
 }
 .admin-form button:hover{

@@ -208,7 +208,7 @@ function loginAdmin($connect, $username, $pass)
         $_SESSION["userLast"] = $userExist["Last_Name"];
 
         //if sucess creating user, go to this 👇 page
-        header("Location:../webpage/LandingPage.html?LoginSucesfully!");
+        header("Location:../webpage/admin-dashboard.html?LoginSucesfully!");
         exit();
     } else {
         //if password not match from user
