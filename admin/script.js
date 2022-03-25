@@ -4,29 +4,31 @@ const adminLogo = document.querySelector(".admin-logo");
 const loading = document.querySelector(".loading");
 const errorMessage = document.querySelector('.errorMessage');
 
-signIn.addEventListener('click',function(e){
+
+// ADMIN SIGN FUNCTION
+signIn.addEventListener('click', function (e) {
     e.preventDefault();
 
+    // HIDE LOGO AND FORM
     form.classList.add('hideDisplay');
     adminLogo.classList.add('hideDisplay');
-    if(errorMessage){
+
+    // If has error message, hide it
+    if (errorMessage) {
         errorMessage.classList.add('hideDisplay');
     }
-  
+
+    // Display loading 
     loading.style.display = "flex";
     document.querySelector('.logging-in').style.display = 'block';
+    document.querySelector('.wait').style.display = 'block';
 
-    setTimeout(()=>{
+    setTimeout(() => {
         form.submit();
-    },2000)
+    }, 2000)
 
-    
- 
 })
 
-// window.onload = function(){
-//     if(errorMessage){
-//         errorMessage.classList.add('hideDisplay');
-//     }
-// }
+
+
 

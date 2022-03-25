@@ -40,7 +40,7 @@
         </div>
         <h1>Create an Account</h1>
 
-        <form method="POST" action="../functions&db/signup-function.php">
+        <form method="POST" action="../functions/signup-function.php">
 
           <div class="form">
             <div class="offset-1 col-lg-12 m-auto">
@@ -96,7 +96,7 @@
         <div class="col-lg-7 p-4 py-5 text-center">
           <h1>Welcome</h1>
 
-          <form method="POST" action="../functions&db/login-function.php">
+          <form method="POST" action="../functions/login-function.php">
             <div class="form-row py-4">
               <div class="offset-1 col-lg-10">
                 <i class="fas fa-user"></i><input type="text" class="inp" placeholder="UserName" required name="username">

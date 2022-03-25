@@ -7,7 +7,7 @@
     <title>upload-document</title>
 </head>
 <body>
-    <form action="../functions&db/upload-document-function.php" method = "POST" enctype="multipart/form-data">
+    <form action="../functions/upload-document-function.php" method = "POST" enctype="multipart/form-data">
         <input type = "file" name = "file">
         <button type = "submit" name = "submit"> UPLOAD </button>
     </form>

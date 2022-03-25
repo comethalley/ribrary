@@ -1,6 +1,4 @@
-<?php
-// header("Refresh:0");
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,49 +8,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADMIN</title>
 
-    <script src="https://kit.fontawesome.com/86dc2a589d.js" crossorigin="anonymous"></script>
-    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet"> -->
+    <!-- icon script from fontawesome -->
+    <script defer src="https://kit.fontawesome.com/86dc2a589d.js" crossorigin="anonymous"></script>
+
+    <!-- CSS LINK -->
     <link rel="stylesheet" href="admin-style.css">
-
-
 </head>
 
 <body>
 
     <main>
+        <!-- MAIN CONTAINER -->
         <div class="main-container">
-            <div class="picture-container">
 
+            <!-- CONTAINER FOR PICTURE -->
+            <div class="picture-container">
+                <img src="../webpage/img/admin-image.png" alt="image" class="left-image">
             </div>
 
+            <!-- CONTAINER FOR FORM -->
             <div class="login-container">
-                <img src="img/admin-logo.png" alt="admin-logo" class="admin-logo">
 
-                <form action="../functions&db/admin-login.php" method="POST" class="admin-form">
-                    <!-- <label for="username"></label> -->
+                <!-- IMAGE LOGO -->
+                <img src="../webpage/img/admin-logo.png" alt="admin-logo" class="admin-logo">
+
+                <!-- FORM -->
+                <form action="../functions/admin-login-function.php" method="POST" class="admin-form">
                     <div class="input-container">
                         <span class="icon"><i class="fa fa-solid fa-user"></i></span>
                         <input type="text" name="username" id="username" placeholder="Username">
                     </div>
 
-
-                    <!-- <label for="password"></label> -->
                     <div class="input-container">
                         <span class="icon"><i class="fa fa-solid fa-lock"></i></span>
                         <input type="password" name="password" id="password" placeholder="Password">
                     </div>
 
                     <button class="sign-in" name="btnSubmit">SIGN IN</button>
-
-
                 </form>
+
+                <!-- SIGNING IN CIRCLE  -->
                 <div class="loading">
-                    
+
                 </div>
 
+                <!-- SIGNING IN MESSAGE -->
                 <p class="logging-in">Signing In</p>
+                <p class="wait">please wait ...</p>
+
+                <!-- ERROR MESSAGE -->
                 <?php
                 if (isset($_GET["error"])) {
                     if ($_GET["error"] == "wrongPassword") {
@@ -69,7 +73,7 @@
         </div>
     </main>
 
-
+    <!-- JAVASCRIPT FUNCTION  -->
     <script src="script.js"></script>
 </body>
 
