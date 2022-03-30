@@ -325,3 +325,39 @@ color: #fff;
   color: #000000;
   text-align: center;
 }
+
+.uploadfile {
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 50px;
+}
+.uploadfile:last-child {
+  margin-bottom: 0;
+}
+.uploadfile h3 {
+  margin: 10px 0 25px 0;
+  text-align: center;
+}
+.uploadfile p {
+  margin-top: 16px;
+  line-height: 24px;
+  color: #000000;
+  text-align: center;
+}
+
+.uploadfile input {
+	width: 200px;
+	padding: 15px 20px;
+	text-align: center;
+	margin: 20px 10px;
+	border-radius: 30px;
+	font-weight: bold;
+	border: none;
+	background: #93b2b2;
+	color: #fff;
+	cursor: pointer;
+	position: relative;
+	overflow: hidden;
+	transition: .3s;
+}

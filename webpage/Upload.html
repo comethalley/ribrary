@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="webdesign.css">
     <link rel="stylesheet" href="transitions.css">
-    <title>Magazine</title>
+    <title>My Profile</title>
+	
 </head>
 <body>
     <header>
@@ -13,7 +14,7 @@
         <div class="navbar">
         <img src="books.png" class="books">
         <ul>
-            <li><a href="Books.html">Books</a></li>
+      <li><a href="Books.html">Books</a></li>
       <li><a href="Magazine.html">Magazine</a></li>
       <li><a href="Audiobook.html">Audiobook</a></li>
       <li><a href="Podcast.html">Podcast</a></li>
@@ -24,43 +25,28 @@
         </ul>
         </div>
         <div class="content-header">
-        <h1><center>MAGAZINE</center></h1>
+        <h1><center>UPLOAD</center></h1>
     </div>
     </header>
     <main>
     <div class="backdrop">
     <center>
-   <!--  <button type="button" class="btn">Add Forum</button></p> -->
+    <!-- <button type="button" class="btn">Add Book</button></p> -->
     </center>
   <main>
     <center>
-  <div class="article">
-    <h2>Magazine Title</h2>
-    <h3>The Greatest Book Of All Time</h3>
-    <p> Author : Jane Austen </p>
-    <center>
-    <button class="btn"><a href ="Viewpage1.html">View Magazine</a></button>
-    </center>
+  <div class="uploadfile">
+    <h2>Welcome to Upload Page!</h2>
+    <h3>Here you can upload your own creations. Try it now!</h3>
+	<p>Instructions: Click "Choose File", Find your created work and click "Open" 
+	(Please note that only Books, Magazine, Audiobook, Podcast, Document are the only files allowed to be uploaded), Then click "Upload".</p>
+	
+	<br>
+	<form action="../functions/upload-document-function.php" method = "POST" enctype="multipart/form-data">
+        <input type = "file" name = "file">
+        <button type = "submit" name = "submit"> UPLOAD </button>
+    </form>
   </div>
-  <br>
-<div class="article">
-    <h2>Magazine Title</h2>
-    <h3>The Greatest Book Of All Time</h3>
-    <p> Author : Jane Austen </p>
-    <center>
-    <button class="btn"><a href ="Viewpage1.html">View Magazine</a></button>
-    </center>
-  </div>
-  <br>
- <div class="article">
-   <h2>Magazine Title</h2>
-    <h3>The Greatest Book Of All Time</h3>
-    <p> Author : Jane Austen </p>
-    <center>
-    <button class="btn"><a href ="Viewpage1.html">View Magazine</a></button>
-    </center>
-  </div>
-  <br>
 </center>
 </main>
 </main>
