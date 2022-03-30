@@ -9,6 +9,21 @@
 </head>
 <body>
 <header>
+   <div class="container">
+            <button class="click">...</button>
+            <div class="list">
+                <button class="links">Settings</button>
+                <button class="links">Help & Support</button>
+                <button class="links">Log out</button>
+            </div>
+        </div>
+        <script>
+            let click = document.querySelector('.click');
+            let list = document.querySelector('.list');
+            click.addEventListener("click",()=>{
+                list.classList.toggle('newlist');
+            });
+        </script>
   <div class="header">
     <div class="navbar">
     <img src="books.png" class="books">
@@ -17,13 +32,14 @@
       <li><a href="Magazine.html">Magazine</a></li>
       <li><a href="Audiobook.html">Audiobook</a></li>
       <li><a href="Podcast.html">Podcast</a></li>
-      <li><a href="Document.html">Document</a></li>\
+      <li><a href="Document.html">Document</a></li> 
       <li><a href="Book.html">Profile</a></li>
       <li><a href="">Search</a></li>
       <li><a href="">Upload</a></li>
     </ul>
 
     </div>
+
     <div class="content-header">
       <h1><center>E-Read</center></h1>
       <h2><center>Digital Library and Online Social Reading</center></h2>
