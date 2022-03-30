@@ -19,8 +19,17 @@ body {
 }
 
 .container{
-    width: 400px;
+    width: 500px;
     min-height: 400px;
+    background: #FFF;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0,0,0,.3);
+    padding: 40px 30px;
+}
+
+.container1 {
+    width: 700px;
+    min-height: 600px;
     background: #FFF;
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0,0,0,.3);

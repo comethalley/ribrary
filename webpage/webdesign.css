@@ -12,21 +12,21 @@ body{
 header{
 	width: 100%;
 	min-height: 50vh;
-	background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url(library.jpg);
+	background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url(librarys.jpg);
 	background-size: cover;
 	background-position: center;
 	align-items: center;
 }
-.content-header h1{
-	font-size:80px;
+.content-header h1 {
+	font-size: 80px;
 	margin-top: 20px;
-	color: #FF652F;
+	color: #DBDAEA;
 	align-content: center;
 }
-.content-header h2{
-	font-size:50px;
+.content-header h2 {
+	font-size: 50px;
 	margin-top: 20px;
-	color: #FF652F;
+	color: #DBDAEA;
 	align-content: center;
 }
 .banner{
@@ -93,10 +93,10 @@ header{
 	line-height: 15px;
 	font-family: sans-serif;
 }
-.backdrop{
+.backdrop {
 	position: relative;
 	padding: 100px;
-	background: #747474;
+	background: #485665;
 }
 .backdrop h1{
 	font-size: 2.0em;
@@ -256,6 +256,8 @@ display: inline-block;
 	background-color: #F27C54;
 	transform: scale(1.1);
 }
+
+
 .job {
 	top: 40%;
 	left: 26%;
@@ -342,7 +344,7 @@ color: #fff;
   background-color: #fff;
   padding: 20px;
   margin-bottom: 20px;
-  border-radius: 5px;
+  border-radius: 50px;
 }
 .article:last-child {
   margin-bottom: 0;
