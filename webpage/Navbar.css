@@ -1,0 +1,50 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+
+}
+body{
+	width: 100;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+}
+.container{
+	width: 200px;
+	position: relative;
+}
+.click{
+	background-color: #FF652F;
+}
+.click:hover {
+	background-color: #FF652F;
+
+}
+.click,.links {
+	padding: 12px;
+	font-size: 1.2em;
+	font-family: futura Md BT;
+	border: none;
+	outline: none;
+	width: 200px;
+	color: #fff;
+	transition: 0.3s;
+}
+.list{
+ position: absolute;
+ transform: scaleY(0);
+ transform-origin: top;
+ transition: 0.3s;
+}
+.newlist{
+	transform: scaleY(1.0);
+}
+.links{
+	background-color: #F27C54;
+}
+.links:hover{
+	background-color: #F27C54;
+	transform: scale(1.1);
+}
