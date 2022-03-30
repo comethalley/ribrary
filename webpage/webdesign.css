@@ -212,16 +212,16 @@ input {
 
 
 .container {
-	width: 500px;
+	width: 100px;
 	left: 26%;
-	top: 150px;
+	top: 150%;
 	position: inherit;
 	background-color: transparent;
 	border-radius: 20px;
 	padding: 30px;
 	font-size: 30px;
 	color: #fff;
-float: left;
+	float: right;
 display: inline-block;
 }
 .click{
@@ -232,11 +232,11 @@ display: inline-block;
 
 }
 .click,.links {
-	padding: 12px;
+	padding: 5px;
 	font-family: futura Md BT;
 	border: none;
 	outline: none;
-	width: 200px;
+	width: 100px;
 	color: #fff;
 	transition: 0.3s;
 }
