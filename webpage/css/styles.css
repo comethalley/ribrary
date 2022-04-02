@@ -10,7 +10,7 @@
 body {
     width: 100%;
     min-height: 100vh;
-    background-image: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)), url(Library.jpg);
+    background-image: linear-gradient(rgba(158, 154, 154, 0.5), rgba(95, 94, 94, 0.5)), url('../img/Librarys.jpg');
     background-position: center;
     background-size: cover;
     display: flex;
