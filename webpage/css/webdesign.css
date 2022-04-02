@@ -12,7 +12,7 @@ body{
 header{
 	width: 100%;
 	min-height: 50vh;
-	background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url(librarys.jpg);
+	background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('../img/Librarys.jpg');
 	background-size: cover;
 	background-position: center;
 	align-items: center;
@@ -221,6 +221,40 @@ input {
 	padding: 30px;
 	font-size: 30px;
 	color: #fff;
+	float: right;
+display: inline-block;
+}
+.click{
+	background-color: #FF652F;
+}
+.click:hover {
+	background-color: #FF652F;
+
+}
+.click,.links {
+	padding: 5px;
+	font-family: futura Md BT;
+	border: none;
+	outline: none;
+	width: 100px;
+	color: #fff;
+	transition: 0.3s;
+}
+.list{
+ position: absolute;
+ transform: scaleY(0);
+ transform-origin: top;
+ transition: 0.3s;
+}
+.newlist{
+	transform: scaleY(1.0);
+}
+.links{
+	background-color: #F27C54;
+}
+.links:hover{
+	background-color: #F27C54;
+	transform: scale(1.1);
 }
 
 
@@ -324,4 +358,40 @@ color: #fff;
   line-height: 24px;
   color: #000000;
   text-align: center;
+}
+
+.uploadfile {
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 50px;
+}
+.uploadfile:last-child {
+  margin-bottom: 0;
+}
+.uploadfile h3 {
+  margin: 10px 0 25px 0;
+  text-align: center;
+}
+.uploadfile p {
+  margin-top: 16px;
+  line-height: 24px;
+  color: #000000;
+  text-align: center;
+}
+
+.uploadfile input {
+	width: 200px;
+	padding: 15px 20px;
+	text-align: center;
+	margin: 20px 10px;
+	border-radius: 30px;
+	font-weight: bold;
+	border: none;
+	background: #93b2b2;
+	color: #fff;
+	cursor: pointer;
+	position: relative;
+	overflow: hidden;
+	transition: .3s;
 }
