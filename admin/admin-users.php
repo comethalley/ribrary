@@ -42,7 +42,7 @@ if (!isset($_SESSION['admin'])) {
             <!-- Display User from database -->
             <div class="table-container">
                 <h1>User's list</h1>
-
+  
                 <table class="table">
                     <thead>
                         <tr class="table-header">
@@ -87,7 +87,7 @@ if (!isset($_SESSION['admin'])) {
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel"> Delete Student Data </h5>
+                            <h5 class="modal-title" id="exampleModalLabel"> Delete User Data </h5>
                             <button type="button" class="modal-close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -100,7 +100,7 @@ if (!isset($_SESSION['admin'])) {
                             <div class="modal-body">
                                 <input type="hidden" name="user_id" id="user_id">
 
-                                <p> Do you want to Delete this Data?</p>
+                                <p>Are you sure you want to delete this Data?</p>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal"> NO </button>
@@ -117,34 +117,46 @@ if (!isset($_SESSION['admin'])) {
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel"> Delete Student Data </h5>
+                            <h5 class="modal-title" id="exampleModalLabel"> Edit User Data </h5>
                             <button type="button" class="modal-close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
 
                         <!--  -->
-                        <form action="" method="">.
+                        <form action="../functions/admin-editUser-function.php" method="POST">.
                             <!-- DISPLAY -->
                             <div class="modal-body">
 
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Email address</label>
-                                    <input class="form-control" type="text" placeholder="Default input">
+                                <div class="input-container">
+                                    <label for="user-id"><b>User Id</b></label>
+                                    <input type="text" id="user-id" name="userId" disabled>
 
-
-                                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-
+                                    <input type="hidden" id="real-user-id" name="realUserId">
                                 </div>
-                                <p>sadsadasdas</p>
-                                <p>sadsadasdas</p>
-                                <p>sadsadasdas</p>
-                                <p>sadsadasdas</p>
+
+                                <div class="input-container-flex">
+                                    <div class="input-container">
+                                        <label for="first-name"><b>First name</b></label>
+                                        <input type="text" id="first-name" name="first-name" required>
+                                    </div>
+
+                                    <div class="input-container">
+                                        <label for="last-name"><b>Last name</b></label>
+                                        <input type="text" id="last-name" name="last-name" required>
+                                    </div>
+                                </div>
+
+                                <div class="input-container">
+                                    <label for="email"><b>Email</b></label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+
                             </div>
 
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal"> NO </button>
-                                <button type="submit" name="deleteData" class="btn btn-primary"> Confirm </button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal"> Cancel </button>
+                                <button type="submit" name="updateData" class="btn btn-primary"> Update </button>
                             </div>
                         </form>
 
@@ -164,7 +176,7 @@ if (!isset($_SESSION['admin'])) {
     <script>
         //get action class
         const action = document.querySelector(".action");
-        
+
         //if button clicked is "delete"
         action.addEventListener('click', function(e) {
             if (e.target.classList.contains('deletebtn')) {
@@ -183,11 +195,27 @@ if (!isset($_SESSION['admin'])) {
             }
         })
 
-         //if button clicked is "edit"
+        //if button clicked is "edit"
         action.addEventListener('click', function(e) {
             if (e.target.classList.contains('editbtn')) {
                 $('#editModal').modal('show');
+                //get the id of values in column
+                const userId = document.querySelector('#user-id');
+                const real_user_id = document.querySelector('#real-user-id');
+                const first_name = document.querySelector('#first-name');
+                const last_name = document.querySelector('#last-name');
+                const email = document.querySelector('#email');
 
+                const tr = e.target.closest('tr');
+
+                const data = tr.children;
+
+                //display value to input in modal
+                userId.value = data.item(1).innerHTML.trim();
+                real_user_id.value = data.item(1).innerHTML.trim();
+                first_name.value = data.item(2).innerHTML.trim();
+                last_name.value = data.item(3).innerHTML.trim();
+                email.value = data.item(4).innerHTML.trim();
 
             }
         })

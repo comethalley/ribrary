@@ -6,16 +6,19 @@
     <div class="nav-container">
         <ul>
             <li class="list">
-                <a href="admin-dashboard.php" class="link">
+                <!-- -->
+                <a href="admin-dashboard.php " class="link">
                     <i class="fa fa-solid fa-chalkboard"></i> dashboard </a>
             </li>
 
             <li class="list">
+                <!--  -->
                 <a href="admin-users.php" class="link">
                     <i class="fa fa-solid fa-users"></i>Users</a>
             </li>
 
             <li class="list">
+                <!---->
                 <a href="../functions/admin-logout-function.php" class="link">
                     <i class="fa-solid fa-arrow-up-left-from-circle"></i>logout</a>
             </li>

@@ -247,6 +247,21 @@ function deleteUser($connect, $id)
         exit();
     }
 
-    header("Location:../admin/admin-users.php?error=Success");
+    header("Location:../admin/admin-users.php?error=DeleteSuccess");
+    exit();
+}
+
+//udpate user in database
+function updateUser($connect, $id, $fname,$lname, $username)
+{
+    $sql = "UPDATE tbl_user SET firstname = ?, lastname = ?, Username = ? WHERE User_id=?";
+    $stmt = $connect->prepare($sql);
+
+    if(!$stmt->execute([$fname, $lname, $username, $id])){
+        header("Location:../admin/admin-users.php?error=errorEdit");
+        exit();
+    }
+
+    header("Location:../admin/admin-users.php?error=UpdateSucess");
     exit();
 }
