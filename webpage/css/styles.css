@@ -16,15 +16,29 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+   
 }
 
 .container{
+    position: relative;
     width: 500px;
     min-height: 400px;
     background: #FFF;
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0,0,0,.3);
     padding: 40px 30px;
+    /* transform: translateX(50%); */
+}
+.container2{
+    display: ;
+    width: 500px;
+    position: absolute;
+    min-height: 400px;
+    background: #FFF;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0,0,0,.3);
+    padding: 40px 30px;
+     transform: translateX(120%);
 }
 
 .container1 {
@@ -34,17 +48,35 @@ body {
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0,0,0,.3);
     padding: 40px 30px;
+    
 }
 
-.container .login-text {
+.header-text {
     color: #111;
-    font-weight: 500;
-    font-size: 1.1rem;
+    font-weight: 650;
+    font-size: 2rem;
     text-align: center;
     margin-bottom: 20px;
     display: block;
     text-transform: capitalize;
 }
+.signup-text{
+    margin-top:2rem;
+    text-align: center;
+    color: grey;
+    /* background-color: #1991db; */
+}
+.signup-link{
+    font-weight: 500;
+}
+.signup-link:hover{
+    cursor: pointer;
+    color: rgb(23, 23, 23);
+    text-decoration: underline;
+    
+}
+
+/* ---------------------------- */
 
 .container .login-social {
     display: grid;
@@ -135,9 +167,18 @@ body {
     cursor: pointer;
     transition: .3s;
 }
+.btn a{
+    color: rgb(89, 89, 89);
+    text-decoration: none;
+    
+}
 .container .login-email .input-group .btn:hover {
     transform: translateY(-5px);
     background: #586a6a;
+    
+}
+.btn:hover a{
+    color:white
 }
 .login-register-text {
     color: #111;
