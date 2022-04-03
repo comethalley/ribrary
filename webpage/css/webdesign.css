@@ -8,13 +8,12 @@
 
 body {
 	min-height: 100vh;
-	background: linear-gradient(#292524, #9C6C47);
 }
 
 header {
 	width: 100%;
-	min-height: 50vh;
-	background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('../img/Librarys.jpg');
+	min-height: 80vh;
+	background-image: linear-gradient(rgba(71, 71, 71, 0.45), rgba(71, 71, 71, 0.45)), url('../img/Librarys.jpg');
 	background-size: cover;
 	background-position: center;
 	align-items: center;
@@ -23,7 +22,7 @@ header {
 .content-header h1 {
 	font-size: 80px;
 	margin-top: 20px;
-	color: #DBDAEA;
+	color: #fcfcfc;
 	align-content: center;
 }
 
@@ -43,12 +42,95 @@ header {
 }
 
 .navbar {
-	width: 85%;
+	width: 100%;
 	margin: auto;
-	padding: 35px 0;
+	padding: 20px 0;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	position: sticky;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-weight: bold;
+	font-size: 15px;
+	border-width: 15px;
+}
+
+h3{
+	color: #ffffff;
+}
+
+.find{
+	color: rgb(255, 255, 255);
+	position: absolute;
+	top: 30%;
+	left: 2%;
+}
+
+#search{
+	position: absolute;
+	top: 45%;
+	left: 2%;
+	width: 45%;
+}
+
+#search-btn{
+	position: absolute;
+	top: 47%;
+	left: 48%;
+}
+
+.here{
+	text-align: center;
+	font-size: 30px;
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	color:#363636;
+}
+
+.offer{
+	width: 100%;
+	height: fit-content;
+	padding: 10px 0;
+	display: flex;
+	align-content: center;
+}
+
+.read{
+	position: relative;
+	width: 25%;
+	left: 3%;
+	background-color: #abf7fd;
+	height: fit-content;
+	font-size: 40px;
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	color: #000000;
+	border-radius: 10%;
+	text-align: center;
+}
+
+.listen{
+	position: relative;
+	width: 25%;
+	left: 5%;
+	background-color: #abf7fd;
+	height: fit-content;
+	font-size: 40px;
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	color: #000000;
+	border-radius: 10%;
+	text-align: center;
+}
+
+.look{
+	position: relative;
+	width: 25%;
+	left: 7%;
+	background-color: #abf7fd;
+	height: fit-content;
+	font-size: 40px;
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	color: #000000;
+	border-radius: 10%;
+	text-align: center;
 }
 
 .logo {
@@ -136,9 +218,7 @@ section {
 	align-items: center;
 }
 
-section:before;
-
-	{
+section:before; {
 	content: '';
 	position: absolute;
 	bottom: 0;
