@@ -10,21 +10,38 @@
 body {
     width: 100%;
     min-height: 100vh;
-    background-image: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)), url(Library.jpg);
+    background-image: linear-gradient(rgba(158, 154, 154, 0.5), rgba(95, 94, 94, 0.5)), url('../img/Librarys.jpg');
     background-position: center;
     background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
+   
 }
 
 .container{
+    position: relative;
     width: 500px;
     min-height: 400px;
     background: #FFF;
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0,0,0,.3);
     padding: 40px 30px;
+    transition: all 400ms ease-in-out;
+    /* transform: translateX(50%); */
+}
+.container2{
+    opacity:0;
+    width: 500px;
+    position: absolute;
+    min-height: 400px;
+    background: #FFF;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0,0,0,.3);
+    padding: 40px 30px;
+    
+    transform: translateX(120%);
+    transition: all 350ms ease-in-out;
 }
 
 .container1 {
@@ -34,17 +51,34 @@ body {
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0,0,0,.3);
     padding: 40px 30px;
+    
 }
 
-.container .login-text {
+.header-text {
     color: #111;
-    font-weight: 500;
-    font-size: 1.1rem;
+    font-weight: 650;
+    font-size: 2rem;
     text-align: center;
     margin-bottom: 20px;
     display: block;
     text-transform: capitalize;
 }
+.signup-text{
+    margin-top:2rem;
+    text-align: center;
+    color: grey;
+    /* background-color: #1991db; */
+}
+.signup-link, .login-link{
+    font-weight: 500;
+}
+.signup-link:hover, .login-link:hover{
+    cursor: pointer;
+    color: rgb(23, 23, 23);
+    text-decoration: underline;
+}
+
+/* ---------------------------- */
 
 .container .login-social {
     display: grid;
@@ -106,7 +140,7 @@ body {
     margin-bottom: 25px;
 }
 
-.container .login-email .input-group input {
+.input-group input {
     width: 100%;
     height: 100%;
     border: 2px solid #e7e7e7;
@@ -117,11 +151,20 @@ body {
     outline: none;
     transition: .3s;
 }
+.container2 .input-group{
+    display: flex;
+    justify-content: space-between;
+    margin: 1.5rem;
+}
+.container2 .input-group:nth-of-type(1) input{
+    width:48%;
+}
+
 
 .container .login-email. .input-group input:focus, .container .login-email .input-group input:valid {
     border-color: #a29bfe;
 }
-.container .login-email .input-group .btn {
+ .input-group .btn {
     display: block;
     width: 100%;
     padding: 15px 20px;
@@ -135,9 +178,18 @@ body {
     cursor: pointer;
     transition: .3s;
 }
-.container .login-email .input-group .btn:hover {
+.btn a{
+    color: rgb(89, 89, 89);
+    text-decoration: none;
+    
+}
+.input-group .btn:hover {
     transform: translateY(-5px);
     background: #586a6a;
+    
+}
+.btn:hover a{
+    color:white
 }
 .login-register-text {
     color: #111;
@@ -159,4 +211,16 @@ body {
     .container .login-social a {
         display: block;
     }
+}
+
+/* MOVE CONTAINER */
+
+.removeContainer{
+    transform: translateX(-120%);
+    opacity: 0;
+}
+
+.displayContainer{
+    opacity: 1;
+    transform: translateX(0);
 }

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/styles.css">
+	<link rel="stylesheet" href="css/transitions.css">
+	<title>LogIn</title>
+</head>
+
+<body>
+	<div class="container">
+		<form action="../functions/login-function.php" method="POST" class="login-email">
+			<p class="header-text">Log In</p>
+			<div class="input-group">
+				<input type="email" placeholder="Email Address">
+			</div>
+			<div class="input-group">
+				<input type="password" placeholder="Password">
+			</div>
+			<div class="input-group">
+				<button class="btn"><a href="Elibrary.html">Log In</a></button>
+			</div>
+		</form>
+		<p class="signup-text">Don't have an account? <span class="signup-link"> Sign Up</span></p>
+	</div>
+
+	<div class="container2">
+		<form action="../functions/login-function.php" method="POST" class="login-email">
+			<p class="header-text">Sign Up</p>
+
+			<div class="input-group">
+				<input type="text" placeholder="First Name">
+				<input type="text" placeholder="Last Name">
+			</div>
+
+			<div class="input-group">
+				<input type="email" placeholder="Email Address">
+			</div>
+
+			<div class="input-group">
+				<input type="password" placeholder="Password">
+			</div>
+
+			<div class="input-group">
+				<input type="password" placeholder="Retype Password">
+			</div>
+
+			<div class="input-group">
+				<button class="btn"> <a href="">Sign Up</a></button>
+			</div>
+		</form>
+		<p class="signup-text">Already have an account? <span class="login-link"> Log In</span></p>
+	</div>
+
+	<!-- SCRIPT -->
+	<script src="js/Login_and_Signup.js"></script>
+</body>
+
+</html>

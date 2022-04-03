@@ -1,42 +1,48 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-*{
+* {
 	margin: 0;
 	padding: 0;
 	font-family: 'Poppins', sans-serif;
 }
-body{
+
+body {
 	min-height: 100vh;
-	background: linear-gradient(#292524,#9C6C47);
+	background: linear-gradient(#292524, #9C6C47);
 }
-header{
+
+header {
 	width: 100%;
 	min-height: 50vh;
-	background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url(librarys.jpg);
+	background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('../img/Librarys.jpg');
 	background-size: cover;
 	background-position: center;
 	align-items: center;
 }
+
 .content-header h1 {
 	font-size: 80px;
 	margin-top: 20px;
 	color: #DBDAEA;
 	align-content: center;
 }
+
 .content-header h2 {
 	font-size: 50px;
 	margin-top: 20px;
 	color: #DBDAEA;
 	align-content: center;
 }
-.banner{
+
+.banner {
 	width: 100%;
 	height: 100vh;
-	background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url(website.jpg);
+	background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url(website.jpg);
 	background-size: cover;
 	background-position: center;
 }
-.navbar{
+
+.navbar {
 	width: 85%;
 	margin: auto;
 	padding: 35px 0;
@@ -44,22 +50,26 @@ header{
 	align-items: center;
 	justify-content: space-between;
 }
-.logo{
+
+.logo {
 	width: 450px;
 	cursor: pointer;
 }
-.navbar ul li{
+
+.navbar ul li {
 	list-style: none;
 	display: inline-block;
 	margin: 0 20px;
 	position: relative;
 }
-.navbar ul li a{
+
+.navbar ul li a {
 	text-decoration: none;
 	color: #fff;
 	text-transform: uppercase;
 }
-.navbar ul li::after{
+
+.navbar ul li::after {
 	content: '';
 	height: 3px;
 	width: 0%;
@@ -69,10 +79,12 @@ header{
 	bottom: -5px;
 	transition: 0.5s;
 }
-.navbar ul li:hover::after{
+
+.navbar ul li:hover::after {
 	width: 100%;
 }
-.content{
+
+.content {
 	width: 100%;
 	position: absolute;
 	top: 50%;
@@ -80,37 +92,42 @@ header{
 	text-align: center;
 	color: #fff;
 }
-.content-header{
 
-}
-.content h1{
+.content-header {}
+
+.content h1 {
 	font-size: 60px;
 	margin-top: 80px;
 }
-.content p{
+
+.content p {
 	margin: 10px auto;
 	font-weight: 95;
 	line-height: 15px;
 	font-family: sans-serif;
 }
+
 .backdrop {
 	position: relative;
 	padding: 100px;
 	background: #485665;
 }
-.backdrop h1{
+
+.backdrop h1 {
 	font-size: 2.0em;
 	margin-bottom: 10px;
 	color: #fff;
 	text-align: justify;
 }
-.backdrop p{
+
+.backdrop p {
 	font-size: 1em;
 	color: #fff;
 	text-align: justify;
 
 }
-section{
+
+section {
 	position: relative;
 	height: 100vh;
 	padding: 100px;
@@ -118,15 +135,18 @@ section{
 	justify-content: center;
 	align-items: center;
 }
-section:before; {
+
+section:before;
+
+	{
 	content: '';
 	position: absolute;
 	bottom: 0;
-	width: 100%
-	height: 100px;
-	background: linear-gradient(to top,#9C6C47,transparent);
+	width: 100% height: 100px;
+	background: linear-gradient(to top, #9C6C47, transparent);
 	z-index: 1000;
 }
+
 button {
 	width: 200px;
 	padding: 15px 20px;
@@ -143,9 +163,10 @@ button {
 	transition: .3s;
 	box-shadow: 5px 5px 15px black;
 }
-button:hover{
-    transform: translateY(-5px);
-    background: #586a6a;
+
+button:hover {
+	transform: translateY(-5px);
+	background: #586a6a;
 }
 
 .postajob {
@@ -159,11 +180,11 @@ button:hover{
 	align-content: center;
 }
 
-.postajob button{
+.postajob button {
 	background: #5D402A;
 }
 
-.postajob button:hover{
+.postajob button:hover {
 	transform: translateY(-5px);
 	background: #3e2b1c;
 }
@@ -174,7 +195,7 @@ button:hover{
 	justify-content: flex-end;
 	transform: translateY(-50%);
 	text-align: center;
-	
+
 }
 
 .alignsearch {
@@ -187,7 +208,7 @@ button:hover{
 }
 
 input {
-	
+
 	padding: 10px 0;
 	text-align: center;
 	margin: 10px 5px;
@@ -195,7 +216,7 @@ input {
 	font-weight: bold;
 	border: none;
 	width: 200px;
-	
+
 	cursor: pointer;
 	position: relative;
 	overflow: hidden;
@@ -206,12 +227,13 @@ input {
 	background: #5D402A;
 	color: #fff;
 }
-#submit:hover{
+
+#submit:hover {
 	transform: translateY(-5px);
 	background: #3e2b1c;
 }
 
-
+/* ---- Login page ------*/
 .container {
 	width: 500px;
 	left: 26%;
@@ -223,16 +245,28 @@ input {
 	font-size: 30px;
 	color: #fff;
 	float: right;
-display: inline-block;
+	display: inline-block;
+	
 }
-.click{
+
+.login-text {
+	font-size: 2rem;
+	font-weight: 800;
+}
+
+
+/* ------------------ */
+.click {
 	background-color: #FF652F;
 }
+
 .click:hover {
 	background-color: #FF652F;
 
 }
-.click,.links {
+
+.click,
+.links {
 	padding: 5px;
 	font-family: futura Md BT;
 	border: none;
@@ -241,19 +275,23 @@ display: inline-block;
 	color: #fff;
 	transition: 0.3s;
 }
-.list{
- position: absolute;
- transform: scaleY(0);
- transform-origin: top;
- transition: 0.3s;
+
+.list {
+	position: absolute;
+	transform: scaleY(0);
+	transform-origin: top;
+	transition: 0.3s;
 }
-.newlist{
+
+.newlist {
 	transform: scaleY(1.0);
 }
-.links{
+
+.links {
 	background-color: #F27C54;
 }
-.links:hover{
+
+.links:hover {
 	background-color: #F27C54;
 	transform: scale(1.1);
 }
@@ -264,12 +302,12 @@ display: inline-block;
 	left: 26%;
 	width: 550px;
 	position: absolute;
-	
+
 }
 
 .job-box {
-padding-bottom: 30px;
-width: 100%;
+	padding-bottom: 30px;
+	width: 100%;
 
 	padding: 15px 0;
 	text-align: center;
@@ -278,21 +316,23 @@ width: 100%;
 
 	border: none;
 	background: #fff;
-	
+
 	cursor: pointer;
 	position: relative;
 	overflow: hidden;
 }
+
 .title-font {
 	color: ;
 }
+
 .text-font {
 	color: ;
 }
 
 .title-search {
-	
-width: 500px;
+
+	width: 500px;
 	left: 26%;
 	top: 150px;
 	position: absolute;
@@ -305,7 +345,7 @@ width: 500px;
 }
 
 .searchresult {
-color: #fff;
+	color: #fff;
 }
 
 
@@ -321,7 +361,7 @@ color: #fff;
 	border-radius: 0px;
 	border: 0px solid black;
 	background: #fff;
-	
+
 	cursor: pointer;
 	position: relative;
 	overflow: hidden;
@@ -331,54 +371,60 @@ color: #fff;
 	position: absolute;
 }
 
-.nameless{
+.nameless {
 	width: 360px;
 	margin: 10px auto 0px;
-	background:#586a6a;
+	background: #586a6a;
 	text-align: center;
 	border-radius: 10px 10px 0px 0px;
-	padding:20px;
+	padding: 20px;
 	color: #fff;
 }
 
 .article {
-  background-color: #fff;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 50px;
+	background-color: #fff;
+	padding: 20px;
+	margin-bottom: 20px;
+	border-radius: 50px;
 }
+
 .article:last-child {
-  margin-bottom: 0;
+	margin-bottom: 0;
 }
+
 .article h3 {
-  margin: 10px 0 25px 0;
-  text-align: center;
+	margin: 10px 0 25px 0;
+	text-align: center;
 }
+
 .article p {
-  margin-top: 16px;
-  line-height: 24px;
-  color: #000000;
-  text-align: center;
+	margin-top: 16px;
+	line-height: 24px;
+	color: #000000;
+	text-align: center;
 }
 
 .uploadfile {
-  background-color: #fff;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 50px;
+	background-color: #fff;
+	padding: 20px;
+	margin-bottom: 20px;
+	border-radius: 50px;
 }
+
 .uploadfile:last-child {
-  margin-bottom: 0;
+	margin-bottom: 0;
 }
+
 .uploadfile h3 {
-  margin: 10px 0 25px 0;
-  text-align: center;
+	margin: 10px 0 25px 0;
+	text-align: center;
 }
+
 .uploadfile p {
-  margin-top: 16px;
-  line-height: 24px;
-  color: #000000;
-  text-align: center;
+	margin-top: 16px;
+	line-height: 24px;
+	color: #000000;
+	text-align: center;
 }
 
 .uploadfile input {
