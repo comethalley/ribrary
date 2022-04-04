@@ -82,8 +82,8 @@ h3{
 .here{
 	text-align: center;
 	font-size: 30px;
-	font-family: Georgia, 'Times New Roman', Times, serif;
-	color:#363636;
+	font-family: 'Merriweather', serif;
+	color:#000000;
 }
 
 .offer{
@@ -91,14 +91,23 @@ h3{
 	height: fit-content;
 	padding: 10px 0;
 	display: flex;
-	align-content: center;
+	justify-content: center;
+	
 }
 
+#icons{  
+	height: 60px;
+	margin-left: 5rem;  
+	} 
+
+.title{
+	position: relative;
+	bottom: 20%;
+}
 .read{
 	position: relative;
 	width: 25%;
-	left: 3%;
-	background-color: #abf7fd;
+	left: 3%;;
 	height: fit-content;
 	font-size: 40px;
 	font-family: Georgia, 'Times New Roman', Times, serif;
@@ -133,6 +142,10 @@ h3{
 	text-align: center;
 }
 
+.dumpcontent{
+	background-color: #ffffff;
+	height: 50em;
+}
 .logo {
 	width: 450px;
 	cursor: pointer;
