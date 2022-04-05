@@ -2,11 +2,10 @@
 
 if(isset($_POST['deleteData'])){
 
-
-    include '../functions/functions.php';
-    include '../functions/database.php';
+    include '../includes/autoload-class.php';
+    $admin = new Admin();
 
     $id = $_POST['user_id'];
 
-    deleteUser($connect,$id);
+    $admin->deleteUser($id);
 }

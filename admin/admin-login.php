@@ -1,4 +1,6 @@
-
+<?php
+    include '../includes/autoload-class.php'
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,11 +14,11 @@
     <script defer src="https://kit.fontawesome.com/86dc2a589d.js" crossorigin="anonymous"></script>
 
     <!-- CSS LINK -->
-    <link rel="stylesheet" href="admin-style.css">
+    <link rel="stylesheet" href="css/admin-style.css">
 </head>
 
 <body>
-
+   
     <main>
         <!-- MAIN CONTAINER -->
         <div class="main-container">
@@ -74,7 +76,7 @@
     </main>
 
     <!-- JAVASCRIPT FUNCTION  -->
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>

@@ -1,8 +1,8 @@
 <?php
 
-if(isset($_POST['updateData'])){
-    include '../functions/functions.php';
-    include '../functions/database.php';
+if (isset($_POST['updateData'])) {
+    include '../includes/autoload-class.php';
+    $admin = new Admin();
 
     $id = $_POST['realUserId'];
     $fname = $_POST['first-name'];
@@ -10,11 +10,10 @@ if(isset($_POST['updateData'])){
     $username = $_POST['email'];
 
     //check if varable has value 
-    if(empty($fname) || empty($lname) || empty($username)){
+    if (empty($fname) || empty($lname) || empty($username)) {
         header("Location:../admin/admin-users.php?error=inputAllFields");
         exit();
     }
-  
-    updateUser($connect,$id, $fname, $lname, $username);
-}
 
+    $admin->updateUser($id, $fname, $lname, $username);
+}
