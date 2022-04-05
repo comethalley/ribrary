@@ -2,21 +2,22 @@
 
 // if user submit button
 if (isset($_POST['submit'])) {
-    $user =  $_POST['username'];
+    include '../includes/autoload-class.php';
+
+    $email =  $_POST['email'];
     $pass =  $_POST['pass'];
 
-    include_once  'database.php';
-    include_once  'functions.php';
+    $user = new User();
 
     //If any of the field is empty function will return true
-    if (emptyInputLogin($user,$pass) === true) {
-        header("Location:../webpage/Login.php?error=emptyField");
+    if ($user->emptyInputLogin($email,$pass) === true) {
+        header("Location:../webpage/Login-and-SignUp-page.html?error=emptyField");
         exit();
     }
 
-    loginUser($connect,$user,$pass);
+    $user->loginUser($email,$pass);
 } else {
-    header("Location:../webpage/Login.php?error=error");
+    header("Location:../webpage/Login-and-SignUp-page.html?error=error");
     exit();
 }
 

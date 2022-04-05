@@ -16,41 +16,46 @@
 		<form action="../functions/login-function.php" method="POST" class="login-email">
 			<p class="header-text">Sign In</p>
 			<div class="input-group">
-				<input type="email" placeholder="Email Address">
+				<input type="email" placeholder="Email Address" name="email">
 			</div>
+
 			<div class="input-group">
-				<input type="password" placeholder="Password">
+				<input type="password" placeholder="Password" name="pass">
 			</div>
+
 			<div class="input-group">
-				<button class="btn"><a href="Elibrary.html">Log In</a></button>
+				<button class="btn" name="submit">Log In</button>
 			</div>
+
 		</form>
 		<p class="signup-text">Don't have an account? <span class="signup-link"> Sign Up</span></p>
 	</div>
 
+
+
 	<div class="container2">
-		<form action="../functions/login-function.php" method="POST" class="login-email">
+		<form action="../functions/signup-function.php" method="POST" class="login-email">
 			<p class="header-text">Sign Up</p>
 
 			<div class="input-group">
-				<input type="text" placeholder="First Name">
-				<input type="text" placeholder="Last Name">
+				<input type="text" placeholder="First Name" name="fname">
+				<input type="text" placeholder="Last Name" name="lname">
 			</div>
 
 			<div class="input-group">
-				<input type="email" placeholder="Email Address">
+				<input type="email" placeholder="Email Address" name="email">
 			</div>
 
 			<div class="input-group">
-				<input type="password" placeholder="Password">
+				<input type="password" placeholder="Password" name="pass">
 			</div>
 
 			<div class="input-group">
-				<input type="password" placeholder="Retype Password">
+				<input type="password" placeholder="Retype Password" name="re-pass">
 			</div>
 
 			<div class="input-group">
-				<button class="btn"> <a href="">Sign Up</a></button>
+				<button class="btn" name="submit">Sign U </button>
 			</div>
 		</form>
 		<p class="signup-text">Already have an account? <span class="login-link"> Log In</span></p>

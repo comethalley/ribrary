@@ -2,43 +2,45 @@
 
 // if user submit button
 if (isset($_POST['submit'])) {
-    include_once 'database.php';
-    include_once 'functions.php';
+    include '../includes/autoload-class.php';
 
-    $first =  $_POST['first'];
-    $last =  $_POST['last'];
+    $first =  $_POST['fname'];
+    $last =  $_POST['lname'];
     $email =  $_POST['email'];
     $pass =  $_POST['pass'];
+    $re_pass =  $_POST['re-pass'];
+
+    $user = new User();
 
 
     //function for error handling
 
     //If any of the field is empty function will return true
-    if (emptyInputSignUp($first, $last, $email, $pass) == true) {
-        header("Location:../webpage/Login.php?error=emptyfield");
+    if ($user->emptyInputSignUp($first, $last, $email, $pass,$re_pass) == true) {
+        header("Location:../webpage/Login-and-SignUp-page.html?error=emptyfield");
         exit();
     }
     // if user email is invalid return true
-    if (invalidEmail($email) == true) {
-        header("Location:../webpage/Login.php?error=invalidEmail");
+    if ($user->invalidEmail($email) == true) {
+        header("Location:../webpage/Login-and-SignUp-page.html?error=invalidEmail");
         exit();
     }
-    // // if password not match return true
-    // if (passNotMatch($pass, $re_pass) == true) {
-    //     header("Location:../webpage/Login.php?error=passnotmatch");
-    //     exit();
-    // }
+    // if password not match return true
+    if ($user->passNotMatch($pass, $re_pass) == true) {
+        header("Location:../webpage/Login-and-SignUp-page.html?error=passnotmatch");
+        exit();
+    }
 
     //if email alreadu exist return true
-    if (emailExist($connect, $email)) {
-        header("Location:../webpage/Login.php?error=emailExist");
+    if ($user->emailExist($email) == true) {
+        header("Location:../webpage/Login-and-SignUp-page.html?error=emailExist");
         exit();
     }
     
     // create user in the database
-    createUser($connect, $first, $last, $email, $pass);
+   $user->createUser($first, $last, $email, $pass);
 
 } else {
-    header("Location:../webpage/Login.php?error=error");
+    header("Location:../webpage/Login-and-SignUp-page.html?error=error");
     exit();
 }
