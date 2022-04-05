@@ -5,8 +5,8 @@ session_start();
 if (!isset($_SESSION['admin'])) {
     header("Location:admin-login.php");
 } else {
-    include_once '../functions/functions.php';
-    include_once '../functions/database.php';
+    include '../includes/autoload-class.php';
+    $admin = new Admin();
 }
 
 ?>
@@ -28,8 +28,8 @@ if (!isset($_SESSION['admin'])) {
     <script defer src="https://kit.fontawesome.com/86dc2a589d.js" crossorigin="anonymous"></script>
 
     <!-- CSS TYLES -->
-    <link rel="stylesheet" href="sidebar-style.css">
-    <link rel="stylesheet" href="admin-dashboard-style.css">
+    <link rel="stylesheet" href="css/sidebar-style.css">
+    <link rel="stylesheet" href="css/admin-dashboard-style.css">
 </head>
 
 <body>
@@ -46,7 +46,7 @@ if (!isset($_SESSION['admin'])) {
                 <!-- Display Total Users -->
                 <div class="user-count-container">
                     <p class="title">Total Users</p>
-                    <p class="count"><?php echo getTotalUser($connect); ?></p>
+                    <p class="count"><?php echo $admin->getTotalUser(); ?></p>
 
                     <div class="image"><i class="fa fa-solid fa-users"></i></div>
                 </div>
@@ -54,7 +54,7 @@ if (!isset($_SESSION['admin'])) {
                 <!-- Display Total Books -->
                 <div class="user-count-container">
                     <p class="title">Total Books</p>
-                    <p class="count"><?php echo getTotalUser($connect); ?></p>
+                    <p class="count"><?php echo  $admin->getTotalUser(); ?></p>
 
                     <div class="image book"><i class="fa fa-solid fa-book"></i></div>
                 </div>
@@ -62,14 +62,14 @@ if (!isset($_SESSION['admin'])) {
                  <!-- Display Pending-->
                 <div class="user-count-container">
                     <p class="title">Pending books</p>
-                    <p class="count"><?php echo getTotalUser($connect); ?></p>
+                    <p class="count"><?php echo $admin->getTotalUser() ?></p>
 
                     <div class="image"><i class="fa fa-solid fa-users"></i></div>
                 </div>
 
                 <div class="user-count-container">
                     <p class="title">Total User</p>
-                    <p class="count"><?php echo getTotalUser($connect); ?></p>
+                    <p class="count"><?php echo $admin->getTotalUser() ?></p>
 
                     <div class="image"><i class="fa fa-solid fa-users"></i></div>
                 </div>
@@ -79,7 +79,7 @@ if (!isset($_SESSION['admin'])) {
     </main>
 
     <!-- JAVASCRIPT FUNCTION -->
-    <script src="sidebar-script.js"></script>
+    <script src="js/sidebar-script.js"></script>
 </body>
 
 </html>

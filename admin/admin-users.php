@@ -4,8 +4,8 @@ session_start();
 if (!isset($_SESSION['admin'])) {
     header("Location:admin-login.php");
 } else {
-    include_once '../functions/functions.php';
-    include_once '../functions/database.php';
+    include '../includes/autoload-class.php';
+    $admin = new Admin();
 }
 
 ?>
@@ -28,8 +28,8 @@ if (!isset($_SESSION['admin'])) {
     <script defer src="https://kit.fontawesome.com/86dc2a589d.js" crossorigin="anonymous"></script>
 
     <!-- CSS TYLES -->
-    <link rel="stylesheet" href="admin-user-style.css">
-    <link rel="stylesheet" href="sidebar-style.css">
+    <link rel="stylesheet" href="css/admin-user-style.css">
+    <link rel="stylesheet" href="css/sidebar-style.css">
 </head>
 
 <body>
@@ -42,7 +42,7 @@ if (!isset($_SESSION['admin'])) {
             <!-- Display User from database -->
             <div class="table-container">
                 <h1>User's list</h1>
-  
+
                 <table class="table">
                     <thead>
                         <tr class="table-header">
@@ -58,7 +58,7 @@ if (!isset($_SESSION['admin'])) {
 
                     <tbody class="action">
                         <?php
-                        $data = displayUser($connect);
+                        $data = $admin->displayUser();
                         $count = 1;
                         foreach ($data as $row) {
                         ?>
@@ -221,7 +221,7 @@ if (!isset($_SESSION['admin'])) {
         })
     </script>
 
-    <script src="sidebar-script.js"></script>
+    <script src="js/sidebar-script.js"></script>
 </body>
 
 </html>
