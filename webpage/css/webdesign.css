@@ -42,7 +42,7 @@ header {
 }
 
 .navbar {
-	width: 100%;
+	width: 85%;
 	margin: auto;
 	padding: 20px 0;
 	display: flex;
@@ -341,66 +341,51 @@ input {
 
 /* ---- Login page ------*/
 .container {
-	width: 500px;
+	width: 130px;
 	left: 26%;
 	top: 150px;
-	position: absolute;
+	position: inherit;
 	background-color: transparent;
 	border-radius: 20px;
-	padding: 30px;
-	font-size: 30px;
+	padding: 20px;
+	font-size: 20px;
 	color: #fff;
-	float: right;
-	display: inline-block;
-	
+float: right;
+display: inherit;
 }
-
-.login-text {
-	font-size: 2rem;
-	font-weight: 800;
+.click{
+	background-color: #93b2b2;
 }
-
-
-/* ------------------ */
-.click {
-	background-color: #FF652F;
-}
-
 .click:hover {
-	background-color: #FF652F;
+	background-color: #000000;
 
 }
-
-.click,
-.links {
-	padding: 5px;
+.click,.links {
+	padding: 9px;
 	font-family: futura Md BT;
 	border: none;
 	outline: none;
-	width: 100px;
+	width: 120px;
 	color: #fff;
 	transition: 0.3s;
 }
-
-.list {
-	position: absolute;
-	transform: scaleY(0);
-	transform-origin: top;
-	transition: 0.3s;
+.list{
+ position: relative;
+ transform: scaleY(0);
+ transform-origin: top;
+ transition: 0.3s;
 }
-
-.newlist {
+.newlist{
 	transform: scaleY(1.0);
 }
-
-.links {
-	background-color: #F27C54;
+.links{
+	background-color: #93b2b2;
 }
-
-.links:hover {
-	background-color: #F27C54;
+.links:hover{
+	background-color: #000000;
 	transform: scale(1.1);
 }
+
 
 
 .job {

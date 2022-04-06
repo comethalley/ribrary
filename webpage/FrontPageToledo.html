@@ -6,6 +6,21 @@
     <title>Front Page</title>
 </head>
 <body>
+     <div class="container">
+            <button class="click">...</button>
+            <div class="list">
+                <button class="links">Settings</button>
+                <button class="links">Help & Support</button>
+                <button class="links">Log out</button>
+            </div>
+        </div>
+        <script>
+            let click = document.querySelector('.click');
+            let list = document.querySelector('.list');
+            click.addEventListener("click",()=>{
+                list.classList.toggle('newlist');
+            });
+        </script>
     <!-- Hero Section  -->
   <section id="hero">
    <div class="hero container">

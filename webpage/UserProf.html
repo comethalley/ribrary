@@ -12,6 +12,21 @@
 </head>
 <body>
     <header>
+         <div class="container">
+            <button class="click">...</button>
+            <div class="list">
+                <button class="links">Settings</button>
+                <button class="links">Help & Support</button>
+                <button class="links">Log out</button>
+            </div>
+        </div>
+        <script>
+            let click = document.querySelector('.click');
+            let list = document.querySelector('.list');
+            click.addEventListener("click",()=>{
+                list.classList.toggle('newlist');
+            });
+        </script>
         <div class="header">
             <div class="navbar">
             <img src="books.png" class="books">
