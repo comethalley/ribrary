@@ -200,3 +200,58 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+
+
+
+
+
+
+
+FAVORITES TABLE 
+CREATE TABLE `tbl_favorites` (
+  `item_id` int(255) NOT NULL,
+  `itemTitle` varchar(255) NOT NULL,
+  `dateAdded` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+ALTER TABLE `tbl_favorites`
+  ADD PRIMARY KEY (`item_id`);
+
+
+
+HISTORY TABLE
+
+CREATE TABLE `tbl_history` (
+  `history_id` int(255) NOT NULL,
+  `user_id` int(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `date` date NOT NULL,
+  `time` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Indexes for table `tbl_history`
+--
+ALTER TABLE `tbl_history`
+  ADD PRIMARY KEY (`history_id`),
+  ADD KEY `user_id` (`user_id`);
+
+
+
+  REVIEW TABLE
+  CREATE TABLE `tbl_reviews` (
+  `review_id` int(255) NOT NULL,
+  `user_id` int(255) NOT NULL,
+  `userRating` int(255) NOT NULL,
+  `userReview` varchar(255) NOT NULL,
+  `userComment` text NOT NULL,
+  `reviewDate` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Indexes for table `tbl_reviews`
+--
+ALTER TABLE `tbl_reviews`
+  ADD PRIMARY KEY (`review_id`);
+
+  ADD KEY `user_id` (`user_id`);
