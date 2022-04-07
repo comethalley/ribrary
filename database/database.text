@@ -8,6 +8,7 @@ CREATE TABLE tbl_user (
     lastname varchar(32) NOT NULL,
     Username varchar(32) NOT NULL,
     password char(60) NOT NULL,
+    user_status varchar(32) NOT NULL,
     PRIMARY KEY (User_id)
 );
 
