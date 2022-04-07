@@ -127,8 +127,8 @@ class Admin extends Database
     function adminLogout()
     {
         session_start();
-        session_unset();
-        session_destroy();
+        session_unset($_SESSION["admin"]);
+       
 
         //Go back to admin-login
         header("Location: ../admin/admin-login.php");

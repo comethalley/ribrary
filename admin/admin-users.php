@@ -16,6 +16,7 @@ if (!isset($_SESSION['admin'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>USERS</title>
 
     <!-- GOOGLE FONT LINK -->
@@ -41,9 +42,11 @@ if (!isset($_SESSION['admin'])) {
 
             <!-- Display User from database -->
             <div class="table-container">
+                <!-- <button class="action">dsd</button> -->
                 <h1>User's list</h1>
 
                 <table class="table">
+
                     <thead>
                         <tr class="table-header">
                             <th scope="col">No.</th>
@@ -55,8 +58,8 @@ if (!isset($_SESSION['admin'])) {
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
-
                     <tbody class="action">
+
                         <?php
                         $data = $admin->displayUser();
                         $count = 1;
@@ -68,7 +71,9 @@ if (!isset($_SESSION['admin'])) {
                                 <td> <?php echo $row["firstname"] ?></td>
                                 <td> <?php echo $row["lastname"] ?></td>
                                 <td> <?php echo $row["Username"] ?></td>
-                                <td> <?php echo 'active' ?></td>
+                                <td>
+                                    <p class="user-status"> <?php echo $row["user_status"] ?></p>
+                                </td>
                                 <td><i class="fa fa-solid fa-pen editbtn"></i>
                                     <i class="fa fa-solid fa-trash deletebtn"></i>
                                 </td>
@@ -77,8 +82,11 @@ if (!isset($_SESSION['admin'])) {
                             $count++;
                         }
                         ?>
+
                     </tbody>
                 </table>
+
+
             </div>
 
 
@@ -172,11 +180,12 @@ if (!isset($_SESSION['admin'])) {
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 
+  
     <!-- SCRIPT FOR DELETE AND EDIT POP UP MODAL -->
     <script>
-        //get action class
         const action = document.querySelector(".action");
-
+        //get action class
+    
         //if button clicked is "delete"
         action.addEventListener('click', function(e) {
             if (e.target.classList.contains('deletebtn')) {
@@ -222,6 +231,7 @@ if (!isset($_SESSION['admin'])) {
     </script>
 
     <script src="js/sidebar-script.js"></script>
+    <script src="js/admin-user.js"></script>
 </body>
 
 </html>

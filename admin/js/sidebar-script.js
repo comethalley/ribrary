@@ -22,3 +22,5 @@ navigation.addEventListener('mouseout', function (e) {
         target.classList.remove('addRightBorder')
     }
 })
+
+
