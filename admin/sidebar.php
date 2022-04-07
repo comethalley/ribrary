@@ -21,7 +21,7 @@
             <li class="list">
                 <!---->
                 <a href="../functions/admin-logout-function.php" class="link">
-                    <i class="fa-solid fa-arrow-up-left-from-circle"></i>logout</a>
+                <i class="bi bi-box-arrow-right"></i>logout</a>
             </li>
         </ul>
     </div>

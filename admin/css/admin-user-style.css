@@ -30,12 +30,14 @@ main {
     text-align: center;
     /* width: 90%; */
     margin-top: 5rem;
+ 
 
 
 }
 
 .table td {
     padding: 1.5em 0;
+   
 }
 
 .table-header {
@@ -117,4 +119,22 @@ main {
     main {
         grid-template-columns: 15% 85%;
     }
+}
+
+/* ----- FOR SCRIPT ------ */
+.online {
+    width: 50%;
+    margin: auto;
+    border-radius: 10em;
+    background-color: rgb(119, 182, 24);
+    color: white;
+
+}
+
+.offline {
+    width: 50%;
+    margin: auto;
+    border-radius: 10em;
+    background-color: rgb(208, 50, 50);
+    color: white;
 }
