@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/webdesign.css">
     <link rel="stylesheet" href="css/transitions.css">
-    <title>Podcast</title>
+    <title>Upload Magazine</title>
+	
 </head>
 <body>
     <header>
-         <div class="container">
+       <div class="container">
             <button class="click">...</button>
             <div class="list">
                 <button class="links">Settings</button>
@@ -39,44 +40,28 @@
         </ul>
         </div>
         <div class="content-header">
-        <h1><center>PODCAST</center></h1>
+        <h1><center>UPLOAD</center></h1>
     </div>
     </header>
     <main>
     <div class="backdrop">
-	<button class="upbtn" onclick="window.location.href='upload-podcast-section.html'">Upload your own podcast here!</button>
     <center>
     <!-- <button type="button" class="btn">Add Book</button></p> -->
     </center>
   <main>
     <center>
-  <div class="article">
-    <h2>Podcast Title</h2>
-    <h3>The Greatest Book Of All Time</h3>
-    <p> Author : Jane Austen </p>
-    <center>
-    <button class="btn"><a href ="viewpage3.html">View Podcast</a></button>
-    </center>
+  <div class="uploadfile">
+    <h2>Welcome to Magazine Upload Page!</h2>
+    <h3>Here you can upload your own creations. Try it now!</h3>
+	<p>Instructions: Click "Choose File", Find your created work and click "Open" 
+	(Please note that Magazines are the only files allowed to be uploaded), Then click "Upload".</p>
+	
+	<br>
+	<form action="../functions/upload-document-function.php" method = "POST" enctype="multipart/form-data">
+        <input type = "file" name = "file">
+        <button type = "submit" name = "submit"> UPLOAD </button>
+    </form>
   </div>
-  <br>
-<div class="article">
-    <h2>Podcast Title</h2>
-    <h3>The Greatest Book Of All Time</h3>
-    <p> Author : Jane Austen </p>
-    <center>
-     <button class="btn"><a href ="viewpage3.html">View Podcast</a></button>
-    </center>
-  </div>
-  <br>
- <div class="article">
-   <h2>Podcast Title</h2>
-    <h3>The Greatest Book Of All Time</h3>
-    <p> Author : Jane Austen </p>
-    <center>
-     <button class="btn"><a href ="viewpage3.html">View Podcast</a></button>
-    </center>
-  </div>
-  <br>
 </center>
 </main>
 </main>

@@ -218,6 +218,7 @@ p{
 .backdrop {
 	position: relative;
 	padding: 100px;
+	padding-top:45px;
 	background: #485665;
 }
 
@@ -235,6 +236,12 @@ p{
 
 }
 
+.upbtn{
+margin-left:85%;
+margin-bottom: 4%;
+background-color: #687c92;
+font-weight: normal;
+}
 section {
 	position: relative;
 	height: 100vh;
@@ -495,6 +502,7 @@ display: inherit;
 	text-align: center;
 }
 
+/* ---- Upload pages ------*/
 .uploadfile {
 	background-color: #fff;
 	padding: 20px;
