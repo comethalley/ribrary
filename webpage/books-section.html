@@ -6,9 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/webdesign.css">
   <link rel="stylesheet" href="css/transitions.css">
-  <link rel="stylesheet" href="css/box.css">
+  <!-- <link rel="stylesheet" href="css/box.css"> -->
+  <link rel="stylesheet" href="css/book-section.css">
   <title>My Profile</title>
-=======
+  =======
   <title>Books</title>
 </head>
 
@@ -50,66 +51,26 @@
       </div>
   </header>
   <main>
-    <div class="backdrop"><button class="upbtn" onclick="window.location.href='upload-books-section.html'">Upload your own book here!</button>
+    <div class="backdrop"><button class="upbtn" onclick="window.location.href='upload-books-section.html'">Upload your
+        own book here!</button>
       <center>
         <!-- <button type="button" class="btn">Add Book</button></p> -->
       </center>
-  <main>
-   <div class="row">
-    <div class="column">
-    <div class="card">
-    <div class="fakeimg" style="height:150px;">
-    <img src="Example.jpg" alt="Example">
-  </div>
-    <br>  
-    <h2>Book Title</h2>
-    <h3>Author</h3>
-    <center>
-    <a href="Viewpage.html"><button class="btn">View</button></a>
-    </div>
-  </div>
+      <div class="search-container">
+        <p id="search-title">Search Books</p>
 
-  <div class="column">
-    <div class="card">
-    <div class="fakeimg" style="height:150px;">
-    <img src="Example.jpg" alt="Example">
-    </div>
-    <br>
-    <h2>Book Title</h2>
-    <h3>Author</h3>
-    <center>
-    <a href="Viewpage.html"><button class="btn">View</button></a>
-    </div>
-  </div>
-  
-  <div class="column">
-    <div class="card">
-    <div class="fakeimg" style="height:150px;">
-    <img src="Example.jpg" alt="Example">
-  </div>
-    <br>
-    <h2>Book Title</h2>
-    <h3>Author</h3>
-    <center>
-    <a href="Viewpage.html"><button class="btn">View</button></a>
-    </div>
-  </div>
-  
-  <div class="column">
-    <div class="card">
-    <div class="fakeimg" style="height:150px;">
-    <img src="Example.jpg" alt="Example">
-  </div>
-    <br> 
-    <h2>Book Title</h2>
-    <h3>Author</h3>
-    <center>
-    <a href="Viewpage.html"><button class="btn">View</button></a>
-    </div>
-  </div>
-</div>
-</center>
-</main>
-</main>
+        <div id="search-input">
+          <input type="text" placeholder="Search for title" id="searchBooks">
+          <button id="search-button"><img src="img/search-icon.png"></button>
+        </div>
+      </div>
+
+      <div class="display-books-container">
+
+      </div>
+      <script src="js/books-section.js"></script>
+
+  </main>
 </body>
+
 </html>
