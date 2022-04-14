@@ -1,0 +1,121 @@
+.search-container {
+    /* background-color: beige; */
+    margin: auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+}
+
+#search-title {
+    color: rgb(255, 255, 255);
+    font-size: 2rem;
+}
+
+#searchBooks {
+    width: 85%;
+
+    border-radius: 1em;
+    font-size: 1.3rem;
+    padding: 0.5em;
+    /* margin: 0; */
+
+}
+
+#search-input {
+    margin-top: 2rem;
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#search-button {
+    box-shadow: none;
+    margin: 0;
+    padding: 0.5em;
+    width: 10%;
+    font-size: 0.5rem;
+}
+
+/* ------------------- */
+
+.display-books-container {
+    /* background-color: rgb(168, 160, 160); */
+    box-sizing: border-box;
+    margin: auto;
+    margin-top: 5rem;
+    width: 75%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* grid-auto-rows: 30rem; */
+    column-gap: 5%;
+    row-gap: 5%;
+    /* justify-content: space-evenly; */
+}
+
+.books-container {
+    position: relative;
+    background-color: rgb(255, 255, 255);
+    box-sizing: border-box;
+    border-radius: 1em;
+}
+.book-image{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+.book-cover {
+    overflow: hidden;
+    background-color: bisque;
+    height: 75%;
+    /* background-color: brown; */
+    -webkit-border-top-left-radius: 16px;
+    -webkit-border-top-right-radius: 16px;
+    -moz-border-radius-topleft: 16px;
+    -moz-border-radius-topright: 16px;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+
+}
+
+.books-container .book-description {
+    color: black;
+    margin: auto;
+    text-align: center;
+}
+#title{
+    /* background-color: brown; */  
+    margin-top: 1rem;
+    font-weight: 600;
+    text-align: center;
+}
+.books-container .book-description-author{
+    /* background-color: blueviolet; */
+     margin: auto;
+     margin-top: 1rem;
+   text-align: center;
+    color:black 
+}
+#view-book-btn{
+    /* font-size: 1rem; */
+    padding:0.3em;
+    display: block;
+    width: 50%;
+    position: absolute;
+    margin: 0;
+    box-shadow: none;
+    /* top: 0; */
+    left: 25%;
+    bottom:-1rem;
+}
+
+/* ------------ */
+@media (max-width:100em){
+    .display-books-container {
+        grid-template-columns: repeat(3, 1fr);
+     
+    }
+}

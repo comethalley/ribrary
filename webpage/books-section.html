@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/webdesign.css">
   <link rel="stylesheet" href="css/transitions.css">
+  <link rel="stylesheet" href="css/book-section.css">
   <title>Books</title>
 </head>
 
@@ -34,7 +35,7 @@
           <li><a href="magazine-section.html">Magazine</a></li>
           <li><a href="audiobook-section.html">Audiobook</a></li>
           <li><a href="podcast-section.html">Podcast</a></li>
-          <li><a href="document-section.html">Document</a></li>\
+          <li><a href="document-section.html">Document</a></li>
           <li><a href="books-section.html">Profile</a></li>
           <li><a href="">Search</a></li>
           <li><a href="upload-section.html">Upload</a></li>
@@ -47,42 +48,27 @@
       </div>
   </header>
   <main>
-    <div class="backdrop"><button class="upbtn" onclick="window.location.href='upload-books-section.html'">Upload your own book here!</button>
+    <div class="backdrop"><button class="upbtn" onclick="window.location.href='upload-books-section.html'">Upload your
+        own book here!</button>
+
       <center>
         <!-- <button type="button" class="btn">Add Book</button></p> -->
       </center>
-      <main>
-        <center>
-          <div class="article">
-            <h2>Book Title</h2>
-            <h3>The Greatest Book Of All Time</h3>
-            <p> Author : Jane Austen </p>
-            <center>
-              <button class="btn"><a href="viewpage.html">View Book</a></button>
-            </center>
-          </div>
-          <br>
-          <div class="article">
-            <h2>Book Title</h2>
-            <h3>The Greatest Book Of All Time</h3>
-            <p> Author : Jane Austen </p>
-            <center>
-              <button class="btn"><a href="viewpage.html">View Book</a></button>
-            </center>
-          </div>
-          <br>
-          <div class="article">
-            <h2>Book Title</h2>
-            <h3>The Greatest Book Of All Time</h3>
-            <p> Author : Jane Austen </p>
-            <center>
-              <button class="btn"><a href="viewpage.html">View Book</a></button>
-            </center>
-          </div>
-          <br>
-        </center>
-      </main>
-  </main>
-</body>
 
+      <div class="search-container">
+        <p id="search-title">Search Books</p>
+
+        <div id="search-input">
+          <input type="text" placeholder="Search for title" id="searchBooks">
+          <button id="search-button"><img src="img/search-icon.png"></button>
+        </div>
+      </div>
+
+      <div class="display-books-container">
+
+      </div>
+
+  </main>
+  <script src="js/books-section.js"></script>
+</body>
 </html>

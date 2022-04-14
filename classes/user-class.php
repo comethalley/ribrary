@@ -88,7 +88,7 @@ class User extends Database
           
 
             //if sucess creating user, go to this 👇 page
-            header("Location:../webpage/test.php?LoginSucesfully!");
+            header("Location:../webpage/books-section.html?LoginSucesfully!");
             // $connect = null;
             exit();
         } else {
