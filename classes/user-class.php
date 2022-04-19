@@ -80,15 +80,16 @@ class User extends Database
             $this->updateUserStatus($userExist['User_id'],'online');
          
             //start session and get data from userExist then store in session   
-            session_start();   
+            session_start();  
             $_SESSION["id"] = $userExist['User_id'];  
             $_SESSION["first-name"] = $userExist['firstname'];
             $_SESSION["last-name"] = $userExist['lastname'];
             $_SESSION["email"] = $userExist['Username'];
+            $_SESSION["profile"] = $userExist['user_profile'];
           
 
             //if sucess creating user, go to this 👇 page
-            header("Location:../webpage/test.php?LoginSucesfully!");
+            header("Location:../webpage/books-section.php?LoginSuccesfully");
             // $connect = null;
             exit();
         } else {
@@ -153,9 +154,10 @@ class User extends Database
 
     // create new user to database
     function createUser($first, $last, $email, $pass)
-    {
+    {   
+        $defaultProfile = 'img/admin-logo.png';
         // sql statement
-        $sql = "INSERT INTO tbl_user (firstname, lastname, Username,password,user_status) VALUES (?,?,?,?,?)";
+        $sql = "INSERT INTO tbl_user (firstname, lastname, Username,password,user_status,user_profile) VALUES (?,?,?,?,?,?)";
 
         // prepared statement
         $stmt = $this->connect()->prepare($sql);
@@ -167,7 +169,7 @@ class User extends Database
         $hashedpwd = password_hash($pass, PASSWORD_DEFAULT);
 
         //if execution fail
-        if (!$stmt->execute([$first, $last, $email, $hashedpwd, $userStatus])) {
+        if (!$stmt->execute([$first, $last, $email, $hashedpwd, $userStatus,$defaultProfile])) {
             header("Location:../webpage/Login-and-SignUp-page.html?error=stmtfail");
             $connect = null;
             exit();
@@ -179,9 +181,10 @@ class User extends Database
         $_SESSION["last-name"] = $last;
         $_SESSION["email"] = $email;
         $_SESSION["status"] = "online";
+        $_SESSION["profile"] = $defaultProfile;
 
         //if sucess creating user, go to this 👇 page
-        header("Location: ../webpage/test.php?LoginSucesfully!");
+        header("Location: ../webpage/books-section.php?LoginSucesfully!");
         $connect = null;
         exit();
     }

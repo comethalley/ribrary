@@ -9,6 +9,7 @@ CREATE TABLE tbl_user (
     Username varchar(32) NOT NULL,
     password char(60) NOT NULL,
     user_status varchar(32) NOT NULL,
+    user_profile varchar(32) NOT NULL,
     PRIMARY KEY (User_id)
 );
 

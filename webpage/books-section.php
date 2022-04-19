@@ -1,3 +1,8 @@
+<?php
+session_start();
+include '../includes/autoload-class.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,20 +14,35 @@
   <!-- <link rel="stylesheet" href="css/box.css"> -->
   <link rel="stylesheet" href="css/book-section.css">
   <title>My Profile</title>
-  =======
+
   <title>Books</title>
 </head>
 
 <body>
   <header>
+
+
     <div class="container">
-      <button class="click">...</button>
       <div class="list">
         <button class="links">Settings</button>
         <button class="links">Help & Support</button>
         <button class="links">Log out</button>
       </div>
+      <button class="click">...</button>
+      <?php
+      if (isset($_SESSION['first-name']) && isset($_SESSION['last-name']) && isset($_SESSION['email'])) {
+
+      ?>
+        <a href="UserProf.html" id="account-name">
+          <p ><?php echo $_SESSION['first-name'] ?> <?php echo $_SESSION['last-name'] ?></p>
+        </a>
+
+        <img src="<?php echo $_SESSION["profile"] ?>" alt="" class="user-image">
+      <?php
+      }
+      ?>
     </div>
+
     <script>
       let click = document.querySelector('.click');
       let list = document.querySelector('.list');
@@ -38,8 +58,8 @@
           <li><a href="magazine-section.html">Magazine</a></li>
           <li><a href="audiobook-section.html">Audiobook</a></li>
           <li><a href="podcast-section.html">Podcast</a></li>
-          <li><a href="document-section.html">Document</a></li>\
-          <li><a href="books-section.html">Profile</a></li>
+          <li><a href="document-section.html">Document</a></li>
+          <li><a href="UserProf.html">Profile</a></li>
           <li><a href="">Search</a></li>
           <li><a href="upload-section.html">Upload</a></li>
         </ul>
@@ -60,7 +80,7 @@
         <p id="search-title">Search Books</p>
 
         <div id="search-input">
-          <input type="text" placeholder="Search for title" id="searchBooks">
+          <input type="text" placeholder="Search for title or author" id="searchBooks">
           <button id="search-button"><img src="img/search-icon.png"></button>
         </div>
       </div>
