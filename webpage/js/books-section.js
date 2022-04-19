@@ -4,7 +4,7 @@ const searchBtn = document.querySelector('#search-button')
 
 
 
-const render = function (title1 = 'harrypotter') {
+const render = function (title1 = 'Harry Potter and the') {
     fetch(`https://www.googleapis.com/books/v1/volumes?q=${title1}`)
         .then(response => {
             console.log(response)
@@ -49,13 +49,14 @@ const render = function (title1 = 'harrypotter') {
         .catch(error => alert(error))
 
 }
-render();
 
 searchBtn.addEventListener('click', function () {
     const title = searchInput.value.replace(/\s/g, "")
     console.log(title);
     render(title)
 
-    searchInput.value = ""
 })
+
+
+render();
 
