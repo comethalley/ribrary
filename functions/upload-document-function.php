@@ -1,9 +1,12 @@
 <?php
+session_start();
+
 if (isset($_POST['submit'])){
     include_once 'database.php';
     include_once 'functions.php';
 
-    $createdBy = 'admin';
+    $fulllname = $_SESSION["first-name"].' '.$_SESSION["last-name"];
+    $createdBy = $fulllname;
     $file = $_FILES['file'];
 
     //file data
@@ -28,8 +31,9 @@ if (isset($_POST['submit'])){
             if ($fileSize > 1000){
                 $fileNameNew = uniqid ('', true).".".$fileActualExt;
                 $fileDestination = 'uploads/'.$fileNameNew;
-                move_uploaded_file($fileTmpName, $fileDestination);
-                upload_docu($connect, $fileName, $fileTmpName, $createdBy);
+                move_uploaded_file($fileName, $fileDestination);
+                $userId = $_SESSION["id"];
+                upload_docu($connect, $fileName, $fileTmpName, $createdBy,$userId);
             } else {
                 echo "The file was too large";
             }
