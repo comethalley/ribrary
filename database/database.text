@@ -56,8 +56,13 @@ CREATE TABLE `tbl_book` (
   `Book_id` int(255) NOT NULL AUTO_INCREMENT,
   `BookName` varchar(255) NOT NULL,
   `BookFile` blob NOT NULL,
-  `createdBy` int(11) NOT NULL
+  `createdBy` varchar(11) NOT NULL,
+  User_id int(20) NOT NULL,
+  PRIMARY KEY (Book_id),
+  FOREIGN KEY (User_id) REFERENCES tbl_user( User_id)
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 
 ------------------------------------------------------------
 
