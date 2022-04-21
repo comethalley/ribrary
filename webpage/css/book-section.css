@@ -95,7 +95,7 @@
    text-align: center;
     color:black 
 }
-#view-book-btn{
+.view-book-btn{
     /* font-size: 1rem; */
     padding:0.3em;
     display: block;
