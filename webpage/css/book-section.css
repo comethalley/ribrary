@@ -15,7 +15,7 @@
 
 #searchBooks {
     width: 85%;
-
+    border: black;
     border-radius: 1em;
     font-size: 1.3rem;
     padding: 0.5em;
@@ -58,7 +58,7 @@
 
 .books-container {
     position: relative;
-    background-color: rgb(255, 255, 255);
+    background-color: #485665;
     box-sizing: border-box;
     border-radius: 1em;
     padding: 1em;

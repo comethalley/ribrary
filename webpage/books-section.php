@@ -20,8 +20,6 @@ include '../includes/autoload-class.php';
 
 <body>
   <header>
-
-
     <div class="container">
       <div class="list">
         <button class="links">Settings</button>
@@ -51,20 +49,19 @@ include '../includes/autoload-class.php';
       });
     </script>
     <div class="header">
-      <div class="navbar">
-        <img src="img/books.png" class="books">
-        <ul>
-          <li><a href="books-section.html">Books</a></li>
-          <li><a href="magazine-section.html">Magazine</a></li>
-          <li><a href="audiobook-section.html">Audiobook</a></li>
-          <li><a href="podcast-section.html">Podcast</a></li>
-          <li><a href="document-section.html">Document</a></li>
-          <li><a href="UserProf.html">Profile</a></li>
-          <li><a href="">Search</a></li>
-          <li><a href="upload-section.html">Upload</a></li>
-        </ul>
+      <div class="sticky-section">
+        <a href ="">Logo</a>
+        <nav>
+          <a href="UserProf.html">Profile</a>
+          <a href="books-section.html">Books</a>
+          <a href="magazine-section.html">Magazine</a>
+          <a href="audiobook-section.html">Audiobook</a>
+          <a href="podcast-section.html">Podcast</a>
+          <a href="document-section.html">Document</a>
+        </nav>
       </div>
       <div class="content-header">
+        <br><br><br><br>
         <h1>
           <center>BOOKS</center>
         </h1>

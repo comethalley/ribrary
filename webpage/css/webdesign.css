@@ -221,7 +221,7 @@ p {
 	position: relative;
 	padding: 100px;
 	padding-top: 45px;
-	background: #485665;
+	background: white;
 }
 
 .backdrop h1 {
@@ -599,3 +599,44 @@ input {
 	transform: translateY(-5px);
 	background: #586a6a;
 }
+
+.sticky-section{
+	overflow:hidden;
+	background-color:#485665; 
+	margin-bottom:50px;
+	width:100%; 
+	color:white; 
+	position:-webkit-sticky;
+	position: fixed;
+	top: 0;
+	z-index: 1030; /* to prevent the navbar getting covered up by other content */
+  }
+  nav a{
+	float:right;
+	text-decoration:none; 
+	color:white;
+	font-size:18px; 
+	padding: 20px 30px; 
+	display:inline-block; 
+	transition: all 0.5s ease 0s;
+  }
+  body {
+	margin: 0;
+	padding: 0;
+  }
+  
+  #logo{
+	font-size:20px;  
+	font-weight:bold;
+	float:left;
+	padding: 15px 15px; 
+	margin-left:16%;  
+  }
+  nav{
+	margin-right:17%;
+  }
+  
+  nav a:hover{
+	background-color:#002e5b; 
+	color:wheat; 
+  }
