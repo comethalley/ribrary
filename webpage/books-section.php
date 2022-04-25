@@ -48,25 +48,18 @@ include '../includes/autoload-class.php';
         list.classList.toggle('newlist');
       });
     </script>
-    <div class="header">
-      <div class="sticky-section">
-        <a href ="">Logo</a>
-        <nav>
-          <a href="UserProf.html">Profile</a>
-          <a href="books-section.html">Books</a>
-          <a href="magazine-section.html">Magazine</a>
-          <a href="audiobook-section.html">Audiobook</a>
-          <a href="podcast-section.html">Podcast</a>
-          <a href="document-section.html">Document</a>
-        </nav>
-      </div>
-      <div class="content-header">
-        <br><br><br><br>
-        <h1>
-          <center>BOOKS</center>
-        </h1>
-      </div>
   </header>
+
+  <div class="sticky-section">
+    <div id="logo">Ribrary</div>
+        <nav> 
+          <a href="podcast-section.html">Podcast</a>
+          <a href="magazine-section.html">Magazine</a>
+          <a href="document-section.html">Document</a>
+          <a href="audiobook-section.html">Audiobook</a>
+          <a href="books-section.html">Books</a>
+        </nav>
+  </div>
   <main>
     <div class="backdrop"><button class="upbtn" onclick="window.location.href='upload-books-section.html'">Upload your
         own book here!</button>

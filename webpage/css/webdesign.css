@@ -607,10 +607,15 @@ input {
 	width:100%; 
 	color:white; 
 	position:-webkit-sticky;
-	position: fixed;
+	position: sticky;
 	top: 0;
 	z-index: 1030; /* to prevent the navbar getting covered up by other content */
   }
+
+ .section-header{
+	background-color:#DAF7A6; 
+	height: fit-content;
+ }  
   nav a{
 	float:right;
 	text-decoration:none; 
@@ -630,7 +635,7 @@ input {
 	font-weight:bold;
 	float:left;
 	padding: 15px 15px; 
-	margin-left:16%;  
+	margin-left:5%;  
   }
   nav{
 	margin-right:17%;
