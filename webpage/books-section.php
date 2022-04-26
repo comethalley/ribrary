@@ -9,7 +9,7 @@ include '../includes/autoload-class.php';
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/webdesign.css">
+  <link rel="stylesheet" href="css/sections.css">
   <link rel="stylesheet" href="css/transitions.css">
   <!-- <link rel="stylesheet" href="css/box.css"> -->
   <link rel="stylesheet" href="css/book-section.css">
@@ -32,7 +32,7 @@ include '../includes/autoload-class.php';
 
       ?>
         <a href="UserProf.html" id="account-name">
-          <p ><?php echo $_SESSION['first-name'] ?> <?php echo $_SESSION['last-name'] ?></p>
+          <p >Hi, <?php echo $_SESSION['first-name'] ?> <?php echo $_SESSION['last-name'] ?></p>
         </a>
 
         <img src="<?php echo $_SESSION["profile"] ?>" alt="" class="user-image">
@@ -53,11 +53,11 @@ include '../includes/autoload-class.php';
   <div class="sticky-section">
     <div id="logo">Ribrary</div>
         <nav> 
-          <a href="podcast-section.html">Podcast</a>
-          <a href="magazine-section.html">Magazine</a>
-          <a href="document-section.html">Document</a>
-          <a href="audiobook-section.html">Audiobook</a>
-          <a href="books-section.html">Books</a>
+          <a href="podcast-section.php">Podcast</a>
+          <a href="magazine-section.php">Magazine</a>
+          <a href="document-section.php">Document</a>
+          <a href="audiobook-section.php">Audiobook</a>
+          <a href="books-section.php">Books</a>
         </nav>
   </div>
   <main>
@@ -67,7 +67,7 @@ include '../includes/autoload-class.php';
         <!-- <button type="button" class="btn">Add Book</button></p> -->
       </center>
       <div class="search-container">
-        <p id="search-title">Search Books</p>
+      <!--  <p id="search-title">Search Books</p> -->
 
         <div id="search-input">
           <input type="text" placeholder="Search for title or author" id="searchBooks">
