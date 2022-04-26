@@ -24,15 +24,27 @@ include '../includes/autoload-class.php';
       <div class="list">
         <button class="links">Settings</button>
         <button class="links">Help & Support</button>
-        <button class="links">Log out</button>
+
+        <?php
+        if (isset($_SESSION['first-name']) && isset($_SESSION['last-name']) && isset($_SESSION['email'])) {
+
+        ?>
+          <button class="links"><a href="../functions/logout-function.php">Log out</a></button>
+        <?php
+        }else { 
+        ?>
+           <button class="links"><a href="Login-and-SignUp-page.html">Log In</a></button>
+        <?php }?>
       </div>
+
       <button class="click">...</button>
+
       <?php
       if (isset($_SESSION['first-name']) && isset($_SESSION['last-name']) && isset($_SESSION['email'])) {
 
       ?>
         <a href="UserProf.html" id="account-name">
-          <p >Hi, <?php echo $_SESSION['first-name'] ?> <?php echo $_SESSION['last-name'] ?></p>
+          <p>Hi, <?php echo $_SESSION['first-name'] ?> <?php echo $_SESSION['last-name'] ?></p>
         </a>
 
         <img src="<?php echo $_SESSION["profile"] ?>" alt="" class="user-image">
@@ -52,13 +64,13 @@ include '../includes/autoload-class.php';
 
   <div class="sticky-section">
     <div id="logo">Ribrary</div>
-        <nav> 
-          <a href="podcast-section.php">Podcast</a>
-          <a href="magazine-section.php">Magazine</a>
-          <a href="document-section.php">Document</a>
-          <a href="audiobook-section.php">Audiobook</a>
-          <a href="books-section.php">Books</a>
-        </nav>
+    <nav>
+      <a href="podcast-section.php">Podcast</a>
+      <a href="magazine-section.php">Magazine</a>
+      <a href="document-section.php">Document</a>
+      <a href="audiobook-section.php">Audiobook</a>
+      <a href="books-section.php">Books</a>
+    </nav>
   </div>
   <main>
     <div class="backdrop"><button class="upbtn" onclick="window.location.href='upload-books-section.html'">Upload your
@@ -67,7 +79,7 @@ include '../includes/autoload-class.php';
         <!-- <button type="button" class="btn">Add Book</button></p> -->
       </center>
       <div class="search-container">
-      <!--  <p id="search-title">Search Books</p> -->
+        <!--  <p id="search-title">Search Books</p> -->
 
         <div id="search-input">
           <input type="text" placeholder="Search for title or author" id="searchBooks">

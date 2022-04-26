@@ -19,10 +19,18 @@
             </li>
 
             <li class="list">
+                <!--  -->
+                <a href="admin-documents.php" class="link">
+                    <i class="fa fa-solid fa-users"></i>Documents</a>
+            </li>
+
+            <li class="list">
                 <!---->
                 <a href="../functions/admin-logout-function.php" class="link">
                 <i class="bi bi-box-arrow-right"></i>logout</a>
             </li>
+
+
         </ul>
     </div>
 </div>

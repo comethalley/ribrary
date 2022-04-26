@@ -225,8 +225,9 @@ p {
 
 .backdrop {
 	position: relative;
-	padding: 100px;
+	/* padding: 100px; */
 	padding-top: 45px;
+	padding-bottom: 5rem;
 	background: whitesmoke;
 }
 
@@ -410,12 +411,15 @@ input {
 	font-family: futura Md BT;
 	border: none;
 	outline: none;
-	width: 120px;
+	width: 100px;
+	/* margin: ; */
 	color: #fff;
 	transition: 0.3s;
+	z-index:8;
 }
 
 .list {
+	/* margin: 0; */
 	top: 4.5rem;
 	display: flex;
 	flex-direction: column;
@@ -424,6 +428,7 @@ input {
 	transform: scaleY(0);
 	transform-origin: top;
 	transition: 0.3s;
+	z-index: 3;
 }
 
 .newlist {
@@ -615,7 +620,7 @@ input {
 	position:-webkit-sticky;
 	position: sticky;
 	top: 0;
-	z-index: 1030; /* to prevent the navbar getting covered up by other content */
+	z-index: 1; /* to prevent the navbar getting covered up by other content */
   }
 
  .section-header{

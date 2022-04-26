@@ -15,7 +15,7 @@
 
 #searchBooks {
     width: 85%;
-    border: black;
+    border: 1px solid black;
     border-radius: 1em;
     font-size: 1.3rem;
     padding: 0.5em;
@@ -29,6 +29,7 @@
     width: 100%;
     display: flex;
     align-items: center;
+
     justify-content: space-evenly;
 }
 
@@ -53,6 +54,7 @@
     /* grid-auto-rows: 30rem; */
     column-gap: 5%;
     row-gap: 5%;
+    /* overflow: hi; */
     /* justify-content: space-evenly; */
 }
 
@@ -62,6 +64,7 @@
     box-sizing: border-box;
     border-radius: 1em;
     padding: 1em;
+    /* height: 50rem; */
 }
 .book-image{
     object-fit: cover;
@@ -78,7 +81,7 @@
 }
 
 .books-container .book-description {
-    color: black;
+    color: rgb(216, 214, 214);
     margin: auto;
     text-align: center;
 }
@@ -93,7 +96,7 @@
      margin: auto;
      margin-top: 1rem;
    text-align: center;
-    color:black 
+    color:rgb(216, 214, 214); 
 }
 .view-book-btn{
     /* font-size: 1rem; */

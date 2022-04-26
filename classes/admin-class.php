@@ -93,6 +93,16 @@ class Admin extends Database
         exit();
     }
 
+    //display all pending documents
+    function displayPendingDocuments()
+    {
+        $data = $this->connect()->query("SELECT * FROM tbl_pending_book")->fetchAll();
+
+        return $data;
+        exit();
+    }
+
+
     //udpate user in database
     function updateUser($id, $fname, $lname, $username)
     {
