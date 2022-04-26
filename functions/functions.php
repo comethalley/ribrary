@@ -139,26 +139,24 @@ function loginUser($connect, $username, $pass)
     }
 }
 
-function upload_docu($connect, $fileName, $fileTmpName, $createdBy,$id)
+function upload_docu($connect, $fileName, $fileTmpName,$filepath, $createdBy,$id)
 {
-    //sql
-    $sql = "INSERT INTO tbl_book (BookName,BookFile,createdBy) VALUES (?,?,?);";
-
-    $sql2 = "INSERT INTO tbl_book (BookName, BookFile,createdBy,User_id)
-   VALUES (?,?,?,(SELECT User_id FROM tbl_user WHERE User_id = ?));";
+ 
+    $sql2 = "INSERT INTO tbl_pending_book (BookName, BookFile,BookPath,createdBy,User_id)
+   VALUES (?,?,?,?,(SELECT User_id FROM tbl_user WHERE User_id = ?));";
 
     // prepared statement
     $stmt = $connect->prepare($sql2);
 
     //if execution fail
-    if (!$stmt->execute([$fileName, $fileTmpName, $createdBy,$id])) {
+    if (!$stmt->execute([$fileName, $fileTmpName,$filepath,$createdBy,$id])) {
         header("Location:../login.php?error=stmtfail");
         $connect = null;
         exit();
     }
 
     //if sucess uploading file, go to this 👇 page
-    header("Location: ../webpage/upload-document.php?uploadsuccess");
+    header("Location: ../webpage/upload-documents-section.html?uploadsuccess");
     exit();
 }
 

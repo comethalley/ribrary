@@ -29,11 +29,12 @@ if (isset($_POST['submit'])){
         if ($fileError === 0) {
             //check the file size
             if ($fileSize > 1000){
+                // $fileNameNew = uniqid ('', true).".".$fileActualExt;
                 $fileNameNew = uniqid ('', true).".".$fileActualExt;
                 $fileDestination = 'uploads/'.$fileNameNew;
-                move_uploaded_file($fileName, $fileDestination);
+                move_uploaded_file($fileTmpName, $fileDestination);
                 $userId = $_SESSION["id"];
-                upload_docu($connect, $fileName, $fileTmpName, $createdBy,$userId);
+                upload_docu($connect, $fileName, $fileTmpName,$fileNameNew, $createdBy,$userId);
             } else {
                 echo "The file was too large";
             }

@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito Sans', sans-serif;
+
+}
+
+main {
+    /* background-color: brown; */
+    display: grid;
+    grid-template-columns: 20% 80%;
+    height: 100vh;
+}
+
+.main-container {
+    background-color: #f6f7fb;
+    padding: 2em;
+    /* overflow: auto; */
+}
+
+.table-container {
+    border-radius: 1em;
+    padding: 2em;
+    background-color: white;
+}
+
+.table {
+    background-color: white;
+    text-align: center;
+    /* width: 90%; */
+    margin-top: 5rem;
+
+}
+
+.table td {
+    padding: 1.5em 0;
+
+}
+
+.table-header {
+    border-radius: 5px;
+    border: 2px solid #8a8a8a;
+    color: #3f3e3e;
+}

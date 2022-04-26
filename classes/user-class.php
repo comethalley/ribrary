@@ -107,13 +107,11 @@ class User extends Database
         $this->updateUserStatus($_SESSION["id"],'offline');
         
         //destroy session
-        session_unset($_SESSION["id"]);
-        session_unset($_SESSION["first-name"]);
-        session_unset($_SESSION["last-name"]);
-        session_unset($_SESSION["email"]);
+        session_unset();
+        session_destroy();
 
-        //Go back to admin-login
-        header("Location: ../webpage/Login-and-SignUp-page.html");
+        //Go back to index
+        header("Location: ../index.html");
     }
 
     //Empty field
