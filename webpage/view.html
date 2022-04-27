@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/a7e3800dc5.js" crossorigin="anonymous"></script>
+    <link rel = "stylesheet" href = "css/view.css">
+    <title>View</title>
+</head>
+<body>
+    <div class="top-bar">
+        <button class="btn" id="prev-page">
+            <i class="fas fa-arrow-cricle-left"></i> Prev Page
+        </button>
+
+        <button class="btn" id="Next-page">
+            Next Page<i class="fas fa-arrow-cricle-left"></i> 
+        </button>
+
+        <span class="page-info">
+            Page <span id="page-num"></span> of <span id="page-count"></span>
+        </span>
+    </div>
+
+    <canvas id="pdf-render"></canvas>
+
+    <script src = "https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+    <script src = "js/view.js"></script>
+</body>
+</html>
