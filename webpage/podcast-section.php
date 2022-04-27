@@ -57,7 +57,7 @@ include '../includes/autoload-class.php';
     </div>
     <main>
     <div class="backdrop">
-    <button class="upbtn" onclick="window.location.href='upload-podcast-section.html'">Upload your own podcast here!</button>
+    <button class="upbtn" onclick="window.location.href='upload-podcast-section.php'">Upload your own podcast here!</button>
     <center>
     <!-- <button type="button" class="btn">Add Book</button></p> -->
     </center>

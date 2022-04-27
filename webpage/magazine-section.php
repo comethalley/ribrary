@@ -57,7 +57,7 @@ include '../includes/autoload-class.php';
     </div>
     <main>
     <div class="backdrop">
-    <button class="upbtn" onclick="window.location.href='upload-magazine-section.html'">Upload your own magazine here!</button>
+    <button class="upbtn" onclick="window.location.href='upload-magazine-section.php'">Upload your own magazine here!</button>
     <center>
    <!--  <button type="button" class="btn">Add Forum</button></p> -->
         </center>

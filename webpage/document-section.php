@@ -57,7 +57,7 @@ include '../includes/autoload-class.php';
     </div>
     <main>
     <div class="backdrop">
-    <button class="upbtn" onclick="window.location.href='upload-documents-section.html'">Upload your own documents here!</button>
+    <button class="upbtn" onclick="window.location.href='upload-documents-section.php'">Upload your own documents here!</button>
     <center>
     <!-- <button type="button" class="btn">Add Book</button></p> -->
     </center>

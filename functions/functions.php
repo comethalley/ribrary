@@ -156,7 +156,7 @@ function upload_docu($connect, $fileName, $fileTmpName,$filepath, $createdBy,$id
     }
 
     //if sucess uploading file, go to this 👇 page
-    header("Location: ../webpage/upload-documents-section.html?uploadsuccess");
+    header("Location: ../webpage/upload-books-section.php?uploadsuccess"); //change to docu later
     exit();
 }
 
