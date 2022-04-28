@@ -82,7 +82,7 @@ include '../includes/autoload-class.php';
         <!--  <p id="search-title">Search Books</p> -->
 
         <div id="search-input">
-          <input type="text" placeholder="Search for title or author" id="searchBooks">
+          <input type="text" placeholder="Search for title or author" id="searchBooks" required>
           <button id="search-button"><img src="img/search-icon.png"></button>
         </div>
       </div>
