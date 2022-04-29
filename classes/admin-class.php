@@ -138,9 +138,10 @@ class Admin extends Database
     {
         session_start();
         session_unset($_SESSION["admin"]);
+        session_destroy();
        
 
         //Go back to admin-login
-        header("Location: ../admin/admin-login.php");
+        header("Location: ../admin/index.php");
     }
 }

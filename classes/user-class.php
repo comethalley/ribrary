@@ -2,7 +2,12 @@
 class User extends Database
 
 {
-     
+    private $date;
+
+    function __construct() {
+        date_default_timezone_set('Asia/Singapore');
+        $this->date =  date('F d Y, h:i A');
+    }
 
     //Empty field
     function emptyInputLogin($email, $pass)
@@ -43,8 +48,9 @@ class User extends Database
         // $connect = null;
     }
 
-    function updateUserStatus($id,$status){
-        
+    //update User Status
+    function updateUserStatus($id, $status)
+    {
 
         $sql = "UPDATE tbl_user SET  user_status = ? WHERE User_id=?";
         $stmt = $this->connect()->prepare($sql);
@@ -53,9 +59,24 @@ class User extends Database
             header("Location:../webpage/Login-and-SignUp-page.html?error=errorUpdateStatus");
             exit();
         }
-        
+
+     
     }
- 
+
+    //update User Status
+    function updateRecentLogin($id, $logs)
+    {
+
+        $sql = "UPDATE tbl_user SET recent_login = ? WHERE User_id=?";
+        $stmt = $this->connect()->prepare($sql);
+
+        if (!$stmt->execute([$logs, $id])) {
+            header("Location:../webpage/Login-and-SignUp-page.html?error=errorUpdaRecentLogin");
+            exit();
+        }
+
+    }
+
     //login user 
     function loginUser($email, $pass)
     {
@@ -75,18 +96,20 @@ class User extends Database
 
         //if checkpwd has vale and equals 1
         if ($checkpwd !== '' && $checkpwd == 1) {
-
+            
             //update status in database to online
-            $this->updateUserStatus($userExist['User_id'],'online');
-         
+            $this->updateUserStatus($userExist['User_id'], 'online');
+
+            $this->updateRecentLogin($userExist['User_id'], $this->date);
+
             //start session and get data from userExist then store in session   
-            session_start();  
-            $_SESSION["id"] = $userExist['User_id'];  
+            session_start();
+            $_SESSION["id"] = $userExist['User_id'];
             $_SESSION["first-name"] = $userExist['firstname'];
             $_SESSION["last-name"] = $userExist['lastname'];
             $_SESSION["email"] = $userExist['Username'];
             $_SESSION["profile"] = $userExist['user_profile'];
-          
+
 
             //if sucess creating user, go to this 👇 page
             header("Location:../webpage/books-section.php?LoginSuccesfully");
@@ -101,11 +124,12 @@ class User extends Database
     }
 
     //logout User
-    function logoutUser(){
+    function logoutUser()
+    {
         session_start();
         //change status in database to offline
-        $this->updateUserStatus($_SESSION["id"],'offline');
-        
+        $this->updateUserStatus($_SESSION["id"], 'offline');
+
         //destroy session
         session_unset();
         session_destroy();
@@ -152,10 +176,12 @@ class User extends Database
 
     // create new user to database
     function createUser($first, $last, $email, $pass)
-    {   
+    {
+        $logs =  date('F d Y, h:i A');
+
         $defaultProfile = 'img/admin-logo.png';
         // sql statement
-        $sql = "INSERT INTO tbl_user (firstname, lastname, Username,password,user_status,user_profile) VALUES (?,?,?,?,?,?)";
+        $sql = "INSERT INTO tbl_user (firstname, lastname, Username,password,user_status,recent_login,user_profile) VALUES (?,?,?,?,?,?,?)";
 
         // prepared statement
         $stmt = $this->connect()->prepare($sql);
@@ -167,7 +193,7 @@ class User extends Database
         $hashedpwd = password_hash($pass, PASSWORD_DEFAULT);
 
         //if execution fail
-        if (!$stmt->execute([$first, $last, $email, $hashedpwd, $userStatus,$defaultProfile])) {
+        if (!$stmt->execute([$first, $last, $email, $hashedpwd, $userStatus, $logs, $defaultProfile])) {
             header("Location:../webpage/Login-and-SignUp-page.html?error=stmtfail");
             $connect = null;
             exit();

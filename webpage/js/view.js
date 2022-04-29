@@ -1,37 +1,44 @@
 const url = '../functions/uploads/6268a00011c630.04035979.pdf';
 
+const zoomFunction = document.querySelector('.zoom-container')
+const viewss = document.querySelector('.view');
+
 let pdfDoc = null,
     pageNum = 1,
     pageIsRendering = false,
     pageNumIsPending = null;
 
-const scale = 1.5,
-    canvas = document.querySelector('#pdf-render'),
+let scale = 1.25;
+let pageView = 100;
+const canvas = document.querySelector('#pdf-render'),
     ctx = canvas.getContext('2d');
-    
+
+
+
+
 //Render page
-const renderPage = num =>{
+const renderPage = num => {
     pageIsRendering = true;
 
     //Get page
     pdfDoc.getPage(num).then(page => {
         //Set scale
-        const viewport = page.getViewport({scale});
+        const viewport = page.getViewport({ scale });
         canvas.height = viewport.height;
         canvas.width = viewport.width;
 
         const renderCtx = {
-            canvasContext : ctx,
+            canvasContext: ctx,
             viewport
         }
-        
-        
+
+
         page.render(renderCtx).promise.then(() => {
             pageIsRendering = false;
 
-            if(pageNumIsPending !== null){
+            if (pageNumIsPending !== null) {
                 renderPage(pageNumIsPending);
-                pageNumIsPending = null; 
+                pageNumIsPending = null;
             }
         });
 
@@ -40,18 +47,32 @@ const renderPage = num =>{
     });
 };
 
+
+//zoom
+zoomFunction.addEventListener('click', function (e) {
+    if (e.target.classList.contains('zoom')) {
+        const view = e.target.classList.contains('in') ? 0.25 : -0.25;
+        scale += view
+        renderPage(pageNum)
+
+        viewss.innerHTML  = `${pageView * scale}%`
+    }
+   
+})
+
+
 //Check for pages rendering
-const queueRenderPage = num =>{
-    if(pageIsRendering){
+const queueRenderPage = num => {
+    if (pageIsRendering) {
         pageNumIsPending = num;
-    } else{
+    } else {
         renderPage(num);
     }
 }
 
 //Show Prev Page
 const showPrevPage = () => {
-    if(pageNum <= 1){
+    if (pageNum <= 1) {
         return;
     }
     pageNum--;
@@ -60,7 +81,7 @@ const showPrevPage = () => {
 
 //Show Next Page
 const showNextPage = () => {
-    if(pageNum >= pdfDoc.numPages){
+    if (pageNum >= pdfDoc.numPages) {
         return;
     }
     pageNum++;
@@ -68,15 +89,15 @@ const showNextPage = () => {
 }
 
 //Get Document
-pdfjsLib.getDocument(url).promise.then(pdfDoc_ =>{
+pdfjsLib.getDocument(url).promise.then(pdfDoc_ => {
     pdfDoc = pdfDoc_;
-    
+
 
     document.querySelector('#page-count').textContent = pdfDoc.numPages;
 
-    renderPage(pageNume)
+    renderPage(pageNum)
 });
 
 //Button Events
 document.querySelector('#prev-page').addEventListener('click', showPrevPage);
-document.querySelector('#next-page').addEventListener('click', showNextPage);
+document.querySelector('#Next-page').addEventListener('click', showNextPage);
