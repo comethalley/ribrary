@@ -56,6 +56,7 @@ if (!isset($_SESSION['admin'])) {
                             <th scope="col">First</th>
                             <th scope="col">Last</th>
                             <th scope="col">Email</th>
+                            <th scope="col">Recent Login</th>
                             <th scope="col">Status</th>
                             <th scope="col">Action</th>
                         </tr>
@@ -73,6 +74,7 @@ if (!isset($_SESSION['admin'])) {
                                 <td> <?php echo $row["firstname"] ?></td>
                                 <td> <?php echo $row["lastname"] ?></td>
                                 <td> <?php echo $row["Username"] ?></td>
+                                <td> <?php echo $row["recent_login"]?></td>
                                 <td>
                                     <p class="user-status"> <?php echo $row["user_status"] ?></p>
                                 </td>
