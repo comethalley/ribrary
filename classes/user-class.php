@@ -4,7 +4,8 @@ class User extends Database
 {
     private $date;
 
-    function __construct() {
+    function __construct()
+    {
         date_default_timezone_set('Asia/Singapore');
         $this->date =  date('F d Y, h:i A');
     }
@@ -59,8 +60,6 @@ class User extends Database
             header("Location:../webpage/Login-and-SignUp-page.html?error=errorUpdateStatus");
             exit();
         }
-
-     
     }
 
     //update User Status
@@ -74,7 +73,20 @@ class User extends Database
             header("Location:../webpage/Login-and-SignUp-page.html?error=errorUpdaRecentLogin");
             exit();
         }
+    }
 
+    //login audit 
+    function auditTrail($userAction, $logs, $name, $email)
+    {
+        $action = $userAction == "in" ? "Logged in the system." : "Logged out.";
+
+        $sql = "INSERT INTO tbl_audit_trailing (Date_and_Time, Name, Email,action) VALUES (?,?,?,?)";
+        $stmt = $this->connect()->prepare($sql);
+
+        if (!$stmt->execute([$logs, $name, $email, $action])) {
+            header("Location:../webpage/Login-and-SignUp-page.html?error=errorLoginAudit");
+            exit();
+        }
     }
 
     //login user 
@@ -96,11 +108,16 @@ class User extends Database
 
         //if checkpwd has vale and equals 1
         if ($checkpwd !== '' && $checkpwd == 1) {
-            
+
             //update status in database to online
             $this->updateUserStatus($userExist['User_id'], 'online');
 
+            //update recent login date in database to online
             $this->updateRecentLogin($userExist['User_id'], $this->date);
+
+            //insert to audit
+            $fullname = $userExist['firstname'] . " " . $userExist['lastname'];
+            $this->auditTrail("in", $this->date, $fullname, $userExist['Username']);
 
             //start session and get data from userExist then store in session   
             session_start();
@@ -129,6 +146,10 @@ class User extends Database
         session_start();
         //change status in database to offline
         $this->updateUserStatus($_SESSION["id"], 'offline');
+
+        //insert to audit
+        $fullname =  $_SESSION["first-name"] . " " . $_SESSION["last-name"];    
+        $this->auditTrail("out", $this->date, $fullname, $_SESSION["email"]);
 
         //destroy session
         session_unset();
