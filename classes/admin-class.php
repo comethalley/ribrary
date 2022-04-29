@@ -94,11 +94,17 @@ class Admin extends Database
     }
 
     //display all pending documents
-    function displayPendingDocuments()
+    function displayPendingDocuments($displayAll ="notall", $start_from = 0, $num_per_page = 3)
     {
-        $data = $this->connect()->query("SELECT * FROM tbl_pending_book")->fetchAll();
+        if ($displayAll == "all") {
+            $data = $this->connect()->query("SELECT * FROM tbl_pending_book")->fetchAll();
+
+            return $data;
+        }
+        $data = $this->connect()->query("SELECT * FROM tbl_pending_book limit $start_from,$num_per_page")->fetchAll();
 
         return $data;
+
         exit();
     }
 
@@ -139,7 +145,7 @@ class Admin extends Database
         session_start();
         session_unset($_SESSION["admin"]);
         session_destroy();
-       
+
 
         //Go back to admin-login
         header("Location: ../admin/index.php");

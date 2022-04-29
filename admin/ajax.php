@@ -1,6 +1,7 @@
 <!-- //ajaxfile.php -->
 <?php
 include('db.php');
+
 $draw = $_POST['draw'];
 $row = $_POST['start'];
 $rowperpage = $_POST['length']; // Rows display per page
