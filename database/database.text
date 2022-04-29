@@ -37,6 +37,17 @@ VALUES ('admin','admin123');
 
 
 ------------------------------------------------------------
+-- Table structure for table `tbl_audit_trailing` -- 
+CREATE TABLE `tbl_audit_trailing` (
+   `audit_id` int(30) NOT NULL AUTO_INCREMENT,
+  `Date_and_Time` varchar(120) NOT NULL,
+  `Name` varchar(30) NOT NULL,
+  `Email` varchar (30) NOT NULL,
+  `action` varchar (30) NOT NULL,
+  PRIMARY KEY (audit_id)
+)
+
+------------------------------------------------------------
 
 -- Table structure for table `tbl_audiobook` -- 
 

@@ -108,6 +108,21 @@ class Admin extends Database
         exit();
     }
 
+      //display all audit trail documents
+      function displayAuditTrail($displayAll ="notall", $start_from = 0, $num_per_page = 3)
+      {
+          if ($displayAll == "all") {
+              $data = $this->connect()->query("SELECT * FROM tbl_audit_trailing")->fetchAll();
+  
+              return $data;
+          }
+          $data = $this->connect()->query("SELECT * FROM tbl_audit_trailing limit $start_from,$num_per_page")->fetchAll();
+  
+          return $data;
+  
+          exit();
+      }
+
 
     //udpate user in database
     function updateUser($id, $fname, $lname, $username)

@@ -102,7 +102,7 @@ if (!isset($_SESSION['admin'])) {
         <?php
         if ($page > 1) {
         ?>
-            <a href='test2.php?page=<?php echo $page - 1;?>' class="btn btn-primary"> Previous</a>
+            <a href='test2.php?page=<?php echo $page - 1; ?>' class="btn btn-primary"> Previous</a>
         <?php
         }
         ?>
@@ -118,7 +118,7 @@ if (!isset($_SESSION['admin'])) {
         <?php
         if ($i > $page) {
         ?>
-            <a href='test2.php?page=<?php echo $page +1; ?>' class="btn btn-primary"> Next</a>
+            <a href='test2.php?page=<?php echo $page + 1; ?>' class="btn btn-primary"> Next</a>
         <?php
         }
         ?>

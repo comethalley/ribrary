@@ -26,7 +26,7 @@
 
             <li class="list">
                 <!--  -->
-                <a href="admin-documents.php" class="link">
+                <a href="admin-audit-trail.php" class="link">
                     <i class="fa fa-solid fa-users"></i>Logs</a>
             </li>
 
@@ -36,8 +36,6 @@
                 <i class="bi bi-box-arrow-right"></i>logout</a>
             </li>
             
-
-
         </ul>
     </div>
 </div>
