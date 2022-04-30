@@ -11,6 +11,7 @@ include '../includes/autoload-class.php';
     <link rel="stylesheet" href="css/sections.css">
     <link rel="stylesheet" href="css/transitions.css">
     <link rel="stylesheet" href="css/box.css">
+    <link rel="stylesheet" href="css/footer.css">
     <title>Document</title>
 </head>
 <body>
@@ -119,4 +120,19 @@ include '../includes/autoload-class.php';
   </main>
   </main>
   </body>
+  <center>
+  <footer class="site-footer">
+              <h6>R - ibrary</h6>
+            <ul class="footer-links">
+              <li><a href="">About Us</a></li>
+              <li><a href="">Contacts</a></li>
+              <li><a href="">Help & Support</a></li>
+            <h6>‎© Ribrary 2020. All Rights Reserve</h6>
+            </ul>
+          </div>
+        </div>
+          </div>
+          </div>
+        </div>
+      </div>
   </html>

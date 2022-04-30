@@ -92,8 +92,8 @@ include '../includes/autoload-class.php';
 
       </div>
       <script src="js/books-section.js"></script>
-
-  </main>
-</body>
-
-</html>
+      </main>
+      </div>
+      </main>
+      </body>
+      </html>
