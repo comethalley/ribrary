@@ -13,6 +13,7 @@ include '../includes/autoload-class.php';
   <link rel="stylesheet" href="css/transitions.css">
   <!-- <link rel="stylesheet" href="css/box.css"> -->
   <link rel="stylesheet" href="css/book-section.css">
+  <link rel="stylesheet" href="css/footer.css">
   <title>My Profile</title>
 
   <title>Books</title>
@@ -69,7 +70,7 @@ include '../includes/autoload-class.php';
       <a href="magazine-section.php">Magazine</a>
       <a href="document-section.php">Document</a>
       <a href="audiobook-section.php">Audiobook</a>
-      <a href="books-section.php">Books</a>
+      <a href="books-section.php">Ebooks</a>
     </nav>
   </div>
   <main>
@@ -92,8 +93,8 @@ include '../includes/autoload-class.php';
 
       </div>
       <script src="js/books-section.js"></script>
-      </main>
-      </div>
-      </main>
-      </body>
-      </html>
+
+    </div>
+  </main>
+</body>
+</html>

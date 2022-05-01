@@ -1,4 +1,11 @@
-const url = '../functions/uploads/6268a00011c630.04035979.pdf';
+const phpurl =  window.location.search
+const newUrlParam = new URLSearchParams(phpurl)
+const pdf = newUrlParam.get('file')
+console.log(pdf)
+
+
+
+const url = "../functions/uploads/${pdf};"
 
 const zoomFunction = document.querySelector('.zoom-container')
 const viewss = document.querySelector('.view');

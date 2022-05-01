@@ -57,78 +57,52 @@ include '../includes/autoload-class.php';
           <a href="books-section.php">Books</a>
         </nav>
   </div>
-    <main>
+  <main>
     <div class="backdrop">
     <button class="upbtn" onclick="window.location.href='upload-audiobook-section.php'">Upload your own audiobook here!</button>
     <center>
    <!--  <button type="button" class="btn">Add Forum</button></p> -->
    </center>
   <main>
-   <div class="row">
-    <div class="column">
-    <div class="card">
-    <div class="fakeimg" style="height:150px;">
-    <img src="Example.jpg" alt="Example">
-  </div>
-    <br>  
-    <h2>Audiobook Title</h2>
-    <h3>Author</h3>
-    <center>
-    <a href="Viewpage.html"><button class="btn">View</button></a>
-    </div>
-  </div>
+    <?php
+      //Dispaly file
 
-  <div class="column">
-    <div class="card">
-    <div class="fakeimg" style="height:150px;">
-    <img src="Example.jpg" alt="Example">
-    </div>
-    <br>
-    <h2>Audiobook Title</h2>
-    <h3>Author</h3>
-    <center>
-    <a href="Viewpage.html"><button class="btn">View</button></a>
-    </div>
-  </div>
-  
-  <div class="column">
-    <div class="card">
-    <div class="fakeimg" style="height:150px;">
-    <img src="Example.jpg" alt="Example">
-  </div>
-    <br>
-    <h2>Audiobook Title</h2>
-    <h3>Author</h3>
-    <center>
-    <a href="Viewpage.html"><button class="btn">View</button></a>
-    </div>
-  </div>
-  
-  <div class="column">
-    <div class="card">
-    <div class="fakeimg" style="height:150px;">
-    <img src="Example.jpg" alt="Example">
-  </div>
-    <br> 
-    <h2>Audiobook Title</h2>
-    <h3>Author</h3>
-    <center>
-    <a href="Viewpage.html"><button class="btn">View</button></a>
-    </div>
-  </div>
-</div>
+      $files = scandir("../functions/uploads");
+      for ($a = 2; $a < count($files); $a++){
+        ?>
+        <div class="row">
+          <div class="column">
+            <div class="card">
+              <div class="fakeimg" style="height:150px;">
+                <img src="Example.jpg" alt="Example">
+              </div>
+        <br>  
+        <h2><?php echo $files[$a]?></h2>
+        <h3>Author</h3>
+        <center>
+        <button class="btn">
+          <a href = "view.html?file=<?php echo $files[$a]?>">
+            View
+          </a>
+        </button>
+        </div>
+      </div>
+        <?php
+      }
+    ?>
+
 </center>
 </main>
 </main>
 </body>
 <center>
-    <footer class="site-footer">
+<footer class="site-footer">
               <h6>R - ibrary</h6>
             <ul class="footer-links">
               <li><a href="">About Us</a></li>
               <li><a href="">Contacts</a></li>
               <li><a href="">Help & Support</a></li>
-            <h6>‎© Ribrary 2020. All Rights Reserve</h6>
+            <h6>‎© Ribrary 2022. All Rights Reserve</h6>
             </ul>
           </div>
         </div>

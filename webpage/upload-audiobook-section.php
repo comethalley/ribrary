@@ -82,7 +82,7 @@ include '../includes/autoload-class.php';
 	(Please note that  Audiobooks are the only files allowed to be uploaded), Then click "Upload".</p>
 	
 	<br>
-	<form action="../functions/upload-document-function.php" method = "POST" enctype="multipart/form-data">
+	<form action="../functions/upload-audio-function.php" method = "POST" enctype="multipart/form-data">
         <input type = "file" name = "file">
         <button type = "submit" name = "submit"> UPLOAD </button>
     </form>
