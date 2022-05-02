@@ -5,7 +5,7 @@ console.log(pdf)
 
 
 
-const url = "../functions/uploads/${pdf};"
+const url = `../functions/uploads/${pdf}`;
 
 const zoomFunction = document.querySelector('.zoom-container')
 const viewss = document.querySelector('.view');

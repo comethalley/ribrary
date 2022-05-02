@@ -53,7 +53,7 @@ include '../includes/autoload-class.php';
             <a href="magazine-section.php">Magazine</a>
             <a href="document-section.php">Document</a>
             <a href="audiobook-section.php">Audiobook</a>
-            <a href="books-section.php">Books</a>
+            <a href="books-section.php">Ebooks</a>
           </nav>
     </div>
     <main>
