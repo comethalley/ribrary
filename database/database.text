@@ -89,6 +89,25 @@ CREATE TABLE `tbl_pending_book` (
 ) 
 
 
+CREATE TABLE `tbl_uploaded_documents` (
+  `doc_id` int(255) NOT NULL AUTO_INCREMENT,
+  `doc_name` varchar(255) NOT NULL,
+  `doc_file` blob NOT NULL,
+  `doc_path` varchar (30) NOT NULL,
+  `createdBy` varchar(11) NOT NULL,
+  date_and_time varchar (60) NOT NULL,
+  user_id int(20) NOT NULL,
+  status varchar (30) NOT NULL,
+  message varchar (500),
+  PRIMARY KEY (doc_id),
+  FOREIGN KEY (user_id) REFERENCES tbl_user( User_id)
+
+) 
+
+
+
+
+
 ------------------------------------------------------------
 
 -- Table structure for table `tbl_magazines` --
