@@ -94,14 +94,14 @@ class Admin extends Database
     }
 
     //display all pending documents
-    function displayPendingDocuments($displayAll ="notall", $start_from = 0, $num_per_page = 3)
+    function displayUploadedDocuments($displayAll ="notall", $start_from = 0, $num_per_page = 3)
     {
         if ($displayAll == "all") {
-            $data = $this->connect()->query("SELECT * FROM tbl_pending_book")->fetchAll();
+            $data = $this->connect()->query("SELECT * FROM tbl_uploaded_documents")->fetchAll();
 
             return $data;
         }
-        $data = $this->connect()->query("SELECT * FROM tbl_pending_book limit $start_from,$num_per_page")->fetchAll();
+        $data = $this->connect()->query("SELECT * FROM tbl_uploaded_documents limit $start_from,$num_per_page")->fetchAll();
 
         return $data;
 

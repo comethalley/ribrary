@@ -1,13 +1,14 @@
 <?php
 session_start();
 
-if (isset($_POST['submit'])){
-    include_once 'database.php';
-    include_once 'functions.php';
+if (isset($_POST['submit'])) {
+    include '../includes/autoload-class.php';
 
-    $fulllname = $_SESSION["first-name"].' '.$_SESSION["last-name"];
+    $fulllname = $_SESSION["first-name"] . ' ' . $_SESSION["last-name"];
     $createdBy = $fulllname;
     $file = $_FILES['file'];
+
+    $user = new User();
 
     //file data
     $fileName = $_FILES['file']['name'];
@@ -17,32 +18,13 @@ if (isset($_POST['submit'])){
     $fileType = $_FILES['file']['type'];
 
     //seperate the filename and its extension
-    $fileExt = explode('.', $fileName); 
+    $fileExt = explode('.', $fileName);
     $fileActualExt = strtolower(end($fileExt));
 
     //allowed documents
-    $allowed = array('pdf','doc','docx');
+    $allowed = array('pdf', 'doc', 'docx');
 
-    //check if the file extension is in the array $allowed
-    if (in_array($fileActualExt, $allowed)) {
-        //check if there is no error uploading the file
-        if ($fileError === 0) {
-            //check the file size
-            if ($fileSize > 1000){
-                // $fileNameNew = uniqid ('', true).".".$fileActualExt;
-                $fileNameNew = uniqid ('', true).".".$fileActualExt;
-                $fileDestination = 'uploads/'.$fileNameNew;
-                move_uploaded_file($fileTmpName, $fileDestination);
-                $userId = $_SESSION["id"];
-                upload_docu($connect, $fileName, $fileTmpName,$fileNameNew, $createdBy,$userId);
-            } else {
-                echo "The file was too large";
-            }
-        } else{
-            echo "There was an error while uploading the file";
-        }
-    } else {
-        echo "You can't upload this type of file!";
-    }
+
+    $user->checkDocuments($allowed,$fileActualExt,$fileError,$fileSize,$fileTmpName,$createdBy,$fileName);
+   
 }
-?>

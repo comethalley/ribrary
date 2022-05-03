@@ -82,20 +82,19 @@ if (!isset($_SESSION['admin'])) {
                     <tbody class="action">
 
                         <?php
-                        $data = $admin->displayPendingDocuments('', $start_from, $num_per_page);
+                        $data = $admin->displayUploadedDocuments('', $start_from, $num_per_page);
                         $count = $start_from + 1;
                         foreach ($data as $row) {
                         ?>
                             <tr>
-                                <td> <?php echo $count ?></td>
-                                <td> <?php echo $row["Book_id"] ?></td>
-                                <td> <?php echo $row["BookName"] ?></td>
-
-                                <td><a href='../functions/uploads/<?php echo $row["BookPath"] ?>' target="_thapa">View</a></td>
+                                <td> <?php echo $count ?></td>                  
+                                <td> <?php echo $row["doc_name"] ?></td>
+                                <td><a href='../functions/uploads/<?php echo $row["doc_path"] ?>' target="_thapa">View</a></td>
                                 <td> <?php echo $row["createdBy"] ?></td>
-                                <td> <?php echo $row["User_id"] ?></td>
+                                <td> <?php echo $row["user_id"] ?></td>
+                                <td> <?php echo $row["date_and_time"] ?></td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-success">Accept</button>
+                                    <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#staticBackdrop"> Accept</button>
                                     <button type="button" class="btn btn-outline-danger">Decline</button>
 
                                 </td>
@@ -106,13 +105,33 @@ if (!isset($_SESSION['admin'])) {
                         }
                         ?>
                     </tbody>
-
                 </table>
+
+                <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Are you fucking sure bro ?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn btn-primary">Yes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- PAGE BUTTON  -->
                 <div class="pagination">
                     <?php
-                    $data = $admin->displayPendingDocuments("all");
+                    $data = $admin->displayUploadedDocuments("all");
                     $total_record = count($data);
 
                     $total_page = ceil($total_record / $num_per_page);
