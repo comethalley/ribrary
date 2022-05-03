@@ -67,7 +67,7 @@ if (!isset($_SESSION['id'])) {
     </div>
   <main>
     <div class="backdrop">
-    <button class="upbtn" onclick="window.location.href='upload-magazine-section.php'">Upload your own magazine here!</button>
+    <button class="upbtn rounded" onclick="window.location.href='upload-magazine-section.php'">Upload your own magazine here!</button>
     <center>
    <!--  <button type="button" class="btn">Add Forum</button></p> -->
         </center>
@@ -79,7 +79,7 @@ if (!isset($_SESSION['id'])) {
             $count = 1;
             foreach ($data as $row) {
             ?>
-      <div class="col-md-3 col-sm-6 my-3 my-md-0">
+      <div class="col-md-3 col-sm-6 my-2 my-md-3 rounded">
         <div class="card shadow">
           <div>
             <img src="img/book-icon.png" alt="Example" id = "img1">
