@@ -611,6 +611,7 @@ input {
 	background: #586a6a;
 }
 
+/* Navbar css */
 .sticky-section{
 	overflow:hidden;
 	background-color:#485665; 
@@ -656,3 +657,15 @@ input {
 	background-color:#002e5b; 
 	color:wheat; 
   }
+
+/*card section css */
+#img1 {
+	width: 100%;
+	height: 200px;
+	background-color: lightblue;
+	background: radial-gradient(white 30%, lightblue 70%);
+}
+
+.author-name{
+	color: black;
+}

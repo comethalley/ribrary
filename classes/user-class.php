@@ -233,4 +233,13 @@ class User extends Database
         $connect = null;
         exit();
     }
+
+    //test display file in the database
+    function displayUser()
+    {
+        $data = $this->connect()->query("SELECT * FROM tbl_pending_book")->fetchAll();
+
+        return $data;
+        exit();
+    }
 }
