@@ -89,9 +89,9 @@ if (!isset($_SESSION['id'])) {
             <h6>
               Ratings
             </h6>
-            <p class = "author-name">
+            <h6 class = "author-name">
               <?php echo $row["createdBy"] ?>
-            </p>
+            </h6>
             <button class="btn">
                   <a href = "view.html?file=<?php echo $row["BookPath"] ?>">
                     View
