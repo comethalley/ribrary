@@ -39,11 +39,12 @@ if (!isset($_SESSION['admin'])) {
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <!-- LINK FOR INCON (FONTAWESOME) -->
     <script defer src="https://kit.fontawesome.com/86dc2a589d.js" crossorigin="anonymous"></script>
 
     <!-- JQUERY -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
 
     <!-- DATATABLES -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
@@ -70,11 +71,10 @@ if (!isset($_SESSION['admin'])) {
                     <thead>
                         <tr class="table-header">
                             <th scope="col">No.</th>
-                            <th scope="col">Book ID</th>
                             <th scope="col">Book name</th>
                             <th scope="col">Book File</th>
                             <th scope="col">Uploaded By</th>
-                            <th scope="col">User_id</th>
+                            <th scope="col">Date and Time</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -85,30 +85,33 @@ if (!isset($_SESSION['admin'])) {
                         $data = $admin->displayUploadedDocuments('', $start_from, $num_per_page);
                         $count = $start_from + 1;
                         foreach ($data as $row) {
+                            if ($row['status'] === 'pending') {
                         ?>
-                            <tr>
-                                <td> <?php echo $count ?></td>                  
-                                <td> <?php echo $row["doc_name"] ?></td>
-                                <td><a href='../functions/uploads/<?php echo $row["doc_path"] ?>' target="_thapa">View</a></td>
-                                <td> <?php echo $row["createdBy"] ?></td>
-                                <td> <?php echo $row["user_id"] ?></td>
-                                <td> <?php echo $row["date_and_time"] ?></td>
-                                <td>
-                                    <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#staticBackdrop"> Accept</button>
-                                    <button type="button" class="btn btn-outline-danger">Decline</button>
 
-                                </td>
+                                <tr>
+                                    <td> <?php echo $count ?></td>
+                                    <td> <?php echo $row["doc_name"] ?></td>
+                                    <td><a href='../functions/uploads/<?php echo $row["doc_path"] ?>' target="_thapa">View</a></td>
+                                    <td> <?php echo $row["createdBy"] ?></td>
+                                    <td> <?php echo $row["date_and_time"] ?></td>
+                                    <td>
+                                        <input type="hidden" name="doc_id" value="<?php echo $row["doc_id"] ?>">
+                                        <button type="button" class="btn btn-outline-success acceptBtn"> Accept</button>
+                                        <button type="button" class="btn btn-outline-danger declineBtn">Decline</button>
 
-                            </tr>
+                                    </td>
+
+                                </tr>
                         <?php
-                            $count++;
+                                $count++;
+                            }
                         }
                         ?>
                     </tbody>
                 </table>
 
-                <!-- Modal -->
-                <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <!-- ACCEPT MODAL -->
+                <div class="modal fade" id="acceptModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -117,16 +120,37 @@ if (!isset($_SESSION['admin'])) {
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <div class="modal-body">
-                                Are you fucking sure bro ?
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                <button type="button" class="btn btn-primary">Yes</button>
-                            </div>
+
+                            <form action="../functions/admin-acceptDocs-function.php" method="POST">
+
+                                <!-- DISPLAY -->
+                                <div class="modal-body">
+
+                                    <input type="hidden" name="doc_id" id="doc_id_accept">
+                                    Are you fucking sure bro ?
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                    <button type="submit" name="accept-docs" class="btn btn-primary">Yes</button>
+                                </div>
+                            </form>
+
                         </div>
                     </div>
                 </div>
+
+                <!-- TOAST/ POP UP MODAL -->
+                <div class="toast-container hidden">
+                    <div class="toast-display">
+                        <i class="bi bi-check-circle-fill"></i>
+                        <p class="toast-sucess">Success <br> <span class="toast-sucess-subtext">changes successfuly</span></p>
+                        <button class="close-toast"><i class="bi bi-x-lg"></i></button>
+                    </div>
+                </div>
+
+
+
 
                 <!-- PAGE BUTTON  -->
                 <div class="pagination">
@@ -181,6 +205,38 @@ if (!isset($_SESSION['admin'])) {
     </script>
 
     <!-- SCRIPT -->
+
+    <script>
+        const action = document.querySelector('.action');
+        const showToast = document.querySelector('.show-toast')
+        const toastContainer = document.querySelector('.toast-container')
+        const closeToast = document.querySelector('.close-toast');
+
+        const url = window.location.search
+        const urlParam = new URLSearchParams(url)
+        const success = urlParam.get('q')
+
+        if (success && success == 'success') {
+            toastContainer.classList.remove('hidden')
+
+            setTimeout(() => {
+                toastContainer.classList.add('hidden')
+            }, 3000)
+        }
+
+        //Accept button function 
+        action.addEventListener('click', function(e) {
+            if (e.target.classList.contains('acceptBtn')) {
+                $('#acceptModal').modal('show');
+                const docId = e.target.closest('td').firstElementChild.value
+                document.querySelector('#doc_id_accept').value = docId;
+            }
+        })
+
+        closeToast.addEventListener('click', function() {
+            toastContainer.classList.add('hidden')
+        })
+    </script>
     <script src="js/sidebar-script.js"></script>
 </body>
 
