@@ -5,7 +5,9 @@
     font-family: 'Nunito Sans', sans-serif;
 
 }
-
+body{
+    overflow: hidden;
+}
 main {
     /* background-color: brown; */
     display: grid;
@@ -33,7 +35,7 @@ main {
     /* width: 90%; */
     height: 100%;
     margin-top: 3rem;
-  
+
 
 }
 
@@ -47,15 +49,80 @@ main {
     border: 2px solid #8a8a8a;
     color: #3f3e3e;
 }
-.pagination{
+
+.pagination {
     margin: auto;
     display: flex;
     justify-content: center;
 
 }
-.page{
+
+.page {
     margin: 0 0.1rem;
 }
+
+.toast-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 1rem;
+    transition: 400ms ease-in-out;
+   
+}
+
+.toast-display {
+    box-sizing: border-box;
+    -webkit-box-shadow: -1px 2px 22px -8px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -1px 2px 22px -8px rgba(0, 0, 0, 0.75);
+    box-shadow: -1px 2px 22px -8px rgba(0, 0, 0, 0.75);
+    border-radius: 5px;
+    border-left: 8px solid #47f764;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    padding: 0.8em 0 0.8em 0.1em;
+    position: relative;
+
+}
+
+.close-toast {
+    /* height: 5rem;
+    font-size: 5rem;
+    width: 20%; */
+    margin: 0 1.5rem;
+}
+
+.bi-check-circle-fill {
+    color: #47f764;
+    font-size: 2.3rem;
+    margin: 0 1.3rem;
+
+}
+
+.toast-sucess {
+    font-weight: bold;
+    font-size: 1rem;
+    margin: 0;
+    margin-right: 5rem;
+}
+.toast-sucess-subtext{
+    font-size: 0.9rem;
+    font-weight: 450;
+}
+
+.close-toast {
+    position: absolute;
+    background: transparent;
+    border: none;
+    top: 0;
+    right: 0;
+    margin: 0.5rem 0.8rem 0 0;
+}
+.hidden{
+    transform: translateX(10rem);
+    opacity: 0;
+}
+
 
 /* MEDIA QUERIES (RESPONSIVE) */
 @media (min-width:100em) {

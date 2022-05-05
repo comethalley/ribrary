@@ -96,7 +96,7 @@ if (!isset($_SESSION['admin'])) {
 
 
             <!-- DELETE POP UP FORM (Bootstrap MODAL) -->
-            <div class="modal   fade" id="deletemodal" tabindex="-1" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal   fade" id="  " tabindex="-1" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
