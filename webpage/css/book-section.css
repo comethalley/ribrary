@@ -66,11 +66,13 @@
     padding: 1em;
     /* height: 50rem; */
 }
-.book-image{
+
+.book-image {
     object-fit: cover;
     height: 100%;
     width: 100%;
 }
+
 .book-cover {
     overflow: hidden;
     background-color: bisque;
@@ -85,22 +87,25 @@
     margin: auto;
     text-align: center;
 }
-#title{
-    /* background-color: brown; */  
+
+#title {
+    /* background-color: brown; */
     margin-top: 1rem;
     font-weight: 600;
     text-align: center;
 }
-.books-container .book-description-author{
+
+.books-container .book-description-author {
     /* background-color: blueviolet; */
-     margin: auto;
-     margin-top: 1rem;
-   text-align: center;
-    color:rgb(216, 214, 214); 
+    margin: auto;
+    margin-top: 1rem;
+    text-align: center;
+    color: rgb(216, 214, 214);
 }
-.view-book-btn{
+
+.view-book-btn {
     /* font-size: 1rem; */
-    padding:0.3em;
+    padding: 0.3em;
     display: block;
     width: 50%;
     position: absolute;
@@ -108,13 +113,87 @@
     box-shadow: none;
     /* top: 0; */
     left: 25%;
-    bottom:-1rem;
+    bottom: -1rem;
 }
 
+#notification {
+    cursor: pointer;
+    background-color: #485665;
+    border-radius: 10px;
+    padding: 0.5em 1em;
+    margin: 0;
+    font-size: 1rem;
+    font-weight: normal;
+    position: relative;
+    box-shadow: none;
+    z-index: 10;
+    transition: 300ms ease-in-out;
+}
+
+#notification:hover {
+    transform: translateY(-3px);
+}
+
+.notif-count {
+    box-sizing: border-box;
+    /* background-color: whitesmoke; */
+    color: rgb(228, 222, 222);
+    /* display: inline-block; */
+    margin-left: 0.5rem;
+    font-weight: bold;
+    border-radius: 5px;
+    font-size: 1.3rem;
+    position: absolute;
+    top: -1rem;
+    right: 0;
+
+}
+
+.notif-container {
+    position: absolute;
+    background-color: transparent;
+    height: 20rem;
+    overflow: auto;
+    width: 20rem;
+    bottom: -20rem;
+    left: -12rem;
+    transition: 500ms ease-in-out;
+
+}
+
+
+.notif-message {
+    background-color: rgb(228, 225, 220);
+    /* height: 5rem; */
+    color: black;
+    box-sizing: border-box;
+    padding: 0.8em;
+    border-top: 1px solid rgb(200, 200, 200);
+    border-bottom: 1px solid rgb(200, 200, 200);
+}
+
+
+.notif-date {
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.notif-details {
+    font-size: 0.8rem;
+}
+
+.hidden {
+    display: none;
+    opacity: 0;
+
+}
+
+
 /* ------------ */
-@media (max-width:100em){
+@media (max-width:100em) {
     .display-books-container {
         grid-template-columns: repeat(3, 1fr);
-     
+
     }
 }

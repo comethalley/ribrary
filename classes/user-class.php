@@ -243,6 +243,24 @@ class User extends Database
         exit();
     }
 
+    //function insert to notification table in database
+    function notification($doc_name, $doc_file, $doc_path, $createdBy, $user_id, $status)
+    {
+        $sql = "INSERT INTO tbl_notification (doc_name,doc_file ,doc_path ,createdBy ,date_and_time ,user_id,status)
+   VALUES (?,?,?,?,?,?,?);";
+
+        // prepared statement
+        $stmt = $this->connect()->prepare($sql);
+
+        //if execution fail
+        if (!$stmt->execute([$doc_name, $doc_file, $doc_path, $createdBy, $this->date, $user_id, $status])) {
+            header("Location:../webpage/upload-documents-section.php?error=stmtfailnotif");
+            $connect = null;
+            exit();
+        }
+
+    }
+
     //insert documents to database
     function upload_documents($doc_name, $doc_file, $doc_path, $createdBy, $id)
     {
@@ -252,6 +270,7 @@ class User extends Database
 
         $status = 'pending';
         $message = "test";
+
         // prepared statement
         $stmt = $this->connect()->prepare($sql2);
 
@@ -261,6 +280,9 @@ class User extends Database
             $connect = null;
             exit();
         }
+
+        //call notification function
+        $this->notification($doc_name, $doc_file, $doc_path, $createdBy, $id, $status);
 
         //if sucess uploading file, go to this 👇 page
         header("Location: ../webpage/upload-documents-section.php?uploadsuccess"); //change to docu later
@@ -284,7 +306,6 @@ class User extends Database
 
                     $userId = $_SESSION["id"];
                     $this->upload_documents($fileName, $fileTmpName, $fileNameNew, $createdBy, $userId);
-
                 } else {
                     echo "The file was too large";
                 }
@@ -293,6 +314,30 @@ class User extends Database
             }
         } else {
             echo "You can't upload this type of file!";
+        }
+    }
+
+    //get notifications 
+    function getNotification($id)
+    {
+        // prepared statement
+        $stmt = $this->connect()->prepare("SELECT * FROM tbl_notification  WHERE  user_id = ? ORDER BY notif_no DESC");
+
+        //if did not execute error, else continue
+        if (!$stmt->execute([$id])) {
+            header("Location:../webpage/fetch.php?error=stmtfail");
+            exit();
+        }
+
+        //fetch the result 
+        $result = $stmt->fetchAll();
+
+        // if has result return it, else return false 
+        if ($result) {
+            return $result;
+        } else {
+            $result = false;
+            return $result;
         }
     }
 }

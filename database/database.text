@@ -104,8 +104,9 @@ CREATE TABLE `tbl_uploaded_documents` (
 
 ) 
 
+
 CREATE TABLE `tbl_accpt_docs` (
-  `No.` int(255) NOT NULL AUTO_INCREMENT,
+  `doc_no` int(255) NOT NULL AUTO_INCREMENT,
   `doc_name` varchar(255) NOT NULL,
   `doc_file` blob NOT NULL,
   `doc_path` varchar (30) NOT NULL,
@@ -113,10 +114,25 @@ CREATE TABLE `tbl_accpt_docs` (
   date_and_time_accepted varchar (60) NOT NULL,
   `doc_id` int(60) NOT NULL,
   user_id int(20) NOT NULL,
-  PRIMARY KEY (doc_id),
+  PRIMARY KEY (doc_no),
   FOREIGN KEY (user_id) REFERENCES tbl_user( User_id)
   FOREIGN KEY (doc_id) REFERENCES tbl_uploaded_documents(doc_id)
 ) 
+
+CREATE TABLE `tbl_notification` (
+  `notif_no` int(255) NOT NULL AUTO_INCREMENT,
+  `doc_name` varchar(255) NOT NULL,
+  `doc_file` blob NOT NULL,
+  `doc_path` varchar (30) NOT NULL,
+  `createdBy` varchar(11) NOT NULL,
+  date_and_time varchar (60) NOT NULL,
+  user_id varchar(20) NOT NULL,
+  status varchar (30) NOT NULL,
+  message varchar (500),
+  PRIMARY KEY (notif_no)
+
+) 
+
 
 
 
