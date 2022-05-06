@@ -1,6 +1,6 @@
 <?php
 
-if(isset($_POST['accept-docs'])){
+if (isset($_POST['accept-docs'])) {
 
     include '../includes/autoload-class.php';
     $admin = new Admin();
@@ -10,7 +10,7 @@ if(isset($_POST['accept-docs'])){
 
     print_r($data);
 
-    if(!$data) return;
+    if (!$data) return;
 
-    $admin->accept_documents($data['doc_name'], $data['doc_file'], $data['doc_path'],$data['createdBy'],$doc_id,$data['user_id']);
+    $admin->accept_documents($data['doc_name'], $data['doc_file'], $data['doc_path'], $data['createdBy'], $doc_id, $data['user_id']);
 }

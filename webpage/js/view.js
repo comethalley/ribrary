@@ -1,9 +1,6 @@
 const phpurl =  window.location.search
 const newUrlParam = new URLSearchParams(phpurl)
 const pdf = newUrlParam.get('file')
-console.log(pdf)
-
-
 
 const url = `../functions/uploads/${pdf}`;
 

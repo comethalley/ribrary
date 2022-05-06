@@ -1,6 +1,7 @@
 <?php
 session_start();
 include '../includes/autoload-class.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -32,10 +33,10 @@ include '../includes/autoload-class.php';
         ?>
           <button class="links"><a href="../functions/logout-function.php">Log out</a></button>
         <?php
-        }else { 
+        } else {
         ?>
-           <button class="links"><a href="Login-and-SignUp-page.html">Log In</a></button>
-        <?php }?>
+          <button class="links"><a href="Login-and-SignUp-page.html">Log In</a></button>
+        <?php } ?>
       </div>
 
       <button class="click">...</button>
@@ -44,6 +45,26 @@ include '../includes/autoload-class.php';
       if (isset($_SESSION['first-name']) && isset($_SESSION['last-name']) && isset($_SESSION['email'])) {
 
       ?>
+        <!-- NOtif button -->
+        <div id="notification">Notifications <span class="notif-count">0</span>
+          <div class="notif-container hidden">
+
+            <?php
+            $user = new User();
+            $data = $user->getNotification($_SESSION["id"]);
+            foreach ($data as $row) {
+            ?>
+              <div class="notif-message">
+                <p class="notif-date"><i><?php echo $row['date_and_time']; ?></i></p>
+                <p class="notif-details"> Your uploaded research document status <?php echo $row['doc_name'] ?> is <b><?php echo $row['status']; ?></b></p>
+              </div>
+            <?php
+            }
+            ?>
+          </div>
+        </div>
+
+        <!-- Notif content -->
         <a href="UserProf.html" id="account-name">
           <p>Hi, <?php echo $_SESSION['first-name'] ?> <?php echo $_SESSION['last-name'] ?></p>
         </a>
@@ -75,7 +96,7 @@ include '../includes/autoload-class.php';
   </div>
   <main>
     <div class="backdrop">
-      <button class = "upbtn" onclick="window.location.href='upload-books-section.php'">Upload your
+      <button class="upbtn" onclick="window.location.href='upload-books-section.php'">Upload your
         own book here!</button>
       <center>
         <!-- <button type="button" class="btn">Add Book</button></p> -->
@@ -96,5 +117,16 @@ include '../includes/autoload-class.php';
 
     </div>
   </main>
+
+  <script>
+    const notification = document.querySelector('#notification');
+    const notifContainer = document.querySelector('.notif-container')
+
+    notification.addEventListener('click', function() {
+      notifContainer.classList.toggle('hidden')
+      document.querySelector('.notif-count').remove()
+    })
+  </script>
 </body>
+
 </html>
