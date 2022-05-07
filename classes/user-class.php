@@ -244,21 +244,20 @@ class User extends Database
     }
 
     //function insert to notification table in database
-    function notification($doc_name, $doc_file, $doc_path, $createdBy, $user_id, $status)
+    function notification($doc_name, $doc_file, $doc_path, $createdBy, $user_id, $status, $notif_status)
     {
-        $sql = "INSERT INTO tbl_notification (doc_name,doc_file ,doc_path ,createdBy ,date_and_time ,user_id,status)
-   VALUES (?,?,?,?,?,?,?);";
+        $sql = "INSERT INTO tbl_notification (doc_name,doc_file ,doc_path ,createdBy ,date_and_time ,user_id,status,notif_status)
+   VALUES (?,?,?,?,?,?,?,?);";
 
         // prepared statement
         $stmt = $this->connect()->prepare($sql);
 
         //if execution fail
-        if (!$stmt->execute([$doc_name, $doc_file, $doc_path, $createdBy, $this->date, $user_id, $status])) {
+        if (!$stmt->execute([$doc_name, $doc_file, $doc_path, $createdBy, $this->date, $user_id, $status, $notif_status])) {
             header("Location:../webpage/upload-documents-section.php?error=stmtfailnotif");
             $connect = null;
             exit();
         }
-
     }
 
     //insert documents to database
@@ -269,7 +268,7 @@ class User extends Database
    VALUES (?,?,?,?,?,(SELECT User_id FROM tbl_user WHERE user_id = ?),?);";
 
         $status = 'pending';
-        $message = "test";
+        $notif_status = 'unread';
 
         // prepared statement
         $stmt = $this->connect()->prepare($sql2);
@@ -282,7 +281,7 @@ class User extends Database
         }
 
         //call notification function
-        $this->notification($doc_name, $doc_file, $doc_path, $createdBy, $id, $status);
+        $this->notification($doc_name, $doc_file, $doc_path, $createdBy, $id, $status, $notif_status);
 
         //if sucess uploading file, go to this 👇 page
         header("Location: ../webpage/upload-documents-section.php?uploadsuccess"); //change to docu later
@@ -338,6 +337,46 @@ class User extends Database
         } else {
             $result = false;
             return $result;
+        }
+    }
+
+    //get unread notification 
+    function getUnreadNotif($id)
+    {
+        // prepared statement
+        $stmt = $this->connect()->prepare("SELECT notif_status FROM tbl_notification  WHERE  user_id = ? AND notif_status = ?");
+
+        $notif_status = "unread";
+        //if did not execute error, else continue
+        if (!$stmt->execute([$id, $notif_status])) {
+            header("Location:../webpage/fetch.php?error=stmtfail");
+            exit();
+        }
+
+        //fetch the result 
+        $result = $stmt->fetchAll();
+
+        // if has result return it, else return false 
+        if ($result) {
+            return $result;
+        } else {
+            $result = false;
+            return $result;
+        }
+    }
+
+    //get unread notification 
+    function updateNotifStatus($id)
+    {
+        // prepared statement
+        $stmt = $this->connect()->prepare("UPDATE tbl_notification  SET notif_status = ? WHERE  user_id = ? AND notif_status =?");
+
+        $updatedStatus = "read";
+        $notif_status = "unread";
+        //if did not execute error, else continue
+        if (!$stmt->execute([$updatedStatus, $id, $notif_status])) {
+            header("Location:../webpage/fetch.php?error=stmtfail");
+            exit();
         }
     }
 }

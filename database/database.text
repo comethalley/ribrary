@@ -128,6 +128,7 @@ CREATE TABLE `tbl_notification` (
   date_and_time varchar (60) NOT NULL,
   user_id varchar(20) NOT NULL,
   status varchar (30) NOT NULL,
+  notif_status varchar (30) NOT NULL,
   message varchar (500),
   PRIMARY KEY (notif_no)
 

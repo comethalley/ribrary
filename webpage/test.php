@@ -72,7 +72,7 @@
                 })
                 .then(data => console.log(data))
         }
-
+        requestNotif();
         // setInterval(function() {
         //     requestNotif() 
         // }, 2000);
