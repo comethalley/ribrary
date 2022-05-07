@@ -18,6 +18,7 @@ include '../includes/autoload-class.php';
   <title>My Profile</title>
 
   <title>Books</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 </head>
 
 <body>
@@ -46,11 +47,18 @@ include '../includes/autoload-class.php';
 
       ?>
         <!-- NOtif button -->
-        <div id="notification">Notifications <span class="notif-count">0</span>
+        <div id="notification"><i class="bi bi-bell-fill"></i> <span class="notif-count"><?php
+                                                                                          $user = new User();
+                                                                                          $notifCount = $user->getUnreadNotif($_SESSION["id"]);
+
+                                                                                          if ($notifCount) {
+                                                                                            echo count($notifCount);
+                                                                                          }
+                                                                                          ?></span>
           <div class="notif-container hidden">
 
             <?php
-            $user = new User();
+
             $data = $user->getNotification($_SESSION["id"]);
             foreach ($data as $row) {
             ?>
@@ -94,6 +102,7 @@ include '../includes/autoload-class.php';
       <a href="books-section.php">Ebooks</a>
     </nav>
   </div>
+
   <main>
     <div class="backdrop">
       <button class="upbtn" onclick="window.location.href='upload-books-section.php'">Upload your
@@ -113,8 +122,6 @@ include '../includes/autoload-class.php';
       <div class="display-books-container">
 
       </div>
-      <script src="js/books-section.js"></script>
-
     </div>
   </main>
 
@@ -122,11 +129,22 @@ include '../includes/autoload-class.php';
     const notification = document.querySelector('#notification');
     const notifContainer = document.querySelector('.notif-container')
 
+    function updateNotifStatus() {
+      fetch('../functions/updateNotifStatus.php')
+        .then(response => {
+          return response.json()
+        })
+        .then(data => console.log(data))
+    }
+
     notification.addEventListener('click', function() {
       notifContainer.classList.toggle('hidden')
       document.querySelector('.notif-count').remove()
+      updateNotifStatus();
+
     })
   </script>
+  <script src="js/books-section.js"></script>
+  
 </body>
-
 </html>

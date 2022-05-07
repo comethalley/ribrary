@@ -120,9 +120,9 @@
     cursor: pointer;
     background-color: #485665;
     border-radius: 10px;
-    padding: 0.5em 1em;
+    padding: 0.3em 0.6em;
     margin: 0;
-    font-size: 1rem;
+    font-size: 1.3rem;
     font-weight: normal;
     position: relative;
     box-shadow: none;
@@ -137,11 +137,10 @@
 .notif-count {
     box-sizing: border-box;
     /* background-color: whitesmoke; */
-    color: rgb(228, 222, 222);
+    color: rgb(255, 255, 255);
     /* display: inline-block; */
-    margin-left: 0.5rem;
+    padding: 0.3em;
     font-weight: bold;
-    border-radius: 5px;
     font-size: 1.3rem;
     position: absolute;
     top: -1rem;
@@ -153,14 +152,24 @@
     position: absolute;
     background-color: transparent;
     height: 20rem;
-    overflow: auto;
     width: 20rem;
-    bottom: -20rem;
-    left: -12rem;
+    bottom: -20.3rem;
+    left: -16.8rem;
     transition: 500ms ease-in-out;
+    overflow: auto;
+    scrollbar-color: rebeccapurple green;
+    scrollbar-width: thin;
 
 }
 
+.notif-container::-webkit-scrollbar {
+    width: 5px;
+    background-color: rgb(142, 143, 142);
+}
+
+.notif-container::-webkit-scrollbar-thumb {
+    background: rgb(81, 78, 78);
+}
 
 .notif-message {
     background-color: rgb(228, 225, 220);
