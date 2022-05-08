@@ -3,7 +3,7 @@
 session_start();
 
 if (!isset($_SESSION['admin'])) {
-    header("Location:admin-login.php");
+    header("Location:index.php");
 } else {
     include '../includes/autoload-class.php';
     $admin = new Admin();

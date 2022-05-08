@@ -122,6 +122,16 @@ main {
     transform: translateX(10rem);
     opacity: 0;
 }
+/* -------------------- */
+
+.list:nth-of-type(4){
+    border-left: 5px solid #4980ff;
+    padding-left: 1.688em;
+}
+.list:nth-of-type(4) .link:nth-of-type(1) {
+    background-color:#4980ff;
+    border-radius: 8px;
+}
 
 
 /* MEDIA QUERIES (RESPONSIVE) */

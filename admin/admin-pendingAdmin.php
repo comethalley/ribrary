@@ -64,17 +64,16 @@ if (!isset($_SESSION['admin'])) {
             <!-- Display User from database -->
             <div class="table-container">
                 <!-- <button class="action">dsd</button> -->
-                <h2>Pending documents</h2>
+                <h2>Pending Admins</h2>
 
                 <table class="table" id="table_id">
 
                     <thead>
                         <tr class="table-header">
                             <th scope="col">No.</th>
-                            <th scope="col">Book name</th>
-                            <th scope="col">Book File</th>
-                            <th scope="col">Uploaded By</th>
-                            <th scope="col">Date and Time</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Status</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -82,18 +81,17 @@ if (!isset($_SESSION['admin'])) {
                     <tbody class="action">
 
                         <?php
-                        $data = $admin->displayUploadedDocuments('', $start_from, $num_per_page);
+                        $data = $admin->displayAdmins('', $start_from, $num_per_page);
                         $count = $start_from + 1;
                         foreach ($data as $row) {
-           
+                           
                         ?>
 
                                 <tr>
                                     <td> <?php echo $count ?></td>
-                                    <td> <?php echo $row["doc_name"] ?></td>
-                                    <td><a href='../functions/uploads/<?php echo $row["doc_path"] ?>' target="_thapa">View</a></td>
-                                    <td> <?php echo $row["createdBy"] ?></td>
-                                    <td> <?php echo $row["date_and_time"] ?></td>
+                                    <td> <?php echo $row["fullname"] ?></td>
+                                    <td> <?php echo $row["email"] ?></td>
+                                    <td> <?php echo $row["role"] ?></td>
                                     <td>
                                         <input type="hidden" name="doc_id" value="<?php echo $row["doc_id"] ?>">
                                         <button type="button" class="btn btn-outline-success acceptBtn"> Accept</button>
@@ -104,7 +102,7 @@ if (!isset($_SESSION['admin'])) {
                                 </tr>
                         <?php
                                 $count++;
-                       
+                            
                         }
                         ?>
                     </tbody>
@@ -121,7 +119,7 @@ if (!isset($_SESSION['admin'])) {
                                 </button>
                             </div>
 
-                            <form action="../functions/admin-acceptDocs-function.php" method="POST">
+                            <form action="" method="POST">
 
                                 <!-- DISPLAY -->
                                 <div class="modal-body">
@@ -155,7 +153,7 @@ if (!isset($_SESSION['admin'])) {
                 <!-- PAGE BUTTON  -->
                 <div class="pagination">
                     <?php
-                    $data = $admin->displayUploadedDocuments("all");
+                    $data = $admin->displayAdmins("all");
                     $total_record = count($data);
 
                     $total_page = ceil($total_record / $num_per_page);
@@ -192,6 +190,7 @@ if (!isset($_SESSION['admin'])) {
 
 
     <!-- DATATABLES SCRIPT -->
+    <script src="js/sidebar-script.js"></script>
     <script>
         $(document).ready(function() {
 
@@ -237,7 +236,7 @@ if (!isset($_SESSION['admin'])) {
             toastContainer.classList.add('hidden')
         })
     </script>
-    <script src="js/sidebar-script.js"></script>
+
 </body>
 
 </html>

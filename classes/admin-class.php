@@ -22,11 +22,48 @@ class Admin extends Database
         return $result;
     }
 
+    //Empty Sign up field
+    function emptyInputSignUp($fullname, $email, $pass, $re_pass)
+    {
+        $result = "";
+        if (empty($fullname) ||  empty($email) || empty($pass) || empty($re_pass)) {
+            $result = true;
+        } else {
+            $result = false;
+        }
+        return $result;
+    }
+
+    // if not valid email 
+    function invalidEmail($email)
+    {
+        $result = "";
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $result = true;
+        } else {
+            $result = false;
+        }
+        return $result;
+    }
+
+    // if password match
+    function passNotMatch($pass, $re_pass)
+    {
+        $result = "";
+        if ($pass !== $re_pass) {
+            $result = true;
+        } else {
+            $result = false;
+        }
+        return $result;
+    }
+
+
 
     function adminExist($username)
     {
         //prepared statement
-        $stmt = $this->connect()->prepare("SELECT * FROM tbl_admin WHERE username=?");
+        $stmt = $this->connect()->prepare("SELECT * FROM tbl_admin WHERE email=?");
 
         //if execution fail
         if (!$stmt->execute([$username])) {
@@ -57,29 +94,69 @@ class Admin extends Database
 
         //check if it has data if not return false 
         if ($userExist == false) {
-            header("Location:../admin/admin-login.php?error=wrongUser");
+            header("Location:../admin/index.php?error=wrongUser");
+            exit();
+        }
+
+        //check if status is equals to pending
+        if ($userExist['role'] == 'pending') {
+            header("Location:../admin/index.php?error=pendingStatus");
             exit();
         }
 
         //hashed the password from database 
-        $passFromDB = $userExist['password'];
+        $pwdHashed = $userExist['password'];
+        $checkpwd = password_verify($pass, $pwdHashed) . "\n";
 
         //if pass from DB is same password from input
-        if ($passFromDB == $pass) {
+        if ($checkpwd !== '' && $checkpwd == 1) {
 
             //start session and get data from userExist then store in session   
             session_start();
-            $_SESSION["admin"] = $userExist["username"];
 
+            $_SESSION["admin"] = $userExist["email"];
 
             //if sucess creating user, go to this 👇 page
             header("Location:../admin/admin-dashboard.php?LoginSucesfully!");
+
             exit();
         } else {
             //if password not match from user
-            header("Location:../admin/admin-login.php?error=wrongPassword");
+            header("Location:../admin/index.php?error=wrongPassword");
             exit();
         }
+    }
+
+    // create new admin to database
+    function createUser($fullname, $email, $pass)
+    {
+        // sql statement
+        $sql = "INSERT INTO tbl_admin (fullname,email,password,role) VALUES (?,?,?,?)";
+
+        // prepared statement
+        $stmt = $this->connect()->prepare($sql);
+
+        //set role 
+        $role = "pending";
+
+        //hashed the password
+        $hashedpwd = password_hash($pass, PASSWORD_DEFAULT);
+
+        //if execution fail
+        if (!$stmt->execute([$fullname, $email, $hashedpwd, $role])) {
+            header("Location: ../admin/sign-up.php?error=stmtfail");
+            $connect = null;
+            exit();
+        }
+
+        //start session and store value
+        session_start();
+        $_SESSION["admin"] = $email;
+
+        //if sucess creating user, go to this 👇 page
+        header("Location:../admin/index.php?createdSuccesfully!");
+        $connect = null;
+        exit();
     }
 
     // get total users in database
@@ -101,19 +178,35 @@ class Admin extends Database
     }
 
     //display all pending documents
-    function displayUploadedDocuments($displayAll = "notall", $start_from = 0, $num_per_page = 3)
+    function displayUploadedDocuments($displayAll = "notall", $start_from = 0, $num_per_page = 9)
     {
         if ($displayAll == "all") {
-            $data = $this->connect()->query("SELECT * FROM tbl_uploaded_documents")->fetchAll();
+            $data = $this->connect()->query("SELECT * FROM tbl_uploaded_documents ")->fetchAll();
 
             return $data;
         }
-        $data = $this->connect()->query("SELECT * FROM tbl_uploaded_documents limit $start_from,$num_per_page")->fetchAll();
+        $data = $this->connect()->query("SELECT * FROM tbl_uploaded_documents WHERE status = 'pending' limit $start_from,$num_per_page")->fetchAll();
 
         return $data;
 
         exit();
     }
+
+    //display all pending documents
+    function displayAdmins($displayAll = "notall", $start_from = 0, $num_per_page = 9)
+    {
+        if ($displayAll == "all") {
+            $data = $this->connect()->query("SELECT * FROM tbl_admin")->fetchAll();
+
+            return $data;
+        }
+        $data = $this->connect()->query("SELECT * FROM tbl_admin  WHERE role = 'pending' limit $start_from,$num_per_page")->fetchAll();
+
+        return $data;
+
+        exit();
+    }
+
 
     //select specficif uploaded documents by id
     function getUploadedDocs($doc_id)
