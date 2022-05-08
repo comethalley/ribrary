@@ -8,13 +8,10 @@ include '../includes/autoload-class.php'
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log In</title>
+    <title>Sign Up</title>
 
     <!-- icon script from fontawesome -->
     <script defer src="https://kit.fontawesome.com/86dc2a589d.js" crossorigin="anonymous"></script>
-
-    <!-- Sweet alert -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- CSS LINK -->
     <link rel="stylesheet" href="css/admin-style.css">
@@ -38,21 +35,31 @@ include '../includes/autoload-class.php'
                 <img src="../webpage/img/admin-logo.png" alt="admin-logo" class="admin-logo">
 
                 <!-- FORM -->
-                <form action="../functions/admin-login-function.php" method="POST" class="admin-form">
+                <form action="../functions/admin-signup-function.php" method="POST" class="signup-admin-form">
+                    <div class="input-container">
+                        <span class="icon"><i class="fa fa-solid fa-user"></i></span>
+                        <input type="text" name="fullname" id="username" placeholder="Fullname">
+                    </div>
+
                     <div class="input-container">
                         <span class="icon"><i class="fa fa-solid fa-envelope"></i></span>
-                        <input type="email" name="email" id="username" placeholder="Email" required>
+                        <input type="text" name="email" id="username" placeholder="Email">
                     </div>
 
                     <div class="input-container">
                         <span class="icon"><i class="fa fa-solid fa-lock"></i></span>
-                        <input type="password" name="password" id="password" placeholder="Password" required>
+                        <input type="password" name="repeat-password" id="username" placeholder="Password">
                     </div>
 
-                    <button class="sign-in" name="btnSubmit">SIGN IN</button>
+                    <div class="input-container">
+                        <span class="icon"><i class="fa fa-solid fa-lock"></i></span>
+                        <input type="password" name="password" id="password" placeholder="Repeat password">
+                    </div>
+
+                    <button class="sign-up" name="btnSubmit">SIGN UP</button>
                 </form>
 
-                <p class="create-account">Create an account here <a href="sign-up.php" class="signup">Sign up</a></p>
+                <p class="create-account">Already have an account <a href="index.php" class="signup">Login</a></p>
 
                 <!-- SIGNING IN CIRCLE  -->
                 <div class="loading">
@@ -81,20 +88,37 @@ include '../includes/autoload-class.php'
     </main>
 
     <!-- JAVASCRIPT FUNCTION  -->
-    <script src="js/script.js"></script>
     <script>
-        const windowUrl = window.location.search;
-        const url = new URLSearchParams(windowUrl);
-        const keyword = url.get('error')
+        const signUp = document.querySelector(".sign-up");
+        const signUpForm = document.querySelector(".signup-admin-form");
+        const adminLogo = document.querySelector(".admin-logo");
+        const loading = document.querySelector(".loading");
+        const errorMessage = document.querySelector('.errorMessage');
+        const createAccount = document.querySelector('.create-account')
 
-        if (keyword && keyword == "pendingStatus") {
-            Swal.fire({
-                icon: 'warning',
-                title: 'Oops...',
-                text: 'Your application is still pending',               
-            })
+        signUp.addEventListener('click', function(e) {
+            e.preventDefault()
 
-        }
+            // HIDE LOGO AND FORM
+            signUpForm.classList.add('hideDisplay');
+            adminLogo.classList.add('hideDisplay');
+            createAccount.classList.add('hideDisplay');
+
+            // If has error message, hide it
+            if (errorMessage) {
+                errorMessage.classList.add('hideDisplay');
+            }
+
+            // Display loading 
+            loading.style.display = "flex";
+            document.querySelector('.logging-in').style.display = 'block';
+            document.querySelector('.wait').style.display = 'block';
+
+            setTimeout(() => {
+                signUpForm.submit();
+            }, 2000)
+
+        })
     </script>
 </body>
 

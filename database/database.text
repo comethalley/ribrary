@@ -26,8 +26,12 @@ ALTER TABLE `tbl_user`
 
 CREATE TABLE tbl_admin (
     admin_id int (20) NOT NULL AUTO_INCREMENT,
-    username varchar(32) NOT NULL,
+    fullname varchar(32) NOT NULL,
+    email varchar(32) NOT NULL,
     password char(60) NOT NULL,
+    role varchar(32),
+    admin_status varchar(32),
+    recent_login varchar (32),
     PRIMARY KEY (admin_id)
 );
 

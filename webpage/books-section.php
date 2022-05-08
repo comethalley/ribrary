@@ -145,6 +145,7 @@ include '../includes/autoload-class.php';
     })
   </script>
   <script src="js/books-section.js"></script>
-  
+
 </body>
+
 </html>
