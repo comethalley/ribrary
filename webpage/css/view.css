@@ -2,3 +2,49 @@
     /* background-color: aqua; */
     text-align: center;
 }
+
+button{
+	cursor: pointer;
+	background-color: #759d9d;
+	border-color: #93b2b2;
+
+}
+
+.btn{
+	border: none;
+	background: none;
+}
+
+i {
+	border: solid #759d9d;
+	border-width: 0 5px 5px 0;
+	display: inline-block;
+	padding: 10px;
+}
+
+.leftarrow{
+	transform: rotate(135deg);
+	
+}
+	
+.rightarrow{
+	transform: rotate(-45deg);
+}
+.prev{
+	float: left;
+	margin-top: 15%;
+	margin-left: 1.5%;
+}
+.next{
+	float: right;
+	margin-top: 15%;
+	margin-right: 1.5%;
+}
+
+.zoom-container{
+	margin-left: 5%;
+}
+
+.page{
+	margin-left: 48%;
+}

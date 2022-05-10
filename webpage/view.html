@@ -15,20 +15,7 @@
 </head>
 
 <body>
-
-    <div class="top-bar">
-        <button class="btn" id="prev-page">
-            <i class="bi bi-arrow-left-circle-fill"></i>Prev Page
-        </button>
-
-        <button class="btn" id="Next-page">
-            Next Page<i class="bi bi-arrow-right-circle-fill"></i>
-        </button>
-
-        <span class="page-info">
-            Page <span id="page-num"></span> of <span id="page-count"></span>
-        </span>
-
+		
         <div class="zoom-container">
             Zoom
             <button class="zoom out">-</button>
@@ -36,17 +23,34 @@
             <button class="zoom in">+</button>
         </div>
 
-
-    </div>
-
-    <div class="canvas">
+		<div class="prev">
+		<button class="btn" id="prev-page">
+            <i class="leftarrow"></i>
+        </button>
+		</div>
+		
+		<div class="next">
+        <button class="btn" id="Next-page">
+            <i class="rightarrow"></i>
+        </button>
+		</div>
+		
+		<div class="canvas">
         <canvas id="pdf-render">
-
+		
         </canvas>
-    </div>
+		</div>
+
+		<div class="page">
+		<span class="page-info">
+            Page <span id="page-num"></span> of <span id="page-count"></span>
+        </span>
+		</div>
     
     <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
     <script src="js/view.js"></script>
+	
+	
 </body>
 
 </html>
