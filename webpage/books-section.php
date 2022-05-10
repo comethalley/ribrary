@@ -64,7 +64,7 @@ include '../includes/autoload-class.php';
             ?>
               <div class="notif-message">
                 <p class="notif-date"><i><?php echo $row['date_and_time']; ?></i></p>
-                <p class="notif-details"> Your uploaded research document status <?php echo $row['doc_name'] ?> is <b><?php echo $row['status']; ?></b></p>
+                <p class="notif-details"> We are verifying your uploaded document <?php echo $row['doc_name'] ?> please wait for a moment.</p>
               </div>
             <?php
             }

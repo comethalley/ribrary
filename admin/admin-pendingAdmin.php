@@ -27,7 +27,7 @@ if (!isset($_SESSION['admin'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DOCUMENTS</title>
+    <title>Pending Admins</title>
 
     <!-- GOOGLE FONT LINK -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -84,25 +84,24 @@ if (!isset($_SESSION['admin'])) {
                         $data = $admin->displayAdmins('', $start_from, $num_per_page);
                         $count = $start_from + 1;
                         foreach ($data as $row) {
-                           
+
                         ?>
 
-                                <tr>
-                                    <td> <?php echo $count ?></td>
-                                    <td> <?php echo $row["fullname"] ?></td>
-                                    <td> <?php echo $row["email"] ?></td>
-                                    <td> <?php echo $row["role"] ?></td>
-                                    <td>
-                                        <input type="hidden" name="doc_id" value="<?php echo $row["doc_id"] ?>">
-                                        <button type="button" class="btn btn-outline-success acceptBtn"> Accept</button>
-                                        <button type="button" class="btn btn-outline-danger declineBtn">Decline</button>
+                            <tr>
+                                <td> <?php echo $count ?></td>
+                                <td> <?php echo $row["fullname"] ?></td>
+                                <td> <?php echo $row["email"] ?></td>
+                                <td> <?php echo $row["role"] ?></td>
+                                <td>
+                                    <input type="hidden" name="admin_id" value="<?php echo $row["admin_id"] ?>">
+                                    <button type="button" class="btn btn-outline-success acceptBtn"> Accept</button>
+                                    <button type="button" class="btn btn-outline-danger declineBtn">Decline</button>
 
-                                    </td>
+                                </td>
 
-                                </tr>
+                            </tr>
                         <?php
-                                $count++;
-                            
+                            $count++;
                         }
                         ?>
                     </tbody>
@@ -113,24 +112,66 @@ if (!isset($_SESSION['admin'])) {
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                                <h5 class="modal-title" id="staticBackdropLabel">ADMIN</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
 
-                            <form action="" method="POST">
+                            <form action="../functions/admin-pendingAdmin-function.php" method="POST">
 
                                 <!-- DISPLAY -->
                                 <div class="modal-body">
+                                    <input type="hidden" name="admin_id" id="admin_id_accept">
+                                    <fieldset>
+                                        <legend>Choose an admin role</legend>
 
-                                    <input type="hidden" name="doc_id" id="doc_id_accept">
-                                    Are you fucking sure bro ?
+                                        <div>
+                                            <input type="radio" id="huey" name="role" value="Admin1" required>
+                                            <label for="huey">Admin 1</label>
+                                        </div>
+
+                                        <div>
+                                            <input type="radio" id="dewey" name="role" value="Admin2" required>
+                                            <label for="dewey">Admin 2</label>
+                                        </div>
+
+                                    </fieldset>
+
                                 </div>
 
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                    <button type="submit" name="accept-docs" class="btn btn-primary">Yes</button>
+                                    <button type="submit" name="accept-admin" class="btn btn-primary">Done</button>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DECLINE MODAL -->
+                <div class="modal fade" id="declineModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel">ADMIN</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+                            <form action="../functions/admin-pendingAdmin-function.php" method="POST">
+
+                                <!-- DISPLAY -->
+                                <div class="modal-body">
+                                    <input type="hidden" name="admin_id" id="admin_id_decline">
+                                    <p>Are you sure you want to decline?</p>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                    <button type="submit" name="decline-admin" class="btn btn-primary">Yes</button>
                                 </div>
                             </form>
 
@@ -228,7 +269,13 @@ if (!isset($_SESSION['admin'])) {
             if (e.target.classList.contains('acceptBtn')) {
                 $('#acceptModal').modal('show');
                 const docId = e.target.closest('td').firstElementChild.value
-                document.querySelector('#doc_id_accept').value = docId;
+                document.querySelector('#admin_id_accept').value = docId;
+            }
+
+            if (e.target.classList.contains('declineBtn')) {
+                $('#declineModal').modal('show');
+                const docId = e.target.closest('td').firstElementChild.value
+                document.querySelector('#admin_id_decline').value = docId;
             }
         })
 
