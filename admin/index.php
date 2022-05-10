@@ -86,12 +86,23 @@ include '../includes/autoload-class.php'
         const windowUrl = window.location.search;
         const url = new URLSearchParams(windowUrl);
         const keyword = url.get('error')
-
+        
+        //pending
         if (keyword && keyword == "pendingStatus") {
             Swal.fire({
                 icon: 'warning',
                 title: 'Oops...',
-                text: 'Your application is still pending',               
+                text: 'Your application is still pending',
+            })
+
+        }
+
+        //decline 
+        if (keyword && keyword == "declineStatus") {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Your application for admin has been decline, please apply for a new one. ',
             })
 
         }

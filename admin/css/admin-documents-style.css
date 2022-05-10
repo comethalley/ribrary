@@ -122,6 +122,11 @@ main {
     transform: translateX(10rem);
     opacity: 0;
 }
+#decline-text{
+    width: 100%;
+    padding: 1em;
+    resize: none;
+}
 /* -------------------- */
 
 .list:nth-of-type(4){

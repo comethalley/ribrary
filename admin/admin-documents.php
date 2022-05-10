@@ -85,26 +85,25 @@ if (!isset($_SESSION['admin'])) {
                         $data = $admin->displayUploadedDocuments('', $start_from, $num_per_page);
                         $count = $start_from + 1;
                         foreach ($data as $row) {
-           
+
                         ?>
 
-                                <tr>
-                                    <td> <?php echo $count ?></td>
-                                    <td> <?php echo $row["doc_name"] ?></td>
-                                    <td><a href='../functions/uploads/<?php echo $row["doc_path"] ?>' target="_thapa">View</a></td>
-                                    <td> <?php echo $row["createdBy"] ?></td>
-                                    <td> <?php echo $row["date_and_time"] ?></td>
-                                    <td>
-                                        <input type="hidden" name="doc_id" value="<?php echo $row["doc_id"] ?>">
-                                        <button type="button" class="btn btn-outline-success acceptBtn"> Accept</button>
-                                        <button type="button" class="btn btn-outline-danger declineBtn">Decline</button>
+                            <tr>
+                                <td> <?php echo $count ?></td>
+                                <td> <?php echo $row["doc_name"] ?></td>
+                                <td><a href='../functions/uploads/<?php echo $row["doc_path"] ?>' target="_thapa">View</a></td>
+                                <td> <?php echo $row["createdBy"] ?></td>
+                                <td> <?php echo $row["date_and_time"] ?></td>
+                                <td>
+                                    <input type="hidden" name="doc_id" value="<?php echo $row["doc_id"] ?>">
+                                    <button type="button" class="btn btn-outline-success acceptBtn"> Accept</button>
+                                    <button type="button" class="btn btn-outline-danger declineBtn">Decline</button>
 
-                                    </td>
+                                </td>
 
-                                </tr>
+                            </tr>
                         <?php
-                                $count++;
-                       
+                            $count++;
                         }
                         ?>
                     </tbody>
@@ -121,18 +120,49 @@ if (!isset($_SESSION['admin'])) {
                                 </button>
                             </div>
 
-                            <form action="../functions/admin-acceptDocs-function.php" method="POST">
+                            <form action="../functions/admin-pendingDocs-function.php" method="POST">
 
                                 <!-- DISPLAY -->
                                 <div class="modal-body">
 
                                     <input type="hidden" name="doc_id" id="doc_id_accept">
-                                    Are you fucking sure bro ?
+                                    Are you sure you want to accept?
                                 </div>
 
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                                     <button type="submit" name="accept-docs" class="btn btn-primary">Yes</button>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DECLINE MODAL -->
+                <div class="modal fade" id="declineModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+                            <form action="../functions/admin-pendingDocs-function.php" method="POST">
+
+                                <!-- DISPLAY -->
+                                <div class="modal-body">
+
+                                    <input type="hidden" name="doc_id" id="doc_id_decline">
+                                    <p>Message :</p>
+                                    <textarea id="decline-text" name="decline-text" rows="4" cols="30" placeholder="Message" required></textarea>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                    <button type="submit" name="decline-docs" class="btn btn-primary">Done</button>
                                 </div>
                             </form>
 
@@ -230,6 +260,12 @@ if (!isset($_SESSION['admin'])) {
                 $('#acceptModal').modal('show');
                 const docId = e.target.closest('td').firstElementChild.value
                 document.querySelector('#doc_id_accept').value = docId;
+            }
+
+            if (e.target.classList.contains('declineBtn')) {
+                $('#declineModal').modal('show');
+                const docId = e.target.closest('td').firstElementChild.value
+                document.querySelector('#doc_id_decline').value = docId;
             }
         })
 
