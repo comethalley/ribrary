@@ -1,4 +1,3 @@
-
 <div class="sidebar-container">
     <div class="logo-container">
         logo
@@ -32,6 +31,16 @@
             <li class="list">
                 <a href="admin-documents.php" class="link">
                     <i class="fa fa-solid fa-users"></i>Pending Documents</a>
+            </li>
+
+            <li class="list">
+                <a href="admin-podcast.php" class="link">
+                    <i class="fa fa-solid fa-users"></i>Upload Podcasts</a>
+            </li>
+
+            <li class="list">
+                <a href="" class="link">
+                    <i class="fa fa-solid fa-users"></i>Upload Audiobooks</a>
             </li>
 
             <li class="list">
