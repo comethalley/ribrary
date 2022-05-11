@@ -8,13 +8,9 @@
 
 body {
 	height: 100%;
-    background-color: whitesmoke;
     background-size: cover;
 }
 
-main {
-    background-color: whitesmoke;
-}
 
 header {
 	width: 100%;
