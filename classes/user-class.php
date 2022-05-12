@@ -235,9 +235,9 @@ class User extends Database
     }
 
     //test display file in the database
-    function displayUser()
+    function displayAcceptedDocs()
     {
-        $data = $this->connect()->query("SELECT * FROM tbl_pending_book")->fetchAll();
+        $data = $this->connect()->query("SELECT * FROM tbl_accpt_docs")->fetchAll();
 
         return $data;
         exit();

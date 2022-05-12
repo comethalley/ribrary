@@ -2,7 +2,7 @@
 // start session
 session_start();
 
-if (isset($_SESSION['admin']) && $_SESSION['role'] == 'main admin') {
+if (isset($_SESSION['admin_name']) && $_SESSION['role'] == 'main admin') {
 
     include '../includes/autoload-class.php';
     $admin = new Admin();

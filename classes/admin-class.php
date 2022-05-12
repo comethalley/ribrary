@@ -67,7 +67,7 @@ class Admin extends Database
 
         //if execution fail
         if (!$stmt->execute([$username])) {
-            header("Location:../admin/admin-login.php?error=stmtfail");
+            header("Location:../admin/index.php?error=stmtfail");
             exit();
         }
 
@@ -133,7 +133,7 @@ class Admin extends Database
             //start session and get data from userExist then store in session   
             session_start();
 
-            $_SESSION["admin"] = $userExist["email"];
+            $_SESSION["admin_name"] = $userExist["fullname"];
             $_SESSION["admin_id"] = $userExist["admin_id"];
             $_SESSION["role"] = $userExist["role"];
 
@@ -375,6 +375,56 @@ class Admin extends Database
         return $data;
 
         exit();
+    }
+    //insert podcasts to database
+    function upload_podcasts($podcast_name, $podcast_path, $podcast_host, $createdBy)
+    {
+
+        $sql = "INSERT INTO tbl_podcasts(podcast_name,podcast_path,podcast_host,date_and_time,status,uploaded_by)
+    VALUES (?,?,?,?,?,?);";
+
+        $status = 'pending';
+
+        // prepared statement
+        $stmt = $this->connect()->prepare($sql);
+
+        //if execution fail
+        if (!$stmt->execute([$podcast_name, $podcast_path, $podcast_host, $this->date, $status, $createdBy])) {
+            header("Location:../admin/admin-podcast.php?error=stmtfail");
+            $connect = null;
+            exit();
+        }
+
+        //if sucess uploading file, go to this 👇 page
+        header("Location: ../admin/admin-podcast.php?q=uploadsuccess"); //change to docu later
+        exit();
+    }
+
+    //upload podcast function
+    function checkPodcast($allowed, $fileActualExt, $fileError, $fileTmpName, $createdBy, $fileName, $podcast_host)
+    {
+        //check if the file extension is in the array $allowed
+        if (in_array($fileActualExt, $allowed)) {
+            //check if there is no error uploading the file
+            if ($fileError === 0) {
+
+                // $fileNameNew = uniqid ('', true).".".$fileActualExt;
+                $fileNameNew = uniqid('', true) . "." . $fileActualExt;
+                $fileDestination = 'uploads/' . $fileNameNew;
+
+                if (move_uploaded_file($fileTmpName, $fileDestination)) {
+                    // $userId = $_SESSION["id"];
+                    $this->upload_podcasts($fileName, $fileNameNew, $podcast_host, $createdBy);
+                } else {
+                    echo "move_uploaded_file error";
+                }
+            } else {
+                echo "There was an error while uploading the file";
+                echo $fileError;
+            }
+        } else {
+            echo "You can't upload this type of file!";
+        }
     }
 
 
