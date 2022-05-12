@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['admin'])) {
-    header("Location:admin-login.php");
+if (!isset($_SESSION['admin_name'])) {
+    header("Location:index.php");
 } else {
     include '../includes/autoload-class.php';
     $admin = new Admin();

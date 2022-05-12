@@ -98,7 +98,7 @@ if (!isset($_SESSION['id'])) {
   </div>
   <div class="row mb-3 ml-2">
     <?php
-      $data = $user->displayUser();
+      $data = $user->displayAcceptedDocs();
       $count = 1;
       foreach ($data as $row) {
     ?>
@@ -108,10 +108,10 @@ if (!isset($_SESSION['id'])) {
             <img src="img/book-icon.png" class="card-img-top" alt="book-cover">
           </div>
           <div class="card-body">
-              <p class="card-title"><?php echo $row["BookName"] ?></p>
+              <p class="card-title"><?php echo $row["doc_name"] ?></p>
               <p class="card-text">Ratings</p>
               <p class="card-text"><?php echo $row["createdBy"] ?></p>
-              <a href="view.html?file=<?php echo $row["BookPath"] ?>" class="btn btn-primary">Read</a>
+              <a href="view.html?file=<?php echo $row["doc_path"] ?>" class="btn btn-primary">Read</a>
           </div>
         </div>
       </div>
@@ -128,7 +128,7 @@ if (!isset($_SESSION['id'])) {
   </div>
     <div class="row mb-3 ml-2">
       <?php
-        $data = $user->displayUser();
+        $data = $user->displayAcceptedDocs();
         $count = 1;
         foreach ($data as $row) {
       ?>
@@ -158,7 +158,7 @@ if (!isset($_SESSION['id'])) {
   </div>
       <div class="row mb-3 ml-2">
         <?php
-          $data = $user->displayUser();
+          $data = $user->displayAcceptedDocs();
           $count = 1;
           foreach ($data as $row) {
         ?>
@@ -188,7 +188,7 @@ if (!isset($_SESSION['id'])) {
     </div>
     <div class="row mb-3 ml-2">
       <?php
-        $data = $user->displayUser();
+        $data = $user->displayAcceptedDocs();
         $count = 1;
         foreach ($data as $row) {
       ?>
@@ -218,7 +218,7 @@ if (!isset($_SESSION['id'])) {
     </div>
     <div class="row mb-3 ml-2">
       <?php
-        $data = $user->displayUser();
+        $data = $user->displayAcceptedDocs();
         $count = 1;
         foreach ($data as $row) {
       ?>

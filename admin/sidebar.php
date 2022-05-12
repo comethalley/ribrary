@@ -28,10 +28,18 @@
             }
             ?>
 
-            <li class="list">
-                <a href="admin-documents.php" class="link">
-                    <i class="fa fa-solid fa-users"></i>Pending Documents</a>
-            </li>
+            <?php
+            if ($_SESSION["role"] == 'main admin') {
+            ?>
+
+                <li class="list">
+                    <a href="admin-documents.php" class="link">
+                        <i class="fa fa-solid fa-users"></i>Pending Documents</a>
+                </li>
+
+            <?php
+            }
+            ?>
 
             <li class="list">
                 <a href="admin-podcast.php" class="link">
