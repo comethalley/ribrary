@@ -237,7 +237,7 @@ class User extends Database
     //test display file in the database
     function displayAcceptedDocs()
     {
-        $data = $this->connect()->query("SELECT * FROM tbl_accpt_docs")->fetchAll();
+        $data = $this->connect()->query("SELECT * FROM tbl_research_documents WHERE status = 'accepted'")->fetchAll();
 
         return $data;
         exit();
@@ -264,7 +264,7 @@ class User extends Database
     function upload_documents($doc_name, $doc_file, $doc_path, $createdBy, $id)
     {
 
-        $sql2 = "INSERT INTO tbl_uploaded_documents (doc_name,doc_file ,doc_path ,createdBy ,date_and_time ,user_id ,status)
+        $sql2 = "INSERT INTO tbl_research_documents (doc_name,doc_file ,doc_path ,createdBy ,date_and_time ,user_id ,status)
    VALUES (?,?,?,?,?,(SELECT User_id FROM tbl_user WHERE user_id = ?),?);";
 
         $status = 'pending';

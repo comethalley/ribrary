@@ -93,7 +93,7 @@ CREATE TABLE `tbl_pending_book` (
 ) 
 
 
-CREATE TABLE `tbl_uploaded_documents` (
+CREATE TABLE `tbl_research_documents` (
   `doc_id` int(255) NOT NULL AUTO_INCREMENT,
   `doc_name` varchar(255) NOT NULL,
   `doc_file` blob NOT NULL,
