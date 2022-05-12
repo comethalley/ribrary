@@ -53,6 +53,35 @@ if (!isset($_SESSION['admin_name'])) {
                 <label for="narrator">Narrator</label>
                 <input type="text" name="narrator" id="narrator" placeholder="Narrator" required>
 
+                <fieldset>
+
+                    <div>
+                        <input type="radio" id="fantasy" name="genre" value="fantasy">
+                        <label for="fantasy">Fantasy</label>
+
+                        <input type="radio" id="science-fiction" name="genre" value="science fiction">
+                        <label for="science-fiction">Science Fiction</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" id="action-and-adventure" name="genre" value="action and adventure">
+                        <label for="action-and-adventure">Action & Adventure</label>
+
+                        <input type="radio" id="mystery" name="genre" value="mystery">
+                        <label for="mystery">Mystery</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" id="action-and-adventure" name="genre" value="action and adventure">
+                        <label for="action-and-adventure">Action & Adventure</label>
+                    </div>
+
+                    <div>
+
+                    </div>                 
+                </fieldset>
+
+
 
                 <button name="upload-audiobook">Submit</button>
             </form>
