@@ -8,7 +8,7 @@ if (isset($_POST['upload-podcast'])) {
     $admin_name = $_SESSION["admin_name"];
     $host = $_POST['channel'];
     $file = $_FILES['file'];
-  
+
     //file data
     $fileName = $_FILES['file']['name'];
     $fileTmpName = $_FILES['file']['tmp_name'];
@@ -21,10 +21,11 @@ if (isset($_POST['upload-podcast'])) {
     $fileActualExt = strtolower(end($fileExt));
 
 
-    // print_r($fileActualExt);
-    //allowed documents
-    $allowed = array('pdf','jpg','png','mp4');
-
-    $admin->checkPodcast($allowed,$fileActualExt,$fileError,$fileTmpName,$admin_name,$fileName,$host);
-   
+    $allowed = array('mp4');
+    if ($fileSize < 300000000) {
+        $admin->checkPodcast($allowed, $fileActualExt, $fileError, $fileTmpName, $admin_name, $fileName, $host);
+    } else {
+        header("Location: ../admin/admin-podcast.php?q=largefile"); //change to docu later
+        exit();
+    }
 }

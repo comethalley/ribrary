@@ -119,6 +119,18 @@ CREATE TABLE `tbl_podcasts` (
   PRIMARY KEY (podcast_id)
 ) 
 
+CREATE TABLE `tbl_audiobook` (
+  `audiobook_id` int(255) NOT NULL AUTO_INCREMENT,
+  `audiobook_name` varchar(255) NOT NULL,
+  `audiobook_path` varchar (30) NOT NULL,
+  `audiobook_cover_path` varchar(255) NOT NULL,
+  `narrator` varchar(11) NOT NULL,
+  date_and_time varchar (60) NOT NULL,
+  status varchar (30) NOT NULL,
+  uploaded_by varchar(30) NOT NULL,
+  PRIMARY KEY (audiobook_id)
+) 
+
 
 CREATE TABLE `tbl_accpt_docs` (
   `doc_no` int(255) NOT NULL AUTO_INCREMENT,

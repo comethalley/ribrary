@@ -2,21 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['admin_name'])) {
-    header("Location:admin-login.php");
-} else {
-    include '../includes/autoload-class.php';
-    $admin = new Admin();
-
-    $admin = new Admin();
-
-    if (isset($_GET['page'])) {
-        $page = $_GET['page'];
-    } else {
-        $page = 1;
-    }
-
-    $num_per_page = 9;
-    $start_from = ($page - 1) * 9;
+    header("Location:index.php");
 }
 
 ?>
@@ -40,7 +26,7 @@ if (!isset($_SESSION['admin_name'])) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 
     <!-- LINK FOR INCON (FONTAWESOME) -->
-    <script  src="https://kit.fontawesome.com/86dc2a589d.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/86dc2a589d.js" crossorigin="anonymous"></script>
 
     <!-- Sweet alert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -57,19 +43,38 @@ if (!isset($_SESSION['admin_name'])) {
         <div class="main-container">
             <h1> Upload Podcast</h1>
 
-            <div class="video-container">
-                <!-- <video width="300" controls>
-                    <source src="" type="video/mp4">
-                </video> -->
-
-            </div>
 
             <form action="../functions/admin-uploadPodcast-function.php" method="POST" enctype="multipart/form-data">
 
-                <input type="file" name="file" id="podcast-video" required>
+                <input type="file" name="file" accept=".mp4" id="podcast-video" required>
                 <input type="text" name="channel" placeholder="podcast channel" required>
                 <button name="upload-podcast">Submit</button>
             </form>
+
+            <!-- Test if podcasts display works -->
+            <h1>Display Podcasts(test)</h1>
+            <?php
+            include '../includes/autoload-class.php';
+            $user = new User();
+
+            $data = $user->displayPodcasts();
+
+            foreach ($data as $row) {
+            ?>
+                <p><?php echo $row['podcast_name'] ?></p>
+
+                <img src="../functions/uploads/<?php echo $row['podcast_name'] ?>" alt="">
+
+
+                <video controls width="250">
+                    <source src="../functions/uploads/<?php echo $row['podcast_path'] ?>" type="video/mp4">
+
+                    Sorry, your browser doesn't support embedded videos.
+                </video>
+
+            <?php
+            }
+            ?>
 
 
 
@@ -88,7 +93,7 @@ if (!isset($_SESSION['admin_name'])) {
                 toast: true,
                 position: 'top-end',
                 showConfirmButton: false,
-                timer: 3000,
+                timer: 4000,
                 timerProgressBar: true,
                 didOpen: (toast) => {
                     toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -97,10 +102,18 @@ if (!isset($_SESSION['admin_name'])) {
             })
 
             Toast.fire({
-                icon: 'success',
+                icon: "success",
                 title: 'Uploaded Succesfully'
             })
 
+        }
+
+        if (keyword && keyword == "largefile") {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+            })
         }
     </script>
 
@@ -108,4 +121,5 @@ if (!isset($_SESSION['admin_name'])) {
     <script src="js/sidebar-script.js"></script>
 
 </body>
+
 </html>

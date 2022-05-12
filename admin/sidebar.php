@@ -29,7 +29,7 @@
             ?>
 
             <?php
-            if ($_SESSION["role"] == 'main admin') {
+            if ($_SESSION["role"] == 'Admin1') {
             ?>
 
                 <li class="list">
@@ -41,15 +41,22 @@
             }
             ?>
 
-            <li class="list">
-                <a href="admin-podcast.php" class="link">
-                    <i class="fa fa-solid fa-users"></i>Upload Podcasts</a>
-            </li>
+            <?php
+            if ($_SESSION["role"] == 'Admin2') {
+            ?>
+                <li class="list">
+                    <a href="admin-podcast.php" class="link">
+                        <i class="fa fa-solid fa-users"></i>Upload Podcasts</a>
+                </li>
 
-            <li class="list">
-                <a href="" class="link">
-                    <i class="fa fa-solid fa-users"></i>Upload Audiobooks</a>
-            </li>
+                <li class="list">
+                    <a href="admin-audiobook.php" class="link">
+                        <i class="fa fa-solid fa-users"></i>Upload Audiobooks</a>
+                </li>
+            <?php
+            }
+            ?>
+
 
             <li class="list">
                 <a href="admin-audit-trail.php" class="link">
