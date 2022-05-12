@@ -29,7 +29,7 @@
             ?>
 
             <?php
-            if ($_SESSION["role"] == 'Admin1') {
+            if ($_SESSION["role"] == 'Admin1' || $_SESSION["role"] == 'main admin') {
             ?>
 
                 <li class="list">

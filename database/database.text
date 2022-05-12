@@ -124,6 +124,7 @@ CREATE TABLE `tbl_audiobook` (
   `audiobook_name` varchar(255) NOT NULL,
   `audiobook_path` varchar (30) NOT NULL,
   `audiobook_cover_path` varchar(255) NOT NULL,
+   categories varchar(30) NOT NULL,
   `narrator` varchar(11) NOT NULL,
   date_and_time varchar (60) NOT NULL,
   status varchar (30) NOT NULL,
