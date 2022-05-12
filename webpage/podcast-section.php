@@ -99,7 +99,7 @@ if (!isset($_SESSION['id'])) {
               <p class="card-title"><?php echo $row["BookName"] ?></p>
               <p class="card-text">Ratings</p>
               <p class="card-text"><?php echo $row["createdBy"] ?></p>
-              <a href="view.html?file=<?php echo $row["BookPath"] ?>" class="btn btn-primary">Watch</a>
+              <a href="view.php?file=<?php echo $row["BookPath"] ?>" class="btn btn-primary">Watch</a>
           </div>
         </div>
       </div>
@@ -129,7 +129,7 @@ if (!isset($_SESSION['id'])) {
                 <p class="card-title"><?php echo $row["BookName"] ?></p>
                 <p class="card-text">Ratings</p>
                 <p class="card-text"><?php echo $row["createdBy"] ?></p>
-                <a href="view.html?file=<?php echo $row["BookPath"] ?>" class="btn btn-primary">Watch</a>
+                <a href="view.php?file=<?php echo $row["BookPath"] ?>" class="btn btn-primary">Watch</a>
             </div>
           </div>
         </div>
@@ -159,7 +159,7 @@ if (!isset($_SESSION['id'])) {
                   <p class="card-title"><?php echo $row["BookName"] ?></p>
                   <p class="card-text">Ratings</p>
                   <p class="card-text"><?php echo $row["createdBy"] ?></p>
-                  <a href="view.html?file=<?php echo $row["BookPath"] ?>" class="btn btn-primary">Watch</a>
+                  <a href="view.php?file=<?php echo $row["BookPath"] ?>" class="btn btn-primary">Watch</a>
               </div>
             </div>
           </div>

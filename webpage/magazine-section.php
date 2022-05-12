@@ -93,7 +93,7 @@ if (!isset($_SESSION['id'])) {
               <?php echo $row["createdBy"] ?>
             </h6>
             <button class="btn">
-                  <a href = "view.html?file=<?php echo $row["BookPath"] ?>">
+                  <a href = "view.php?file=<?php echo $row["BookPath"] ?>">
                     View
                   </a>
             </button>
