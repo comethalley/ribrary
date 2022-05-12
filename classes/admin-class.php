@@ -218,11 +218,11 @@ class Admin extends Database
     function displayUploadedDocuments($displayAll = "notall", $start_from = 0, $num_per_page = 9)
     {
         if ($displayAll == "all") {
-            $data = $this->connect()->query("SELECT * FROM tbl_uploaded_documents ")->fetchAll();
+            $data = $this->connect()->query("SELECT * FROM tbl_research_documents ")->fetchAll();
 
             return $data;
         }
-        $data = $this->connect()->query("SELECT * FROM tbl_uploaded_documents WHERE status = 'pending' limit $start_from,$num_per_page")->fetchAll();
+        $data = $this->connect()->query("SELECT * FROM tbl_research_documents WHERE status = 'pending' limit $start_from,$num_per_page")->fetchAll();
 
         return $data;
 
@@ -312,7 +312,7 @@ class Admin extends Database
     function updateDocStatus($doc_id, $status, $message = '')
     {
         if ($status == 'decline') {
-            $sql  = "UPDATE tbl_uploaded_documents SET status= ?, message = ? WHERE doc_id=?";
+            $sql  = "UPDATE tbl_research_documents SET status= ?, message = ? WHERE doc_id=?";
             $stmt = $this->connect()->prepare($sql);
 
             //if execution fail
@@ -324,7 +324,7 @@ class Admin extends Database
         }
 
         if ($status == 'accepted') {
-            $sql  = "UPDATE tbl_uploaded_documents SET status= ? WHERE doc_id=?";
+            $sql  = "UPDATE tbl_research_documents SET status= ? WHERE doc_id=?";
             $stmt = $this->connect()->prepare($sql);
 
             //if execution fail
@@ -347,20 +347,8 @@ class Admin extends Database
     }
 
     //insert accepted docs to tbl_accepted_docs
-    function accept_documents($doc_name, $doc_file, $doc_path, $createdBy, $doc_id, $user_id)
+    function accept_documents($doc_id)
     {
-
-        $sql = "INSERT INTO tbl_accpt_docs (doc_name,doc_file ,doc_path ,createdBy ,date_and_time_accepted,doc_id ,user_id)
-   VALUES (?,?,?,?,?,(SELECT doc_id FROM tbl_uploaded_documents WHERE doc_id = ?),(SELECT User_id FROM tbl_user WHERE user_id = ?));";
-
-        $stmt = $this->connect()->prepare($sql);
-
-        //if execution fail
-        if (!$stmt->execute([$doc_name, $doc_file, $doc_path, $createdBy, $this->date, $doc_id, $user_id])) {
-            header("Location:../functions/admin-pendingDocs-function.php?error=stmtfail");
-            $connect = null;
-            exit();
-        }
 
         //call update status
         $this->updateDocStatus($doc_id, 'accepted');
@@ -484,6 +472,7 @@ class Admin extends Database
         }
     }
 
+    
 
     //udpate user in database
     function updateUser($id, $fname, $lname, $username)

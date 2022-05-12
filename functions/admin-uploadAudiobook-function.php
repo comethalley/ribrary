@@ -38,10 +38,9 @@ if (isset($_POST['upload-audiobook'])) {
     // if ($fileSize < 300000000) {
     if ($fileError === 0 && $file2Error === 0) {
 
-        $admin->checkAudiobook($allowed, $allowed2, $fileActualExt, $file2ActualExt, $fileName, $file2Name, $fileTmpName, $file2TmpName, $narrator,$admin_name);
+        $admin->checkAudiobook($allowed, $allowed2, $fileActualExt, $file2ActualExt, $fileName, $file2Name, $fileTmpName, $file2TmpName, $narrator, $admin_name);
     } else {
         echo "There was an error while uploading the file";
         exit();
     }
-
 }

@@ -87,7 +87,7 @@ if (!isset($_SESSION['id'])) {
   <main>
 
     <div class="backdrop">
-      <button class="upbtn" onclick="window.location.href='upload-audiobook-section.php'">Upload your own audiobook here!</button>
+      <button class="upbtn" onclick="window.location.href='upload-documents-section.php'">Upload your own audiobook here!</button>
       <center>
         <button type="button" class="btn">Add Forum</button></p>
       </center>

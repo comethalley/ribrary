@@ -5,11 +5,10 @@ $admin = new Admin();
 if (isset($_POST['accept-docs'])) {
 
     $doc_id = $_POST['doc_id'];
-    $data = $admin->getUploadedDocs($doc_id);
 
-    if (!$data) return;
+    if (!$doc_id) return;
 
-    $admin->accept_documents($data['doc_name'], $data['doc_file'], $data['doc_path'], $data['createdBy'], $doc_id, $data['user_id']);
+    $admin->accept_documents($doc_id);
 }
 
 if (isset($_POST['decline-docs'])) {
