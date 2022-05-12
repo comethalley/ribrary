@@ -146,9 +146,17 @@ class Admin extends Database
                 exit();
             }
 
-            //if not
-            header("Location:../admin/admin-documents.php?q=LoginSucesfully!");
-            exit();
+            //if role is 'Admin1'
+            if ($userExist["role"] == 'Admin1') {
+                header("Location:../admin/admin-documents.php?q=LoginSucesfully!");
+                exit();
+            }
+
+            //if role is 'Admin2'
+            if ($userExist["role"] == 'Admin2') {
+                header("Location:../admin/admin-podcast.php?q=LoginSucesfully!");
+                exit();
+            }
         } else {
             //if password not match from user
             header("Location:../admin/index.php?error=wrongPassword");
@@ -421,6 +429,55 @@ class Admin extends Database
             } else {
                 echo "There was an error while uploading the file";
                 echo $fileError;
+            }
+        } else {
+            echo "You can't upload this type of file!";
+        }
+    }
+
+    //insert audiobook to database
+    function upload_audiobook($audiobook_name, $audiobook_path,$audiobook_cover_path, $narrator, $createdBy)
+    {
+
+        $sql = "INSERT INTO tbl_audiobook(audiobook_name, audiobook_path, audiobook_cover_path, narrator, date_and_time, status, uploaded_by)
+     VALUES (?,?,?,?,?,?,?);";
+
+        $status = 'pending';
+
+        // prepared statement
+        $stmt = $this->connect()->prepare($sql);
+
+        //if execution fail
+        if (!$stmt->execute([$audiobook_name, $audiobook_path,$audiobook_cover_path, $narrator, $this->date, $status, $createdBy])) {
+            header("Location:../admin/admin-audiobook.php?error=stmtfail");
+            $connect = null;
+            exit();
+        }
+
+        //if sucess uploading file, go to this 👇 page
+        header("Location: ../admin/admin-audiobook.php?q=uploadsuccess"); //change to docu later
+        exit();
+    }
+
+    //upload audiobook function
+    function checkAudiobook($allowed, $allowed2, $fileActualExt, $file2ctualExt, $filename, $file2name, $fileTmpName, $file2TmpName, $narrator, $admin_name)
+    {
+        //check if the file extension is in the array $allowed
+        if (in_array($fileActualExt, $allowed) && in_array($file2ctualExt, $allowed2)) {
+            
+            //audiobook
+            $fileNameNew = uniqid('', true) . "." . $fileActualExt;
+            $fileDestination = 'uploads/' . $fileNameNew;
+
+            //cover
+            $fileNameNew2 = uniqid('', true) . "." . $file2ctualExt;
+            $fileDestination2 = 'uploads/' . $fileNameNew2;
+
+            if (move_uploaded_file($fileTmpName, $fileDestination) &&  move_uploaded_file($file2TmpName, $fileDestination2)) {
+
+                $this->upload_audiobook($filename,$fileNameNew,$fileNameNew2,$narrator,$admin_name);
+            } else {
+                echo "move_uploaded_file error";
             }
         } else {
             echo "You can't upload this type of file!";

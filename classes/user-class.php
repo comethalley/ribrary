@@ -379,4 +379,20 @@ class User extends Database
             exit();
         }
     }
+
+    //display audiobooks
+    function displayAudioBooks()
+    {
+        $data = $this->connect()->query("SELECT * FROM tbl_audiobook")->fetchAll();
+        return $data;
+        exit();
+    }
+
+     //display audiobooks
+     function displayPodcasts()
+     {
+         $data = $this->connect()->query("SELECT * FROM tbl_podcasts")->fetchAll();
+         return $data;
+         exit();
+     }
 }
