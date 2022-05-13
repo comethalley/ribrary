@@ -50,7 +50,7 @@ if (!isset($_SESSION['admin_name'])) {
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
 
     <!-- CSS TYLES -->
-    <link rel="stylesheet" href="css/admin-documents-style.css">
+    <link rel="stylesheet" href="css/admin-pending-style.css">
     <link rel="stylesheet" href="css/sidebar-style.css">
 </head>
 

@@ -7,6 +7,7 @@ if (isset($_POST['upload-audiobook'])) {
 
     $admin_name = $_SESSION["admin_name"];
     $narrator = $_POST['narrator'];
+    $categories = $_POST['categories'];
     $file = $_FILES['file'];
     $file2 = $_FILES['file2'];
 
@@ -32,13 +33,13 @@ if (isset($_POST['upload-audiobook'])) {
     $file2Ext = explode('.', $file2Name);
     $file2ActualExt = strtolower(end($file2Ext));
 
-
     $allowed = array('mp3');
     $allowed2 = array('png', 'jpg');
-    // if ($fileSize < 300000000) {
+
+    
     if ($fileError === 0 && $file2Error === 0) {
 
-        $admin->checkAudiobook($allowed, $allowed2, $fileActualExt, $file2ActualExt, $fileName, $file2Name, $fileTmpName, $file2TmpName, $narrator, $admin_name);
+        $admin->checkAudiobook($allowed, $allowed2, $fileActualExt, $file2ActualExt, $fileName, $fileTmpName, $file2TmpName, $narrator, $admin_name, $categories);
     } else {
         echo "There was an error while uploading the file";
         exit();
