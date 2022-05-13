@@ -99,7 +99,7 @@ if (!isset($_SESSION['id'])) {
   </div>
   <div class="row mb-3 ml-2">
     <?php
-      $data = $user->displayAcceptedDocs();
+      $data = $user->displayAudioBooks();
       $count = 1;
       foreach ($data as $row) {
     ?>

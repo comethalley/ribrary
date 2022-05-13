@@ -22,7 +22,7 @@ if (isset($_POST['upload-podcast'])) {
 
 
     $allowed = array('mp4');
-    if ($fileSize < 300000000) {
+    if ($fileSize < 500000000) {
         $admin->checkPodcast($allowed, $fileActualExt, $fileError, $fileTmpName, $admin_name, $fileName, $host);
     } else {
         header("Location: ../admin/admin-podcast.php?q=largefile"); //change to docu later

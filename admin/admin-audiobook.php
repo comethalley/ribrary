@@ -56,29 +56,29 @@ if (!isset($_SESSION['admin_name'])) {
                 <fieldset>
 
                     <div>
-                        <input type="radio" id="fantasy" name="genre" value="fantasy">
+                        <input type="radio" id="fantasy" name="categories" value="fantasy" required>
                         <label for="fantasy">Fantasy</label>
 
-                        <input type="radio" id="science-fiction" name="genre" value="science fiction">
+                        <input type="radio" id="science-fiction" name="categories" value="science fiction">
                         <label for="science-fiction">Science Fiction</label>
                     </div>
 
                     <div>
-                        <input type="radio" id="action-and-adventure" name="genre" value="action and adventure">
+                        <input type="radio" id="action-and-adventure" name="categories" value="action and adventure">
                         <label for="action-and-adventure">Action & Adventure</label>
 
-                        <input type="radio" id="mystery" name="genre" value="mystery">
+                        <input type="radio" id="mystery" name="categories" value="mystery">
                         <label for="mystery">Mystery</label>
                     </div>
 
                     <div>
-                        <input type="radio" id="action-and-adventure" name="genre" value="action and adventure">
+                        <input type="radio" id="action-and-adventure" name="categories" value="action and adventure">
                         <label for="action-and-adventure">Action & Adventure</label>
                     </div>
 
                     <div>
 
-                    </div>                 
+                    </div>
                 </fieldset>
 
 
