@@ -51,8 +51,59 @@ if (!isset($_SESSION['admin_name'])) {
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
 
     <!-- CSS TYLES -->
-    <link rel="stylesheet" href="css/admin-documents-style.css">
+    <link rel="stylesheet" href="css/admin-pending-style.css">
     <link rel="stylesheet" href="css/sidebar-style.css">
+
+    <style>
+        <?php
+        if ($_SESSION["role"] == 'main admin') {
+
+        ?>
+        .list:nth-of-type(2) {
+            border-left: 5px solid transparent;
+        }
+
+        .list:nth-of-type(2) .link:nth-of-type(1) {
+            background-color: transparent;
+        }
+
+        /* ----------------------------- */
+        .list:nth-of-type(4) {
+            border-left: 5px solid #4980ff;
+            padding-left: 1.688em;
+        }
+
+        .list:nth-of-type(4) .link:nth-of-type(1) {
+            background-color: #4980ff;
+            border-radius: 8px;
+        }
+
+        <?php
+        } else {
+        ?>
+        .list:nth-of-type(2) {
+            border-left: 5px solid transparent;
+        }
+
+        .list:nth-of-type(2) .link:nth-of-type(1) {
+            background-color: transparent;
+        }
+
+        /* ----------------------------- */
+        .list:nth-of-type(1) {
+            border-left: 5px solid #4980ff;
+            padding-left: 1.688em;
+        }
+
+        .list:nth-of-type(1) .link:nth-of-type(1) {
+            background-color: #4980ff;
+            border-radius: 8px;
+        }
+
+        <?php
+        }
+        ?>
+    </style>
 </head>
 
 <body>

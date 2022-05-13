@@ -37,6 +37,16 @@
                         <i class="fa fa-solid fa-users"></i>Pending Documents</a>
                 </li>
 
+                <li class="list">
+                    <a href="admin-pendingPodcasts.php" class="link">
+                        <i class="fa fa-solid fa-users"></i>Pending Podcasts</a>
+                </li>
+
+                <li class="list">
+                    <a href="admin-pendingAudiobooks.php" class="link">
+                        <i class="fa fa-solid fa-users"></i>Pending Audiobooks</a>
+                </li>
+
             <?php
             }
             ?>

@@ -269,6 +269,36 @@ class Admin extends Database
         exit();
     }
 
+    //update podcast status 
+    function updatePodcastStatus($podcast_id, $status)
+    {
+        $sql = "UPDATE tbl_podcasts SET status = ? WHERE podcast_id=?";
+        $stmt = $this->connect()->prepare($sql);
+
+        if (!$stmt->execute([$status, $podcast_id])) {
+            header("Location:../admin/admin-pendingPodcasts.php?error=errorAccept");
+            exit();
+        }
+
+        header("Location:../admin/admin-pendingPodcasts.php?q=success");
+        exit();
+    }
+
+    //update audiobook status 
+    function updateAudiobookStatus($audiobook_id, $status)
+    {
+        $sql = "UPDATE tbl_audiobook SET status = ? WHERE audiobook_id=?";
+        $stmt = $this->connect()->prepare($sql);
+
+        if (!$stmt->execute([$status, $audiobook_id])) {
+            header("Location:../admin/admin-pendingAudiobooks.php?error=errorAccept");
+            exit();
+        }
+
+        header("Location:../admin/admin-pendingAudiobooks.php?q=success");
+        exit();
+    }
+
     //update admin role 
     function updateAdminStatus($id, $status)
     {
@@ -281,32 +311,6 @@ class Admin extends Database
         }
     }
 
-
-    //select specficif uploaded documents by id
-    function getUploadedDocs($doc_id)
-    {
-        //prepared statement
-        $stmt = $this->connect()->prepare("SELECT * FROM tbl_uploaded_documents WHERE doc_id=?");
-
-        //if execution fail
-        if (!$stmt->execute([$doc_id])) {
-            header("Location:../admin/admin-documents.php?error=stmtfail");
-            exit();
-        }
-
-        //fetch the result
-        $result = $stmt->fetch();
-
-        //if has result return it, else return false
-        if ($result) {
-            return $result;
-        } else {
-            $result = false;
-            return $result;
-        }
-
-        exit();
-    }
 
     //update document status
     function updateDocStatus($doc_id, $status, $message = '')
@@ -424,11 +428,11 @@ class Admin extends Database
     }
 
     //insert audiobook to database
-    function upload_audiobook($audiobook_name, $audiobook_path,$audiobook_cover_path, $narrator, $createdBy)
+    function upload_audiobook($audiobook_name, $audiobook_path, $audiobook_cover_path, $narrator, $createdBy, $categories)
     {
 
-        $sql = "INSERT INTO tbl_audiobook(audiobook_name, audiobook_path, audiobook_cover_path, narrator, date_and_time, status, uploaded_by)
-     VALUES (?,?,?,?,?,?,?);";
+        $sql = "INSERT INTO tbl_audiobook(audiobook_name, audiobook_path, audiobook_cover_path,categories, narrator, date_and_time, status, uploaded_by)
+     VALUES (?,?,?,?,?,?,?,?);";
 
         $status = 'pending';
 
@@ -436,7 +440,7 @@ class Admin extends Database
         $stmt = $this->connect()->prepare($sql);
 
         //if execution fail
-        if (!$stmt->execute([$audiobook_name, $audiobook_path,$audiobook_cover_path, $narrator, $this->date, $status, $createdBy])) {
+        if (!$stmt->execute([$audiobook_name, $audiobook_path, $audiobook_cover_path, $categories, $narrator, $this->date, $status, $createdBy])) {
             header("Location:../admin/admin-audiobook.php?error=stmtfail");
             $connect = null;
             exit();
@@ -448,11 +452,11 @@ class Admin extends Database
     }
 
     //upload audiobook function
-    function checkAudiobook($allowed, $allowed2, $fileActualExt, $file2ctualExt, $filename, $file2name, $fileTmpName, $file2TmpName, $narrator, $admin_name)
+    function checkAudiobook($allowed, $allowed2, $fileActualExt, $file2ctualExt, $filename, $fileTmpName, $file2TmpName, $narrator, $admin_name, $categories)
     {
         //check if the file extension is in the array $allowed
         if (in_array($fileActualExt, $allowed) && in_array($file2ctualExt, $allowed2)) {
-            
+
             //audiobook
             $fileNameNew = uniqid('', true) . "." . $fileActualExt;
             $fileDestination = 'uploads/' . $fileNameNew;
@@ -463,7 +467,7 @@ class Admin extends Database
 
             if (move_uploaded_file($fileTmpName, $fileDestination) &&  move_uploaded_file($file2TmpName, $fileDestination2)) {
 
-                $this->upload_audiobook($filename,$fileNameNew,$fileNameNew2,$narrator,$admin_name);
+                $this->upload_audiobook($filename, $fileNameNew, $fileNameNew2, $narrator, $admin_name, $categories);
             } else {
                 echo "move_uploaded_file error";
             }
@@ -472,7 +476,38 @@ class Admin extends Database
         }
     }
 
-    
+
+    //display all pending podcasts
+    function displayPendingPodcasts($displayAll = "notall", $start_from = 0, $num_per_page = 9)
+    {
+        if ($displayAll == "all") {
+            $data = $this->connect()->query("SELECT * FROM tbl_podcasts ")->fetchAll();
+
+            return $data;
+        }
+        $data = $this->connect()->query("SELECT * FROM tbl_podcasts WHERE status = 'pending' limit $start_from,$num_per_page")->fetchAll();
+
+        return $data;
+
+        exit();
+    }
+
+    //display all pending audiobook
+    function displayPendingAudiobooks($displayAll = "notall", $start_from = 0, $num_per_page = 9)
+    {
+        if ($displayAll == "all") {
+            $data = $this->connect()->query("SELECT * FROM tbl_audiobook ")->fetchAll();
+
+            return $data;
+        }
+        $data = $this->connect()->query("SELECT * FROM tbl_audiobook WHERE status = 'pending' limit $start_from,$num_per_page")->fetchAll();
+
+        return $data;
+
+        exit();
+    }
+
+
 
     //udpate user in database
     function updateUser($id, $fname, $lname, $username)
