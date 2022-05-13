@@ -86,20 +86,20 @@ if (!isset($_SESSION['id'])) {
       </div>
   <div class="row mb-3 ml-2">
     <?php
-      $data = $user->displayAcceptedDocs();
+      $data = $user->displayPodcasts();
       $count = 1;
       foreach ($data as $row) {
     ?>
       <div class="col-md-3 my-2 my-md-3 rounded">
         <div class="card shadow text-center">
           <div>
-            <img src="img/book-icon.png" class="card-img-top" alt="book-cover">
+            <img src="img/book-icon.png" class="card-img-top" alt="cover">
           </div>
           <div class="card-body">
-              <p class="card-title"><?php echo $row["doc_name"] ?></p>
+              <p class="card-title"><?php echo $row["podcast_name"] ?></p>
               <p class="card-text">Ratings</p>
-              <p class="card-text"><?php echo $row["createdBy"] ?></p>
-              <a href="view.php?file=<?php echo $row["doc_path"] ?>" class="btn btn-primary">Watch</a>
+              <p class="card-text"><?php echo $row["podcast_host"] ?></p>
+              <a href="view.php?file=<?php echo $row["podcast_path"] ?>" class="btn btn-primary">Watch</a>
           </div>
         </div>
       </div>
@@ -116,7 +116,7 @@ if (!isset($_SESSION['id'])) {
       </div>
     <div class="row mb-3 ml-2">
       <?php
-        $data = $user->displayAcceptedDocs();
+        $data = $user->displayPodcasts();
         $count = 1;
         foreach ($data as $row) {
       ?>
@@ -126,11 +126,12 @@ if (!isset($_SESSION['id'])) {
               <img src="img/book-icon.png" class="card-img-top" alt="book-cover">
             </div>
             <div class="card-body">
-              <p class="card-title"><?php echo $row["doc_name"] ?></p>
+              <p class="card-title"><?php echo $row["podcast_name"] ?></p>
               <p class="card-text">Ratings</p>
-              <p class="card-text"><?php echo $row["createdBy"] ?></p>
-              <a href="view.php?file=<?php echo $row["doc_path"] ?>" class="btn btn-primary">Watch</a>
+              <p class="card-text"><?php echo $row["podcast_host"] ?></p>
+              <a href="view.php?file=<?php echo $row["podcast_path"] ?>" class="btn btn-primary">Watch</a>
           </div>
+        </div>
           </div>
         </div>
         <?php
@@ -146,7 +147,7 @@ if (!isset($_SESSION['id'])) {
       </div>
       <div class="row mb-3 ml-2">
         <?php
-          $data = $user->displayAcceptedDocs();
+          $data = $user->displayPodcasts();
           $count = 1;
           foreach ($data as $row) {
         ?>
@@ -156,11 +157,12 @@ if (!isset($_SESSION['id'])) {
                 <img src="img/book-icon.png" class="card-img-top" alt="book-cover">
               </div>
               <div class="card-body">
-                <p class="card-title"><?php echo $row["doc_name"] ?></p>
-                <p class="card-text">Ratings</p>
-                <p class="card-text"><?php echo $row["createdBy"] ?></p>
-                <a href="view.php?file=<?php echo $row["doc_path"] ?>" class="btn btn-primary">Watch</a>
-              </div>
+              <p class="card-title"><?php echo $row["podcast_name"] ?></p>
+              <p class="card-text">Ratings</p>
+              <p class="card-text"><?php echo $row["podcast_host"] ?></p>
+              <a href="view.php?file=<?php echo $row["podcast_path"] ?>" class="btn btn-primary">Watch</a>
+          </div>
+        </div>
             </div>
           </div>
           <?php
