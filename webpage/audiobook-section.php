@@ -170,7 +170,7 @@ if (isset($_POST['categories-value'])) {
                     <p class="card-text">Ratings</p>
                     <p class="card-text"><?php echo $row["narrator"] ?></p>
                     <p class="card-text">Categories</p>
-                    <a href="audio-view.php?file=<?php echo $row["audiobook_cover_path"] ?>&audio_file=<?php echo $row["audiobook_path"] ?>" class="btn btn-primary">Listen</a>
+                    <a href="audio-view.html?file=<?php echo $row["audiobook_cover_path"] ?>&audio_file=<?php echo $row["audiobook_path"] ?>" class="btn btn-primary">Listen</a>
                   </div>
                 </div>
               </div>
@@ -204,7 +204,7 @@ if (isset($_POST['categories-value'])) {
                     <p class="card-text">Ratings</p>
                     <p class="card-text"><?php echo $row["narrator"] ?></p>
                     <p class="card-text">Categories</p>
-                    <a href="audio-view.php?file=<?php echo $row["audiobook_cover_path"] ?>&audio_file=<?php echo $row["audiobook_path"] ?>" class="btn btn-primary">Listen</a>
+                    <a href="audio-view.html?file=<?php echo $row["audiobook_cover_path"] ?>&audio_file=<?php echo $row["audiobook_path"] ?>" class="btn btn-primary">Listen</a>
                   </div>
                 </div>
               </div>
@@ -270,7 +270,7 @@ if (isset($_POST['categories-value'])) {
                     <p class="card-text">Ratings</p>
                     <p class="card-text"><?php echo $row["narrator"] ?></p>
                     <p class="card-text">Categories</p>
-                    <a href="audio-view.php?file=<?php echo $row["audiobook_cover_path"] ?>&audio_file=<?php echo $row["audiobook_path"] ?>" class="btn btn-primary">Listen</a>
+                    <a href="audio-view.html?file=<?php echo $row["audiobook_cover_path"] ?>&audio_file=<?php echo $row["audiobook_path"] ?>" class="btn btn-primary">Listen</a>
                   </div>
                 </div>
               </div>
@@ -305,7 +305,7 @@ if (isset($_POST['categories-value'])) {
                     <p class="card-text">Ratings</p>
                     <p class="card-text"><?php echo $row["narrator"] ?></p>
                     <p class="card-text">Categories</p>
-                    <a href="audio-view.php?file=<?php echo $row["audiobook_cover_path"] ?>&audio_file=<?php echo $row["audiobook_path"] ?>" class="btn btn-primary">Listen</a>
+                    <a href="audio-view.html?file=<?php echo $row["audiobook_cover_path"] ?>&audio_file=<?php echo $row["audiobook_path"] ?>" class="btn btn-primary">Listen</a>
                   </div>
                 </div>
               </div>
