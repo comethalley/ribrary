@@ -42,10 +42,10 @@ function editComments(){
 </head>
 <body>
 <?php
-    $review_id = $_POST['review_id'];
-    $user_id = $_POST['user_id'];
-    $reviewDate = $_POST['reviewDate'];
-    $userComment = $_POST['userComment'];
+    // $review_id = $_POST['review_id'];
+    // $user_id = $_POST['user_id'];
+    // $reviewDate = $_POST['reviewDate'];
+    // $userComment = $_POST['userComment'];
 
     echo "<form method='POST' action='".editComments()."'>
         <input type='hidden' name='review_id' value='".$review_id."'>
