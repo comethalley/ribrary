@@ -339,6 +339,46 @@ class Admin extends Database
             }
         }
     }
+    //function insert to notification table in database
+    function notification($doc_name, $doc_file, $doc_path, $createdBy, $user_id, $status, $notif_status, $message = '')
+    {
+
+        if (!empty($message)) {
+            $sql = "INSERT INTO tbl_notification (doc_name,doc_file ,doc_path ,createdBy ,date_and_time ,user_id,status,notif_status,message)
+            VALUES (?,?,?,?,?,?,?,?,?);";
+
+            // prepared statement
+            $stmt = $this->connect()->prepare($sql);
+
+            //if execution fail
+            if (!$stmt->execute([$doc_name, $doc_file, $doc_path, $createdBy, $this->date, $user_id, $status, $notif_status, $message])) {
+                header("Location:../admin/admin-documents.php?error=stmtfailnotif");
+                $connect = null;
+                exit();
+            }
+        } else {
+            $sql = "INSERT INTO tbl_notification (doc_name,doc_file ,doc_path ,createdBy ,date_and_time ,user_id,status,notif_status)
+        VALUES (?,?,?,?,?,?,?,?);";
+
+            // prepared statement
+            $stmt = $this->connect()->prepare($sql);
+
+            //if execution fail
+            if (!$stmt->execute([$doc_name, $doc_file, $doc_path, $createdBy, $this->date, $user_id, $status, $notif_status])) {
+                header("Location:../admin/admin-documents.php?error=stmtfailnotif");
+                $connect = null;
+                exit();
+            }
+        }
+    }
+
+    //select specific document 
+    function getResearchDocument($doc_id)
+    {
+        $data = $this->connect()->query("SELECT * FROM tbl_research_documents WHERE doc_id = '{$doc_id}'")->fetch();
+        return $data;
+        exit();
+    }
 
     //decline document function
     function decline_documents($doc_id, $message)
@@ -377,7 +417,7 @@ class Admin extends Database
         exit();
     }
     //insert podcasts to database
-    function upload_podcasts($podcast_name, $podcast_path, $podcast_host, $createdBy,$categories)
+    function upload_podcasts($podcast_name, $podcast_path, $podcast_host, $createdBy, $categories)
     {
 
         $sql = "INSERT INTO tbl_podcasts(podcast_name,podcast_path,podcast_host,categories,date_and_time,status,uploaded_by)
@@ -389,7 +429,7 @@ class Admin extends Database
         $stmt = $this->connect()->prepare($sql);
 
         //if execution fail
-        if (!$stmt->execute([$podcast_name, $podcast_path, $podcast_host,$categories, $this->date, $status, $createdBy])) {
+        if (!$stmt->execute([$podcast_name, $podcast_path, $podcast_host, $categories, $this->date, $status, $createdBy])) {
             header("Location:../admin/admin-podcast.php?error=stmtfail");
             $connect = null;
             exit();
@@ -401,7 +441,7 @@ class Admin extends Database
     }
 
     //upload podcast function
-    function checkPodcast($allowed, $fileActualExt, $fileError, $fileTmpName, $createdBy, $fileName, $podcast_host,$categories)
+    function checkPodcast($allowed, $fileActualExt, $fileError, $fileTmpName, $createdBy, $fileName, $podcast_host, $categories)
     {
         //check if the file extension is in the array $allowed
         if (in_array($fileActualExt, $allowed)) {
@@ -414,7 +454,7 @@ class Admin extends Database
 
                 if (move_uploaded_file($fileTmpName, $fileDestination)) {
                     // $userId = $_SESSION["id"];
-                    $this->upload_podcasts($fileName, $fileNameNew, $podcast_host, $createdBy,$categories);
+                    $this->upload_podcasts($fileName, $fileNameNew, $podcast_host, $createdBy, $categories);
                 } else {
                     echo "move_uploaded_file error";
                 }
