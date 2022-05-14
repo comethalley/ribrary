@@ -45,50 +45,72 @@ if (!isset($_SESSION['admin_name'])) {
         <!-- include sidebar.php-->
         <?php include 'sidebar.php'; ?>
         <div class="main-container">
-            <h1> Upload Audiobooks</h1>
+        <h1 class ="text-center"> Welcome to Upload Audiobook Section</h1>
 
-            <form action="../functions/admin-uploadAudiobook-function.php" method="POST" enctype="multipart/form-data">
+            <form class = "mt-5" action="../functions/admin-uploadAudiobook-function.php" method="POST" enctype="multipart/form-data">
 
-                <label for="audiobook"> Audiobook</label>
+                <!--<label for="audiobook"> Audiobook</label>
                 <input type="file" name="file" id="audiobook" accept=".mp3" required>
 
                 <label for="audiobook-cover">Cover</label>
-                <input type="file" name="file2" id="audiobook-cover" accept=".jpg, .png" required>
+                <input type="file" name="file2" id="audiobook" accept=".jpg, .png" required>
 
                 <label for="narrator">Narrator</label>
-                <input type="text" name="narrator" id="narrator" placeholder="Narrator" required>
+                <input type="text" name="narrator" id="narrator" placeholder="Narrator" required>-->
 
-                <fieldset>
+                <div class="form-row">
+                    <div class="col">
+                        <div class="custom-file">
+                            <input type="file" name = "file" accept=".mp3" class="custom-file-input" id="customFile" required>
+                            <label class="custom-file-label" for="customFile">Choose Audiobook file</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="custom-file">
+                            <input type="file" name = "file2" accept=".jpg, .png" class="custom-file-input" id="customFile" required>
+                            <label class="custom-file-label" for="customFile">Choose Cover image</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <input type="text" name="channel" class="form-control" placeholder="Narrator" id="narrator" required>
+                    </div>
+                </div>
 
-                    <div>
-                        <input type="radio" id="fantasy" name="categories" value="fantasy" required>
-                        <label for="fantasy">Fantasy</label>
-
-                        <input type="radio" id="science-fiction" name="categories" value="science fiction">
-                        <label for="science-fiction">Science Fiction</label>
+                <fieldset class="form-group row my-5">
+                    <legend class="col-form-label col-sm-3 float-sm-left pt-0">Select categories :</legend>
+                    <div class="col-sm-3">
+                        <div class="form-check">
+                            <input type="radio" id="fantasy" name="categories" value="fantasy" required>
+                            <label for="fantasy">Fantasy</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" id="science-fiction" name="categories" value="science fiction">
+                            <label for="science-fiction">Science Fiction</label>
+                        </div>
+                        <div class="form-check disabled">
+                            <input type="radio" id="action-and-adventure" name="categories" value="action and adventure">
+                            <label for="action-and-adventure">Action & Adventure</label>
+                        </div>
                     </div>
 
-                    <div>
-                        <input type="radio" id="action-and-adventure" name="categories" value="action and adventure">
-                        <label for="action-and-adventure">Action & Adventure</label>
-
-                        <input type="radio" id="mystery" name="categories" value="mystery">
-                        <label for="mystery">Mystery</label>
-                    </div>
-
-                    <div>
-                        <input type="radio" id="action-and-adventure" name="categories" value="action and adventure">
-                        <label for="action-and-adventure">Action & Adventure</label>
-                    </div>
-
-                    <div>
-
+                    <div class="col-sm-3">
+                        <div class="form-check">
+                            <input type="radio" id="horror" name="categories" value="horror">
+                            <label for="horror">Horror</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" id="mystery" name="categories" value="mystery">
+                            <label for="mystery">Mystery</label>
+                        </div>
+                        <div class="form-check disabled">
+                            <input type="radio" id="romance" name="categories" value="romance">
+                            <label for="romance">Romance</label>
+                        </div>
                     </div>
                 </fieldset>
 
 
-
-                <button name="upload-audiobook">Submit</button>
+                <button class="btn btn-primary" name="upload-audiobook">Submit</button>
             </form>
 
             <!-- Test if audiobook display works -->
@@ -147,6 +169,13 @@ if (!isset($_SESSION['admin_name'])) {
 
     <!-- SCRIPT -->
     <script src="js/sidebar-script.js"></script>
+
+    <!--input file script unfinished-->
+    <script>
+        $(document).on('change', '.custom-file-input', function (event) {
+        $(this).next('.custom-file-label').html(event.target.files[0].name);
+        })
+    </script>
 
 </body>
 

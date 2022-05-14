@@ -1,6 +1,6 @@
 <div class="sidebar-container">
-    <div class="logo-container">
-        logo
+    <div class="logo-container text-light h6">
+        <img src="../webpage/img/ribrary-logo-white.png" width="100" height="100" class="d-inline-block" alt="logo">
     </div>
 
     <div class="nav-container">

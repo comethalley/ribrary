@@ -91,7 +91,7 @@ if (!isset($_SESSION['id'])) {
       <center>
         <button type="button" class="btn">Add Forum</button></p>
       </center>
-    </div>
+    </div>  
       <main>
         <div class="container1 mx-2 my-5">
 

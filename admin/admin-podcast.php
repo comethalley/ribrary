@@ -34,6 +34,11 @@ if (!isset($_SESSION['admin_name'])) {
     <!-- CSS TYLES -->
     <link rel="stylesheet" href="css/admin-uploadPodcast-style.css">
     <link rel="stylesheet" href="css/sidebar-style.css">
+    <style>
+        .logo-container {
+            height: 5%;
+        }
+    </style>
 </head>
 
 <body>
@@ -41,50 +46,58 @@ if (!isset($_SESSION['admin_name'])) {
         <!-- include sidebar.php-->
         <?php include 'sidebar.php'; ?>
         <div class="main-container">
-            <h1> Upload Podcast</h1>
+            <h1 class ="text-center"> Welcome to Upload Podcast Section</h1>
 
 
-            <form action="../functions/admin-uploadPodcast-function.php" method="POST" enctype="multipart/form-data">
+            <form class = "mt-5" action="../functions/admin-uploadPodcast-function.php" method="POST" enctype="multipart/form-data">
 
-                <input type="file" name="file" accept=".mp4" id="podcast-video" required>
-                <input type="text" name="channel" placeholder="podcast channel" required>
-
-                <fieldset>
-                    <p>Select categories : </p>
-
-                    <div>
-                        <input type="radio" id="science-fiction" name="categories" value="science fiction" required>
-                        <label for="science-fiction">Science Fiction</label>
+                <!--<input type="file" name="file" accept=".mp4" id="podcast-video" required>-->
+                <div class="form-row">
+                    <div class="col">
+                        <div class="custom-file">
+                            <input type="file" name="file" accept=".mp4" class="custom-file-input" id="customFile" required>
+                            <label class="custom-file-label" for="customFile">Choose file</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <input type="text" name="channel" class="form-control"placeholder="Podcast Channel" id="podcast-channel-input"required>
+                    </div>
+                </div>
+        
+                <fieldset class="form-group row my-5">
+                    <legend class="col-form-label col-sm-3 float-sm-left pt-0">Select categories :</legend>
+                    <div class="col-sm-3">
+                        <div class="form-check">
+                            <input type="radio" id="science-fiction" name="categories" value="science fiction" required>
+                            <label for="science-fiction">Science Fiction</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" id="fantasy" name="categories" value="fantasy">
+                            <label for="fantasy">Fantasy</label>
+                        </div>
+                        <div class="form-check disabled">
+                            <input type="radio" id="mystery" name="categories" value="mystery">
+                            <label for="mystery">Mystery</label>
+                        </div>
                     </div>
 
-                    <div>
-                        <input type="radio" id="fantasy" name="categories" value="fantasy">
-                        <label for="fantasy">Fantasy</label>
+                    <div class="col-sm-3">
+                        <div class="form-check">
+                            <input type="radio" id="horror" name="categories" value="horror">
+                            <label for="horror">Horror</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" id="adventure" name="categories" value="adventure">
+                            <label for="adventure">Adventure</label>
+                        </div>
+                        <div class="form-check disabled">
+                            <input type="radio" id="romance" name="categories" value="romance">
+                            <label for="romance">Romance</label>
+                        </div>
                     </div>
-
-                    <div>
-                        <input type="radio" id="mystery" name="categories" value="mystery">
-                        <label for="mystery">Mystery</label>
-                    </div>
-
-                    <div>
-                        <input type="radio" id="horror" name="categories" value="horror">
-                        <label for="horror">Horror</label>
-                    </div>
-
-                    <div>
-                        <input type="radio" id="adventure" name="categories" value="adventure">
-                        <label for="adventure">Adventure</label>
-                    </div>
-
-                    <div>
-                        <input type="radio" id="romance" name="categories" value="romance">
-                        <label for="romance">Romance</label>
-                    </div>
-
                 </fieldset>
 
-                <button name="upload-podcast">Submit</button>
+                <button class="btn btn-primary" name="upload-podcast">Submit</button>
             </form>
 
             <!-- Test if podcasts display works -->
@@ -155,6 +168,14 @@ if (!isset($_SESSION['admin_name'])) {
 
     <!-- SCRIPT -->
     <script src="js/sidebar-script.js"></script>
+    
+    <!--input file script-->
+    <script type="application/javascript">
+        $('input[type="file"]').change(function(e){
+            var fileName = e.target.files[0].name;
+            $('.custom-file-label').html(fileName);
+        });
+    </script>
 
 </body>
 
