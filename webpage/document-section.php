@@ -91,7 +91,7 @@ if (!isset($_SESSION['id'])) {
       <center>
         <button type="button" class="btn">Add Forum</button></p>
       </center>
-
+    </div>
       <main>
         <div class="container1 mx-2 my-5">
 
@@ -116,7 +116,7 @@ if (!isset($_SESSION['id'])) {
                     <p class="card-title"><?php echo $row["doc_name"] ?></p>
                     <p class="card-text">Ratings</p>
                     <p class="card-text"><?php echo $row["createdBy"] ?></p>
-                    <a href="<?php echo $row["doc_path"] ?>" class="btn btn-primary" target="thapa">Read</a>
+                    <a href="view.php?file=<?php echo $row["doc_path"] ?>" class="btn btn-primary" target="thapa">Read</a>
                   </div>
                 </div>
               </div>
@@ -147,7 +147,7 @@ if (!isset($_SESSION['id'])) {
                     <p class="card-title"><?php echo $row["BookName"] ?></p>
                     <p class="card-text">Ratings</p>
                     <p class="card-text"><?php echo $row["createdBy"] ?></p>
-                    <a href="view.php?file=<?php echo $row["BookPath"] ?>" class="btn btn-primary">Read</a>
+                    <a href="view.php?file=<?php echo $row["doc_path"] ?>" class="btn btn-primary">Read</a>
                   </div>
                 </div>
               </div>

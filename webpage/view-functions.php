@@ -50,10 +50,10 @@ function getComments()
 
     while ($reviews_rows = $stmt->fetch()) {
 
-        echo "<div class='comment-box'><p>";
-        echo $reviews_rows['userName'] . "<br>";
+        echo "<div class='comment-box'><p><b>";
+        echo $reviews_rows['userName'] . "</b><br>";
         echo "<span>Rating:" . $reviews_rows['userRating'] . "</span><br>";
-        echo $reviews_rows['reviewDate'] . "<br>";
+        echo $reviews_rows['reviewDate'] . "<br><br>";
         echo nl2br($reviews_rows['userComment']);
         echo "</p>";
         if (isset($_SESSION['id'])) {
@@ -65,6 +65,7 @@ function getComments()
                     <form class='edit-form' method='POST' action='view-edit-comment.php'>
                         <input type='hidden' name='review_id' value='" . $reviews_rows['review_id'] . "'>
                         <input type='hidden' name='user_id' value='" . $reviews_rows['user_id'] . "'>
+                        <input type='hidden' name='currentPage' value='" . $currentPage . "'>
                         <input type='hidden' name='reviewDate' value='" . $reviews_rows['reviewDate'] . "'>
                         <input type='hidden' name='userComment' value='" . $reviews_rows['userComment'] . "'>
                         <button>Edit</button>
@@ -72,5 +73,52 @@ function getComments()
             }
         }
         echo "</div>";
+    }
+}
+
+function audioGetComments()
+{
+    $currentPage = $_SERVER['REQUEST_URI'];
+    $bookName = substr($currentPage, strpos($currentPage, "audio_file=") + 11);
+    $bookPath = $bookName;
+    $sql = "SELECT * FROM tbl_reviews WHERE bookPath ='$bookPath'";
+    $stmt = connect()->query($sql);
+
+    while ($reviews_rows = $stmt->fetch()) {
+
+        echo "<div class='comment-box'><p><b>";
+        echo $reviews_rows['userName'] . "</b><br>";
+        echo "<span>Rating:" . $reviews_rows['userRating'] . "</span><br>";
+        echo $reviews_rows['reviewDate'] . "<br><br>";
+        echo nl2br($reviews_rows['userComment']);
+        echo "</p>";
+        if (isset($_SESSION['id'])) {
+            if ($_SESSION['id'] == $reviews_rows['user_id']) {
+                echo "<form class='delete-form' method='POST' action='" . deleteComments() . "'>
+                    <input type='hidden' name='review_id' value='" . $reviews_rows['review_id'] . "'>
+                    <button type='submit' name='commentDelete'>Delete</button>
+                    </form>
+                    <form class='edit-form' method='POST' action='view-edit-comment.php'>
+                        <input type='hidden' name='review_id' value='" . $reviews_rows['review_id'] . "'>
+                        <input type='hidden' name='user_id' value='" . $reviews_rows['user_id'] . "'>
+                        <input type='hidden' name='currentPage' value='" . $currentPage . "'>
+                        <input type='hidden' name='reviewDate' value='" . $reviews_rows['reviewDate'] . "'>
+                        <input type='hidden' name='userComment' value='" . $reviews_rows['userComment'] . "'>
+                        <button>Edit</button>
+                    </form>";
+            }
+        }
+        echo "</div>";
+    }
+}
+function editComments(){
+    if(isset($_POST['editSubmit'])){
+        $review_id = $_POST['review_id'];
+        $userComment = $_POST['userComment'];
+        $currentPage = $_POST['currentPage'];
+        
+        $sql = "UPDATE tbl_reviews SET userComment='$userComment' WHERE review_id = '$review_id'";
+        $result = connect()->query($sql);
+        header("Location: ".$currentPage."");
     }
 }

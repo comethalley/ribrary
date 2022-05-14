@@ -21,6 +21,7 @@ session_start();
     <style>
         body {
             background-color: #ddd;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         .comment-box {
@@ -30,17 +31,22 @@ session_start();
             background-color: #fff;
             border-radius: 4px;
             position: relative;
+            margin:auto;
+            margin-bottom: 4px;
         }
-
+        #write-comment-box{
+            width:850px;
+            margin:auto;
+        }
         textarea {
             width: 845px;
+            font-size: 14px;
             height: 120px;
             background-color: #fff;
             resize: none;
         }
 
         .comment-box p {
-            font-family: Arial, Helvetica, sans-serif;
             font-size: 14px;
             line-height: 16px;
             color: #282828;
@@ -140,12 +146,11 @@ session_start();
 
     
     if (isset($_SESSION['id'])) {
-        echo "<form method='POST' action='" . setComments($date) . "'>
+        echo "<div id='write-comment-box'><form method='POST' action='" . setComments($date) . "'>
                 <input type='hidden' name='uid' value='" . $_SESSION['id'] . "'>
                 <input type='hidden' name='date' value='" . date('Y-d-m H:i:s') . "'>
                 <input type='hidden' name='currentPage' value='" . $currentPage . "'>
-                <input type='hidden' name='bookPath' value='" . $bookName . "'>
-                <label for='message'>Write Here</label></br>
+                <input type='hidden' name='bookPath' value='" . $bookName . "'></br>
                 <textarea name='message' cols='30' rows='10'></textarea></br>
                 <label for='rate'>Rating</label>
                 <select name='rate'>
@@ -156,7 +161,7 @@ session_start();
                     <option>5</option>
                 </select></br>
                 <button type='submit'name='commentSubmit'> Comment </button>
-                </form>";
+                </form></div>";
     } else {
         echo "You need to be logged in to comment! <br><br>";
     }
