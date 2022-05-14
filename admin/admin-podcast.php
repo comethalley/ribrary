@@ -48,6 +48,42 @@ if (!isset($_SESSION['admin_name'])) {
 
                 <input type="file" name="file" accept=".mp4" id="podcast-video" required>
                 <input type="text" name="channel" placeholder="podcast channel" required>
+
+                <fieldset>
+                    <p>Select categories : </p>
+
+                    <div>
+                        <input type="radio" id="science-fiction" name="categories" value="science fiction" required>
+                        <label for="science-fiction">Science Fiction</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" id="fantasy" name="categories" value="fantasy">
+                        <label for="fantasy">Fantasy</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" id="mystery" name="categories" value="mystery">
+                        <label for="mystery">Mystery</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" id="horror" name="categories" value="horror">
+                        <label for="horror">Horror</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" id="adventure" name="categories" value="adventure">
+                        <label for="adventure">Adventure</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" id="romance" name="categories" value="romance">
+                        <label for="romance">Romance</label>
+                    </div>
+
+                </fieldset>
+
                 <button name="upload-podcast">Submit</button>
             </form>
 

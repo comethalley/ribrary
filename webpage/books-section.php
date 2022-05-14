@@ -93,7 +93,7 @@ include '../includes/autoload-class.php';
     </script>
   </header>
 
-  <nav class="navbar sticky-top navbar-expand-lg navbar-dark mx-0 w-100" style="background-color: #485665;">
+  <nav class="navbar sticky-top navbar-expand-lg navbar-dark mx-0 w-100" style="background-color: #485665; z-index: 1;">
       <a class="navbar-brand" href="books-section.php">
       <img src="img/ribrary-logo-white.png" width="50" height="50" class="d-inline-block" alt="logo.png">
         Ribrary

@@ -8,8 +8,8 @@ if (!isset($_SESSION['id'])) {
   $user = new User();
 }
 
-if (isset($_POST['categories-value'])) {
-  $value = $_POST['categories-value'];
+if (isset($_GET['categories-value'])) {
+  $value = $_GET['categories-value'];
 }
 
 ?>
@@ -29,6 +29,10 @@ if (isset($_POST['categories-value'])) {
   <style>
     .hide {
       display: none;
+    }
+
+    .categories-hidden {
+      text-transform: capitalize;
     }
   </style>
 </head>
@@ -88,10 +92,10 @@ if (isset($_POST['categories-value'])) {
     </button>
 
     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-      <form action="audiobook-section.php?q=selected" method="POST" class="categories-form">
+      <form action="" method="get" class="categories-form">
         <input type="hidden" name="categories-value" id="categories-value">
 
-        <option class="dropdown-item text-dark" value="science fiction">Scince Fiction</option>
+        <option class="dropdown-item text-dark" value="science fiction">Science Fiction</option>
         <option class="dropdown-item text-dark" value="fantasy">Fantasy</option>
         <option class="dropdown-item text-dark" value="mystery">Mystery</option>
         <option class="dropdown-item text-dark" value="horror">Horror</option>
@@ -136,7 +140,7 @@ if (isset($_POST['categories-value'])) {
                     <p class="card-text">Ratings</p>
                     <p class="card-text"><?php echo $row["narrator"] ?></p>
                     <p class="card-text">Categories</p>
-                    <a href="audio-view.html?file=<?php echo $row["audiobook_cover_path"] ?>&audio_file=<?php echo $row["audiobook_path"] ?>" class="btn btn-primary" target="thapa">Listen</a>
+                    <a href="audio-view.html?file=<?php echo $row["audiobook_cover_path"] ?>&audio_file=<?php echo $row["audiobook_path"] ?>" class="btn btn-primary">Listen</a>
                   </div>
                 </div>
               </div>
@@ -250,7 +254,7 @@ if (isset($_POST['categories-value'])) {
         <div class="mystery categories">
           <div class="row">
             <div class="col-md-12">
-              <h6 class=" display-4 mx-3">Mystery</h6>
+              <h6 class=" display-4 mx-3 categories-hidden">Mystery</h6>
               <hr>
             </div>
           </div>
@@ -285,14 +289,18 @@ if (isset($_POST['categories-value'])) {
         <div class="hidden hide">
           <div class="row">
             <div class="col-md-12">
-              <h6 class=" display-4 mx-3"><?php echo $value ?></h6>
+              <h6 class=" display-4 mx-3 categories-hidden"><?php echo $value ?></h6>
               <hr>
             </div>
           </div>
           <div class="row mb-3 ml-2">
             <?php
             $data = $user->displayAudioBooks($value);
-            $count = 1;
+
+            if (empty($data)) {
+              echo '<h1> No data available </h1>';
+            }
+
             foreach ($data as $row) {
             ?>
               <div class="col-md-3 my-2 my-md-3 rounded">
@@ -310,7 +318,6 @@ if (isset($_POST['categories-value'])) {
                 </div>
               </div>
             <?php
-              $count++;
             }
             ?>
           </div>
@@ -348,7 +355,7 @@ if (isset($_POST['categories-value'])) {
 
       const url = window.location.search
       const urlParam = new URLSearchParams(url)
-      const parameter = urlParam.get('q')
+      const parameter = urlParam.get('categories-value')
 
       const hideCategories = function() {
         categories.forEach(section => {
@@ -356,7 +363,7 @@ if (isset($_POST['categories-value'])) {
         })
       }
 
-      if (parameter == 'selected') {
+      if (parameter) {
         hideCategories()
         document.querySelector('.hidden').classList.remove('hide')
       }

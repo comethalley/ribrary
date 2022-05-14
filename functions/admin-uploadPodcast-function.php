@@ -7,6 +7,7 @@ if (isset($_POST['upload-podcast'])) {
 
     $admin_name = $_SESSION["admin_name"];
     $host = $_POST['channel'];
+    $categories = $_POST['categories'];
     $file = $_FILES['file'];
 
     //file data
@@ -23,7 +24,7 @@ if (isset($_POST['upload-podcast'])) {
 
     $allowed = array('mp4');
     if ($fileSize < 500000000) {
-        $admin->checkPodcast($allowed, $fileActualExt, $fileError, $fileTmpName, $admin_name, $fileName, $host);
+        $admin->checkPodcast($allowed, $fileActualExt, $fileError, $fileTmpName, $admin_name, $fileName, $host,$categories);
     } else {
         header("Location: ../admin/admin-podcast.php?q=largefile"); //change to docu later
         exit();

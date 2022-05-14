@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Podcast</title>
+    <link rel="stylesheet" type="text/css" href="">
+
+    <style>
+        body {
+            /* display: none; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="player">
+        <!-- <div class="imgBx">
+            <img src="" id="audiobook-cover">
+        </div> -->
+        <video controls id="podcast-file">
+            <source src="" type="audio/mp4">
+        </video>
+    </div>
+
+
+    <!-- SCRIPT -->
+    <script>
+        const url = window.location.search
+        const urlParam = new URLSearchParams(url)
+        // const audiobookCoverURL = urlParam.get('file')
+        const podcastFileURL = urlParam.get('file')
+
+        // const podcastFileURL = document.getElementById('audiobook-cover');
+        const podcastFile = document.getElementById('podcast-file');
+
+        if (podcastFileURL) {
+            podcastFile.src = `../functions/uploads/${podcastFileURL}`;
+            // audiobookFile.src = `../functions/uploads/${audiobookFileURL}`;
+
+        }
+
+    </script>
+</body>
+
+</html>
