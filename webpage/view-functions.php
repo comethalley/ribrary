@@ -1,6 +1,5 @@
 <?php
-date_default_timezone_set('Asia/Singapore');
-$date =  date('F d Y, h:i A');
+
 function connect()
 {
     $dbServername = "localhost";

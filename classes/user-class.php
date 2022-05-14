@@ -395,10 +395,16 @@ class User extends Database
     }
 
     //display audiobooks
-    function displayPodcasts()
+    function displayPodcasts($categories = '')
     {
-        $data = $this->connect()->query("SELECT * FROM tbl_podcasts")->fetchAll();
-        return $data;
-        exit();
+        if (!empty($categories)) {
+            $data = $this->connect()->query("SELECT * FROM tbl_podcasts WHERE status = 'accepted' AND categories = '{$categories}'")->fetchAll();
+            return $data;
+            exit();
+        } else {
+            $data = $this->connect()->query("SELECT * FROM tbl_podcasts WHERE status = 'accepted'")->fetchAll();
+            return $data;
+            exit();
+        }
     }
 }

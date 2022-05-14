@@ -87,13 +87,14 @@ if (!isset($_SESSION['id'])) {
   <main>
 
     <div class="backdrop">
-      <button class="upbtn" onclick="window.location.href='upload-documents-section.php'">Upload your own audiobook here!</button>
+      <button class="upbtn" onclick="window.location.href='upload-documents-section.php'">Upload your own research documents here!</button>
       <center>
         <button type="button" class="btn">Add Forum</button></p>
       </center>
 
       <main>
         <div class="container1 mx-2 my-5">
+
           <div class="row">
             <div class="col-md-12">
               <h6 class=" display-4 mx-3">Newly Release</h6>
@@ -115,7 +116,7 @@ if (!isset($_SESSION['id'])) {
                     <p class="card-title"><?php echo $row["doc_name"] ?></p>
                     <p class="card-text">Ratings</p>
                     <p class="card-text"><?php echo $row["createdBy"] ?></p>
-                    <a href="view.php?file=<?php echo $row["doc_path"] ?>" class="btn btn-primary">Read</a>
+                    <a href="<?php echo $row["doc_path"] ?>" class="btn btn-primary" target="thapa">Read</a>
                   </div>
                 </div>
               </div>
@@ -124,6 +125,7 @@ if (!isset($_SESSION['id'])) {
             }
             ?>
           </div>
+
           <div class="row">
             <div class="col-md-12">
               <h6 class=" display-4 mx-3">Most Rated</h6>

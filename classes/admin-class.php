@@ -377,11 +377,11 @@ class Admin extends Database
         exit();
     }
     //insert podcasts to database
-    function upload_podcasts($podcast_name, $podcast_path, $podcast_host, $createdBy)
+    function upload_podcasts($podcast_name, $podcast_path, $podcast_host, $createdBy,$categories)
     {
 
-        $sql = "INSERT INTO tbl_podcasts(podcast_name,podcast_path,podcast_host,date_and_time,status,uploaded_by)
-    VALUES (?,?,?,?,?,?);";
+        $sql = "INSERT INTO tbl_podcasts(podcast_name,podcast_path,podcast_host,categories,date_and_time,status,uploaded_by)
+    VALUES (?,?,?,?,?,?,?);";
 
         $status = 'pending';
 
@@ -389,7 +389,7 @@ class Admin extends Database
         $stmt = $this->connect()->prepare($sql);
 
         //if execution fail
-        if (!$stmt->execute([$podcast_name, $podcast_path, $podcast_host, $this->date, $status, $createdBy])) {
+        if (!$stmt->execute([$podcast_name, $podcast_path, $podcast_host,$categories, $this->date, $status, $createdBy])) {
             header("Location:../admin/admin-podcast.php?error=stmtfail");
             $connect = null;
             exit();
@@ -401,7 +401,7 @@ class Admin extends Database
     }
 
     //upload podcast function
-    function checkPodcast($allowed, $fileActualExt, $fileError, $fileTmpName, $createdBy, $fileName, $podcast_host)
+    function checkPodcast($allowed, $fileActualExt, $fileError, $fileTmpName, $createdBy, $fileName, $podcast_host,$categories)
     {
         //check if the file extension is in the array $allowed
         if (in_array($fileActualExt, $allowed)) {
@@ -414,7 +414,7 @@ class Admin extends Database
 
                 if (move_uploaded_file($fileTmpName, $fileDestination)) {
                     // $userId = $_SESSION["id"];
-                    $this->upload_podcasts($fileName, $fileNameNew, $podcast_host, $createdBy);
+                    $this->upload_podcasts($fileName, $fileNameNew, $podcast_host, $createdBy,$categories);
                 } else {
                     echo "move_uploaded_file error";
                 }
