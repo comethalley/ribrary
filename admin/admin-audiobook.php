@@ -72,7 +72,7 @@ if (!isset($_SESSION['admin_name'])) {
                         </div>
                     </div>
                     <div class="col">
-                        <input type="text" name="channel" class="form-control" placeholder="Narrator" id="narrator" required>
+                        <input type="text" name="narrator" class="form-control" placeholder="Narrator" id="narrator" required>
                     </div>
                 </div>
 
