@@ -72,6 +72,10 @@ if (!isset($_SESSION['admin_name'])) {
                         </div>
                     </div>
                     <div class="col">
+                        <!--Pa required kapag may function na-->
+                        <input type="text" name="author" class="form-control" placeholder="Auhtor" id="author">
+                    </div>
+                    <div class="col">
                         <input type="text" name="narrator" class="form-control" placeholder="Narrator" id="narrator" required>
                     </div>
                 </div>
