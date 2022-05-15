@@ -5,6 +5,7 @@ if (!isset($_SESSION['id'])) {
   header("Location:user-login.php");
 } else {
   include '../includes/autoload-class.php';
+  include 'view-functions.php';
   $user = new User();
 }
 
@@ -137,7 +138,7 @@ if (isset($_GET['categories-value'])) {
                   </div>
                   <div class="card-body">
                     <p class="card-title"><?php echo $row["audiobook_name"] ?></p>
-                    <p class="card-text">Ratings</p>
+                    <p class="card-title">Rating: <?php showRating($row["audiobook_path"])?>/5</p>
                     <p class="card-text"><?php echo $row["narrator"] ?></p>
                     <p class="card-text">Categories</p>
                     <a href="audio-view.php?file=<?php echo $row["audiobook_cover_path"] ?>&audio_file=<?php echo $row["audiobook_path"] ?>" class="btn btn-primary">Listen</a>
@@ -171,7 +172,7 @@ if (isset($_GET['categories-value'])) {
                   </div>
                   <div class="card-body">
                     <p class="card-title"><?php echo $row["audiobook_name"] ?></p>
-                    <p class="card-text">Ratings</p>
+                    <p class="card-title">Rating: <?php showRating($row["audiobook_path"])?>/5</p>
                     <p class="card-text"><?php echo $row["narrator"] ?></p>
                     <p class="card-text">Categories</p>
                     <a href="audio-view.php?file=<?php echo $row["audiobook_cover_path"] ?>&audio_file=<?php echo $row["audiobook_path"] ?>" class="btn btn-primary">Listen</a>
@@ -205,7 +206,7 @@ if (isset($_GET['categories-value'])) {
                   </div>
                   <div class="card-body">
                     <p class="card-title"><?php echo $row["audiobook_name"] ?></p>
-                    <p class="card-text">Ratings</p>
+                    <p class="card-title">Rating: <?php showRating($row["audiobook_path"])?>/5</p>
                     <p class="card-text"><?php echo $row["narrator"] ?></p>
                     <p class="card-text">Categories</p>
                     <a href="audio-view.php?file=<?php echo $row["audiobook_cover_path"] ?>&audio_file=<?php echo $row["audiobook_path"] ?>" class="btn btn-primary">Listen</a>
@@ -238,7 +239,7 @@ if (isset($_GET['categories-value'])) {
                   </div>
                   <div class="card-body">
                     <p class="card-title"><?php echo $row["audiobook_name"] ?></p>
-                    <p class="card-text">Ratings</p>
+                    <p class="card-title">Rating: <?php showRating($row["audiobook_path"])?>/5</p>
                     <p class="card-text"><?php echo $row["narrator"] ?></p>
                     <p class="card-text">Categories</p>
                     <a href="audio-view.php?file=<?php echo $row["audiobook_cover_path"] ?>&audio_file=<?php echo $row["audiobook_path"] ?>" class="btn btn-primary">Listen</a>
@@ -271,7 +272,7 @@ if (isset($_GET['categories-value'])) {
                   </div>
                   <div class="card-body">
                     <p class="card-title"><?php echo $row["audiobook_name"] ?></p>
-                    <p class="card-text">Ratings</p>
+                    <p class="card-title">Rating: <?php showRating($row["audiobook_path"])?>/5</p>
                     <p class="card-text"><?php echo $row["narrator"] ?></p>
                     <p class="card-text">Categories</p>
                     <a href="audio-view.php?file=<?php echo $row["audiobook_cover_path"] ?>&audio_file=<?php echo $row["audiobook_path"] ?>" class="btn btn-primary">Listen</a>
@@ -310,7 +311,7 @@ if (isset($_GET['categories-value'])) {
                   </div>
                   <div class="card-body">
                     <p class="card-title"><?php echo $row["audiobook_name"] ?></p>
-                    <p class="card-text">Ratings</p>
+                    <p class="card-title">Rating: <?php showRating($row["audiobook_path"])?>/5</p>
                     <p class="card-text"><?php echo $row["narrator"] ?></p>
                     <p class="card-text">Categories</p>
                     <a href="audio-view.php?file=<?php echo $row["audiobook_cover_path"] ?>&audio_file=<?php echo $row["audiobook_path"] ?>" class="btn btn-primary">Listen</a>

@@ -5,6 +5,7 @@ if (!isset($_SESSION['id'])) {
   header("Location:user-login.php");
 } else {
   include '../includes/autoload-class.php';
+  include 'view-functions.php';
   $user = new User();
 }
 
@@ -114,7 +115,7 @@ if (!isset($_SESSION['id'])) {
                   </div>
                   <div class="card-body">
                     <p class="card-title"><?php echo $row["doc_name"] ?></p>
-                    <p class="card-text">Ratings</p>
+                    <p class="card-title">Rating: <?php showRating($row["doc_path"])?>/5</p>
                     <p class="card-text"><?php echo $row["createdBy"] ?></p>
                     <a href="view.php?file=<?php echo $row["doc_path"] ?>" class="btn btn-primary" target="thapa">Read</a>
                   </div>
@@ -144,8 +145,8 @@ if (!isset($_SESSION['id'])) {
                     <img src="img/book-icon.png" class="card-img-top" alt="book-cover">
                   </div>
                   <div class="card-body">
-                    <p class="card-title"><?php echo $row["BookName"] ?></p>
-                    <p class="card-text">Ratings</p>
+                    <p class="card-title"><?php echo $row["doc_name"] ?></p>
+                    <p class="card-title">Rating: <?php showRating($row["doc_path"])?>/5</p>
                     <p class="card-text"><?php echo $row["createdBy"] ?></p>
                     <a href="view.php?file=<?php echo $row["doc_path"] ?>" class="btn btn-primary">Read</a>
                   </div>
@@ -174,10 +175,10 @@ if (!isset($_SESSION['id'])) {
                     <img src="img/book-icon.png" class="card-img-top" alt="book-cover">
                   </div>
                   <div class="card-body">
-                    <p class="card-title"><?php echo $row["BookName"] ?></p>
-                    <p class="card-text">Ratings</p>
+                    <p class="card-title"><?php echo $row["doc_name"] ?></p>
+                    <p class="card-title">Rating: <?php showRating($row["doc_path"])?>/5</p>
                     <p class="card-text"><?php echo $row["createdBy"] ?></p>
-                    <a href="view.php?file=<?php echo $row["BookPath"] ?>" class="btn btn-primary">Read</a>
+                    <a href="view.php?file=<?php echo $row["doc_path"] ?>" class="btn btn-primary">Read</a>
                   </div>
                 </div>
               </div>
@@ -204,10 +205,10 @@ if (!isset($_SESSION['id'])) {
                     <img src="img/book-icon.png" class="card-img-top" alt="book-cover">
                   </div>
                   <div class="card-body">
-                    <p class="card-title"><?php echo $row["BookName"] ?></p>
-                    <p class="card-text">Ratings</p>
+                    <p class="card-title"><?php echo $row["doc_name"] ?></p>
+                    <p class="card-title">Rating: <?php showRating($row["doc_path"])?>/5</p>
                     <p class="card-text"><?php echo $row["createdBy"] ?></p>
-                    <a href="view.php?file=<?php echo $row["BookPath"] ?>" class="btn btn-primary">Read</a>
+                    <a href="view.php?file=<?php echo $row["doc_path"] ?>" class="btn btn-primary">Read</a>
                   </div>
                 </div>
               </div>
@@ -234,10 +235,10 @@ if (!isset($_SESSION['id'])) {
                     <img src="img/book-icon.png" class="card-img-top" alt="book-cover">
                   </div>
                   <div class="card-body">
-                    <p class="card-title"><?php echo $row["BookName"] ?></p>
-                    <p class="card-text">Ratings</p>
+                    <p class="card-title"><?php echo $row["doc_name"] ?></p>
+                    <p class="card-title">Rating: <?php showRating($row["doc_path"])?>/5</p>
                     <p class="card-text"><?php echo $row["createdBy"] ?></p>
-                    <a href="view.php?file=<?php echo $row["BookPath"] ?>" class="btn btn-primary">Read</a>
+                    <a href="view.php?file=<?php echo $row["doc_path"] ?>" class="btn btn-primary">Read</a>
                   </div>
                 </div>
               </div>

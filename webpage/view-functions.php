@@ -117,3 +117,10 @@ function deleteComments()
         header("Location: " . $currentPage . "");
     }
 }
+function showRating(){
+  $sql = "SELECT ROUND(AVG(userRating)) as avg FROM tbl_reviews WHERE bookPath='627f6dc3645889.46786491.mp3'";
+  $result = connect()->query($sql);
+  while ($reviews_rows = $result->fetch()) {
+  echo $reviews_rows['avg'];
+  }
+}
