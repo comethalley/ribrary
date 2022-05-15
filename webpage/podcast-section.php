@@ -135,9 +135,8 @@ if (isset($_GET['categories-value'])) {
                   </div>
                   <div class="card-body">
                     <p class="card-title"><?php echo $row["podcast_name"] ?></p>
-                    <p class="card-text">Ratings</p>
                     <p class="card-text"><?php echo $row["podcast_host"] ?></p>
-                    <a href="podcast-view.html?file=<?php echo $row["podcast_path"] ?>" class="btn btn-primary">Watch</a>
+                    <a href="podcast-view.php?file=<?php echo $row["podcast_path"] ?>" class="btn btn-primary">Watch</a>
                   </div>
                 </div>
               </div>
@@ -168,9 +167,8 @@ if (isset($_GET['categories-value'])) {
                   </div>
                   <div class="card-body">
                     <p class="card-title"><?php echo $row["podcast_name"] ?></p>
-                    <p class="card-text">Ratings</p>
                     <p class="card-text"><?php echo $row["podcast_host"] ?></p>
-                    <a href="podcast-view.html?file=<?php echo $row["podcast_path"] ?>" class="btn btn-primary" target="thapa">Watch</a>
+                    <a href="podcast-view.php?file=<?php echo $row["podcast_path"] ?>" class="btn btn-primary" target="thapa">Watch</a>
                   </div>
                 </div>
               </div>
@@ -201,9 +199,8 @@ if (isset($_GET['categories-value'])) {
                   </div>
                   <div class="card-body">
                     <p class="card-title"><?php echo $row["podcast_name"] ?></p>
-                    <p class="card-text">Ratings</p>
                     <p class="card-text"><?php echo $row["podcast_host"] ?></p>
-                    <a href="podcast-view.html?file=<?php echo $row["podcast_path"] ?>" class="btn btn-primary">Watch</a>
+                    <a href="podcast-view.php?file=<?php echo $row["podcast_path"] ?>" class="btn btn-primary">Watch</a>
                   </div>
                 </div>
               </div>
@@ -223,9 +220,8 @@ if (isset($_GET['categories-value'])) {
                   </div>
                   <div class="card-body">
                     <p class="card-title"><?php echo $row["podcast_name"] ?></p>
-                    <p class="card-text">Ratings</p>
                     <p class="card-text"><?php echo $row["podcast_host"] ?></p>
-                    <a href="podcast-view.html?file=<?php echo $row["podcast_path"] ?>" class="btn btn-primary">Watch</a>
+                    <a href="podcast-view.php?file=<?php echo $row["podcast_path"] ?>" class="btn btn-primary">Watch</a>
                   </div>
                 </div>
               </div>
@@ -260,9 +256,8 @@ if (isset($_GET['categories-value'])) {
                   </div>
                   <div class="card-body">
                     <p class="card-title capitalize"><?php echo $row["podcast_name"] ?></p>
-                    <p class="card-text">Ratings</p>
                     <p class="card-text"><?php echo $row["podcast_host"] ?></p>
-                    <a href="podcast-view.html?file=<?php echo $row["podcast_path"] ?>" class="btn btn-primary">Watch</a>
+                    <a href="podcast-view.php?file=<?php echo $row["podcast_path"] ?>" class="btn btn-primary">Watch</a>
                   </div>
                 </div>
               </div>
