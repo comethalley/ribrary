@@ -137,7 +137,8 @@ session_start();
             Page <span id="page-num"></span> of <span id="page-count"></span>
         </span>
     </div>
-
+    <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+    <script src="js/view.js"></script>
     <?php
     $currentPage = $_SERVER['REQUEST_URI'];
     $bookName = substr($currentPage, strpos($currentPage, "=") + 1);
@@ -169,8 +170,7 @@ session_start();
     getComments();
     ?>
 
-    <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
-    <script src="js/view.js"></script>
+    
 
 
 </body>

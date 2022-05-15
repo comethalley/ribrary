@@ -29,21 +29,10 @@ function setComments($date)
     }
 }
 
-function deleteComments()
-{
-    if (isset($_POST['commentDelete'])) {
-        $review_id = $_POST['review_id'];
-
-        $sql = "DELETE FROM tbl_reviews WHERE review_id='$review_id'";
-        $result = connect()->query($sql);
-        header("Location: " . $_SERVER['REQUEST_URI'] . "");
-    }
-}
-
 function getComments()
 {
     $currentPage = $_SERVER['REQUEST_URI'];
-    $bookName = substr($currentPage, strpos($currentPage, "=") + 1);
+    $bookName = substr($currentPage, strpos($currentPage, "file=") + 5);
     $bookPath = $bookName;
     $sql = "SELECT * FROM tbl_reviews WHERE bookPath ='$bookPath'";
     $stmt = connect()->query($sql);
@@ -58,10 +47,7 @@ function getComments()
         echo "</p>";
         if (isset($_SESSION['id'])) {
             if ($_SESSION['id'] == $reviews_rows['user_id']) {
-                echo "<form class='delete-form' method='POST' action='" . deleteComments() . "'>
-                    <input type='hidden' name='review_id' value='" . $reviews_rows['review_id'] . "'>
-                    <button type='submit' name='commentDelete'>Delete</button>
-                    </form>
+                echo "
                     <form class='edit-form' method='POST' action='view-edit-comment.php'>
                         <input type='hidden' name='review_id' value='" . $reviews_rows['review_id'] . "'>
                         <input type='hidden' name='user_id' value='" . $reviews_rows['user_id'] . "'>
@@ -94,10 +80,7 @@ function audioGetComments()
         echo "</p>";
         if (isset($_SESSION['id'])) {
             if ($_SESSION['id'] == $reviews_rows['user_id']) {
-                echo "<form class='delete-form' method='POST' action='" . deleteComments() . "'>
-                    <input type='hidden' name='review_id' value='" . $reviews_rows['review_id'] . "'>
-                    <button type='submit' name='commentDelete'>Delete</button>
-                    </form>
+                echo "
                     <form class='edit-form' method='POST' action='view-edit-comment.php'>
                         <input type='hidden' name='review_id' value='" . $reviews_rows['review_id'] . "'>
                         <input type='hidden' name='user_id' value='" . $reviews_rows['user_id'] . "'>
@@ -120,5 +103,17 @@ function editComments(){
         $sql = "UPDATE tbl_reviews SET userComment='$userComment' WHERE review_id = '$review_id'";
         $result = connect()->query($sql);
         header("Location: ".$currentPage."");
+    }
+}
+
+function deleteComments()
+{
+    if (isset($_POST['commentDelete'])) {
+        $review_id = $_POST['review_id'];
+        $currentPage = $_POST['currentPage'];
+
+        $sql = "DELETE FROM tbl_reviews WHERE review_id='$review_id'";
+        $result = connect()->query($sql);
+        header("Location: " . $currentPage . "");
     }
 }

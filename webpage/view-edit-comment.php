@@ -32,7 +32,8 @@ include 'view-functions.php';
         font-family: Arial;
         font-weight: 400;
         cursor: pointer;
-        margin-bottom: 60px;
+        margin-right: 10px;
+        float:left;
         }
         #edit-box{
             width:850px;
@@ -55,7 +56,12 @@ include 'view-functions.php';
         <input type='hidden' name='currentPage' value='".$currentPage."'>
         <textarea name='userComment' cols='30' rows='10'>".$userComment."</textarea></br>
         <button name='editSubmit'> Edit </button>
-    </form></div>";
+    </form>
+    <form class='delete-form' method='POST' action='" . deleteComments() . "'>
+                    <input type='hidden' name='review_id' value='" . $review_id . "'>
+                    <input type='hidden' name='currentPage' value='".$currentPage."'>
+                    <button type='submit' name='commentDelete'>Delete</button>
+                    </form></div>";
     ?>
 </body>
 </html>
