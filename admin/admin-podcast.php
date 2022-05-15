@@ -71,7 +71,7 @@ if (!isset($_SESSION['admin_name'])) {
                             <input type="radio" id="fantasy" name="categories" value="fantasy">
                             <label for="fantasy">Fantasy</label>
                         </div>
-                        <div class="form-check disabled">
+                        <div class="form-check">
                             <input type="radio" id="mystery" name="categories" value="mystery">
                             <label for="mystery">Mystery</label>
                         </div>
@@ -86,7 +86,7 @@ if (!isset($_SESSION['admin_name'])) {
                             <input type="radio" id="adventure" name="categories" value="adventure">
                             <label for="adventure">Adventure</label>
                         </div>
-                        <div class="form-check disabled">
+                        <div class="form-check">
                             <input type="radio" id="romance" name="categories" value="romance">
                             <label for="romance">Romance</label>
                         </div>
