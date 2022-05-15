@@ -27,16 +27,20 @@ main {
     margin-top: 1.5rem;
     /* background-color: brown; */
     box-shadow: 50px;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3rem;
 }
 
 .user-count-container {
+    box-sizing: border-box;
     position: relative;
     background-color: white;
     border-radius: 15px;
     padding: 1.5em;
-    width: 22%;
+    display: grid;
+    grid-template-columns: 70% 30%;
+    /* width: 22%; */
 }
 
 .title {
@@ -46,32 +50,44 @@ main {
 }
 
 .count {
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
     font-size: 2rem;
+    margin-left: 2rem;
     font-weight: bold;
 }
 
 .image {
     background-color: #e4e4fe;
     align-items: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 0.8em;
     color: #7373cf;
-    font-size: 1.2rem;
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    text-align: center;
-    margin: 0;
-    padding: 0.5em;
 }
 
 .book {
     background-color: #fdf2d6;
     color: #fec53f;
 }
-.admin-container h2{
+.podcasts{
+    background-color: #b8e8c2;
+    color: #23a674;
+}
+.documents{
+    background-color: #8cadef;
+    color: #1547ab;
+}
+.ebooks{
+    background-color: #aed6dd;
+    color: #1a94aa;
+}
+
+
+.admin-container h2 {
     margin-bottom: 2rem;
 }
+
 .admin-container {
     margin-top: 5rem;
     box-sizing: border-box;
@@ -80,7 +96,9 @@ main {
     width: 50%;
     padding: 1em;
 }
-
+.icon{
+    font-size: 2rem;
+}
 
 /* -------------------- */
 

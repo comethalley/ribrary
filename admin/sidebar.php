@@ -75,7 +75,7 @@
 
             <li class="list">
                 <!---->
-                <a href="../functions/admin-logout-function.php" class="link">
+                <a href="../functions/admin-logout-function.php" class="link logout">
                     <i class="bi bi-box-arrow-right"></i>logout</a>
             </li>
 

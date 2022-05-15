@@ -46,6 +46,9 @@ if (!isset($_SESSION['admin_name'])) {
     <!-- JQUERY -->
     <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
 
+    <!-- Sweet alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <!-- DATATABLES -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
@@ -58,8 +61,7 @@ if (!isset($_SESSION['admin_name'])) {
         <?php
         if ($_SESSION["role"] == 'main admin') {
 
-        ?>
-        .list:nth-of-type(2) {
+        ?>.list:nth-of-type(2) {
             border-left: 5px solid transparent;
         }
 
@@ -80,8 +82,7 @@ if (!isset($_SESSION['admin_name'])) {
 
         <?php
         } else {
-        ?>
-        .list:nth-of-type(2) {
+        ?>.list:nth-of-type(2) {
             border-left: 5px solid transparent;
         }
 

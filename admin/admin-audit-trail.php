@@ -45,6 +45,9 @@ if (!isset($_SESSION['admin_name'])) {
     <!-- JQUERY -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
+    <!-- Sweet alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <!-- DATATABLES -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
@@ -52,6 +55,54 @@ if (!isset($_SESSION['admin_name'])) {
     <!-- CSS TYLES -->
     <link rel="stylesheet" href="css/admin-pending-style.css">
     <link rel="stylesheet" href="css/sidebar-style.css">
+    <style>
+        <?php
+        if ($_SESSION["role"] == 'main admin') {
+
+        ?>.list:nth-of-type(2) {
+            border-left: 5px solid transparent;
+        }
+
+        .list:nth-of-type(2) .link:nth-of-type(1) {
+            background-color: transparent;
+        }
+
+        /* ----------------------------- */
+        .list:nth-of-type(7) {
+            border-left: 5px solid #4980ff;
+            padding-left: 1.688em;
+        }
+
+        .list:nth-of-type(7) .link:nth-of-type(1) {
+            background-color: #4980ff;
+            border-radius: 8px;
+        }
+
+        <?php
+        } else {
+        ?>.list:nth-of-type(2) {
+            border-left: 5px solid transparent;
+        }
+
+        .list:nth-of-type(2) .link:nth-of-type(1) {
+            background-color: transparent;
+        }
+
+        /* ----------------------------- */
+        .list:nth-of-type(3) {
+            border-left: 5px solid #4980ff;
+            padding-left: 1.688em;
+        }
+
+        .list:nth-of-type(3) .link:nth-of-type(1) {
+            background-color: #4980ff;
+            border-radius: 8px;
+        }
+
+        <?php
+        }
+        ?>
+    </style>
 </head>
 
 <body>
@@ -86,7 +137,7 @@ if (!isset($_SESSION['admin_name'])) {
                         foreach ($data as $row) {
                         ?>
                             <tr>
-                                <td> <?php echo $count?></td>
+                                <td> <?php echo $count ?></td>
                                 <td> <?php echo $row["Date_and_Time"] ?></td>
                                 <td> <?php echo $row["Name"] ?></td>
                                 <td> <?php echo $row["Email"] ?></td>
