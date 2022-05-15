@@ -43,6 +43,9 @@ if (!isset($_SESSION['admin_name'])) {
     <!-- LINK FOR INCON (FONTAWESOME) -->
     <script defer src="https://kit.fontawesome.com/86dc2a589d.js" crossorigin="anonymous"></script>
 
+    <!-- Sweet alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <!-- JQUERY -->
     <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
 

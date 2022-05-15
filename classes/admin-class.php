@@ -205,6 +205,16 @@ class Admin extends Database
         exit();
     }
 
+    // get total accepted audioBook in database
+    function getTotal($table)
+    {
+        $count = $this->connect()->query("SELECT count(*) FROM {$table} WHERE status = 'accepted'")->fetchColumn();
+
+        return $count;
+        exit();
+    }
+
+
     //dislay all users in admin-user
     function displayUser()
     {

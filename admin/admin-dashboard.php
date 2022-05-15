@@ -52,36 +52,56 @@ if (isset($_SESSION['admin_name']) && $_SESSION['role'] == 'main admin') {
 
                 <!-- Display Total Users -->
                 <div class="user-count-container">
-                    <p class="title">Total Users</p>
-                    <p class="count"><?php echo $admin->getTotalUser(); ?></p>
+                    <div>
+                        <p class="title">Total Users</p>
+                        <p class="count"><?php echo $admin->getTotalUser(); ?></p>
+                    </div>
 
-                    <div class="image"><i class="fa fa-solid fa-users"></i></div>
+                    <div class="image"><i class="fa fa-solid fa-users icon"></i></div>
                 </div>
 
                 <!-- Display Total Books -->
                 <div class="user-count-container">
-                    <p class="title">Total Books</p>
-                    <p class="count"><?php echo  $admin->getTotalUser(); ?></p>
+                    <div>
+                        <p class="title">Total Audiobooks</p>
+                        <p class="count"><?php echo  $admin->getTotal('tbl_audiobook'); ?></p>
+                    </div>
 
-                    <div class="image book"><i class="fa fa-solid fa-book"></i></div>
+                    <div class="image book"><i class="fa fa-solid fa-file-audio icon"></i></div>
                 </div>
 
-                <!-- Display Pending-->
+                <!-- Display total podcasts-->
                 <div class="user-count-container">
-                    <p class="title">Pending books</p>
-                    <p class="count"><?php echo $admin->getTotalUser() ?></p>
+                    <div>
+                        <p class="title">Total Podcasts</p>
+                        <p class="count"><?php echo $admin->getTotal('tbl_podcasts') ?></p>
+                    </div>
 
-                    <div class="image"><i class="fa fa-solid fa-users"></i></div>
+                    <div class="image podcasts"><i class="fa fa-solid fa-podcast icon"></i></div>
+                </div>
+
+                 <!-- Display total documents-->
+                <div class="user-count-container">
+                    <div>
+                        <p class="title">Total Documents</p>
+                        <p class="count"><?php echo $admin->getTotal('tbl_research_documents') ?></p>
+                    </div>
+
+                    <div class="image documents"><i class="fa fa-solid fa-file icon"></i></div>
                 </div>
 
                 <div class="user-count-container">
-                    <p class="title">Total User</p>
-                    <p class="count"><?php echo $admin->getTotalUser() ?></p>
+                    <div>
+                        <p class="title">Total Ebooks</p>
+                        <p class="count"><?php echo $admin->getTotal('tbl_research_documents') ?></p>
 
-                    <div class="image"><i class="fa fa-solid fa-users"></i></div>
+                    </div>
+
+                    <div class="image ebooks"><i class="fa fa-solid fa-book icon"></i></i></div>
                 </div>
 
             </div>
+
 
             <div class="admin-container">
                 <h2>Admins</h2>

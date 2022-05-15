@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['admin'])) {
-    header("Location:admin-login.php");
+if (!isset($_SESSION['admin_name'])) {
+    header("Location:index.php");
 } else {
     include '../includes/autoload-class.php';
     $admin = new Admin();
@@ -23,9 +23,12 @@ if (!isset($_SESSION['admin'])) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-   
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous"> -->
+
+    <!-- Sweet alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- LINK FOR INCON (FONTAWESOME) -->
     <script defer src="https://kit.fontawesome.com/86dc2a589d.js" crossorigin="anonymous"></script>
@@ -74,7 +77,7 @@ if (!isset($_SESSION['admin'])) {
                                 <td> <?php echo $row["firstname"] ?></td>
                                 <td> <?php echo $row["lastname"] ?></td>
                                 <td> <?php echo $row["Username"] ?></td>
-                                <td> <?php echo $row["recent_login"]?></td>
+                                <td> <?php echo $row["recent_login"] ?></td>
                                 <td>
                                     <p class="user-status"> <?php echo $row["user_status"] ?></p>
                                 </td>
@@ -185,12 +188,12 @@ if (!isset($_SESSION['admin'])) {
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 
-  
+
     <!-- SCRIPT FOR DELETE AND EDIT POP UP MODAL -->
     <script>
         const action = document.querySelector(".action");
         //get action class
-    
+
         //if button clicked is "delete"
         action.addEventListener('click', function(e) {
             if (e.target.classList.contains('deletebtn')) {

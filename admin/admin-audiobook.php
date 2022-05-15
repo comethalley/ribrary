@@ -45,9 +45,9 @@ if (!isset($_SESSION['admin_name'])) {
         <!-- include sidebar.php-->
         <?php include 'sidebar.php'; ?>
         <div class="main-container">
-        <h1 class ="text-center"> Welcome to Upload Audiobook Section</h1>
+            <h1 class="text-center"> Welcome to Upload Audiobook Section</h1>
 
-            <form class = "mt-5" action="../functions/admin-uploadAudiobook-function.php" method="POST" enctype="multipart/form-data">
+            <form class="mt-5" action="../functions/admin-uploadAudiobook-function.php" method="POST" enctype="multipart/form-data">
 
                 <!--<label for="audiobook"> Audiobook</label>
                 <input type="file" name="file" id="audiobook" accept=".mp3" required>
@@ -61,13 +61,13 @@ if (!isset($_SESSION['admin_name'])) {
                 <div class="form-row">
                     <div class="col">
                         <div class="custom-file">
-                            <input type="file" name = "file" accept=".mp3" class="custom-file-input" id="customFile" required>
+                            <input type="file" name="file" accept=".mp3" class="custom-file-input" id="customFile" required>
                             <label class="custom-file-label" for="customFile">Choose Audiobook file</label>
                         </div>
                     </div>
                     <div class="col">
                         <div class="custom-file">
-                            <input type="file" name = "file2" accept=".jpg, .png" class="custom-file-input" id="customFile" required>
+                            <input type="file" name="file2" accept=".jpg, .png" class="custom-file-input" id="customFile" required>
                             <label class="custom-file-label" for="customFile">Choose Cover image</label>
                         </div>
                     </div>
@@ -172,8 +172,8 @@ if (!isset($_SESSION['admin_name'])) {
 
     <!--input file script unfinished-->
     <script>
-        $(document).on('change', '.custom-file-input', function (event) {
-        $(this).next('.custom-file-label').html(event.target.files[0].name);
+        $(document).on('change', '.custom-file-input', function(event) {
+            $(this).next('.custom-file-label').html(event.target.files[0].name);
         })
     </script>
 
