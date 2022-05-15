@@ -36,7 +36,7 @@ if (isset($_POST['upload-audiobook'])) {
     $allowed = array('mp3');
     $allowed2 = array('png', 'jpg');
 
-    
+
     if ($fileError === 0 && $file2Error === 0) {
 
         $admin->checkAudiobook($allowed, $allowed2, $fileActualExt, $file2ActualExt, $fileName, $fileTmpName, $file2TmpName, $narrator, $admin_name, $categories);
