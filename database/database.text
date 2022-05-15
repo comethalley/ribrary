@@ -126,11 +126,27 @@ CREATE TABLE `tbl_audiobook` (
   `audiobook_path` varchar (30) NOT NULL,
   `audiobook_cover_path` varchar(255) NOT NULL,
    categories varchar(30) NOT NULL,
+   author varchar (60) NOT NULL,
+   synopsis varchar (255) NOT NULL,
   `narrator` varchar(11) NOT NULL,
   date_and_time varchar (60) NOT NULL,
   status varchar (30) NOT NULL,
   uploaded_by varchar(30) NOT NULL,
   PRIMARY KEY (audiobook_id)
+) 
+
+CREATE TABLE `tbl_ebooks` (
+  `ebooks_id` int(255) NOT NULL AUTO_INCREMENT,
+  `ebooks_name` varchar(255) NOT NULL,
+  `ebooks_path` varchar (30) NOT NULL,
+  `ebooks_cover_path` varchar(255) NOT NULL,
+   categories varchar(30) NOT NULL,
+   synopsis varchar (255) NOT NULL,
+   `author` varchar(11) NOT NULL,
+  date_and_time varchar (60) NOT NULL,
+  status varchar (30) NOT NULL,
+  uploaded_by varchar(30) NOT NULL,
+  PRIMARY KEY (ebooks_id)
 ) 
 
 CREATE TABLE tbl_reviews (

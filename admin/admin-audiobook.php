@@ -33,11 +33,6 @@ if (!isset($_SESSION['admin_name'])) {
     <!-- CSS TYLES -->
     <link rel="stylesheet" href="css/admin-uploadAudiobook-style.css">
     <link rel="stylesheet" href="css/sidebar-style.css">
-    <style>
-        .logo-container {
-            height: 5%;
-        }
-    </style>
 </head>
 
 <body>
@@ -73,7 +68,7 @@ if (!isset($_SESSION['admin_name'])) {
                     </div>
                     <div class="col">
                         <!--Pa required kapag may function na-->
-                        <input type="text" name="author" class="form-control" placeholder="Auhtor" id="author">
+                        <input type="text" name="author" class="form-control" placeholder="Author" id="author" required>
                     </div>
                     <div class="col">
                         <input type="text" name="narrator" class="form-control" placeholder="Narrator" id="narrator" required>
@@ -113,6 +108,10 @@ if (!isset($_SESSION['admin_name'])) {
                     </div>
                 </fieldset>
 
+                <div>
+                    <p> <label for="synopsis">Synopsis:</label></p>
+                    <textarea id="synopsis" name="synopsis" rows="5" cols="33" required></textarea>
+                </div>
 
                 <button class="btn btn-primary" name="upload-audiobook">Submit</button>
             </form>
