@@ -34,11 +34,7 @@ if (!isset($_SESSION['admin_name'])) {
     <!-- CSS TYLES -->
     <link rel="stylesheet" href="css/admin-uploadPodcast-style.css">
     <link rel="stylesheet" href="css/sidebar-style.css">
-    <style>
-        .logo-container {
-            height: 5%;
-        }
-    </style>
+
 </head>
 
 <body>

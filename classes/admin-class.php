@@ -478,11 +478,11 @@ class Admin extends Database
     }
 
     //insert audiobook to database
-    function upload_audiobook($audiobook_name, $audiobook_path, $audiobook_cover_path, $narrator, $createdBy, $categories)
+    function upload_audiobook($audiobook_name, $audiobook_path, $audiobook_cover_path, $narrator, $createdBy, $categories, $synopsis, $author)
     {
 
-        $sql = "INSERT INTO tbl_audiobook(audiobook_name, audiobook_path, audiobook_cover_path,categories, narrator, date_and_time, status, uploaded_by)
-     VALUES (?,?,?,?,?,?,?,?);";
+        $sql = "INSERT INTO tbl_audiobook(audiobook_name, audiobook_path, audiobook_cover_path,categories,author,synopsis, narrator, date_and_time, status, uploaded_by)
+     VALUES (?,?,?,?,?,?,?,?,?,?);";
 
         $status = 'pending';
 
@@ -490,7 +490,7 @@ class Admin extends Database
         $stmt = $this->connect()->prepare($sql);
 
         //if execution fail
-        if (!$stmt->execute([$audiobook_name, $audiobook_path, $audiobook_cover_path, $categories, $narrator, $this->date, $status, $createdBy])) {
+        if (!$stmt->execute([$audiobook_name, $audiobook_path, $audiobook_cover_path, $categories, $author, $synopsis, $narrator, $this->date, $status, $createdBy])) {
             header("Location:../admin/admin-audiobook.php?error=stmtfail");
             $connect = null;
             exit();
@@ -502,7 +502,7 @@ class Admin extends Database
     }
 
     //upload audiobook function
-    function checkAudiobook($allowed, $allowed2, $fileActualExt, $file2ctualExt, $filename, $fileTmpName, $file2TmpName, $narrator, $admin_name, $categories)
+    function checkAudiobook($allowed, $allowed2, $fileActualExt, $file2ctualExt, $filename, $fileTmpName, $file2TmpName, $narrator, $admin_name, $categories, $synopsis, $author)
     {
         //check if the file extension is in the array $allowed
         if (in_array($fileActualExt, $allowed) && in_array($file2ctualExt, $allowed2)) {
@@ -517,7 +517,56 @@ class Admin extends Database
 
             if (move_uploaded_file($fileTmpName, $fileDestination) &&  move_uploaded_file($file2TmpName, $fileDestination2)) {
 
-                $this->upload_audiobook($filename, $fileNameNew, $fileNameNew2, $narrator, $admin_name, $categories);
+                $this->upload_audiobook($filename, $fileNameNew, $fileNameNew2, $narrator, $admin_name, $categories, $synopsis, $author);
+            } else {
+                echo "move_uploaded_file error";
+            }
+        } else {
+            echo "You can't upload this type of file!";
+        }
+    }
+
+    //insert ebooks to database
+    function upload_ebooks($ebooks_name, $ebooks_path, $ebooks_cover_path, $createdBy, $categories, $synopsis, $author)
+    {
+
+        $sql = "INSERT INTO tbl_ebooks(ebooks_name, ebooks_path, ebooks_cover_path,categories,synopsis,author, date_and_time, status, uploaded_by)
+     VALUES (?,?,?,?,?,?,?,?,?);";
+
+        $status = 'pending';
+
+        // prepared statement
+        $stmt = $this->connect()->prepare($sql);
+
+        //if execution fail
+        if (!$stmt->execute([$ebooks_name, $ebooks_path, $ebooks_cover_path, $categories, $synopsis, $author, $this->date, $status, $createdBy])) {
+            header("Location:../admin/admin-audiobook.php?error=stmtfail");
+            $connect = null;
+            exit();
+        }
+
+        //if sucess uploading file, go to this 👇 page
+        header("Location: ../admin/admin-audiobook.php?q=uploadsuccess"); //change to docu later
+        exit();
+    }
+
+    //upload ebooks function
+    function checkEbooks($allowed, $allowed2, $fileActualExt, $file2ctualExt, $filename, $fileTmpName, $file2TmpName, $admin_name, $categories, $synopsis, $author)
+    {
+        //check if the file extension is in the array $allowed
+        if (in_array($fileActualExt, $allowed) && in_array($file2ctualExt, $allowed2)) {
+
+            //audiobook
+            $fileNameNew = uniqid('', true) . "." . $fileActualExt;
+            $fileDestination = 'uploads/' . $fileNameNew;
+
+            //cover
+            $fileNameNew2 = uniqid('', true) . "." . $file2ctualExt;
+            $fileDestination2 = 'uploads/' . $fileNameNew2;
+
+            if (move_uploaded_file($fileTmpName, $fileDestination) &&  move_uploaded_file($file2TmpName, $fileDestination2)) {
+
+                $this->upload_ebooks($filename, $fileNameNew, $fileNameNew2, $admin_name, $categories, $synopsis, $author);
             } else {
                 echo "move_uploaded_file error";
             }

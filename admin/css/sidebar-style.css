@@ -1,19 +1,30 @@
-.sidebar-container{
+.sidebar-container {
     background-color: #273041;
 }
 
-.logo-container{
+.logo-container {
     /* background-color: rgb(218, 230, 230); */
-    height: 10%;
+    height: 15%;
+}
+.logo-container {
+    /* background-color: aquamarine; */
+   text-align: center;
 }
 
-.nav-container{
+.admin-logo {
+    /* width: 50%; */
+    height: 100%;
+}
+
+.nav-container {
     /* background-color: blueviolet; */
     /* height: 30%; */
 }
-ul{
+
+ul {
     height: 100%;
     background-color: transparent;
+    /* background-color: aqua; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -24,17 +35,17 @@ ul{
 
 }
 
-.list{
+.list {
     width: 100%;
     list-style: none;
     cursor: pointer;
     /* background-color: brown; */
     margin: 0.5em 0;
     padding: 0 2em 0 2em;
-   
+
 }
 
-.link{
+.link {
     width: 100%;
     display: inline-block;
     color: white;
@@ -42,23 +53,25 @@ ul{
     /* border-radius: 10px; */
     text-transform: capitalize;
     padding: 1.3em 1.3em;
-    letter-spacing:0.5px;
+    letter-spacing: 0.5px;
 
     /* background-color:#4980ff; */
 }
 
-.fa{
+
+
+.fa {
     margin-right: 0.5rem;
 }
 
-.addBg{
-      background-color:#4980ff;
-       border-radius: 8px;
-       color: white;
-      
+.addBg {
+    background-color: #4980ff;
+    border-radius: 8px;
+    color: white;
+
 }
 
-.addRightBorder{
+.addRightBorder {
     border-left: 5px solid #4980ff;
     padding-left: 1.688em;
     color: white;

@@ -1,6 +1,6 @@
 <div class="sidebar-container">
     <div class="logo-container text-light h6">
-        <img src="../webpage/img/ribrary-logo-white.png" width="100" height="100" class="d-inline-block" alt="logo">
+        <img src="../webpage/img/ribrary-logo-white.png" alt="logo" class="admin-logo">
     </div>
 
     <div class="nav-container">
@@ -62,6 +62,11 @@
                 <li class="list">
                     <a href="admin-audiobook.php" class="link">
                         <i class="fa fa-solid fa-users"></i>Upload Audiobooks</a>
+                </li>
+
+                <li class="list">
+                    <a href="admin-ebooks.php" class="link">
+                        <i class="fa fa-solid fa-users"></i>Upload Ebooks</a>
                 </li>
             <?php
             }

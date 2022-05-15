@@ -89,6 +89,9 @@ main {
     transform: translateX(10rem);
     opacity: 0;
 }
+#synopsis{
+    resize: none;
+}
 
 #decline-text {
     width: 100%;
