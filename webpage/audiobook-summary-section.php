@@ -9,8 +9,10 @@ if (!isset($_SESSION['id'])) {
   $user = new User();
 }
 
-if (isset($_GET['categories-value'])) {
-  $value = $_GET['categories-value'];
+if (isset($_GET['file']) && isset($_GET['audio_file'])) {
+  $audio_file = $_GET['audio_file'];
+  $file = $_GET['file'];
+  $audiobok_data = $user->getAudiobookData($audio_file);
 }
 
 ?>
@@ -95,33 +97,42 @@ if (isset($_GET['categories-value'])) {
     <!--  <button type="button" class="btn">Add Forum</button></p> -->
     </center>
     <main>
-        <div class="container1 mx-auto my-5">
-            <div class="row my-3">
-                <div class="col-md-3 mx-auto">
-                <img src="img/aerol.jpg" class="img-thumbnail" alt="cover" style = "width:400px; height:300px;">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-9 mx-auto">
-                    <div class="card" style="width: 100%">
-                        <div class="card-body">
-                            <h5 class="card-title">Audiobook title</h5>
-                            <p class="card-text">Synopsis: This audiobook is all about Hakdog</p>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Ratings</li>
-                            <li class="list-group-item">Author: Author_name</li>
-                            <li class="list-group-item">Genre: </li>
-                            <li class="list-group-item">Narrated by: Narrator_name</li>
-                        </ul>
-                        <div class="card-body">
-                            <a href="#" class="btn btn-primary">Start Reading</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="container1 mx-auto my-5">
+        <div class="row my-3">
+          <div class="col-md-3 mx-auto">
+            <img src="../functions/uploads/<?php echo $file; ?>" class="img-thumbnail" alt="cover" style="width:400px; height:300px;">
+          </div>
         </div>
-      
+
+        <div class="row">
+
+          <div class="col-md-9 mx-auto">
+            <div class="card" style="width: 100%">
+              <div class="card-body">
+                <h5 class="card-title"><?php echo $audiobok_data['audiobook_name'] ?></h5>
+                <p class="card-text">Synopsis: <?php echo $audiobok_data['synopsis'] ?></p>
+              </div>
+              <form action="audio-view.php" method="GET">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Ratings</li>
+                  <li class="list-group-item">Author: <?php echo $audiobok_data['author'] ?></li>
+                  <li class="list-group-item">Genre: <?php echo $audiobok_data['categories'] ?></li>
+                  <li class="list-group-item">Narrated by: <?php echo $audiobok_data['narrator'] ?></li>
+                </ul>
+                <input type="hidden" name="file" value="<?php echo $file ?>">
+                <input type="hidden" name="audio_file" value="<?php echo $audio_file ?>">
+
+                <div class="card-body">
+                  <button class="btn btn-primary">Start Reading</button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
     </main>
   </main>
 
