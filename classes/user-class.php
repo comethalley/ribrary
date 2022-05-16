@@ -394,14 +394,35 @@ class User extends Database
         }
     }
 
-    //get specific audibooks date 
+     //display audiobooks
+     function displayEbooks($categories = '')
+     {
+         if (!empty($categories)) {
+             $data = $this->connect()->query("SELECT * FROM tbl_ebooks WHERE status = 'accepted' AND categories = '{$categories}'")->fetchAll();
+             return $data;
+             exit();
+         } else {
+             $data = $this->connect()->query("SELECT * FROM tbl_ebooks WHERE status = 'accepted'")->fetchAll();
+             return $data;
+             exit();
+         }
+     }
 
+    //get specific audibooks data
     function getAudiobookData($audiobook_file)
     {
         $data = $this->connect()->query("SELECT * FROM tbl_audiobook WHERE status = 'accepted' AND audiobook_path = '{$audiobook_file}'")->fetch();
         return $data;
         exit();
     }
+
+     //get specific ebook data
+     function getEbookData($audiobook_file)
+     {
+         $data = $this->connect()->query("SELECT * FROM tbl_ebooks WHERE status = 'accepted' AND ebooks_path = '{$audiobook_file}'")->fetch();
+         return $data;
+         exit();
+     }
 
     //display audiobooks
     function displayPodcasts($categories = '')

@@ -9,8 +9,11 @@ if (!isset($_SESSION['id'])) {
   $user = new User();
 }
 
-if (isset($_GET['categories-value'])) {
-  $value = $_GET['categories-value'];
+if (isset($_GET['file']) && isset($_GET['ebook_file'])) {
+  $ebook_file = $_GET['ebook_file'];
+  $file = $_GET['file'];
+
+  $ebook_data = $user->getEbookData($ebook_file);
 }
 
 ?>
@@ -95,32 +98,37 @@ if (isset($_GET['categories-value'])) {
     <!--  <button type="button" class="btn">Add Forum</button></p> -->
     </center>
     <main>
-        <div class="container1 mx-auto my-5">
-            <div class="row my-3">
-                <div class="col-md-3 mx-auto">
-                <img src="img/aerol.jpg" class="img-thumbnail" alt="cover" style = "width:400px; height:300px;">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-9 mx-auto">
-                    <div class="card" style="width: 100%">
-                        <div class="card-body">
-                            <h5 class="card-title">Ebook Title</h5>
-                            <p class="card-text">Synopsis: This ebook is all about Hakdog</p>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Ratings</li>
-                            <li class="list-group-item">Author: Author_name</li>
-                            <li class="list-group-item">Genre: </li>
-                        </ul>
-                        <div class="card-body">
-                            <a href="#" class="btn btn-primary">Start Reading</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="container1 mx-auto my-5">
+        <div class="row my-3">
+          <div class="col-md-3 mx-auto">
+            <img src="img/aerol.jpg" class="img-thumbnail" alt="cover" style="width:400px; height:300px;">
+          </div>
         </div>
-      
+        <div class="row">
+          <div class="col-md-9 mx-auto">
+            <div class="card" style="width: 100%">
+              <div class="card-body">
+                <h5 class="card-title"><?php echo $ebook_data['ebooks_name'] ?></h5>
+                <p class="card-text">Synopsis: <?php echo $ebook_data['synopsis'] ?></p>
+              </div>
+              <form action="view.php" method="GET">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Ratings</li>
+                  <li class="list-group-item">Author: <?php echo $ebook_data['author'] ?></li>
+                  <li class="list-group-item">Genre: <?php echo $ebook_data['categories'] ?></li>
+                </ul>
+
+                <input type="hidden" name="file" value="<?php echo $ebook_file ?>">
+         
+                <div class="card-body">
+                  <button class="btn btn-primary">Start Reading</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </main>
   </main>
 
