@@ -90,7 +90,6 @@ if (!isset($_SESSION['id'])) {
     <div class="backdrop">
       <button class="upbtn" onclick="window.location.href='upload-documents-section.php'">Upload your own research documents here!</button>
       <center>
-        <button type="button" class="btn">Add Forum</button></p>
       </center>
     </div>  
       <main>

@@ -7,7 +7,7 @@
 
 body {
     font-family: "Poppins";
-    background-image: url("/webpage/img/Librarys.jpg");
+    background-image: url('../img/Librarys.jpg');
 
 }
 
@@ -135,16 +135,6 @@ span:before {
     10.5% {
         content: "Books";
         color: brown;
-    }
-
-    30% {
-        content: "Magazines";
-        color: #d11149;
-    }
-
-    45% {
-        content: "Musics";
-        color: #502419;
     }
 
     60% {
