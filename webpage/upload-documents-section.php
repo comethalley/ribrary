@@ -124,7 +124,7 @@ include '../includes/autoload-class.php';
                     </div>
                 </div>
 
-                <fieldset class="form-group row my-5">
+                <!--<fieldset class="form-group row my-5">
                     <legend class="col-form-label col-sm-3 float-sm-left pt-0">What your study all about :</legend>
                     <div class="col-sm-3">
                         <div class="form-check">
@@ -155,7 +155,7 @@ include '../includes/autoload-class.php';
                             <label for="physics">Physics</label>
                         </div>
                     </div>
-                </fieldset>
+                </fieldset>-->
                 
                 <div class="form-group row mx-3 my-5">
                   <label for="colFormLabelSm" class="col-sm-1 col-form-label col-form-label-sm ml-auto">Others:</label>
