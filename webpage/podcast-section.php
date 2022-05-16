@@ -25,37 +25,45 @@ if (isset($_GET['categories-value'])) {
   <link rel="stylesheet" href="css/transitions.css">
   <link rel="stylesheet" href="css/box.css">
   <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/header.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
   <title>Podcast</title>
+
+  <!-- sweet alert -->
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <!-- BOOTSTRAP ICON -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
   <style>
     .hide {
       display: none;
     }
-    .capitalize{
+
+    .capitalize {
       text-transform: capitalize;
+    }
+
+    .view-message {
+      color: red;
+    }
+
+    .view-message:hover {
+      text-decoration: underline;
+    }
+
+    .navbar {
+      z-index: 1;
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <div class="container">
-      <?php
-      if (isset($_SESSION['first-name']) && isset($_SESSION['last-name']) && isset($_SESSION['email'])) {
+  <!-- HEADER -->
+  <?php include 'header.php' ?>
 
-      ?>
-        <a href="UserProf.html" id="account-name">
-          <p>Hi, <?php echo $_SESSION['first-name'] ?> <?php echo $_SESSION['last-name'] ?></p>
-        </a>
-
-        <img src="<?php echo $_SESSION["profile"] ?>" alt="" class="user-image">
-      <?php
-      }
-      ?>
-    </div>
-  </header>
   <nav class="navbar sticky-top navbar-expand-lg navbar-dark mx-0 w-100" style="background-color: #485665;">
-    <a class="navbar-brand" href="books-section.php">
+    <a class="navbar-brand" href="ebook-section.php">
       <img src="img/ribrary-logo-white.png" width="50" height="50" class="d-inline-block" alt="logo.png">
       Ribrary
     </a>
@@ -289,6 +297,7 @@ if (isset($_GET['categories-value'])) {
       <!-- SCRIPT -->
       <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+      <script src="js/header.js"></script>
       <script>
         const categories = document.querySelectorAll('.categories');
         const categoriesForm = document.querySelector('.categories-form')
@@ -319,6 +328,8 @@ if (isset($_GET['categories-value'])) {
           }
         })
       </script>
+
+
 </body>
 
 </html>

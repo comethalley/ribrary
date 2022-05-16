@@ -20,30 +20,29 @@ if (!isset($_SESSION['id'])) {
   <link rel="stylesheet" href="css/sections.css">
   <link rel="stylesheet" href="css/transitions.css">
   <link rel="stylesheet" href="css/box.css">
+  <link rel="stylesheet" href="css/header.css">
   <link rel="stylesheet" href="css/footer.css">
   <title>Document</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+  <!-- sweet alert -->
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <!-- BOOTSTRAP ICON -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+  <style>
+    .navbar {
+      z-index: 1;
+    }
+  </style>
+
 </head>
 
 <body>
-  <header>
-    <div class="container">
-      <?php
-      if (isset($_SESSION['first-name']) && isset($_SESSION['last-name']) && isset($_SESSION['email'])) {
+  <!-- HEADER -->
+  <?php include 'header.php' ?>
 
-      ?>
-        <a href="UserProf.html" id="account-name">
-          <p>Hi, <?php echo $_SESSION['first-name'] ?> <?php echo $_SESSION['last-name'] ?></p>
-        </a>
-
-        <img src="<?php echo $_SESSION["profile"] ?>" alt="" class="user-image">
-      <?php
-      }
-      ?>
-    </div>
-  </header>
   <nav class="navbar sticky-top navbar-expand-lg navbar-dark mx-0 w-100" style="background-color: #485665;">
-    <a class="navbar-brand" href="books-section.php">
+    <a class="navbar-brand" href="ebook-section.php">
       <img src="img/ribrary-logo-white.png" width="50" height="50" class="d-inline-block" alt="logo.png">
       Ribrary
     </a>
