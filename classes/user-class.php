@@ -394,6 +394,15 @@ class User extends Database
         }
     }
 
+    //get specific audibooks date 
+
+    function getAudiobookData($audiobook_file)
+    {
+        $data = $this->connect()->query("SELECT * FROM tbl_audiobook WHERE status = 'accepted' AND audiobook_path = '{$audiobook_file}'")->fetch();
+        return $data;
+        exit();
+    }
+
     //display audiobooks
     function displayPodcasts($categories = '')
     {
