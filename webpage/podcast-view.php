@@ -115,12 +115,13 @@ session_start();
 </head>
 
 <body>
+    <center>
     <div class="player">
-        <video controls id="podcast-file">
+        <video controls id="podcast-file" style = "width:500px; height:300px">
             <source src="" type="audio/mp4">
         </video>
     </div>
-
+    </center>    
     <?php
     $currentPage = $_SERVER['REQUEST_URI'];
     $bookName = substr($currentPage, strpos($currentPage, "file=") + 5);

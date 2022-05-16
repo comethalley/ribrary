@@ -123,7 +123,7 @@ if (isset($_GET['file']) && isset($_GET['audio_file'])) {
                 <input type="hidden" name="audio_file" value="<?php echo $audio_file ?>">
 
                 <div class="card-body">
-                  <button class="btn btn-primary">Start Reading</button>
+                  <button class="btn btn-primary">Start Listening</button>
                 </div>
               </form>
             </div>

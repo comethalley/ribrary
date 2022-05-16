@@ -129,7 +129,7 @@ class User extends Database
 
 
             //if sucess creating user, go to this 👇 page
-            header("Location:../webpage/books-section.php?LoginSuccesfully");
+            header("Location:../webpage/ebook-section.php?LoginSuccesfully");
             // $connect = null;
             exit();
         } else {
@@ -229,7 +229,7 @@ class User extends Database
         $_SESSION["profile"] = $defaultProfile;
 
         //if sucess creating user, go to this 👇 page
-        header("Location: ../webpage/books-section.php?LoginSucesfully!");
+        header("Location: ../webpage/ebook-section.php?LoginSucesfully!");
         $connect = null;
         exit();
     }

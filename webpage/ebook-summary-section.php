@@ -101,7 +101,7 @@ if (isset($_GET['file']) && isset($_GET['ebook_file'])) {
       <div class="container1 mx-auto my-5">
         <div class="row my-3">
           <div class="col-md-3 mx-auto">
-            <img src="img/aerol.jpg" class="img-thumbnail" alt="cover" style="width:400px; height:300px;">
+            <img src="../functions/uploads/<?php echo $file; ?>" class="img-thumbnail" alt="cover" style="width:400px; height:300px;">
           </div>
         </div>
         <div class="row">
