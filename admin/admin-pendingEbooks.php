@@ -27,7 +27,7 @@ if (!isset($_SESSION['admin_name'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pending Podcasts</title>
+    <title>Pending Ebooks</title>
 
     <!-- GOOGLE FONT LINK -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -70,33 +70,33 @@ if (!isset($_SESSION['admin_name'])) {
         }
 
         /* ----------------------------- */
-        .list:nth-of-type(5) {
+        .list:nth-of-type(7) {
             border-left: 5px solid #4980ff;
             padding-left: 1.688em;
         }
 
-        .list:nth-of-type(5) .link:nth-of-type(1) {
+        .list:nth-of-type(7) .link:nth-of-type(1) {
             background-color: #4980ff;
             border-radius: 8px;
         }
 
         <?php
         } else {
-        ?>.list:nth-of-type(1) {
+        ?>.list:nth-of-type(2) {
             border-left: 5px solid transparent;
         }
 
-        .list:nth-of-type(1) .link:nth-of-type(1) {
+        .list:nth-of-type(2) .link:nth-of-type(1) {
             background-color: transparent;
         }
 
         /* ----------------------------- */
-        .list:nth-of-type(2) {
+        .list:nth-of-type(4) {
             border-left: 5px solid #4980ff;
             padding-left: 1.688em;
         }
 
-        .list:nth-of-type(2) .link:nth-of-type(1) {
+        .list:nth-of-type(4) .link:nth-of-type(1) {
             background-color: #4980ff;
             border-radius: 8px;
         }
@@ -116,16 +116,18 @@ if (!isset($_SESSION['admin_name'])) {
             <!-- Display User from database -->
             <div class="table-container">
                 <!-- <button class="action">dsd</button> -->
-                <h2>Pending Podcasts</h2>
+                <h2>Pending Ebooks</h2>
 
                 <table class="table" id="table_id">
 
                     <thead>
                         <tr class="table-header">
                             <th scope="col">No.</th>
-                            <th scope="col">Podcast Name</th>
-                            <th scope="col">Podcast File</th>
-                            <th scope="col">Podcast Host</th>
+                            <th scope="col">Ebooks Name</th>
+                            <th scope="col">Ebooks File</th>
+                            <th scope="col">Ebooks Cover</th>
+                            <th scope="col">Categories</th>
+                            <th scope="col">Author</th>
                             <th scope="col">Date and Time</th>
                             <th scope="col">Uploaded By</th>
                             <th scope="col">Action</th>
@@ -135,7 +137,7 @@ if (!isset($_SESSION['admin_name'])) {
                     <tbody class="action">
 
                         <?php
-                        $data = $admin->displayPendingPodcasts('', $start_from, $num_per_page);
+                        $data = $admin->displayPending('tbl_ebooks', '', $start_from, $num_per_page);
                         $count = $start_from + 1;
                         foreach ($data as $row) {
 
@@ -143,13 +145,15 @@ if (!isset($_SESSION['admin_name'])) {
 
                             <tr>
                                 <td> <?php echo $count ?></td>
-                                <td> <?php echo $row["podcast_name"] ?></td>
-                                <td><a href='../functions/uploads/<?php echo $row["podcast_path"] ?>' target="_thapa">View</a></td>
-                                <td> <?php echo $row["podcast_host"] ?></td>
+                                <td> <?php echo $row["ebooks_name"] ?></td>
+                                <td><a href='../functions/uploads/<?php echo $row["ebooks_path"] ?>' target="_thapa">View</a></td>
+                                <td> <a href='../functions/uploads/<?php echo $row["ebooks_cover_path"] ?>' target="_thapa">View</a></td>
+                                <td> <?php echo $row["categories"] ?></td>
+                                <td> <?php echo $row["author"] ?></td>
                                 <td> <?php echo $row["date_and_time"] ?></td>
                                 <td> <?php echo $row["uploaded_by"] ?></td>
                                 <td>
-                                    <input type="hidden" name="doc_id" value="<?php echo $row["podcast_id"] ?>">
+                                    <input type="hidden" name="doc_id" value="<?php echo $row["ebooks_id"] ?>">
                                     <button type="button" class="btn btn-outline-success acceptBtn"> Accept</button>
                                     <button type="button" class="btn btn-outline-danger declineBtn">Decline</button>
 
@@ -174,18 +178,18 @@ if (!isset($_SESSION['admin_name'])) {
                                 </button>
                             </div>
 
-                            <form action="../functions/admin-pendingPodcasts-function.php" method="POST">
+                            <form action="../functions/admin-pendingEbooks-function.php" method="POST">
 
                                 <!-- DISPLAY -->
                                 <div class="modal-body">
 
-                                    <input type="hidden" name="podcast_id" id="podcast_id_accept">
+                                    <input type="hidden" name="ebooks_id" id="ebooks_id_accept">
                                     Are you sure you want to accept?
                                 </div>
 
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                    <button type="submit" name="accept-podcasts" class="btn btn-primary">Yes</button>
+                                    <button type="submit" name="accept-ebooks" class="btn btn-primary">Yes</button>
                                 </div>
                             </form>
 
@@ -204,18 +208,18 @@ if (!isset($_SESSION['admin_name'])) {
                                 </button>
                             </div>
 
-                            <form action="../functions/admin-pendingPodcasts-function.php" method="POST">
+                            <form action="../functions/admin-pendingEbooks-function.php" method="POST">
 
                                 <!-- DISPLAY -->
                                 <div class="modal-body">
 
-                                    <input type="hidden" name="podcast_id" id="podcast_id_decline">
+                                    <input type="hidden" name="ebooks_id" id="ebooks_id_decline">
                                     Are you sure you want to decline?
                                 </div>
 
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                    <button type="submit" name="decline-podcasts" class="btn btn-primary">Done</button>
+                                    <button type="submit" name="decline-ebooks" class="btn btn-primary">Done</button>
                                 </div>
                             </form>
 
@@ -238,7 +242,7 @@ if (!isset($_SESSION['admin_name'])) {
                 <!-- PAGE BUTTON  -->
                 <div class="pagination">
                     <?php
-                    $data = $admin->displayPendingPodcasts("all");
+                    $data = $admin->displayPending("tbl_ebooks", "all");
                     $total_record = count($data);
 
                     $total_page = ceil($total_record / $num_per_page);
@@ -312,13 +316,13 @@ if (!isset($_SESSION['admin_name'])) {
             if (e.target.classList.contains('acceptBtn')) {
                 $('#acceptModal').modal('show');
                 const docId = e.target.closest('td').firstElementChild.value
-                document.querySelector('#podcast_id_accept').value = docId;
+                document.querySelector('#ebooks_id_accept').value = docId;
             }
 
             if (e.target.classList.contains('declineBtn')) {
                 $('#declineModal').modal('show');
                 const docId = e.target.closest('td').firstElementChild.value
-                document.querySelector('#podcast_id_decline').value = docId;
+                document.querySelector('#ebooks_id_decline').value = docId;
             }
         })
 

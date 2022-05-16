@@ -279,6 +279,21 @@ class Admin extends Database
         exit();
     }
 
+    //update ebooks status 
+    function updateEbookStatus($ebooks_id, $status)
+    {
+        $sql = "UPDATE tbl_ebooks SET status = ? WHERE ebooks_id=?";
+        $stmt = $this->connect()->prepare($sql);
+
+        if (!$stmt->execute([$status, $ebooks_id])) {
+            header("Location:../admin/admin-pendingEbooks.php?error=errorAccept");
+            exit();
+        }
+
+        header("Location:../admin/admin-pendingEbooks.php?q=success");
+        exit();
+    }
+
     //update podcast status 
     function updatePodcastStatus($podcast_id, $status)
     {
@@ -573,6 +588,20 @@ class Admin extends Database
         } else {
             echo "You can't upload this type of file!";
         }
+    }
+    //display all pending podcasts
+    function displayPending($tbl,$displayAll = "notall", $start_from = 0, $num_per_page = 9)
+    {
+        if ($displayAll == "all") {
+            $data = $this->connect()->query("SELECT * FROM {$tbl} ")->fetchAll();
+
+            return $data;
+        }
+        $data = $this->connect()->query("SELECT * FROM {$tbl} WHERE status = 'pending' limit $start_from,$num_per_page")->fetchAll();
+
+        return $data;
+
+        exit();
     }
 
 
