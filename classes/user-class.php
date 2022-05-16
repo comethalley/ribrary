@@ -261,11 +261,11 @@ class User extends Database
     }
 
     //insert documents to database
-    function upload_documents($doc_name, $doc_file, $doc_path, $createdBy, $id)
+    function upload_documents($doc_name, $doc_file, $doc_path, $createdBy, $id,$categories)
     {
 
-        $sql2 = "INSERT INTO tbl_research_documents (doc_name,doc_file ,doc_path ,createdBy ,date_and_time ,user_id ,status)
-   VALUES (?,?,?,?,?,(SELECT User_id FROM tbl_user WHERE user_id = ?),?);";
+        $sql2 = "INSERT INTO tbl_research_documents (doc_name,doc_file, doc_path ,categories,createdBy ,date_and_time ,user_id ,status)
+   VALUES (?,?,?,?,?,?,(SELECT User_id FROM tbl_user WHERE user_id = ?),?);";
 
         $status = 'pending';
         $notif_status = 'unread';
@@ -274,7 +274,7 @@ class User extends Database
         $stmt = $this->connect()->prepare($sql2);
 
         //if execution fail
-        if (!$stmt->execute([$doc_name, $doc_file, $doc_path, $createdBy, $this->date, $id, $status])) {
+        if (!$stmt->execute([$doc_name, $doc_file, $doc_path,$categories, $createdBy, $this->date, $id, $status])) {
             header("Location:../webpage/upload-documents-section.php?error=stmtfail");
             $connect = null;
             exit();
@@ -289,7 +289,7 @@ class User extends Database
     }
 
     //upload documents funciton
-    function checkDocuments($allowed, $fileActualExt, $fileError, $fileSize, $fileTmpName, $createdBy, $fileName)
+    function checkDocuments($allowed, $fileActualExt, $fileError, $fileSize, $fileTmpName, $createdBy, $fileName,$categories)
     {
         //check if the file extension is in the array $allowed
         if (in_array($fileActualExt, $allowed)) {
@@ -304,7 +304,7 @@ class User extends Database
                     move_uploaded_file($fileTmpName, $fileDestination);
 
                     $userId = $_SESSION["id"];
-                    $this->upload_documents($fileName, $fileTmpName, $fileNameNew, $createdBy, $userId);
+                    $this->upload_documents($fileName, $fileTmpName, $fileNameNew, $createdBy, $userId,$categories);
                 } else {
                     echo "The file was too large";
                 }

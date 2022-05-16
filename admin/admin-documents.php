@@ -123,8 +123,9 @@ if (!isset($_SESSION['admin_name'])) {
                     <thead>
                         <tr class="table-header">
                             <th scope="col">No.</th>
-                            <th scope="col">Book name</th>
-                            <th scope="col">Book File</th>
+                            <th scope="col">Document name</th>
+                            <th scope="col">Document File</th>
+                            <th scope="col">Categories</th>
                             <th scope="col">Uploaded By</th>
                             <th scope="col">Date and Time</th>
                             <th scope="col">Action</th>
@@ -144,6 +145,7 @@ if (!isset($_SESSION['admin_name'])) {
                                 <td> <?php echo $count ?></td>
                                 <td> <?php echo $row["doc_name"] ?></td>
                                 <td><a href='../functions/uploads/<?php echo $row["doc_path"] ?>' target="_thapa">View</a></td>
+                                <td> <?php echo $row["categories"] ?></td>
                                 <td> <?php echo $row["createdBy"] ?></td>
                                 <td> <?php echo $row["date_and_time"] ?></td>
                                 <td>

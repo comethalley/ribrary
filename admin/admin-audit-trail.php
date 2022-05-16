@@ -68,18 +68,18 @@ if (!isset($_SESSION['admin_name'])) {
         }
 
         /* ----------------------------- */
-        .list:nth-of-type(7) {
+        .list:nth-of-type(8) {
             border-left: 5px solid #4980ff;
             padding-left: 1.688em;
         }
 
-        .list:nth-of-type(7) .link:nth-of-type(1) {
+        .list:nth-of-type(8) .link:nth-of-type(1) {
             background-color: #4980ff;
             border-radius: 8px;
         }
 
         <?php
-        } else {
+        } else if ($_SESSION["role"] == 'Admin1') {
         ?>.list:nth-of-type(2) {
             border-left: 5px solid transparent;
         }
@@ -89,15 +89,37 @@ if (!isset($_SESSION['admin_name'])) {
         }
 
         /* ----------------------------- */
-        .list:nth-of-type(3) {
+        .list:nth-of-type(5) {
             border-left: 5px solid #4980ff;
             padding-left: 1.688em;
         }
 
-        .list:nth-of-type(3) .link:nth-of-type(1) {
+        .list:nth-of-type(5) .link:nth-of-type(1) {
             background-color: #4980ff;
             border-radius: 8px;
         }
+
+        <?php
+        } else if ($_SESSION["role"] == 'Admin2') {
+        ?>.list:nth-of-type(2) {
+            border-left: 5px solid transparent;
+        }
+
+        .list:nth-of-type(2) .link:nth-of-type(1) {
+            background-color: transparent;
+        }
+
+        /* ----------------------------- */
+        .list:nth-of-type(4) {
+            border-left: 5px solid #4980ff;
+            padding-left: 1.688em;
+        }
+
+        .list:nth-of-type(4) .link:nth-of-type(1) {
+            background-color: #4980ff;
+            border-radius: 8px;
+        }
+
 
         <?php
         }

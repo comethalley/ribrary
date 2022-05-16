@@ -114,29 +114,6 @@ if (!isset($_SESSION['admin_name'])) {
                 <button class="btn btn-primary" name="upload-ebooks">Submit</button>
             </form>
 
-            <!-- Test if audiobook display works -->
-            <h1>Display ebooks(test)</h1>
-            <?php
-            include '../includes/autoload-class.php';
-            $user = new User();
-
-            $data = $user->displayAudioBooks();
-
-            foreach ($data as $row) {
-            ?>
-                <p><?php echo $row['audiobook_name'] ?></p>
-
-                <img src="../functions/uploads/<?php echo $row['audiobook_cover_path'] ?>" alt="">
-
-                <audio controls src="../functions/uploads/<?php echo $row['audiobook_path'] ?>">
-                    Your browser does not support the
-                    <code>audio</code> element.
-                </audio>
-
-            <?php
-            }
-            ?>
-
         </div>
     </main>
 

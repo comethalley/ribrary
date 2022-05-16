@@ -96,33 +96,6 @@ if (!isset($_SESSION['admin_name'])) {
                 <button class="btn btn-primary" name="upload-podcast">Submit</button>
             </form>
 
-            <!-- Test if podcasts display works -->
-            <h1>Display Podcasts(test)</h1>
-            <?php
-            include '../includes/autoload-class.php';
-            $user = new User();
-
-            $data = $user->displayPodcasts();
-
-            foreach ($data as $row) {
-            ?>
-                <p><?php echo $row['podcast_name'] ?></p>
-
-                <img src="../functions/uploads/<?php echo $row['podcast_name'] ?>" alt="">
-
-
-                <video controls width="250">
-                    <source src="../functions/uploads/<?php echo $row['podcast_path'] ?>" type="video/mp4">
-
-                    Sorry, your browser doesn't support embedded videos.
-                </video>
-
-            <?php
-            }
-            ?>
-
-
-
         </div>
     </main>
 

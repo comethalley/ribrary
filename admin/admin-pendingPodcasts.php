@@ -126,6 +126,7 @@ if (!isset($_SESSION['admin_name'])) {
                             <th scope="col">Podcast Name</th>
                             <th scope="col">Podcast File</th>
                             <th scope="col">Podcast Host</th>
+                            <th scope="col">Categories</th>
                             <th scope="col">Date and Time</th>
                             <th scope="col">Uploaded By</th>
                             <th scope="col">Action</th>
@@ -146,6 +147,7 @@ if (!isset($_SESSION['admin_name'])) {
                                 <td> <?php echo $row["podcast_name"] ?></td>
                                 <td><a href='../functions/uploads/<?php echo $row["podcast_path"] ?>' target="_thapa">View</a></td>
                                 <td> <?php echo $row["podcast_host"] ?></td>
+                                <td> <?php echo $row["categories"] ?></td>
                                 <td> <?php echo $row["date_and_time"] ?></td>
                                 <td> <?php echo $row["uploaded_by"] ?></td>
                                 <td>
