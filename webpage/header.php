@@ -65,7 +65,7 @@
             </div>
 
             <!-- Notif content -->
-            <a href="UserProf.html" id="account-name">
+            <a href="UserProf.php" id="account-name">
                 <p>Hi, <?php echo $_SESSION['first-name'] ?> <?php echo $_SESSION['last-name'] ?></p>
             </a>
 
