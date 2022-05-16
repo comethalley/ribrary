@@ -43,6 +43,9 @@ if (!isset($_SESSION['admin_name'])) {
     <!-- LINK FOR INCON (FONTAWESOME) -->
     <script defer src="https://kit.fontawesome.com/86dc2a589d.js" crossorigin="anonymous"></script>
 
+    <!-- SWEET ALERT -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <!-- JQUERY -->
     <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
 
@@ -104,6 +107,11 @@ if (!isset($_SESSION['admin_name'])) {
         <?php
         }
         ?>
+
+        .view-abstract{
+            cursor: pointer;
+            color: blue;
+        }
     </style>
 </head>
 
@@ -126,6 +134,7 @@ if (!isset($_SESSION['admin_name'])) {
                             <th scope="col">Document name</th>
                             <th scope="col">Document File</th>
                             <th scope="col">Categories</th>
+                            <th scope="col">Abstract</th>
                             <th scope="col">Uploaded By</th>
                             <th scope="col">Date and Time</th>
                             <th scope="col">Action</th>
@@ -146,6 +155,10 @@ if (!isset($_SESSION['admin_name'])) {
                                 <td> <?php echo $row["doc_name"] ?></td>
                                 <td><a href='../functions/uploads/<?php echo $row["doc_path"] ?>' target="_thapa">View</a></td>
                                 <td> <?php echo $row["categories"] ?></td>
+                                <td>
+                                    <input type="hidden" name="abstract" id="abstract" value=" <?php echo $row["abstract"] ?>">
+                                    <span class="view-abstract">View</span>
+                                </td>
                                 <td> <?php echo $row["createdBy"] ?></td>
                                 <td> <?php echo $row["date_and_time"] ?></td>
                                 <td>
@@ -295,10 +308,20 @@ if (!isset($_SESSION['admin_name'])) {
         const showToast = document.querySelector('.show-toast')
         const toastContainer = document.querySelector('.toast-container')
         const closeToast = document.querySelector('.close-toast');
+        const viewAbstract = document.querySelector('.view-abstract')
 
         const url = window.location.search
         const urlParam = new URLSearchParams(url)
         const success = urlParam.get('q')
+
+        const abstractContent = function(text) {
+            Swal.fire({
+                icon: 'info',
+                title: 'Abstract',
+                text: `${text}`,
+            })
+        }
+
 
         if (success && success == 'success') {
             toastContainer.classList.remove('hidden')
@@ -320,6 +343,12 @@ if (!isset($_SESSION['admin_name'])) {
                 $('#declineModal').modal('show');
                 const docId = e.target.closest('td').firstElementChild.value
                 document.querySelector('#doc_id_decline').value = docId;
+            }
+
+            //view abstract
+            if (e.target.classList.contains('view-abstract')) {
+                const data = e.target.closest('td').firstElementChild.value
+                abstractContent(data)
             }
         })
 

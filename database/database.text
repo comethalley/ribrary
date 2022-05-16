@@ -99,6 +99,7 @@ CREATE TABLE `tbl_research_documents` (
   `doc_file` blob NOT NULL,
   `doc_path` varchar (30) NOT NULL,
   `categories` varchar (30) NOT NULL,
+  `abstract` varchar (250) NOT NULL,
   `createdBy` varchar(11) NOT NULL,
   date_and_time varchar (60) NOT NULL,
   user_id int(20) NOT NULL,

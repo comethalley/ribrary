@@ -7,6 +7,7 @@ if (isset($_POST['submit'])) {
     $fulllname = $_SESSION["first-name"] . ' ' . $_SESSION["last-name"];
     $createdBy = $fulllname;
     $categories = $_POST['categories'];
+    $abstract = $_POST['abstract'];
     $file = $_FILES['file'];
 
     $user = new User();
@@ -26,6 +27,6 @@ if (isset($_POST['submit'])) {
     $allowed = array('pdf', 'doc', 'docx');
 
 
-    $user->checkDocuments($allowed,$fileActualExt,$fileError,$fileSize,$fileTmpName,$createdBy,$fileName,$categories);
+    $user->checkDocuments($allowed,$fileActualExt,$fileError,$fileSize,$fileTmpName,$createdBy,$fileName,$categories,$abstract);
    
 }

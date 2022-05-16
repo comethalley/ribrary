@@ -18,10 +18,14 @@ include '../includes/autoload-class.php';
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+
+  <!-- SWEET ALERT -->
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 
 <body>
-<header>
+  <header>
     <div class="container">
       <div class="list">
         <button class="links">Settings</button>
@@ -33,10 +37,10 @@ include '../includes/autoload-class.php';
         ?>
           <button class="links"><a href="../functions/logout-function.php">Log out</a></button>
         <?php
-        }else { 
+        } else {
         ?>
-           <button class="links"><a href="Login-and-SignUp-page.html">Log In</a></button>
-        <?php }?>
+          <button class="links"><a href="Login-and-SignUp-page.html">Log In</a></button>
+        <?php } ?>
       </div>
 
       <button class="click">...</button>
@@ -93,82 +97,84 @@ include '../includes/autoload-class.php';
         <button class="btn btn btn-outline-light my-2 my-sm-0 mr-5" type="submit">Search</button>
       </form>
   </nav>
-  
+
   <main>
     <div class="backdrop">
       <center>
         <!-- <button type="button" class="btn">Add Book</button></p> -->
       </center>
       <main>
-        
+
         <div class="container1 bg.light">
           <div class="row">
             <div class="col-md-12">
-              <h1 class ="text-center text-dark">Welcome to Upload Research Document Section</h1>
-              <h3 class ="text-center text-dark">Here you can upload your own study and let everyone provide a feedback. Try it now !</h3>
-              <p class ="text-center text-dark">Instructions: Browse your file and click your research document.
+              <h1 class="text-center text-dark">Welcome to Upload Research Document Section</h1>
+              <h3 class="text-center text-dark">Here you can upload your own study and let everyone provide a feedback. Try it now !</h3>
+              <p class="text-center text-dark">Instructions: Browse your file and click your research document.
                 (Please note that PDF are the only files allowed to be uploaded), Then click "Upload".</p>
             </div>
           </div>
-            
 
-            <form class = "mt-5 mx-2" action="../functions/upload-document-function.php" method="POST" enctype="multipart/form-data">
 
-                <!--<input type="file" name="file" accept=".mp4" id="podcast-video" required>-->
-                <div class="form-row">
-                    <div class="col mx-3 my-5">
-                        <div class="custom-file">
-                            <input type="file" name="file" accept=".pdf" class="custom-file-input" id="customFile" required>
-                            <label class="custom-file-label" for="customFile">Choose file</label>
-                        </div>
-                    </div>
+          <form class="mt-5 mx-2" action="../functions/upload-document-function.php" method="POST" enctype="multipart/form-data">
+
+            <!--<input type="file" name="file" accept=".mp4" id="podcast-video" required>-->
+            <div class="form-row">
+              <div class="col mx-3 my-5">
+                <div class="custom-file">
+                  <input type="file" name="file" accept=".pdf" class="custom-file-input" id="customFile" required>
+                  <label class="custom-file-label" for="customFile">Choose file</label>
                 </div>
-
-                <!--<fieldset class="form-group row my-5">
-                    <legend class="col-form-label col-sm-3 float-sm-left pt-0">What your study all about :</legend>
-                    <div class="col-sm-3">
-                        <div class="form-check">
-                            <input type="radio" id="science" name="categories" value="science" required>
-                            <label for="science">Science</label>
-                        </div>
-                        <div class="form-check">
-                            <input type="radio" id="tehcnology" name="categories" value="tehcnology">
-                            <label for="tehcnology">Technology</label>
-                        </div>
-                        <div class="form-check">
-                            <input type="radio" id="Health" name="categories" value="Health">
-                            <label for="mystery">Health</label>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-3">
-                        <div class="form-check">
-                            <input type="radio" id="education" name="categories" value="education">
-                            <label for="education">Education</label>
-                        </div>
-                        <div class="form-check">
-                            <input type="radio" id="agriculture" name="categories" value="agriculture">
-                            <label for="agriculture">Agriculture</label>
-                        </div>
-                        <div class="form-check">
-                            <input type="radio" id="physics" name="categories" value="physics">
-                            <label for="physics">Physics</label>
-                        </div>
-                    </div>
-                </fieldset>-->
-                
-                <div class="form-group row mx-3 my-5">
-                  <label for="colFormLabelSm" class="col-sm-1 col-form-label col-form-label-sm ml-auto">Others:</label>
-                  <div class="col-sm-6">
-                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" placeholder="Please specify">
-                  </div>
               </div>
-                <button class="btn btn-primary float-right mx-5" type="submit" name="submit"> UPLOAD </button>
-            </form>
-        </div>  
+            </div>
+
+            <fieldset class="form-group row my-5">
+              <legend class="col-form-label col-sm-3 float-sm-left pt-0">What your study all about :</legend>
+              <div class="col-sm-3">
+                <div class="form-check">
+                  <input type="radio" id="science" name="categories" value="science" required>
+                  <label for="science">Science</label>
+                </div>
+                <div class="form-check">
+                  <input type="radio" id="tehcnology" name="categories" value="tehcnology">
+                  <label for="tehcnology">Technology</label>
+                </div>
+                <div class="form-check">
+                  <input type="radio" id="Health" name="categories" value="Health">
+                  <label for="mystery">Health</label>
+                </div>
+              </div>
+
+              <div class="col-sm-3">
+                <div class="form-check">
+                  <input type="radio" id="education" name="categories" value="education">
+                  <label for="education">Education</label>
+                </div>
+                <div class="form-check">
+                  <input type="radio" id="agriculture" name="categories" value="agriculture">
+                  <label for="agriculture">Agriculture</label>
+                </div>
+                <div class="form-check">
+                  <input type="radio" id="physics" name="categories" value="physics">
+                  <label for="physics">Physics</label>
+                </div>
+              </div>
+            </fieldset>
+
+            <textarea name="abstract" id="" cols="30" rows="10" required placeholder="Please input the abstract of the document."></textarea>
+
+            <div class="form-group row mx-3 my-5">
+              <label for="colFormLabelSm" class="col-sm-1 col-form-label col-form-label-sm ml-auto">Others:</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control form-control-sm" id="colFormLabelSm" placeholder="Please specify">
+              </div>
+            </div>
+            <button class="btn btn-primary float-right mx-5" type="submit" name="submit"> UPLOAD </button>
+          </form>
+        </div>
 
       </main>
-    </div>  
+    </div>
   </main>
 
 
@@ -188,14 +194,26 @@ include '../includes/autoload-class.php';
       </div>
       </div>
     </footer>
-  </center>   
-<!--input file script-->
-<script type="application/javascript">
-        $('input[type="file"]').change(function(e){
-            var fileName = e.target.files[0].name;
-            $('.custom-file-label').html(fileName);
-        });
-</script>
+  </center>
+  <!--input file script-->
+  <script type="application/javascript">
+    $('input[type="file"]').change(function(e) {
+      var fileName = e.target.files[0].name;
+      $('.custom-file-label').html(fileName);
+    });
+
+    const url = window.location.search
+    const urlParam = new URLSearchParams(url)
+    const success = urlParam.get('q')
+
+    if (success && success == 'uploadsuccess') {
+      Swal.fire({
+        icon: 'success',
+        title: 'Uploaded Succesfully!',
+        text: 'We will notify you once we verified you uploaded document.',
+      })
+    }
+  </script>
 </body>
 
 </html>
