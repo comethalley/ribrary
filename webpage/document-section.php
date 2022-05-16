@@ -54,7 +54,7 @@ if (!isset($_SESSION['id'])) {
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
       <ul class="navbar-nav ml-3 mr-auto mt-2 mt-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="books-section.php">Ebook</a>
+          <a class="nav-link" href="ebook-section.php">Ebook</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="audiobook-section.php">Audiobook</a>

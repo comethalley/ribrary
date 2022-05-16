@@ -67,7 +67,7 @@ if (isset($_GET['categories-value'])) {
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
       <ul class="navbar-nav ml-3 mr-auto mt-2 mt-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="books-section.php">Ebook</a>
+          <a class="nav-link" href="ebook-section.php">Ebook</a>
         </li>
         <li class="nav-item active">
           <a class="nav-link" href="audiobook-section.php">Audiobook<span class="sr-only">(current)</span></a>
@@ -246,7 +246,7 @@ if (isset($_GET['categories-value'])) {
             </div>
           </div>
           <div class="row mb-3 ml-2">
-          <?php
+            <?php
             $data = $user->displayAudioBooks('fantasy');
             foreach ($data as $row) {
             ?>
@@ -284,7 +284,7 @@ if (isset($_GET['categories-value'])) {
             </div>
           </div>
           <div class="row mb-3 ml-2">
-          <?php
+            <?php
             $data = $user->displayAudioBooks('mystery');
             foreach ($data as $row) {
             ?>

@@ -133,7 +133,7 @@ include '../includes/autoload-class.php';
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
       <ul class="navbar-nav ml-3 mr-auto mt-2 mt-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" href="books-section.php">Ebook<span class="sr-only">(current)</span></a>
+          <a class="nav-link active" href="ebook-section.php">Ebook<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="audiobook-section.php">Audiobook</a>
