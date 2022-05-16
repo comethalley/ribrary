@@ -47,6 +47,11 @@
                         <i class="fa fa-solid fa-users"></i>Pending Audiobooks</a>
                 </li>
 
+                <li class="list">
+                    <a href="admin-pendingEbooks.php" class="link">
+                        <i class="fa fa-solid fa-users"></i>Pending Ebooks</a>
+                </li>
+
             <?php
             }
             ?>
