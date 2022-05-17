@@ -475,6 +475,14 @@ class User extends Database
         exit();
     }
 
+    //get specific docu data
+    function getDocuData($audiobook_file)
+    {
+        $data = $this->connect()->query("SELECT * FROM tbl_research_documents WHERE status = 'accepted' AND doc_path = '{$audiobook_file}'")->fetch();
+        return $data;
+        exit();
+    }
+
     //display audiobooks
     function displayPodcasts($categories = '')
     {

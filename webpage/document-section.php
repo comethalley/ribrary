@@ -112,11 +112,22 @@ if (!isset($_SESSION['id'])) {
                   <img src="img/book-icon.png" class="card-img-top" alt="book-cover">
                 </div>
                 <div class="card-body">
+<<<<<<< HEAD
                   <p class="card-title"><?php echo $row["doc_name"] ?></p>
                   <p class="card-title">Rating: <?php showRating($row["doc_path"]) ?>/5</p>
                   <p class="star-rating"> <?php echo getStarRating($row["doc_path"]) ?></p>
                   <p class="card-text"><?php echo $row["createdBy"] ?></p>
                   <a href="view.php?file=<?php echo $row["doc_path"] ?>" class="btn btn-primary">Read</a>
+=======
+                  <form action="document-summary-section.php" method="GET">
+                      <p class="card-title"><?php echo $row["doc_name"] ?></p>
+                      <p class="card-title">Rating: <?php showRating($row["doc_path"]) ?>/5</p>
+                      <p class="card-text"><?php echo $row["createdBy"] ?></p>
+                      <p class="card-text"><?php echo $row["categories"] ?></p>
+                      <input type="hidden" name="doc_file" value="<?php echo $row['doc_path'] ?>">
+                      <button class="btn btn-primary">Read</button>
+                  </form>
+>>>>>>> 09dc3fd4173079f1a54b1c551bed62a412f6cc45
                 </div>
               </div>
             </div>
@@ -144,11 +155,22 @@ if (!isset($_SESSION['id'])) {
                   <img src="img/book-icon.png" class="card-img-top" alt="book-cover">
                 </div>
                 <div class="card-body">
+<<<<<<< HEAD
                   <p class="card-title"><?php echo $row["doc_name"] ?></p>
                   <p class="card-title">Rating: <?php showRating($row["doc_path"]) ?>/5</p>
                   <p class="star-rating"> <?php echo getStarRating($row["doc_path"]) ?></p>
                   <p class="card-text"><?php echo $row["createdBy"] ?></p>
                   <a href="view.php?file=<?php echo $row["doc_path"] ?>" class="btn btn-primary">Read</a>
+=======
+                <form action="document-summary-section.php" method="GET">
+                      <p class="card-title"><?php echo $row["doc_name"] ?></p>
+                      <p class="card-title">Rating: <?php showRating($row["doc_path"]) ?>/5</p>
+                      <p class="card-text"><?php echo $row["createdBy"] ?></p>
+                      <p class="card-text"><?php echo $row["categories"] ?></p>
+                      <input type="hidden" name="doc_file" value="<?php echo $row['doc_path'] ?>">
+                      <button class="btn btn-primary">Read</button>
+                  </form>
+>>>>>>> 09dc3fd4173079f1a54b1c551bed62a412f6cc45
                 </div>
               </div>
             </div>
@@ -175,11 +197,22 @@ if (!isset($_SESSION['id'])) {
                   <img src="img/book-icon.png" class="card-img-top" alt="book-cover">
                 </div>
                 <div class="card-body">
+<<<<<<< HEAD
                   <p class="card-title"><?php echo $row["doc_name"] ?></p>
                   <p class="card-title">Rating: <?php showRating($row["doc_path"]) ?>/5</p>
                   <p class="star-rating"> <?php echo getStarRating($row["doc_path"]) ?></p>
                   <p class="card-text"><?php echo $row["createdBy"] ?></p>
                   <a href="view.php?file=<?php echo $row["doc_path"] ?>" class="btn btn-primary">Read</a>
+=======
+                <form action="document-summary-section.php" method="GET">
+                      <p class="card-title"><?php echo $row["doc_name"] ?></p>
+                      <p class="card-title">Rating: <?php showRating($row["doc_path"]) ?>/5</p>
+                      <p class="card-text"><?php echo $row["createdBy"] ?></p>
+                      <p class="card-text"><?php echo $row["categories"] ?></p>
+                      <input type="hidden" name="doc_file" value="<?php echo $row['doc_path'] ?>">
+                      <button class="btn btn-primary">Read</button>
+                  </form>
+>>>>>>> 09dc3fd4173079f1a54b1c551bed62a412f6cc45
                 </div>
               </div>
             </div>
@@ -206,11 +239,22 @@ if (!isset($_SESSION['id'])) {
                   <img src="img/book-icon.png" class="card-img-top" alt="book-cover">
                 </div>
                 <div class="card-body">
+<<<<<<< HEAD
                   <p class="card-title"><?php echo $row["doc_name"] ?></p>
                   <p class="card-title">Rating: <?php showRating($row["doc_path"]) ?>/5</p>
                   <p class="star-rating"> <?php echo getStarRating($row["doc_path"]) ?></p>
                   <p class="card-text"><?php echo $row["createdBy"] ?></p>
                   <a href="view.php?file=<?php echo $row["doc_path"] ?>" class="btn btn-primary">Read</a>
+=======
+                <form action="document-summary-section.php" method="GET">
+                      <p class="card-title"><?php echo $row["doc_name"] ?></p>
+                      <p class="card-title">Rating: <?php showRating($row["doc_path"]) ?>/5</p>
+                      <p class="card-text"><?php echo $row["createdBy"] ?></p>
+                      <p class="card-text"><?php echo $row["categories"] ?></p>
+                      <input type="hidden" name="doc_file" value="<?php echo $row['doc_path'] ?>">
+                      <button class="btn btn-primary">Read</button>
+                  </form>
+>>>>>>> 09dc3fd4173079f1a54b1c551bed62a412f6cc45
                 </div>
               </div>
             </div>
@@ -237,11 +281,22 @@ if (!isset($_SESSION['id'])) {
                   <img src="img/book-icon.png" class="card-img-top" alt="book-cover">
                 </div>
                 <div class="card-body">
+<<<<<<< HEAD
                   <p class="card-title"><?php echo $row["doc_name"] ?></p>
                   <p class="card-title">Rating: <?php showRating($row["doc_path"]) ?>/5</p>
                   <p class="star-rating"> <?php echo getStarRating($row["doc_path"]) ?></p>
                   <p class="card-text"><?php echo $row["createdBy"] ?></p>
                   <a href="view.php?file=<?php echo $row["doc_path"] ?>" class="btn btn-primary">Read</a>
+=======
+                <form action="document-summary-section.php" method="GET">
+                      <p class="card-title"><?php echo $row["doc_name"] ?></p>
+                      <p class="card-title">Rating: <?php showRating($row["doc_path"]) ?>/5</p>
+                      <p class="card-text"><?php echo $row["createdBy"] ?></p>
+                      <p class="card-text"><?php echo $row["categories"] ?></p>
+                      <input type="hidden" name="doc_file" value="<?php echo $row['doc_path'] ?>">
+                      <button class="btn btn-primary">Read</button>
+                  </form>
+>>>>>>> 09dc3fd4173079f1a54b1c551bed62a412f6cc45
                 </div>
               </div>
             </div>

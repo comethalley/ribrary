@@ -22,72 +22,73 @@ if (isset($_GET['file']) && isset($_GET['ebook_file'])) {
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/sections.css">
   <link rel="stylesheet" href="css/transitions.css">
   <link rel="stylesheet" href="css/box.css">
+  <link rel="stylesheet" href="css/header.css">
   <link rel="stylesheet" href="css/footer.css">
-  <title>E-book</title>
+  <title>Document</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-  <style>
-    .hide {
-      display: none;
-    }
+  <!-- sweet alert -->
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    .categories-hidden {
-      text-transform: capitalize;
+  <!-- BOOTSTRAP ICON -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+  <style>
+    .navbar {
+      z-index: 1;
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <div class="container">
-      <?php
-      if (isset($_SESSION['first-name']) && isset($_SESSION['last-name']) && isset($_SESSION['email'])) {
+<!-- HEADER -->
+<?php include 'header.php' ?>
 
-      ?>
-        <a href="UserProf.html" id="account-name">
-          <p>Hi, <?php echo $_SESSION['first-name'] ?> <?php echo $_SESSION['last-name'] ?></p>
-        </a>
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark mx-0 w-100" style="background-color: #485665;">
+  <a class="navbar-brand" href="ebook-section.php">
+    <img src="img/ribrary-logo-white.png" width="50" height="50" class="d-inline-block" alt="logo.png">
+    Ribrary
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-        <img src="<?php echo $_SESSION["profile"] ?>" alt="" class="user-image">
-      <?php
-      }
-      ?>
-    </div>
-  </header>
-  <nav class="navbar sticky-top navbar-expand-lg navbar-dark mx-0 w-100" style="background-color: #485665;">
-    <a class="navbar-brand" href="books-section.php">
-      <img src="img/ribrary-logo-white.png" width="50" height="50" class="d-inline-block" alt="logo.png">
-      Ribrary
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav ml-3 mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="ebook-section.php">Ebook<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="audiobook-section.php">Audiobook</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="podcast-section.php">Podcast</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="document-section.php">Research Document</a>
+      </li>
 
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-      <ul class="navbar-nav ml-3 mr-auto mt-2 mt-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" href="books-section.php">Ebook</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="audiobook-section.php">Audiobook</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="podcast-section.php">Podcast</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="document-section.php">Research Document</a>
-        </li>
-
-      </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search">
-        <button class="btn btn btn-outline-light my-2 my-sm-0 mr-5" type="submit">Search</button>
-      </form>
-  </nav>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search">
+      <button class="btn btn btn-outline-light my-2 my-sm-0 mr-5" type="submit">Search</button>
+    </form>
+</nav>
+<div class="dropdown my-3 mx-3 float-right">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+    Categories
+  </button>
+  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+    <a class="dropdown-item text-dark" href="#">Health</a>
+    <a class="dropdown-item text-dark" href="#">Physical</a>
+    <a class="dropdown-item text-dark" href="#">Political</a>
+    <a class="dropdown-item text-dark" href="#">Science</a>
+    <a class="dropdown-item text-dark" href="#">Technology</a>
+    <a class="dropdown-item text-dark" href="#">Case Study</a>
+  </div>
+</div>
 
 
 
@@ -98,10 +99,10 @@ if (isset($_GET['file']) && isset($_GET['ebook_file'])) {
     <!--  <button type="button" class="btn">Add Forum</button></p> -->
     </center>
     <main>
-      <div class="container1 mx-auto my-5">
+      <div class="container1 mx-auto my-5 p-2">
         <div class="row my-3">
           <div class="col-md-3 mx-auto">
-            <img src="../functions/uploads/<?php echo $file; ?>" class="img-thumbnail" alt="cover" style="width:400px; height:300px;">
+            <img src="../functions/uploads/<?php echo $file; ?>" class="img-thumbnail mx-auto d-block" alt="cover" style="width:400px; height:300px;">
           </div>
         </div>
         <div class="row">
