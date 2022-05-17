@@ -5,7 +5,6 @@ if (!isset($_SESSION['id'])) {
   header("Location:user-login.php");
 } else {
   include '../includes/autoload-class.php';
-  include 'view-functions.php';
   $user = new User();
 }
 
@@ -59,26 +58,29 @@ if (!isset($_SESSION['id'])) {
       <div class="col-12 border">
         <p class="display-4 text-center">Fill up the information</p>
         <hr>
-        <form>
+
+        <form action="../functions/sendTickets-function.php" method="POST">
           <div class="form-row">
             <div class="form-group col-md-12">
               <label for="subject">Subject</label>
-              <input type="text" class="form-control" id="subject" placeholder="What your concern is all about?" required>
+              <input type="text" name="subject" class="form-control" id="subject" placeholder="What your concern is all about?" required>
             </div>
           </div>
           <div class="form-row">
             <div class="form-group col-md-12">
               <label for="email">Email</label>
-              <input type="email" class="form-control" id="email" placeholder="email@gmail.com" required>
+              <input type="email" name="email" class="form-control" id="email" placeholder="email@gmail.com" required>
             </div>
           </div>
           <div class="form-row">
             <div class="form-group col-md-12">
               <label for="address">Body</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" required></textarea >
+              <textarea class="form-control" name="message" id="exampleFormControlTextarea1" rows="5" required></textarea>
             </div>
           </div>
-          <button type="submit" class="btn btn-primary btn-sm mr-5 my-5">Send</button>
+          <button type="submit" name="submit" class="btn btn-primary btn-sm mr-5 my-5">Send</button>
+        </form>
+
       </div>
     </div>
   </div>
@@ -103,7 +105,46 @@ if (!isset($_SESSION['id'])) {
   <!-- Bootstrap -->
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+  <script>
+    const url = window.location.search
+    const urlParam = new URLSearchParams(url)
+    const success = urlParam.get('q')
+    const error = urlParam.get('error')
 
+    if (success) {
+      Swal.fire({
+        icon: 'success',
+        title: 'blablablaba',
+        text: 'blabalabl',
+      })
+    }
+
+    if (error) {
+      switch (error) {
+        case 'emailError':
+          Swal.fire({
+            icon: 'error',
+            title: "Email doesn't exist",
+            text: 'blabalabl',
+          })
+          break;
+        case 'emailWrong':
+          Swal.fire({
+            icon: 'warning',
+            title: 'Use your email',
+            text: 'blabalabl',
+          })
+          break;
+        default:
+          Swal.fire({
+            icon: 'error',
+            title: "Something wrong.",
+            text: 'blabalabl',
+          })
+      }
+
+    }
+  </script>
 </body>
 
 </html>

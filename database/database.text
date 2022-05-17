@@ -195,6 +195,17 @@ CREATE TABLE `tbl_notification` (
 
 ) 
 
+CREATE TABLE `tbl_tickets` (
+  `tickets_no` int(255) NOT NULL AUTO_INCREMENT,
+  `subject` varchar(255) NOT NULL,
+  `email` varchar(40) NOT NULL,
+  `body` varchar (255) NOT NULL,
+   user_id int (30) NOT NULL,
+  `date_and_time` varchar(30) NOT NULL,
+  PRIMARY KEY (tickets_no)
+  FOREIGN KEY (user_id) REFERENCES tbl_user(User_id)
+) 
+
 
 
 
