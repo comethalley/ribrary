@@ -9,8 +9,15 @@ if (!isset($_SESSION['id'])) {
   $user = new User();
 }
 
+// dropdown
 if (isset($_GET['categories-value'])) {
   $value = $_GET['categories-value'];
+}
+
+//Search
+if (isset($_GET['search-audiobook'])) {
+  $searchInput = $_GET['search-audiobook'];
+  $searchData = $user->searchEbook($searchInput);
 }
 
 ?>
@@ -78,10 +85,12 @@ if (isset($_GET['categories-value'])) {
         </li>
 
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search">
+      <form action="" method="get" class="form-inline my-2 my-lg-0">
+
+        <input type="text" class="form-control mr-sm-2" placeholder="Search" name="search-audiobook">
         <button class="btn btn btn-outline-light my-2 my-sm-0 mr-5" type="submit">Search</button>
       </form>
+
   </nav>
 
 
@@ -166,7 +175,7 @@ if (isset($_GET['categories-value'])) {
           </div>
 
           <div class="row mb-3 ml-2">
-          <?php
+            <?php
             $data = $user->displayAudioBooks();
             foreach ($data as $row) {
             ?>
@@ -207,7 +216,7 @@ if (isset($_GET['categories-value'])) {
             </div>
           </div>
           <div class="row mb-3 ml-2">
-          <?php
+            <?php
             $data = $user->displayAudioBooks();
             foreach ($data as $row) {
             ?>
@@ -247,7 +256,7 @@ if (isset($_GET['categories-value'])) {
             </div>
           </div>
           <div class="row mb-3 ml-2">
-          <?php
+            <?php
             $data = $user->displayAudioBooks('fantasy');
             foreach ($data as $row) {
             ?>
@@ -286,7 +295,7 @@ if (isset($_GET['categories-value'])) {
             </div>
           </div>
           <div class="row mb-3 ml-2">
-          <?php
+            <?php
             $data = $user->displayAudioBooks('mystery');
             foreach ($data as $row) {
             ?>
@@ -318,6 +327,7 @@ if (isset($_GET['categories-value'])) {
         </div>
 
         <!-- -------------------------------------------------- -->
+        <!-- DROPDWON CATEGORIES -->
         <div class="categories-hidden hide">
           <div class="row">
             <div class="col-md-12">
@@ -326,7 +336,7 @@ if (isset($_GET['categories-value'])) {
             </div>
           </div>
           <div class="row mb-3 ml-2">
-          <?php
+            <?php
             $data = $user->displayAudioBooks($value);
             foreach ($data as $row) {
             ?>
@@ -356,6 +366,48 @@ if (isset($_GET['categories-value'])) {
             ?>
           </div>
         </div>
+
+        <!--------------------------------------------------------------------------- -->
+        <!-- SEARCH DISPLAY -->
+        <div class="search-hidden hide">
+          <div class="row">
+            <div class="col-md-12">
+              <h6 class=" display-4 mx-3 ">Searched: <?php echo $searchInput ?></h6>
+              <hr>
+            </div>
+          </div>
+          <div class="row mb-3 ml-2">
+            <?php
+
+            foreach ($searchData as $row) {
+            ?>
+
+              <div class="col-md-3 my-2 my-md-3 rounded">
+                <div class="card shadow text-center">
+                  <div>
+                    <img src="../functions/uploads/<?php echo $row['audiobook_cover_path'] ?>" class="card-img-top" alt="book-cover">
+                  </div>
+                  <div class="card-body">
+                    <form action="audiobook-summary-section.php" method="GET">
+                      <p class="card-title"><?php echo $row["audiobook_name"] ?></p>
+                      <p class="card-title">Rating: <span class="rating"><?php showRating($row["audiobook_path"]) ?></span>/5</p>
+                      <p class="star-rating"> <?php echo getStarRating($row["audiobook_path"]) ?></p>
+                      <p class="card-text"><?php echo $row["narrator"] ?></p>
+                      <p class="card-text">Categories</p>
+                      <input type="hidden" name="file" value="<?php echo $row['audiobook_cover_path'] ?>">
+                      <input type="hidden" name="audio_file" value="<?php echo $row['audiobook_path'] ?>">
+                      <button class="btn btn-primary">Listen</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+            <?php
+            }
+            ?>
+          </div>
+        </div>
+        <!-- ---------------------------------------------------------------------- -->
 
       </div>
     </main>
@@ -388,10 +440,11 @@ if (isset($_GET['categories-value'])) {
       const dropdownMenu = document.querySelector('.dropdown-menu');
       const categoriesValue = document.querySelector('#categories-value');
 
-
+      // GET THE URL
       const url = window.location.search
       const urlParam = new URLSearchParams(url)
-      const parameter = urlParam.get('categories-value')
+      const parameter = urlParam.get('categories-value') //GET URL FOR DROPDOWN CATEGORIES
+      const searchEbooks = urlParam.get('search-audiobook') //GET URL FOR SEARCH
 
       const hideCategories = function() {
         categories.forEach(section => {
@@ -400,11 +453,18 @@ if (isset($_GET['categories-value'])) {
       }
 
 
-
+      // CATEGORIES DROPDOWN
       if (parameter) {
         hideCategories()
         document.querySelector('.categories-hidden').classList.remove('hide')
       }
+
+      // SEARCH EBOOKS
+      if (searchEbooks) {
+        hideCategories()
+        document.querySelector('.search-hidden').classList.remove('hide')
+      }
+
 
       dropdownMenu.addEventListener('click', function(e) {
         if (e.target.classList.contains('dropdown-item')) {

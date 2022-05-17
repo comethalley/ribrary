@@ -242,7 +242,7 @@ class User extends Database
     }
 
     //test display file in the database
-    function displayAcceptedDocs($categories ='')
+    function displayAcceptedDocs($categories = '')
     {
         if (!empty($categories)) {
             $data = $this->connect()->query("SELECT * FROM tbl_research_documents WHERE status = 'accepted' AND categories = '{$categories}'")->fetchAll();
@@ -517,7 +517,7 @@ VALUES (?,?,?,(SELECT User_id FROM tbl_user WHERE user_id = ?),?);";
 
     function searchEbook($data)
     {
-        $data = $this->connect()->query("SELECT * FROM tbl_ebooks WHERE  status = 'accepted' AND (ebooks_name LIKE '{$data}%' OR author LIKE '{$data}%') ")->fetchAll();
+        $data = $this->connect()->query("SELECT * FROM tbl_audiobook WHERE  status = 'accepted' AND (audiobook_name LIKE '{$data}%' OR author LIKE '{$data}%') ")->fetchAll();
         return $data;
         exit();
     }
