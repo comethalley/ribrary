@@ -515,9 +515,30 @@ VALUES (?,?,?,(SELECT User_id FROM tbl_user WHERE user_id = ?),?);";
     }
 
 
-    function searchEbook($data)
+    function searchAudiobook($data)
     {
         $data = $this->connect()->query("SELECT * FROM tbl_audiobook WHERE  status = 'accepted' AND (audiobook_name LIKE '{$data}%' OR author LIKE '{$data}%') ")->fetchAll();
+        return $data;
+        exit();
+    }
+
+    function searchEbook($data)
+    {
+        $data = $this->connect()->query("SELECT * FROM tbl_ebooks WHERE  status = 'accepted' AND (ebooks_name LIKE '{$data}%' OR author LIKE '{$data}%') ")->fetchAll();
+        return $data;
+        exit();
+    }
+
+    function searchPodcast($data)
+    {
+        $data = $this->connect()->query("SELECT * FROM tbl_podcasts WHERE  status = 'accepted' AND (podcast_name LIKE '{$data}%' OR podcast_host LIKE '{$data}%') ")->fetchAll();
+        return $data;
+        exit();
+    }
+
+    function searchDocument($data)
+    {
+        $data = $this->connect()->query("SELECT * FROM tbl_research_documents WHERE  status = 'accepted' AND (doc_name LIKE '{$data}%' OR createdBy LIKE '{$data}%') ")->fetchAll();
         return $data;
         exit();
     }

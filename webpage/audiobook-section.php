@@ -17,7 +17,7 @@ if (isset($_GET['categories-value'])) {
 //Search
 if (isset($_GET['search-audiobook'])) {
   $searchInput = $_GET['search-audiobook'];
-  $searchData = $user->searchEbook($searchInput);
+  $searchData = $user->searchAudiobook($searchInput);
 }
 
 ?>
@@ -87,7 +87,7 @@ if (isset($_GET['search-audiobook'])) {
       </ul>
       <form action="" method="get" class="form-inline my-2 my-lg-0">
 
-        <input type="text" class="form-control mr-sm-2" placeholder="Search" name="search-audiobook">
+        <input type="text" class="form-control mr-sm-2" placeholder="Search Audiobooks" name="search-audiobook">
         <button class="btn btn btn-outline-light my-2 my-sm-0 mr-5" type="submit">Search</button>
       </form>
 
@@ -444,7 +444,7 @@ if (isset($_GET['search-audiobook'])) {
       const url = window.location.search
       const urlParam = new URLSearchParams(url)
       const parameter = urlParam.get('categories-value') //GET URL FOR DROPDOWN CATEGORIES
-      const searchEbooks = urlParam.get('search-audiobook') //GET URL FOR SEARCH
+      const searchAudiobook = urlParam.get('search-audiobook') //GET URL FOR SEARCH
 
       const hideCategories = function() {
         categories.forEach(section => {
@@ -460,7 +460,7 @@ if (isset($_GET['search-audiobook'])) {
       }
 
       // SEARCH EBOOKS
-      if (searchEbooks) {
+      if (searchAudiobook) {
         hideCategories()
         document.querySelector('.search-hidden').classList.remove('hide')
       }

@@ -5,12 +5,19 @@ if (!isset($_SESSION['id'])) {
   header("Location:user-login.php");
 } else {
   include '../includes/autoload-class.php';
+  include 'view-functions.php';
   $user = new User();
 }
 
-
+// dropdown
 if (isset($_GET['categories-value'])) {
   $value = $_GET['categories-value'];
+}
+
+//Search
+if (isset($_GET['search-podcast'])) {
+  $searchInput = $_GET['search-podcast'];
+  $searchData = $user->searchPodcast($searchInput);
 }
 
 ?>
@@ -87,8 +94,9 @@ if (isset($_GET['categories-value'])) {
         </li>
 
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search">
+      <form action="" method="get" class="form-inline my-2 my-lg-0">
+
+        <input type="text" class="form-control mr-sm-2" placeholder="Search Podcast" name="search-podcast">
         <button class="btn btn btn-outline-light my-2 my-sm-0 mr-5" type="submit">Search</button>
       </form>
   </nav>
@@ -275,6 +283,41 @@ if (isset($_GET['categories-value'])) {
           </div>
         </div>
 
+        <!--------------------------------------------------------------------------- -->
+        <!-- SEARCH DISPLAY -->
+        <div class="search-hidden hide">
+          <div class="row">
+            <div class="col-md-12">
+              <h6 class=" display-4 mx-3 ">Searched: <?php echo $searchInput ?></h6>
+              <hr>
+            </div>
+          </div>
+          <div class="row mb-3 ml-2">
+            <?php
+
+            foreach ($searchData as $row) {
+            ?>
+
+              <div class="col-md-3 my-2 my-md-3 rounded">
+                <div class="card shadow text-center">
+                  <div>
+                    <img src="img/book-icon.png" class="card-img-top" alt="book-cover">
+                  </div>
+                  <div class="card-body">
+                    <p class="card-title"><?php echo $row["podcast_name"] ?></p>
+                    <p class="card-text"><?php echo $row["podcast_host"] ?></p>
+                    <a href="podcast-view.php?file=<?php echo $row["podcast_path"] ?>" class="btn btn-primary" target="thapa">Watch</a>
+                  </div>
+                </div>
+              </div>
+
+            <?php
+            }
+            ?>
+          </div>
+        </div>
+        <!-- ---------------------------------------------------------------------- -->
+
       </div>
     </main>
   </main>
@@ -303,11 +346,12 @@ if (isset($_GET['categories-value'])) {
         const categories = document.querySelectorAll('.categories');
         const categoriesForm = document.querySelector('.categories-form')
         const dropdownMenu = document.querySelector('.dropdown-menu');
-        const categoriesValue = document.querySelector('#categories-value');
+        const categoriesValue = document.querySelector('#categories-value');    
 
         const url = window.location.search
         const urlParam = new URLSearchParams(url)
-        const parameter = urlParam.get('categories-value')
+        const parameter = urlParam.get('categories-value') //GET URL FOR DROPDOWN CATEGORIES
+        const searchPodcast = urlParam.get('search-podcast') //GET URL FOR SEARCH
 
         const hideCategories = function() {
           categories.forEach(section => {
@@ -315,9 +359,16 @@ if (isset($_GET['categories-value'])) {
           })
         }
 
+        //CATEGORIES
         if (parameter) {
           hideCategories()
           document.querySelector('.categories-hidden').classList.remove('hide')
+        }
+
+        // SEARCH EBOOKS
+        if (searchPodcast) {
+          hideCategories()
+          document.querySelector('.search-hidden').classList.remove('hide')
         }
 
         dropdownMenu.addEventListener('click', function(e) {
