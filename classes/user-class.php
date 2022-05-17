@@ -196,13 +196,14 @@ class User extends Database
     }
 
     // create new user to database
-    function createUser($first, $last, $email, $pass)
+    function createUser($first, $last, $email, $pass, $address, $contact_no, $gender)
     {
         $logs =  date('F d Y, h:i A');
 
-        $defaultProfile = 'img/admin-logo.png';
+        $defaultProfile = 'admin-logo.png';
         // sql statement
-        $sql = "INSERT INTO tbl_user (firstname, lastname, Username,password,user_status,recent_login,user_profile) VALUES (?,?,?,?,?,?,?)";
+        $sql = "INSERT INTO tbl_user (firstname, lastname, Username,address,contact_no,gender,password,user_status,recent_login,user_profile,subscription)
+         VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 
         // prepared statement
         $stmt = $this->connect()->prepare($sql);
@@ -210,18 +211,24 @@ class User extends Database
         //set status 
         $userStatus = "online";
 
+        //set subscription
+        $subscription = 'not subscribed';
         //hashed the password
         $hashedpwd = password_hash($pass, PASSWORD_DEFAULT);
 
         //if execution fail
-        if (!$stmt->execute([$first, $last, $email, $hashedpwd, $userStatus, $logs, $defaultProfile])) {
+        if (!$stmt->execute([$first, $last, $email, $address, $contact_no, $gender, $hashedpwd, $userStatus, $logs, $defaultProfile, $subscription])) {
             header("Location:../webpage/Login-and-SignUp-page.html?error=stmtfail");
             $connect = null;
             exit();
         }
 
+        //get data from database
+        $data = $this->emailExist($email);
+
         //start session and store value
         session_start();
+        $_SESSION['id'] = $data['User_id'];
         $_SESSION["first-name"] = $first;
         $_SESSION["last-name"] = $last;
         $_SESSION["email"] = $email;
@@ -261,7 +268,7 @@ class User extends Database
     }
 
     //insert documents to database
-    function upload_documents($doc_name, $doc_file, $doc_path, $createdBy, $id,$categories,$abstract)
+    function upload_documents($doc_name, $doc_file, $doc_path, $createdBy, $id, $categories, $abstract)
     {
 
         $sql2 = "INSERT INTO tbl_research_documents (doc_name,doc_file, doc_path ,categories,abstract,createdBy ,date_and_time ,user_id ,status)
@@ -274,7 +281,7 @@ class User extends Database
         $stmt = $this->connect()->prepare($sql2);
 
         //if execution fail
-        if (!$stmt->execute([$doc_name, $doc_file, $doc_path,$categories,$abstract, $createdBy, $this->date, $id, $status])) {
+        if (!$stmt->execute([$doc_name, $doc_file, $doc_path, $categories, $abstract, $createdBy, $this->date, $id, $status])) {
             header("Location:../webpage/upload-documents-section.php?error=stmtfail");
             $connect = null;
             exit();
@@ -289,7 +296,7 @@ class User extends Database
     }
 
     //upload documents funciton
-    function checkDocuments($allowed, $fileActualExt, $fileError, $fileSize, $fileTmpName, $createdBy, $fileName,$categories,$abstract)
+    function checkDocuments($allowed, $fileActualExt, $fileError, $fileSize, $fileTmpName, $createdBy, $fileName, $categories, $abstract)
     {
         //check if the file extension is in the array $allowed
         if (in_array($fileActualExt, $allowed)) {
@@ -304,7 +311,7 @@ class User extends Database
                     move_uploaded_file($fileTmpName, $fileDestination);
 
                     $userId = $_SESSION["id"];
-                    $this->upload_documents($fileName, $fileTmpName, $fileNameNew, $createdBy, $userId,$categories,$abstract);
+                    $this->upload_documents($fileName, $fileTmpName, $fileNameNew, $createdBy, $userId, $categories, $abstract);
                 } else {
                     echo "The file was too large";
                 }
@@ -380,6 +387,45 @@ class User extends Database
         }
     }
 
+    //update User profile
+    function updateUserProfile($fileName, $fileActualExt, $fileTmpName, $id)
+    {
+        $fileNameNew = uniqid('', true) . "." . $fileActualExt;
+        $fileDestination = 'uploads/' . $fileNameNew;
+
+        if (move_uploaded_file($fileTmpName, $fileDestination)) {
+
+            // prepared statement
+            $stmt = $this->connect()->prepare("UPDATE tbl_user  SET user_profile = ? WHERE  User_id = ?");
+
+            //if did not execute error, else continue
+            if (!$stmt->execute([$fileNameNew, $id,])) {
+                header("Location:../webpage/UserProf.php?error=stmtfail");
+                exit();
+            }
+
+            header("Location:../webpage/UserProf.php?q=success");
+            exit();
+        } else {
+            echo "move_uploaded_file error";
+        }
+    }
+
+    //update User profile details
+    function updateUserData($firstname, $lastname, $email, $address, $contact_no, $id)
+    {
+        // prepared statement
+        $stmt = $this->connect()->prepare("UPDATE tbl_user  SET firstname = ?, lastname = ?, Username = ?, address =? , contact_no = ? WHERE  User_id = ?");
+
+        //if did not execute error, else continue
+        if (!$stmt->execute([$firstname, $lastname, $email, $address, $contact_no, $id])) {
+            header("Location:../webpage/Userprof.php?error=stmtfail");
+        }
+
+        header("Location:../webpage/Userprof.php?q=success");
+        exit();
+    }
+
     //display audiobooks
     function displayAudioBooks($categories = '')
     {
@@ -394,19 +440,19 @@ class User extends Database
         }
     }
 
-     //display audiobooks
-     function displayEbooks($categories = '')
-     {
-         if (!empty($categories)) {
-             $data = $this->connect()->query("SELECT * FROM tbl_ebooks WHERE status = 'accepted' AND categories = '{$categories}'")->fetchAll();
-             return $data;
-             exit();
-         } else {
-             $data = $this->connect()->query("SELECT * FROM tbl_ebooks WHERE status = 'accepted'")->fetchAll();
-             return $data;
-             exit();
-         }
-     }
+    //display audiobooks
+    function displayEbooks($categories = '')
+    {
+        if (!empty($categories)) {
+            $data = $this->connect()->query("SELECT * FROM tbl_ebooks WHERE status = 'accepted' AND categories = '{$categories}'")->fetchAll();
+            return $data;
+            exit();
+        } else {
+            $data = $this->connect()->query("SELECT * FROM tbl_ebooks WHERE status = 'accepted'")->fetchAll();
+            return $data;
+            exit();
+        }
+    }
 
     //get specific audibooks data
     function getAudiobookData($audiobook_file)
@@ -416,13 +462,13 @@ class User extends Database
         exit();
     }
 
-     //get specific ebook data
-     function getEbookData($audiobook_file)
-     {
-         $data = $this->connect()->query("SELECT * FROM tbl_ebooks WHERE status = 'accepted' AND ebooks_path = '{$audiobook_file}'")->fetch();
-         return $data;
-         exit();
-     }
+    //get specific ebook data
+    function getEbookData($audiobook_file)
+    {
+        $data = $this->connect()->query("SELECT * FROM tbl_ebooks WHERE status = 'accepted' AND ebooks_path = '{$audiobook_file}'")->fetch();
+        return $data;
+        exit();
+    }
 
     //display audiobooks
     function displayPodcasts($categories = '')

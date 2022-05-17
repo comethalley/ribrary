@@ -1,3 +1,8 @@
+<?php
+$user = new User();
+
+$userdata = $user->emailExist($_SESSION["email"]);
+?>
 <header>
     <div class="container">
         <div class="list">
@@ -69,7 +74,7 @@
                 <p>Hi, <?php echo $_SESSION['first-name'] ?> <?php echo $_SESSION['last-name'] ?></p>
             </a>
 
-            <img src="<?php echo $_SESSION["profile"] ?>" alt="" class="user-image">
+            <img src="../functions/uploads/<?php echo $userdata['user_profile'] ?>" alt="" class="user-image">
         <?php
         }
         ?>

@@ -7,6 +7,9 @@ if (isset($_POST['submit'])) {
     $first =  $_POST['fname'];
     $last =  $_POST['lname'];
     $email =  $_POST['email'];
+    $address =  $_POST['address'];
+    $contact_no =  $_POST['contact_no'];
+    $gender =  $_POST['gender'];
     $pass =  $_POST['pass'];
     $re_pass =  $_POST['re-pass'];
 
@@ -16,7 +19,7 @@ if (isset($_POST['submit'])) {
     //function for error handling
 
     //If any of the field is empty function will return true
-    if ($user->emptyInputSignUp($first, $last, $email, $pass,$re_pass) == true) {
+    if ($user->emptyInputSignUp($first, $last, $email, $pass, $re_pass) == true) {
         header("Location:../webpage/Login-and-SignUp-page.html?error=emptyfield");
         exit();
     }
@@ -36,10 +39,9 @@ if (isset($_POST['submit'])) {
         header("Location:../webpage/Login-and-SignUp-page.html?error=emailExist");
         exit();
     }
-    
-    // create user in the database
-   $user->createUser($first, $last, $email, $pass);
 
+    // create user in the database
+    $user->createUser($first, $last, $email, $pass, $address, $contact_no, $gender);
 } else {
     header("Location:../webpage/Login-and-SignUp-page.html?error=error");
     exit();

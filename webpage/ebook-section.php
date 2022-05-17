@@ -49,7 +49,7 @@ if (isset($_GET['categories-value'])) {
 </head>
 
 <body>
-  <?php include 'header.php'?>
+  <?php include 'header.php' ?>
   <nav class="navbar sticky-top navbar-expand-lg navbar-dark mx-0 w-100" style="background-color: #485665;">
     <a class="navbar-brand" href="ebook-section.php">
       <img src="img/ribrary-logo-white.png" width="50" height="50" class="d-inline-block" alt="logo.png">

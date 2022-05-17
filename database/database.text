@@ -7,10 +7,14 @@ CREATE TABLE tbl_user (
     firstname varchar(32) NOT NULL,
     lastname varchar(32) NOT NULL,
     Username varchar(32) NOT NULL,
+    address varchar (60) NOT NULL,
+    contact_no varchar (60) NOT NULL,
+    gender varchar (11) NOT NULL,
     password char(60) NOT NULL,
     user_status varchar(32) NOT NULL,
     recent_login varchar (60) NOT NULL,
-    user_profile varchar(32) NOT NULL,
+    user_profile varchar(200) NOT NULL,
+    subscription varchar (20) NOT NULL,
     PRIMARY KEY (User_id)
 );
 
