@@ -140,15 +140,16 @@ function podGetComments()
         echo "</div>";
     }
 }
-function editComments(){
-    if(isset($_POST['editSubmit'])){
+function editComments()
+{
+    if (isset($_POST['editSubmit'])) {
         $review_id = $_POST['review_id'];
         $userComment = $_POST['userComment'];
         $currentPage = $_POST['currentPage'];
-        
+
         $sql = "UPDATE tbl_reviews SET userComment='$userComment' WHERE review_id = '$review_id'";
         $result = connect()->query($sql);
-        header("Location: ".$currentPage."");
+        header("Location: " . $currentPage . "");
     }
 }
 
@@ -163,10 +164,48 @@ function deleteComments()
         header("Location: " . $currentPage . "");
     }
 }
-function showRating($path){
-  $sql = "SELECT ROUND(AVG(userRating)) as avg FROM tbl_reviews WHERE bookPath='$path'";
-  $result = connect()->query($sql);
-  while ($reviews_rows = $result->fetch()) {
-  echo $reviews_rows['avg'];
-  }
+function showRating($path)
+{
+    $sql = "SELECT ROUND(AVG(userRating)) as avg FROM tbl_reviews WHERE bookPath='$path'";
+    $result = connect()->query($sql);
+    while ($reviews_rows = $result->fetch()) {
+        echo $reviews_rows['avg'];
+    }
+}
+
+function getStarRating($path)
+{
+    $sql = "SELECT ROUND(AVG(userRating)) as avg FROM tbl_reviews WHERE bookPath='$path'";
+    $result = connect()->query($sql);
+    $reviews_rows = $result->fetch();
+
+    $star = '';
+    if ($reviews_rows) {
+        $data = $reviews_rows['avg'];
+        switch ($data) {
+            case '1':
+                $star =  '⭐';
+                break;
+
+            case '2':
+                $star =  '⭐⭐';
+                break;
+
+            case '3':
+                $star =  '⭐⭐⭐';
+                break;
+
+            case '4':
+                $star =  '⭐⭐⭐⭐';
+                break;
+
+            case '5':
+                $star =  '⭐⭐⭐⭐⭐';
+                break;
+
+            default:
+                echo 'sdasdas';
+        }
+        return $star;
+    }
 }

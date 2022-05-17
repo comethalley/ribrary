@@ -242,12 +242,17 @@ class User extends Database
     }
 
     //test display file in the database
-    function displayAcceptedDocs()
+    function displayAcceptedDocs($categories ='')
     {
-        $data = $this->connect()->query("SELECT * FROM tbl_research_documents WHERE status = 'accepted'")->fetchAll();
-
-        return $data;
-        exit();
+        if (!empty($categories)) {
+            $data = $this->connect()->query("SELECT * FROM tbl_research_documents WHERE status = 'accepted' AND categories = '{$categories}'")->fetchAll();
+            return $data;
+            exit();
+        } else {
+            $data = $this->connect()->query("SELECT * FROM tbl_research_documents WHERE status = 'accepted'")->fetchAll();
+            return $data;
+            exit();
+        }
     }
 
     //function insert to notification table in database

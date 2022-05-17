@@ -140,7 +140,7 @@ include '../includes/autoload-class.php';
                   <label for="tehcnology">Technology</label>
                 </div>
                 <div class="form-check">
-                  <input type="radio" id="Health" name="categories" value="Health">
+                  <input type="radio" id="Health" name="categories" value="health">
                   <label for="mystery">Health</label>
                 </div>
               </div>

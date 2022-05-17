@@ -114,8 +114,9 @@ if (!isset($_SESSION['id'])) {
                 <div class="card-body">
                   <p class="card-title"><?php echo $row["doc_name"] ?></p>
                   <p class="card-title">Rating: <?php showRating($row["doc_path"]) ?>/5</p>
+                  <p class="star-rating"> <?php echo getStarRating($row["doc_path"]) ?></p>
                   <p class="card-text"><?php echo $row["createdBy"] ?></p>
-                  <a href="view.php?file=<?php echo $row["doc_path"] ?>" class="btn btn-primary" target="thapa">Read</a>
+                  <a href="view.php?file=<?php echo $row["doc_path"] ?>" class="btn btn-primary">Read</a>
                 </div>
               </div>
             </div>
@@ -137,7 +138,7 @@ if (!isset($_SESSION['id'])) {
           $count = 1;
           foreach ($data as $row) {
           ?>
-            <div class="col-md-3 col-sm-6 my-2 my-md-3 rounded">
+            <div class="col-md-3 my-2 my-md-3 rounded">
               <div class="card shadow text-center">
                 <div>
                   <img src="img/book-icon.png" class="card-img-top" alt="book-cover">
@@ -145,6 +146,7 @@ if (!isset($_SESSION['id'])) {
                 <div class="card-body">
                   <p class="card-title"><?php echo $row["doc_name"] ?></p>
                   <p class="card-title">Rating: <?php showRating($row["doc_path"]) ?>/5</p>
+                  <p class="star-rating"> <?php echo getStarRating($row["doc_path"]) ?></p>
                   <p class="card-text"><?php echo $row["createdBy"] ?></p>
                   <a href="view.php?file=<?php echo $row["doc_path"] ?>" class="btn btn-primary">Read</a>
                 </div>
@@ -163,11 +165,11 @@ if (!isset($_SESSION['id'])) {
         </div>
         <div class="row mb-3 ml-2">
           <?php
-          $data = $user->displayAcceptedDocs();
+          $data = $user->displayAcceptedDocs('technology');
           $count = 1;
           foreach ($data as $row) {
           ?>
-            <div class="col-md-3 col-sm-6 my-2 my-md-3 rounded">
+            <div class="col-md-3 my-2 my-md-3 rounded">
               <div class="card shadow text-center">
                 <div>
                   <img src="img/book-icon.png" class="card-img-top" alt="book-cover">
@@ -175,6 +177,7 @@ if (!isset($_SESSION['id'])) {
                 <div class="card-body">
                   <p class="card-title"><?php echo $row["doc_name"] ?></p>
                   <p class="card-title">Rating: <?php showRating($row["doc_path"]) ?>/5</p>
+                  <p class="star-rating"> <?php echo getStarRating($row["doc_path"]) ?></p>
                   <p class="card-text"><?php echo $row["createdBy"] ?></p>
                   <a href="view.php?file=<?php echo $row["doc_path"] ?>" class="btn btn-primary">Read</a>
                 </div>
@@ -197,7 +200,7 @@ if (!isset($_SESSION['id'])) {
           $count = 1;
           foreach ($data as $row) {
           ?>
-            <div class="col-md-3 col-sm-6 my-2 my-md-3 rounded">
+            <div class="col-md-3 my-2 my-md-3 rounded">
               <div class="card shadow text-center">
                 <div>
                   <img src="img/book-icon.png" class="card-img-top" alt="book-cover">
@@ -205,6 +208,7 @@ if (!isset($_SESSION['id'])) {
                 <div class="card-body">
                   <p class="card-title"><?php echo $row["doc_name"] ?></p>
                   <p class="card-title">Rating: <?php showRating($row["doc_path"]) ?>/5</p>
+                  <p class="star-rating"> <?php echo getStarRating($row["doc_path"]) ?></p>
                   <p class="card-text"><?php echo $row["createdBy"] ?></p>
                   <a href="view.php?file=<?php echo $row["doc_path"] ?>" class="btn btn-primary">Read</a>
                 </div>
@@ -223,11 +227,11 @@ if (!isset($_SESSION['id'])) {
         </div>
         <div class="row mb-3 ml-2">
           <?php
-          $data = $user->displayAcceptedDocs();
+          $data = $user->displayAcceptedDocs('health');
           $count = 1;
           foreach ($data as $row) {
           ?>
-            <div class="col-md-3 col-sm-6 my-2 my-md-3 rounded">
+            <div class="col-md-3 my-2 my-md-3 rounded">
               <div class="card shadow text-center">
                 <div>
                   <img src="img/book-icon.png" class="card-img-top" alt="book-cover">
@@ -235,6 +239,7 @@ if (!isset($_SESSION['id'])) {
                 <div class="card-body">
                   <p class="card-title"><?php echo $row["doc_name"] ?></p>
                   <p class="card-title">Rating: <?php showRating($row["doc_path"]) ?>/5</p>
+                  <p class="star-rating"> <?php echo getStarRating($row["doc_path"]) ?></p>
                   <p class="card-text"><?php echo $row["createdBy"] ?></p>
                   <a href="view.php?file=<?php echo $row["doc_path"] ?>" class="btn btn-primary">Read</a>
                 </div>

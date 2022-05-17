@@ -137,6 +137,7 @@ if (isset($_GET['categories-value'])) {
                     <form action="ebook-summary-section.php" method="GET">
                       <p class="card-title"><?php echo $row["ebooks_name"] ?></p>
                       <p class="card-title">Rating: <?php showRating($row["ebooks_path"]) ?>/5</p>
+                      <p class="star-rating"> <?php echo getStarRating($row["ebooks_path"]) ?></p>
                       <p class="card-text"><?php echo $row["author"] ?></p>
                       <p class="card-text"><?php echo $row["categories"] ?></p>
                       <input type="hidden" name="file" value="<?php echo $row['ebooks_cover_path'] ?>">
@@ -162,7 +163,7 @@ if (isset($_GET['categories-value'])) {
           </div>
 
           <div class="row mb-3 ml-2">
-            <?php
+          <?php
             $data = $user->displayEbooks();
             foreach ($data as $row) {
             ?>
@@ -175,6 +176,7 @@ if (isset($_GET['categories-value'])) {
                     <form action="ebook-summary-section.php" method="GET">
                       <p class="card-title"><?php echo $row["ebooks_name"] ?></p>
                       <p class="card-title">Rating: <?php showRating($row["ebooks_path"]) ?>/5</p>
+                      <p class="star-rating"> <?php echo getStarRating($row["ebooks_path"]) ?></p>
                       <p class="card-text"><?php echo $row["author"] ?></p>
                       <p class="card-text"><?php echo $row["categories"] ?></p>
                       <input type="hidden" name="file" value="<?php echo $row['ebooks_cover_path'] ?>">
@@ -200,7 +202,7 @@ if (isset($_GET['categories-value'])) {
             </div>
           </div>
           <div class="row mb-3 ml-2">
-            <?php
+          <?php
             $data = $user->displayEbooks('science fiction');
             foreach ($data as $row) {
             ?>
@@ -213,6 +215,7 @@ if (isset($_GET['categories-value'])) {
                     <form action="ebook-summary-section.php" method="GET">
                       <p class="card-title"><?php echo $row["ebooks_name"] ?></p>
                       <p class="card-title">Rating: <?php showRating($row["ebooks_path"]) ?>/5</p>
+                      <p class="star-rating"> <?php echo getStarRating($row["ebooks_path"]) ?></p>
                       <p class="card-text"><?php echo $row["author"] ?></p>
                       <p class="card-text"><?php echo $row["categories"] ?></p>
                       <input type="hidden" name="file" value="<?php echo $row['ebooks_cover_path'] ?>">
@@ -237,7 +240,7 @@ if (isset($_GET['categories-value'])) {
             </div>
           </div>
           <div class="row mb-3 ml-2">
-            <?php
+          <?php
             $data = $user->displayEbooks('fantasy');
             foreach ($data as $row) {
             ?>
@@ -250,6 +253,7 @@ if (isset($_GET['categories-value'])) {
                     <form action="ebook-summary-section.php" method="GET">
                       <p class="card-title"><?php echo $row["ebooks_name"] ?></p>
                       <p class="card-title">Rating: <?php showRating($row["ebooks_path"]) ?>/5</p>
+                      <p class="star-rating"> <?php echo getStarRating($row["ebooks_path"]) ?></p>
                       <p class="card-text"><?php echo $row["author"] ?></p>
                       <p class="card-text"><?php echo $row["categories"] ?></p>
                       <input type="hidden" name="file" value="<?php echo $row['ebooks_cover_path'] ?>">
@@ -273,7 +277,7 @@ if (isset($_GET['categories-value'])) {
             </div>
           </div>
           <div class="row mb-3 ml-2">
-            <?php
+          <?php
             $data = $user->displayEbooks('mystery');
             foreach ($data as $row) {
             ?>
@@ -286,6 +290,7 @@ if (isset($_GET['categories-value'])) {
                     <form action="ebook-summary-section.php" method="GET">
                       <p class="card-title"><?php echo $row["ebooks_name"] ?></p>
                       <p class="card-title">Rating: <?php showRating($row["ebooks_path"]) ?>/5</p>
+                      <p class="star-rating"> <?php echo getStarRating($row["ebooks_path"]) ?></p>
                       <p class="card-text"><?php echo $row["author"] ?></p>
                       <p class="card-text"><?php echo $row["categories"] ?></p>
                       <input type="hidden" name="file" value="<?php echo $row['ebooks_cover_path'] ?>">
@@ -312,9 +317,8 @@ if (isset($_GET['categories-value'])) {
           </div>
 
           <div class="row mb-3 ml-2">
-            <?php
+          <?php
             $data = $user->displayEbooks($value);
-
             foreach ($data as $row) {
             ?>
               <div class="col-md-3 my-2 my-md-3 rounded">
@@ -326,6 +330,7 @@ if (isset($_GET['categories-value'])) {
                     <form action="ebook-summary-section.php" method="GET">
                       <p class="card-title"><?php echo $row["ebooks_name"] ?></p>
                       <p class="card-title">Rating: <?php showRating($row["ebooks_path"]) ?>/5</p>
+                      <p class="star-rating"> <?php echo getStarRating($row["ebooks_path"]) ?></p>
                       <p class="card-text"><?php echo $row["author"] ?></p>
                       <p class="card-text"><?php echo $row["categories"] ?></p>
                       <input type="hidden" name="file" value="<?php echo $row['ebooks_cover_path'] ?>">
