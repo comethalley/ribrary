@@ -7,7 +7,7 @@ $userdata = $user->emailExist($_SESSION["email"]);
     <div class="container">
         <div class="list">
             <button class="links">Settings</button>
-            <button class="links">Help & Support</button>
+            <button class="links"><a href="ticket.php">Help & Support</button>
 
             <?php
             if (isset($_SESSION['first-name']) && isset($_SESSION['last-name']) && isset($_SESSION['email'])) {
