@@ -11,6 +11,7 @@ if (!isset($_SESSION['id'])) {
 
 if (isset($_GET['categories-value'])) {
   $value = $_GET['categories-value'];
+
 }
 
 ?>
@@ -267,7 +268,7 @@ if (isset($_GET['categories-value'])) {
         <div class="mystery categories">
           <div class="row">
             <div class="col-md-12">
-              <h6 class=" display-4 mx-3 categories-hidden">Mystery</h6>
+              <h6 class=" display-4 mx-3 ">Mystery</h6>
               <hr>
             </div>
           </div>
@@ -301,16 +302,19 @@ if (isset($_GET['categories-value'])) {
         </div>
 
         <!-- -------------------------------------------------- -->
-        <div class="hidden hide">
+
+        <div class="categories-hidden hide">
           <div class="row">
             <div class="col-md-12">
-              <h6 class=" display-4 mx-3 categories-hidden"><?php echo $value ?></h6>
+              <h6 class=" display-4 mx-3 "><?php echo $value ?></h6>
               <hr>
             </div>
           </div>
+
           <div class="row mb-3 ml-2">
             <?php
             $data = $user->displayEbooks($value);
+
             foreach ($data as $row) {
             ?>
               <div class="col-md-3 my-2 my-md-3 rounded">
@@ -336,6 +340,8 @@ if (isset($_GET['categories-value'])) {
             ?>
           </div>
         </div>
+
+
 
       </div>
     </main>
@@ -379,8 +385,8 @@ if (isset($_GET['categories-value'])) {
       }
 
       if (parameter) {
-        hideCategories()
-        document.querySelector('.hidden').classList.remove('hide')
+        hideCategories();
+        document.querySelector('.categories-hidden').classList.remove('hide')
       }
 
       dropdownMenu.addEventListener('click', function(e) {

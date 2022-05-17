@@ -9,14 +9,11 @@ if (!isset($_SESSION['id'])) {
   $user = new User();
 }
 
-if (isset($_GET['categories-value'])) {
-  $value = $_GET['categories-value'];
-}
-
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -45,6 +42,7 @@ if (isset($_GET['categories-value'])) {
     }
   </style>
 </head>
+
 <body>
   <nav class="navbar sticky-top navbar-expand-lg navbar-dark mx-0 w-100" style="background-color: #485665;">
     <a class="navbar-brand" href="ebook-section.php">
@@ -57,7 +55,7 @@ if (isset($_GET['categories-value'])) {
     <div class="row">
       <div class="col-12 mb-2">
         <h5 class="display-4 text-center">Encountered a problem ? Need support? <br>Let us know by sending a report !</h5>
-      </div>  
+      </div>
       <div class="col-12 border">
         <p class="display-4 text-center">Fill up the information</p>
         <hr>
@@ -65,26 +63,26 @@ if (isset($_GET['categories-value'])) {
           <div class="form-row">
             <div class="form-group col-md-12">
               <label for="subject">Subject</label>
-              <input type="text" class="form-control" id="subject" placeholder="What your concern is all about?">
+              <input type="text" class="form-control" id="subject" placeholder="What your concern is all about?" required>
             </div>
           </div>
           <div class="form-row">
             <div class="form-group col-md-12">
               <label for="email">Email</label>
-              <input type="email" class="form-control" id="email" placeholder="email@gmail.com">
+              <input type="email" class="form-control" id="email" placeholder="email@gmail.com" required>
             </div>
           </div>
           <div class="form-row">
             <div class="form-group col-md-12">
               <label for="address">Body</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" required></textarea >
             </div>
           </div>
-        <button type="submit" class="btn btn-primary btn-sm mr-5 my-5">Send</button>
+          <button type="submit" class="btn btn-primary btn-sm mr-5 my-5">Send</button>
       </div>
     </div>
   </div>
-   
+
   <center>
     <footer class="site-footer">
       <h6>Ribrary</h6>
@@ -101,10 +99,11 @@ if (isset($_GET['categories-value'])) {
       </div>
       </div>
     </footer>
-  </center>  
- <!-- Bootstrap -->
+  </center>
+  <!-- Bootstrap -->
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 
 </body>
+
 </html>

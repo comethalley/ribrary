@@ -67,7 +67,7 @@ include '../includes/autoload-class.php'
                 </div>
 
                 <!-- SIGNING IN MESSAGE -->
-                <p class="logging-in">Signing In</p>
+                <p class="logging-in">Signing Up</p>
                 <p class="wait">please wait ...</p>
 
                 <!-- ERROR MESSAGE -->

@@ -277,7 +277,7 @@ if (isset($_GET['categories-value'])) {
         <div class="mystery categories">
           <div class="row">
             <div class="col-md-12">
-              <h6 class=" display-4 mx-3 categories-hidden">Mystery</h6>
+              <h6 class=" display-4 mx-3 ">Mystery</h6>
               <hr>
             </div>
           </div>
@@ -313,10 +313,10 @@ if (isset($_GET['categories-value'])) {
         </div>
 
         <!-- -------------------------------------------------- -->
-        <div class="hidden hide">
+        <div class="categories-hidden hide">
           <div class="row">
             <div class="col-md-12">
-              <h6 class=" display-4 mx-3 categories-hidden"><?php echo $value ?></h6>
+              <h6 class=" display-4 mx-3 "><?php echo $value ?></h6>
               <hr>
             </div>
           </div>
@@ -393,7 +393,7 @@ if (isset($_GET['categories-value'])) {
 
       if (parameter) {
         hideCategories()
-        document.querySelector('.hidden').classList.remove('hide')
+        document.querySelector('.categories-hidden').classList.remove('hide')
       }
 
       dropdownMenu.addEventListener('click', function(e) {
