@@ -139,26 +139,24 @@ if (isset($_GET['search-audiobook'])) {
             foreach ($data as $row) {
             ?>
 
-              <div class="col-md-3 my-2 my-md-3 rounded">
-                <div class="card shadow text-center">
+              <div class="col-2 my-2 mx-0 rounded">
+                <div class="card shadow text-center w-100 h-100">
                   <div>
-                    <img src="../functions/uploads/<?php echo $row['audiobook_cover_path'] ?>" class="card-img-top" alt="book-cover">
+                    <img src="../functions/uploads/<?php echo $row['audiobook_cover_path'] ?>" class="card-img-top" alt="book-cover" style="width:170px; height:200px">
                   </div>
                   <div class="card-body">
                     <form action="audiobook-summary-section.php" method="GET">
-                      <p class="card-title"><?php echo $row["audiobook_name"] ?></p>
-                      <p class="card-title">Rating: <span class="rating"><?php showRating($row["audiobook_path"]) ?></span>/5</p>
-                      <p class="star-rating"> <?php echo getStarRating($row["audiobook_path"]) ?></p>
-                      <p class="card-text"><?php echo $row["narrator"] ?></p>
-                      <p class="card-text">Categories</p>
+                      <span style="display:inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 13ch;"><p class="card-title" style = "font-size:16px; font-weight:bold;"><?php echo $row["audiobook_name"] ?></p></span>
+                      <p class="card-title " style = "font-size:15px;">Rating: <span class="rating"><?php showRating($row["audiobook_path"]) ?></span>/5</p>
+                      <p class="star-rating" style = "font-size:13px;"> <?php echo getStarRating($row["audiobook_path"]) ?></p>
+                      <p class="star-rating" style = "font-size:13px;"><?php echo $row["author"] ?></p>
                       <input type="hidden" name="file" value="<?php echo $row['audiobook_cover_path'] ?>">
                       <input type="hidden" name="audio_file" value="<?php echo $row['audiobook_path'] ?>">
-                      <button class="btn btn-primary">Listen</button>
+                      <button class="btn btn-primary btn-sm w-50">Read</button>
                     </form>
                   </div>
                 </div>
               </div>
-
             <?php
             }
             ?>
@@ -180,21 +178,20 @@ if (isset($_GET['search-audiobook'])) {
             foreach ($data as $row) {
             ?>
 
-              <div class="col-md-3 my-2 my-md-3 rounded">
-                <div class="card shadow text-center">
+              <div class="col-2 my-2 mx-0 rounded">
+                <div class="card shadow text-center w-100 h-100">
                   <div>
-                    <img src="../functions/uploads/<?php echo $row['audiobook_cover_path'] ?>" class="card-img-top" alt="book-cover">
+                    <img src="../functions/uploads/<?php echo $row['audiobook_cover_path'] ?>" class="card-img-top" alt="book-cover" style="width:170px; height:200px">
                   </div>
                   <div class="card-body">
                     <form action="audiobook-summary-section.php" method="GET">
-                      <p class="card-title"><?php echo $row["audiobook_name"] ?></p>
-                      <p class="card-title">Rating: <span class="rating"><?php showRating($row["audiobook_path"]) ?></span>/5</p>
-                      <p class="star-rating"> <?php echo getStarRating($row["audiobook_path"]) ?></p>
-                      <p class="card-text"><?php echo $row["narrator"] ?></p>
-                      <p class="card-text">Categories</p>
+                      <span style="display:inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 13ch;"><p class="card-title" style = "font-size:16px; font-weight:bold;"><?php echo $row["audiobook_name"] ?></p></span>
+                      <p class="card-title " style = "font-size:15px;">Rating: <span class="rating"><?php showRating($row["audiobook_path"]) ?></span>/5</p>
+                      <p class="star-rating" style = "font-size:13px;"> <?php echo getStarRating($row["audiobook_path"]) ?></p>
+                      <p class="star-rating" style = "font-size:13px;"><?php echo $row["author"] ?></p>
                       <input type="hidden" name="file" value="<?php echo $row['audiobook_cover_path'] ?>">
                       <input type="hidden" name="audio_file" value="<?php echo $row['audiobook_path'] ?>">
-                      <button class="btn btn-primary">Listen</button>
+                      <button class="btn btn-primary btn-sm w-50">Read</button>
                     </form>
                   </div>
                 </div>
@@ -221,21 +218,20 @@ if (isset($_GET['search-audiobook'])) {
             foreach ($data as $row) {
             ?>
 
-              <div class="col-md-3 my-2 my-md-3 rounded">
-                <div class="card shadow text-center">
+              <div class="col-2 my-2 mx-0 rounded">
+                <div class="card shadow text-center w-100 h-100">
                   <div>
-                    <img src="../functions/uploads/<?php echo $row['audiobook_cover_path'] ?>" class="card-img-top" alt="book-cover">
+                    <img src="../functions/uploads/<?php echo $row['audiobook_cover_path'] ?>" class="card-img-top" alt="book-cover" style="width:170px; height:200px">
                   </div>
                   <div class="card-body">
                     <form action="audiobook-summary-section.php" method="GET">
-                      <p class="card-title"><?php echo $row["audiobook_name"] ?></p>
-                      <p class="card-title">Rating: <span class="rating"><?php showRating($row["audiobook_path"]) ?></span>/5</p>
-                      <p class="star-rating"> <?php echo getStarRating($row["audiobook_path"]) ?></p>
-                      <p class="card-text"><?php echo $row["narrator"] ?></p>
-                      <p class="card-text">Categories</p>
+                      <span style="display:inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 13ch;"><p class="card-title" style = "font-size:16px; font-weight:bold;"><?php echo $row["audiobook_name"] ?></p></span>
+                      <p class="card-title " style = "font-size:15px;">Rating: <span class="rating"><?php showRating($row["audiobook_path"]) ?></span>/5</p>
+                      <p class="star-rating" style = "font-size:13px;"> <?php echo getStarRating($row["audiobook_path"]) ?></p>
+                      <p class="star-rating" style = "font-size:13px;"><?php echo $row["author"] ?></p>
                       <input type="hidden" name="file" value="<?php echo $row['audiobook_cover_path'] ?>">
                       <input type="hidden" name="audio_file" value="<?php echo $row['audiobook_path'] ?>">
-                      <button class="btn btn-primary">Listen</button>
+                      <button class="btn btn-primary btn-sm w-50">Read</button>
                     </form>
                   </div>
                 </div>
@@ -261,21 +257,20 @@ if (isset($_GET['search-audiobook'])) {
             foreach ($data as $row) {
             ?>
 
-              <div class="col-md-3 my-2 my-md-3 rounded">
-                <div class="card shadow text-center">
+              <div class="col-2 my-2 mx-0 rounded">
+                <div class="card shadow text-center w-100 h-100">
                   <div>
-                    <img src="../functions/uploads/<?php echo $row['audiobook_cover_path'] ?>" class="card-img-top" alt="book-cover">
+                    <img src="../functions/uploads/<?php echo $row['audiobook_cover_path'] ?>" class="card-img-top" alt="book-cover" style="width:170px; height:200px">
                   </div>
                   <div class="card-body">
                     <form action="audiobook-summary-section.php" method="GET">
-                      <p class="card-title"><?php echo $row["audiobook_name"] ?></p>
-                      <p class="card-title">Rating: <span class="rating"><?php showRating($row["audiobook_path"]) ?></span>/5</p>
-                      <p class="star-rating"> <?php echo getStarRating($row["audiobook_path"]) ?></p>
-                      <p class="card-text"><?php echo $row["narrator"] ?></p>
-                      <p class="card-text">Categories</p>
+                      <span style="display:inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 13ch;"><p class="card-title" style = "font-size:16px; font-weight:bold;"><?php echo $row["audiobook_name"] ?></p></span>
+                      <p class="card-title " style = "font-size:15px;">Rating: <span class="rating"><?php showRating($row["audiobook_path"]) ?></span>/5</p>
+                      <p class="star-rating" style = "font-size:13px;"> <?php echo getStarRating($row["audiobook_path"]) ?></p>
+                      <p class="star-rating" style = "font-size:13px;"><?php echo $row["author"] ?></p>
                       <input type="hidden" name="file" value="<?php echo $row['audiobook_cover_path'] ?>">
                       <input type="hidden" name="audio_file" value="<?php echo $row['audiobook_path'] ?>">
-                      <button class="btn btn-primary">Listen</button>
+                      <button class="btn btn-primary btn-sm w-50">Read</button>
                     </form>
                   </div>
                 </div>
@@ -300,21 +295,20 @@ if (isset($_GET['search-audiobook'])) {
             foreach ($data as $row) {
             ?>
 
-              <div class="col-md-3 my-2 my-md-3 rounded">
-                <div class="card shadow text-center">
+              <div class="col-2 my-2 mx-0 rounded">
+                <div class="card shadow text-center w-100 h-100">
                   <div>
-                    <img src="../functions/uploads/<?php echo $row['audiobook_cover_path'] ?>" class="card-img-top" alt="book-cover">
+                    <img src="../functions/uploads/<?php echo $row['audiobook_cover_path'] ?>" class="card-img-top" alt="book-cover" style="width:170px; height:200px">
                   </div>
                   <div class="card-body">
                     <form action="audiobook-summary-section.php" method="GET">
-                      <p class="card-title"><?php echo $row["audiobook_name"] ?></p>
-                      <p class="card-title">Rating: <span class="rating"><?php showRating($row["audiobook_path"]) ?></span>/5</p>
-                      <p class="star-rating"> <?php echo getStarRating($row["audiobook_path"]) ?></p>
-                      <p class="card-text"><?php echo $row["narrator"] ?></p>
-                      <p class="card-text">Categories</p>
+                      <span style="display:inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 13ch;"><p class="card-title" style = "font-size:16px; font-weight:bold;"><?php echo $row["audiobook_name"] ?></p></span>
+                      <p class="card-title " style = "font-size:15px;">Rating: <span class="rating"><?php showRating($row["audiobook_path"]) ?></span>/5</p>
+                      <p class="star-rating" style = "font-size:13px;"> <?php echo getStarRating($row["audiobook_path"]) ?></p>
+                      <p class="star-rating" style = "font-size:13px;"><?php echo $row["author"] ?></p>
                       <input type="hidden" name="file" value="<?php echo $row['audiobook_cover_path'] ?>">
                       <input type="hidden" name="audio_file" value="<?php echo $row['audiobook_path'] ?>">
-                      <button class="btn btn-primary">Listen</button>
+                      <button class="btn btn-primary btn-sm w-50">Read</button>
                     </form>
                   </div>
                 </div>
@@ -341,21 +335,20 @@ if (isset($_GET['search-audiobook'])) {
             foreach ($data as $row) {
             ?>
 
-              <div class="col-md-3 my-2 my-md-3 rounded">
-                <div class="card shadow text-center">
+              <div class="col-2 my-2 mx-0 rounded">
+                <div class="card shadow text-center w-100 h-100">
                   <div>
-                    <img src="../functions/uploads/<?php echo $row['audiobook_cover_path'] ?>" class="card-img-top" alt="book-cover">
+                    <img src="../functions/uploads/<?php echo $row['audiobook_cover_path'] ?>" class="card-img-top" alt="book-cover" style="width:170px; height:200px">
                   </div>
                   <div class="card-body">
                     <form action="audiobook-summary-section.php" method="GET">
-                      <p class="card-title"><?php echo $row["audiobook_name"] ?></p>
-                      <p class="card-title">Rating: <span class="rating"><?php showRating($row["audiobook_path"]) ?></span>/5</p>
-                      <p class="star-rating"> <?php echo getStarRating($row["audiobook_path"]) ?></p>
-                      <p class="card-text"><?php echo $row["narrator"] ?></p>
-                      <p class="card-text">Categories</p>
+                      <span style="display:inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 13ch;"><p class="card-title" style = "font-size:16px; font-weight:bold;"><?php echo $row["audiobook_name"] ?></p></span>
+                      <p class="card-title " style = "font-size:15px;">Rating: <span class="rating"><?php showRating($row["audiobook_path"]) ?></span>/5</p>
+                      <p class="star-rating" style = "font-size:13px;"> <?php echo getStarRating($row["audiobook_path"]) ?></p>
+                      <p class="star-rating" style = "font-size:13px;"><?php echo $row["author"] ?></p>
                       <input type="hidden" name="file" value="<?php echo $row['audiobook_cover_path'] ?>">
                       <input type="hidden" name="audio_file" value="<?php echo $row['audiobook_path'] ?>">
-                      <button class="btn btn-primary">Listen</button>
+                      <button class="btn btn-primary btn-sm w-50">Read</button>
                     </form>
                   </div>
                 </div>
@@ -382,21 +375,20 @@ if (isset($_GET['search-audiobook'])) {
             foreach ($searchData as $row) {
             ?>
 
-              <div class="col-md-3 my-2 my-md-3 rounded">
-                <div class="card shadow text-center">
+              <div class="col-2 my-2 mx-0 rounded">
+                <div class="card shadow text-center w-100 h-100">
                   <div>
-                    <img src="../functions/uploads/<?php echo $row['audiobook_cover_path'] ?>" class="card-img-top" alt="book-cover">
+                    <img src="../functions/uploads/<?php echo $row['audiobook_cover_path'] ?>" class="card-img-top" alt="book-cover" style="width:170px; height:200px">
                   </div>
                   <div class="card-body">
                     <form action="audiobook-summary-section.php" method="GET">
-                      <p class="card-title"><?php echo $row["audiobook_name"] ?></p>
-                      <p class="card-title">Rating: <span class="rating"><?php showRating($row["audiobook_path"]) ?></span>/5</p>
-                      <p class="star-rating"> <?php echo getStarRating($row["audiobook_path"]) ?></p>
-                      <p class="card-text"><?php echo $row["narrator"] ?></p>
-                      <p class="card-text">Categories</p>
+                      <span style="display:inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 13ch;"><p class="card-title" style = "font-size:16px; font-weight:bold;"><?php echo $row["audiobook_name"] ?></p></span>
+                      <p class="card-title " style = "font-size:15px;">Rating: <span class="rating"><?php showRating($row["audiobook_path"]) ?></span>/5</p>
+                      <p class="star-rating" style = "font-size:13px;"> <?php echo getStarRating($row["audiobook_path"]) ?></p>
+                      <p class="star-rating" style = "font-size:13px;"><?php echo $row["author"] ?></p>
                       <input type="hidden" name="file" value="<?php echo $row['audiobook_cover_path'] ?>">
                       <input type="hidden" name="audio_file" value="<?php echo $row['audiobook_path'] ?>">
-                      <button class="btn btn-primary">Listen</button>
+                      <button class="btn btn-primary btn-sm w-50">Read</button>
                     </form>
                   </div>
                 </div>
