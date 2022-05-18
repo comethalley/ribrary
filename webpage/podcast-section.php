@@ -144,14 +144,14 @@ if (isset($_GET['search-podcast'])) {
             $data = $user->displayPodcasts();
             foreach ($data as $row) {
             ?>
-              <div class="col-md-3 my-2 my-md-3 rounded">
-                <div class="card shadow text-center">
+              <div class="col-2 my-2 mx-0 rounded">
+                <div class="card shadow text-center w-100 h-100">
                   <div>
-                    <img src="img/book-icon.png" class="card-img-top" alt="cover">
+                    <img src="img/book-icon.png" class="card-img-top" alt="cover" style="width:170px; height:200px">
                   </div>
                   <div class="card-body">
-                    <p class="card-title"><?php echo $row["podcast_name"] ?></p>
-                    <p class="card-text"><?php echo $row["podcast_host"] ?></p>
+                    <span style="display:inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 13ch;"><p class="card-title" style = "font-size:16px; font-weight:bold;"><?php echo $row["podcast_name"] ?></p></span>
+                    <p class="card-text" style = "font-size:13px;"><?php echo $row["podcast_host"] ?></p>
                     <a href="podcast-view.php?file=<?php echo $row["podcast_path"] ?>" class="btn btn-primary">Watch</a>
                   </div>
                 </div>
@@ -176,15 +176,15 @@ if (isset($_GET['search-podcast'])) {
             $count = 1;
             foreach ($data as $row) {
             ?>
-              <div class="col-md-3 col-sm-6 my-2 my-md-3 rounded">
-                <div class="card shadow text-center">
+              <div class="col-2 my-2 mx-0 rounded">
+                <div class="card shadow text-center w-100 h-100">
                   <div>
-                    <img src="img/book-icon.png" class="card-img-top" alt="book-cover">
+                    <img src="img/book-icon.png" class="card-img-top" alt="cover" style="width:170px; height:200px">
                   </div>
                   <div class="card-body">
-                    <p class="card-title"><?php echo $row["podcast_name"] ?></p>
-                    <p class="card-text"><?php echo $row["podcast_host"] ?></p>
-                    <a href="podcast-view.php?file=<?php echo $row["podcast_path"] ?>" class="btn btn-primary" target="thapa">Watch</a>
+                    <span style="display:inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 13ch;"><p class="card-title" style = "font-size:16px; font-weight:bold;"><?php echo $row["podcast_name"] ?></p></span>
+                    <p class="card-text" style = "font-size:13px;"><?php echo $row["podcast_host"] ?></p>
+                    <a href="podcast-view.php?file=<?php echo $row["podcast_path"] ?>" class="btn btn-primary">Watch</a>
                   </div>
                 </div>
               </div>
@@ -208,14 +208,14 @@ if (isset($_GET['search-podcast'])) {
             $data = $user->displayPodcasts('fantasy');
             foreach ($data as $row) {
             ?>
-              <div class="col-md-3 col-sm-6 my-2 my-md-3 rounded">
-                <div class="card shadow text-center">
+              <div class="col-2 my-2 mx-0 rounded">
+                <div class="card shadow text-center w-100 h-100">
                   <div>
-                    <img src="img/book-icon.png" class="card-img-top" alt="book-cover">
+                    <img src="img/book-icon.png" class="card-img-top" alt="cover" style="width:170px; height:200px">
                   </div>
                   <div class="card-body">
-                    <p class="card-title"><?php echo $row["podcast_name"] ?></p>
-                    <p class="card-text"><?php echo $row["podcast_host"] ?></p>
+                    <span style="display:inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 13ch;"><p class="card-title" style = "font-size:16px; font-weight:bold;"><?php echo $row["podcast_name"] ?></p></span>
+                    <p class="card-text" style = "font-size:13px;"><?php echo $row["podcast_host"] ?></p>
                     <a href="podcast-view.php?file=<?php echo $row["podcast_path"] ?>" class="btn btn-primary">Watch</a>
                   </div>
                 </div>
@@ -229,14 +229,14 @@ if (isset($_GET['search-podcast'])) {
             $data = $user->displayPodcasts('science fiction');
             foreach ($data as $row) {
             ?>
-              <div class="col-md-3 col-sm-6 my-2 my-md-3 rounded">
-                <div class="card shadow text-center">
+              <div class="col-2 my-2 mx-0 rounded">
+                <div class="card shadow text-center w-100 h-100">
                   <div>
-                    <img src="img/book-icon.png" class="card-img-top" alt="book-cover">
+                    <img src="img/book-icon.png" class="card-img-top" alt="cover" style="width:170px; height:200px">
                   </div>
                   <div class="card-body">
-                    <p class="card-title"><?php echo $row["podcast_name"] ?></p>
-                    <p class="card-text"><?php echo $row["podcast_host"] ?></p>
+                    <span style="display:inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 13ch;"><p class="card-title" style = "font-size:16px; font-weight:bold;"><?php echo $row["podcast_name"] ?></p></span>
+                    <p class="card-text" style = "font-size:13px;"><?php echo $row["podcast_host"] ?></p>
                     <a href="podcast-view.php?file=<?php echo $row["podcast_path"] ?>" class="btn btn-primary">Watch</a>
                   </div>
                 </div>
@@ -265,14 +265,14 @@ if (isset($_GET['search-podcast'])) {
 
             foreach ($data as $row) {
             ?>
-              <div class="col-md-3 my-2 my-md-3 rounded">
-                <div class="card shadow text-center">
+              <div class="col-2 my-2 mx-0 rounded">
+                <div class="card shadow text-center w-100 h-100">
                   <div>
-                    <img src="../functions/uploads/<?php echo $row["audiobook_cover_path"] ?>" class="card-img-top" alt="book-cover">
+                    <img src="img/book-icon.png" class="card-img-top" alt="cover" style="width:170px; height:200px">
                   </div>
                   <div class="card-body">
-                    <p class="card-title capitalize"><?php echo $row["podcast_name"] ?></p>
-                    <p class="card-text"><?php echo $row["podcast_host"] ?></p>
+                    <span style="display:inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 13ch;"><p class="card-title" style = "font-size:16px; font-weight:bold;"><?php echo $row["podcast_name"] ?></p></span>
+                    <p class="card-text" style = "font-size:13px;"><?php echo $row["podcast_host"] ?></p>
                     <a href="podcast-view.php?file=<?php echo $row["podcast_path"] ?>" class="btn btn-primary">Watch</a>
                   </div>
                 </div>
@@ -298,15 +298,15 @@ if (isset($_GET['search-podcast'])) {
             foreach ($searchData as $row) {
             ?>
 
-              <div class="col-md-3 my-2 my-md-3 rounded">
-                <div class="card shadow text-center">
+              <div class="col-2 my-2 mx-0 rounded">
+                <div class="card shadow text-center w-100 h-100">
                   <div>
-                    <img src="img/book-icon.png" class="card-img-top" alt="book-cover">
+                    <img src="img/book-icon.png" class="card-img-top" alt="cover" style="width:170px; height:200px">
                   </div>
                   <div class="card-body">
-                    <p class="card-title"><?php echo $row["podcast_name"] ?></p>
-                    <p class="card-text"><?php echo $row["podcast_host"] ?></p>
-                    <a href="podcast-view.php?file=<?php echo $row["podcast_path"] ?>" class="btn btn-primary" target="thapa">Watch</a>
+                    <span style="display:inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 13ch;"><p class="card-title" style = "font-size:16px; font-weight:bold;"><?php echo $row["podcast_name"] ?></p></span>
+                    <p class="card-text" style = "font-size:13px;"><?php echo $row["podcast_host"] ?></p>
+                    <a href="podcast-view.php?file=<?php echo $row["podcast_path"] ?>" class="btn btn-primary">Watch</a>
                   </div>
                 </div>
               </div>
