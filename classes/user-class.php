@@ -500,14 +500,16 @@ class User extends Database
     //insert to tickets table
     function tickets($subject, $email, $message, $id)
     {
-        $sql = "INSERT INTO tbl_tickets (subject, email, body, user_id, date_and_time)
-VALUES (?,?,?,(SELECT User_id FROM tbl_user WHERE user_id = ?),?);";
+        $sql = "INSERT INTO tbl_tickets (subject, email, body, user_id, date_and_time,status)
+VALUES (?,?,?,(SELECT User_id FROM tbl_user WHERE user_id = ?),?,?);";
 
         // prepared statement
         $stmt = $this->connect()->prepare($sql);
 
+        //status
+        $status = 'pending';
         //if execution fail
-        if (!$stmt->execute([$subject, $email, $message, $id, $this->date])) {
+        if (!$stmt->execute([$subject, $email, $message, $id, $this->date, $status])) {
             header("Location:../webpage/ticket.php?error=stmtfailticket");
             $connect = null;
             exit();

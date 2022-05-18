@@ -137,7 +137,7 @@ if (!isset($_SESSION['admin_name'])) {
                     <tbody class="action">
 
                         <?php
-                        $data = $admin->displayPending('tbl_ebooks', '', $start_from, $num_per_page);
+                        $data = $admin->displayPending('pending','tbl_ebooks', '', $start_from, $num_per_page);
                         $count = $start_from + 1;
                         foreach ($data as $row) {
 
@@ -242,7 +242,7 @@ if (!isset($_SESSION['admin_name'])) {
                 <!-- PAGE BUTTON  -->
                 <div class="pagination">
                     <?php
-                    $data = $admin->displayPending("tbl_ebooks", "all");
+                    $data = $admin->displayPending('pending',"tbl_ebooks", "all");
                     $total_record = count($data);
 
                     $total_page = ceil($total_record / $num_per_page);

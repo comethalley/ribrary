@@ -18,7 +18,7 @@ if (isset($_POST['submit'])) {
   $card_holder = $_POST['card-holder'];
   $billing_address = $_POST['billing-address'];
 
-  $user->membership($card_info,$card_holder,$billing_address,$_SESSION["id"]);
+  $user->membership($card_info, $card_holder, $billing_address, $_SESSION["id"]);
 }
 ?>
 

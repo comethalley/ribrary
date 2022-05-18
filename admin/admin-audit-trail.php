@@ -68,12 +68,12 @@ if (!isset($_SESSION['admin_name'])) {
         }
 
         /* ----------------------------- */
-        .list:nth-of-type(8) {
+        .list:nth-of-type(12) {
             border-left: 5px solid #4980ff;
             padding-left: 1.688em;
         }
 
-        .list:nth-of-type(8) .link:nth-of-type(1) {
+        .list:nth-of-type(12) .link:nth-of-type(1) {
             background-color: #4980ff;
             border-radius: 8px;
         }
@@ -164,8 +164,6 @@ if (!isset($_SESSION['admin_name'])) {
                                 <td> <?php echo $row["Name"] ?></td>
                                 <td> <?php echo $row["Email"] ?></td>
                                 <td> <?php echo $row["action"] ?></td>
-
-
                             </tr>
                         <?php
                             $count++;

@@ -214,6 +214,7 @@ CREATE TABLE `tbl_tickets` (
   `body` varchar (255) NOT NULL,
    user_id int (30) NOT NULL,
   `date_and_time` varchar(30) NOT NULL,
+   `status` varchar(30) NOT NULL,
   PRIMARY KEY (tickets_no),
   FOREIGN KEY (user_id) REFERENCES tbl_user(User_id)
 ) 

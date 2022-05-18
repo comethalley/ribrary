@@ -41,6 +41,10 @@ if (isset($_GET['search-document'])) {
   <!-- BOOTSTRAP ICON -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
   <style>
+    .navbar {
+      z-index: 1;
+    }
+
     .hide {
       display: none;
     }
@@ -48,14 +52,6 @@ if (isset($_GET['search-document'])) {
     .categories-hidden {
       text-transform: capitalize;
     }
-
-    .navbar {
-      z-index: 1;
-    }
-    .hide {
-      display: none;
-    }
-
   </style>
 
 </head>
@@ -120,12 +116,12 @@ if (isset($_GET['search-document'])) {
       <div class="container1 mx-2 my-5">
         <div class="row">
           <div class="col-12">
-          <button class="upbtn" onclick="window.location.href='upload-documents-section.php'">Upload your own research documents here!</button>
+            <button class="upbtn" onclick="window.location.href='upload-documents-section.php'">Upload your own research documents here!</button>
           </div>
         </div>
-      <!---------------NEWLY RELEASE----------->
-      <div class="newly-release categories">
-        <div class="row">
+        <!---------------NEWLY RELEASE----------->
+        <div class="newly-release categories">
+          <div class="row">
             <div class="col-md-12">
               <h6 class=" display-4 mx-3">Newly Release</h6>
               <hr>
@@ -137,21 +133,22 @@ if (isset($_GET['search-document'])) {
             $count = 1;
             foreach ($data as $row) {
             ?>
-              <div class="col-2 my-2 mx-0 rounded">
+              <div class="col-md-3 my-2 my-md-3 rounded">
                 <div class="card shadow text-center">
                   <div>
-                    <img src="img/book-icon.png" class="card-img-top" alt="book-cover" style="width:170px; height:200px">
+                    <img src="img/book-icon.png" class="card-img-top" alt="book-cover">
                   </div>
                   <div class="card-body">
 
-                  <form action="document-summary-section.php" method="GET">
-                    <span style="display:inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 13ch;"><p class="card-title" style = "font-size:16px; font-weight:bold;"><?php echo $row["doc_name"] ?></p></span>
-                    <p class="card-title" style = "font-size:15px;">Rating: <?php showRating($row["doc_path"]) ?>/5</p>
-                    <p class="star-rating" style = "font-size:13px;"> <?php echo getStarRating($row["doc_path"]) ?></p>
-                    <p class="card-text" style = "font-size:13px;"><?php echo $row["createdBy"] ?></p>
-                    <input type="hidden" name="doc_file" value="<?php echo $row['doc_path'] ?>">
-                    <button class="btn btn-primary btn-sm w-50">Read</button>
-                  </form>
+                    <form action="document-summary-section.php" method="GET">
+                      <p class="card-title"><?php echo $row["doc_name"] ?></p>
+                      <p class="card-title">Rating: <?php showRating($row["doc_path"]) ?>/5</p>
+                      <p class="star-rating"> <?php echo getStarRating($row["doc_path"]) ?></p>
+                      <p class="card-text"><?php echo $row["createdBy"] ?></p>
+                      <p class="card-text"><?php echo $row["categories"] ?></p>
+                      <input type="hidden" name="doc_file" value="<?php echo $row['doc_path'] ?>">
+                      <button class="btn btn-primary">Read</button>
+                    </form>
 
                   </div>
                 </div>
@@ -161,10 +158,10 @@ if (isset($_GET['search-document'])) {
             }
             ?>
           </div>
-      </div>
-      <!---------------------------------------------->  
-      <div class="most-popular categories">
-        <div class="row">
+        </div>
+        <!---------------------------------------------->
+        <div class="most-popular categories">
+          <div class="row">
             <div class="col-md-12">
               <h6 class=" display-4 mx-3">Most Rated</h6>
               <hr>
@@ -176,21 +173,21 @@ if (isset($_GET['search-document'])) {
             $count = 1;
             foreach ($data as $row) {
             ?>
-              <div class="col-2 my-2 mx-0 rounded">
+              <div class="col-md-3 my-2 my-md-3 rounded">
                 <div class="card shadow text-center">
                   <div>
-                    <img src="img/book-icon.png" class="card-img-top" alt="book-cover" style="width:170px; height:200px">
+                    <img src="img/book-icon.png" class="card-img-top" alt="book-cover">
                   </div>
                   <div class="card-body">
-
-                  <form action="document-summary-section.php" method="GET">
-                    <span style="display:inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 13ch;"><p class="card-title" style = "font-size:16px; font-weight:bold;"><?php echo $row["doc_name"] ?></p></span>
-                    <p class="card-title" style = "font-size:15px;">Rating: <?php showRating($row["doc_path"]) ?>/5</p>
-                    <p class="star-rating" style = "font-size:13px;"> <?php echo getStarRating($row["doc_path"]) ?></p>
-                    <p class="card-text" style = "font-size:13px;"><?php echo $row["createdBy"] ?></p>
-                    <input type="hidden" name="doc_file" value="<?php echo $row['doc_path'] ?>">
-                    <button class="btn btn-primary btn-sm w-50">Read</button>
-                  </form>
+                    <form action="document-summary-section.php" method="GET">
+                      <p class="card-title"><?php echo $row["doc_name"] ?></p>
+                      <p class="card-title">Rating: <?php showRating($row["doc_path"]) ?>/5</p>
+                      <p class="star-rating"> <?php echo getStarRating($row["doc_path"]) ?></p>
+                      <p class="card-text"><?php echo $row["createdBy"] ?></p>
+                      <p class="card-text"><?php echo $row["categories"] ?></p>
+                      <input type="hidden" name="doc_file" value="<?php echo $row['doc_path'] ?>">
+                      <button class="btn btn-primary">Read</button>
+                    </form>
 
                   </div>
                 </div>
@@ -200,11 +197,11 @@ if (isset($_GET['search-document'])) {
             }
             ?>
           </div>
-      </div>
-      <!---------------------------------------------->
+        </div>
+        <!---------------------------------------------->
 
-      <div class="technology categories">
-        <div class="row">
+        <div class="technology categories">
+          <div class="row">
             <div class="col-md-12">
               <h6 class=" display-4 mx-3">Technology</h6>
               <hr>
@@ -216,21 +213,22 @@ if (isset($_GET['search-document'])) {
             $count = 1;
             foreach ($data as $row) {
             ?>
-              <div class="col-2 my-2 mx-0 rounded">
+              <div class="col-md-3 my-2 my-md-3 rounded">
                 <div class="card shadow text-center">
                   <div>
-                    <img src="img/book-icon.png" class="card-img-top" alt="book-cover" style="width:170px; height:200px">
+                    <img src="img/book-icon.png" class="card-img-top" alt="book-cover">
                   </div>
                   <div class="card-body">
 
-                  <form action="document-summary-section.php" method="GET">
-                    <span style="display:inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 13ch;"><p class="card-title" style = "font-size:16px; font-weight:bold;"><?php echo $row["doc_name"] ?></p></span>
-                    <p class="card-title" style = "font-size:15px;">Rating: <?php showRating($row["doc_path"]) ?>/5</p>
-                    <p class="star-rating" style = "font-size:13px;"> <?php echo getStarRating($row["doc_path"]) ?></p>
-                    <p class="card-text" style = "font-size:13px;"><?php echo $row["createdBy"] ?></p>
-                    <input type="hidden" name="doc_file" value="<?php echo $row['doc_path'] ?>">
-                    <button class="btn btn-primary btn-sm w-50">Read</button>
-                  </form>
+                    <form action="document-summary-section.php" method="GET">
+                      <p class="card-title"><?php echo $row["doc_name"] ?></p>
+                      <p class="card-title">Rating: <?php showRating($row["doc_path"]) ?>/5</p>
+                      <p class="star-rating"> <?php echo getStarRating($row["doc_path"]) ?></p>
+                      <p class="card-text"><?php echo $row["createdBy"] ?></p>
+                      <p class="card-text"><?php echo $row["categories"] ?></p>
+                      <input type="hidden" name="doc_file" value="<?php echo $row['doc_path'] ?>">
+                      <button class="btn btn-primary">Read</button>
+                    </form>
 
                   </div>
                 </div>
@@ -240,88 +238,88 @@ if (isset($_GET['search-document'])) {
             }
             ?>
           </div>
-      </div>
-       <!---------------------------------------------->
-
-      <div class="case-study categories">
-      <div class="row">
-          <div class="col-md-12">
-            <h6 class=" display-4 mx-3">Case Study<h6>
-                <hr>
-          </div>
         </div>
-        <div class="row mb-3 ml-2">
-          <?php
-          $data = $user->displayAcceptedDocs();
-          $count = 1;
-          foreach ($data as $row) {
-          ?>
-            <div class="col-2 my-2 mx-0 rounded">
+        <!---------------------------------------------->
+
+        <div class="case-study categories">
+          <div class="row">
+            <div class="col-md-12">
+              <h6 class=" display-4 mx-3">Case Study<h6>
+                  <hr>
+            </div>
+          </div>
+          <div class="row mb-3 ml-2">
+            <?php
+            $data = $user->displayAcceptedDocs();
+            $count = 1;
+            foreach ($data as $row) {
+            ?>
+              <div class="col-md-3 my-2 my-md-3 rounded">
                 <div class="card shadow text-center">
                   <div>
-                    <img src="img/book-icon.png" class="card-img-top" alt="book-cover" style="width:170px; height:200px">
+                    <img src="img/book-icon.png" class="card-img-top" alt="book-cover">
                   </div>
                   <div class="card-body">
 
-                  <form action="document-summary-section.php" method="GET">
-                    <span style="display:inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 13ch;"><p class="card-title" style = "font-size:16px; font-weight:bold;"><?php echo $row["doc_name"] ?></p></span>
-                    <p class="card-title" style = "font-size:15px;">Rating: <?php showRating($row["doc_path"]) ?>/5</p>
-                    <p class="star-rating" style = "font-size:13px;"> <?php echo getStarRating($row["doc_path"]) ?></p>
-                    <p class="card-text" style = "font-size:13px;"><?php echo $row["createdBy"] ?></p>
-                    <input type="hidden" name="doc_file" value="<?php echo $row['doc_path'] ?>">
-                    <button class="btn btn-primary btn-sm w-50">Read</button>
-                  </form>
-
-                  </div>
-                </div>
-              </div>
-          <?php
-            $count++;
-          }
-          ?>
-        </div>
-      </div>
-      <!---------------------------------------------->
-      <div class="health categories">
-        <div class="row">
-          <div class="col-md-12">
-            <h6 class=" display-4 mx-3">Health</h6>
-            <hr>
-          </div>
-        </div>
-        <div class="row mb-3 ml-2">
-          <?php
-          $data = $user->displayAcceptedDocs('health');
-          $count = 1;
-          foreach ($data as $row) {
-          ?>
-            <div class="col-2 my-2 mx-0 rounded">
-                <div class="card shadow text-center">
-                  <div>
-                    <img src="img/book-icon.png" class="card-img-top" alt="book-cover" style="width:170px; height:200px">
-                  </div>
-                  <div class="card-body">
-
-                  <form action="document-summary-section.php" method="GET">
-                    <span style="display:inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 13ch;"><p class="card-title" style = "font-size:16px; font-weight:bold;"><?php echo $row["doc_name"] ?></p></span>
-                    <p class="card-title" style = "font-size:15px;">Rating: <?php showRating($row["doc_path"]) ?>/5</p>
-                    <p class="star-rating" style = "font-size:13px;"> <?php echo getStarRating($row["doc_path"]) ?></p>
-                    <p class="card-text" style = "font-size:13px;"><?php echo $row["createdBy"] ?></p>
-                    <input type="hidden" name="doc_file" value="<?php echo $row['doc_path'] ?>">
-                    <button class="btn btn-primary btn-sm w-50">Read</button>
-                  </form>
+                    <form action="document-summary-section.php" method="GET">
+                      <p class="card-title"><?php echo $row["doc_name"] ?></p>
+                      <p class="card-title">Rating: <?php showRating($row["doc_path"]) ?>/5</p>
+                      <p class="star-rating"> <?php echo getStarRating($row["doc_path"]) ?></p>
+                      <p class="card-text"><?php echo $row["createdBy"] ?></p>
+                      <p class="card-text"><?php echo $row["categories"] ?></p>
+                      <input type="hidden" name="doc_file" value="<?php echo $row['doc_path'] ?>">
+                      <button class="btn btn-primary">Read</button>
+                    </form>
 
                   </div>
                 </div>
               </div>
             <?php
-            $count++;
-                }
+              $count++;
+            }
             ?>
+          </div>
         </div>
-      </div>
+        <!---------------------------------------------->
+        <div class="health categories">
+          <div class="row">
+            <div class="col-md-12">
+              <h6 class=" display-4 mx-3">Health</h6>
+              <hr>
+            </div>
+          </div>
+          <div class="row mb-3 ml-2">
+            <?php
+            $data = $user->displayAcceptedDocs('health');
+            $count = 1;
+            foreach ($data as $row) {
+            ?>
+              <div class="col-md-3 my-2 my-md-3 rounded">
+                <div class="card shadow text-center">
+                  <div>
+                    <img src="img/book-icon.png" class="card-img-top" alt="book-cover">
+                  </div>
 
-      <!-- -------------------------------------------------- -->
+                  <form action="document-summary-section.php" method="GET">
+                    <p class="card-title"><?php echo $row["doc_name"] ?></p>
+                    <p class="card-title">Rating: <?php showRating($row["doc_path"]) ?>/5</p>
+                    <p class="star-rating"> <?php echo getStarRating($row["doc_path"]) ?></p>
+                    <p class="card-text"><?php echo $row["createdBy"] ?></p>
+                    <p class="card-text"><?php echo $row["categories"] ?></p>
+                    <input type="hidden" name="doc_file" value="<?php echo $row['doc_path'] ?>">
+                    <button class="btn btn-primary">Read</button>
+                  </form>
+
+                </div>
+              </div>
+            <?php
+              $count++;
+            }
+            ?>
+          </div>
+        </div>
+
+        <!-- -------------------------------------------------- -->
 
         <div class="categories-hidden hide">
           <div class="row">
@@ -332,26 +330,26 @@ if (isset($_GET['search-document'])) {
           </div>
 
           <div class="row mb-3 ml-2">
-          <?php
+            <?php
             $data = $user->displayAcceptedDocs($value);
             foreach ($data as $row) {
             ?>
-              <div class="col-2 my-2 mx-0 rounded">
+              <div class="col-md-3 my-2 my-md-3 rounded">
                 <div class="card shadow text-center">
                   <div>
-                    <img src="img/book-icon.png" class="card-img-top" alt="book-cover" style="width:170px; height:200px">
+                    <img src="../functions/uploads/<?php echo $row['ebooks_cover_path'] ?>" class="card-img-top" alt="book-cover">
                   </div>
                   <div class="card-body">
-
-                  <form action="document-summary-section.php" method="GET">
-                    <span style="display:inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 13ch;"><p class="card-title" style = "font-size:16px; font-weight:bold;"><?php echo $row["doc_name"] ?></p></span>
-                    <p class="card-title" style = "font-size:15px;">Rating: <?php showRating($row["doc_path"]) ?>/5</p>
-                    <p class="star-rating" style = "font-size:13px;"> <?php echo getStarRating($row["doc_path"]) ?></p>
-                    <p class="card-text" style = "font-size:13px;"><?php echo $row["createdBy"] ?></p>
-                    <input type="hidden" name="doc_file" value="<?php echo $row['doc_path'] ?>">
-                    <button class="btn btn-primary btn-sm w-50">Read</button>
-                  </form>
-
+                    <form action="ebook-summary-section.php" method="GET">
+                      <p class="card-title"><?php echo $row["ebooks_name"] ?></p>
+                      <p class="card-title">Rating: <?php showRating($row["ebooks_path"]) ?>/5</p>
+                      <p class="star-rating"> <?php echo getStarRating($row["ebooks_path"]) ?></p>
+                      <p class="card-text"><?php echo $row["author"] ?></p>
+                      <p class="card-text"><?php echo $row["categories"] ?></p>
+                      <input type="hidden" name="file" value="<?php echo $row['ebooks_cover_path'] ?>">
+                      <input type="hidden" name="ebook_file" value="<?php echo $row['ebooks_path'] ?>">
+                      <button class="btn btn-primary">Read</button>
+                    </form>
                   </div>
                 </div>
               </div>
@@ -360,8 +358,8 @@ if (isset($_GET['search-document'])) {
             ?>
           </div>
         </div>
-        
-      <!--------------------------------------------------------------------------- -->
+
+        <!--------------------------------------------------------------------------- -->
         <!-- SEARCH DISPLAY -->
         <div class="search-hidden hide">
           <div class="row">
@@ -376,22 +374,15 @@ if (isset($_GET['search-document'])) {
             foreach ($searchData as $row) {
             ?>
 
-              <div class="col-2 my-2 mx-0 rounded">
+              <div class="col-md-3 my-2 my-md-3 rounded">
                 <div class="card shadow text-center">
                   <div>
-                    <img src="img/book-icon.png" class="card-img-top" alt="book-cover" style="width:170px; height:200px">
+                    <img src="img/book-icon.png" class="card-img-top" alt="book-cover">
                   </div>
                   <div class="card-body">
-
-                  <form action="document-summary-section.php" method="GET">
-                    <span style="display:inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 13ch;"><p class="card-title" style = "font-size:16px; font-weight:bold;"><?php echo $row["doc_name"] ?></p></span>
-                    <p class="card-title" style = "font-size:15px;">Rating: <?php showRating($row["doc_path"]) ?>/5</p>
-                    <p class="star-rating" style = "font-size:13px;"> <?php echo getStarRating($row["doc_path"]) ?></p>
-                    <p class="card-text" style = "font-size:13px;"><?php echo $row["createdBy"] ?></p>
-                    <input type="hidden" name="doc_file" value="<?php echo $row['doc_path'] ?>">
-                    <button class="btn btn-primary btn-sm w-50">Read</button>
-                  </form>
-
+                    <p class="card-title"><?php echo $row["doc_name"] ?></p>
+                    <p class="card-text"><?php echo $row["createdBy"] ?></p>
+                    <a href="podcast-view.php?file=<?php echo $row["doc_path"] ?>" class="btn btn-primary" target="thapa">Watch</a>
                   </div>
                 </div>
               </div>
@@ -408,29 +399,29 @@ if (isset($_GET['search-document'])) {
     </main>
   </main>
   <center>
-  <footer class="site-footer">
-    <h6>R - ibrary</h6>
-    <ul class="footer-links">
-      <li><a href="">About Us</a></li>
-      <li><a href="">Contacts</a></li>
-      <li><a href="">Help & Support</a></li>
-      <h6>‎© Ribrary 2020. All Rights Reserve</h6>
-    </ul>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
+    <footer class="site-footer">
+      <h6>R - ibrary</h6>
+      <ul class="footer-links">
+        <li><a href="">About Us</a></li>
+        <li><a href="">Contacts</a></li>
+        <li><a href="">Help & Support</a></li>
+        <h6>‎© Ribrary 2020. All Rights Reserve</h6>
+      </ul>
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
-  <script src="js/header.js"></script>
-  <script>
+      <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+      <script src="js/header.js"></script>
+      <script>
         const categories = document.querySelectorAll('.categories');
         const categoriesForm = document.querySelector('.categories-form')
         const dropdownMenu = document.querySelector('.dropdown-menu');
-        const categoriesValue = document.querySelector('#categories-value');    
+        const categoriesValue = document.querySelector('#categories-value');
 
         const url = window.location.search
         const urlParam = new URLSearchParams(url)

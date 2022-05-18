@@ -225,19 +225,20 @@ class Admin extends Database
     }
 
     //display all pending documents
-    function displayUploadedDocuments($displayAll = "notall", $start_from = 0, $num_per_page = 9)
+    function displayUploadedDocuments($status, $displayAll = "notall", $start_from = 0, $num_per_page = 9)
     {
         if ($displayAll == "all") {
             $data = $this->connect()->query("SELECT * FROM tbl_research_documents ")->fetchAll();
 
             return $data;
         }
-        $data = $this->connect()->query("SELECT * FROM tbl_research_documents WHERE status = 'pending' limit $start_from,$num_per_page")->fetchAll();
+        $data = $this->connect()->query("SELECT * FROM tbl_research_documents WHERE status = '{$status}' limit $start_from,$num_per_page")->fetchAll();
 
         return $data;
 
         exit();
     }
+
 
     //display all pending documents
     function displayAdmins($displayAll = "notall", $start_from = 0, $num_per_page = 9)
@@ -441,6 +442,38 @@ class Admin extends Database
 
         exit();
     }
+
+    //display all tickets
+    function displayTickets($displayAll = "notall", $start_from = 0, $num_per_page = 3)
+    {
+        if ($displayAll == "all") {
+            $data = $this->connect()->query("SELECT * FROM tbl_tickets")->fetchAll();
+
+            return $data;
+        }
+        $data = $this->connect()->query("SELECT * FROM tbl_tickets WHERE status = 'pending' limit $start_from,$num_per_page")->fetchAll();
+
+        return $data;
+
+        exit();
+    }
+
+    //update ticket status
+    function updateTicketStatus($id, $status)
+    {
+        $sql = "UPDATE tbl_tickets SET status = ? WHERE tickets_no =?";
+        $stmt = $this->connect()->prepare($sql);
+
+        if (!$stmt->execute([$status, $id])) {
+            header("Location:../admin/admin-tickets.php?error=errorUpdate");
+            exit();
+        }
+
+        header("Location:../admin/admin-tickets.php?q=success");
+        exit();
+    }
+
+
     //insert podcasts to database
     function upload_podcasts($podcast_name, $podcast_path, $podcast_host, $createdBy, $categories)
     {
@@ -555,13 +588,13 @@ class Admin extends Database
 
         //if execution fail
         if (!$stmt->execute([$ebooks_name, $ebooks_path, $ebooks_cover_path, $categories, $synopsis, $author, $this->date, $status, $createdBy])) {
-            header("Location:../admin/admin-audiobook.php?error=stmtfail");
+            header("Location:../admin/admin-ebooks.php?error=stmtfail");
             $connect = null;
             exit();
         }
 
         //if sucess uploading file, go to this 👇 page
-        header("Location: ../admin/admin-audiobook.php?q=uploadsuccess"); //change to docu later
+        header("Location: ../admin/admin-ebooks.php?q=uploadsuccess"); //change to docu later
         exit();
     }
 
@@ -590,14 +623,14 @@ class Admin extends Database
         }
     }
     //display all pending podcasts
-    function displayPending($tbl,$displayAll = "notall", $start_from = 0, $num_per_page = 9)
+    function displayPending($status, $tbl, $displayAll = "notall", $start_from = 0, $num_per_page = 9)
     {
         if ($displayAll == "all") {
             $data = $this->connect()->query("SELECT * FROM {$tbl} ")->fetchAll();
 
             return $data;
         }
-        $data = $this->connect()->query("SELECT * FROM {$tbl} WHERE status = 'pending' limit $start_from,$num_per_page")->fetchAll();
+        $data = $this->connect()->query("SELECT * FROM {$tbl} WHERE status = '{$status}' limit $start_from,$num_per_page")->fetchAll();
 
         return $data;
 
@@ -606,14 +639,14 @@ class Admin extends Database
 
 
     //display all pending podcasts
-    function displayPendingPodcasts($displayAll = "notall", $start_from = 0, $num_per_page = 9)
+    function displayPendingPodcasts($status, $displayAll = "notall", $start_from = 0, $num_per_page = 9)
     {
         if ($displayAll == "all") {
             $data = $this->connect()->query("SELECT * FROM tbl_podcasts ")->fetchAll();
 
             return $data;
         }
-        $data = $this->connect()->query("SELECT * FROM tbl_podcasts WHERE status = 'pending' limit $start_from,$num_per_page")->fetchAll();
+        $data = $this->connect()->query("SELECT * FROM tbl_podcasts WHERE status = '{$status}' limit $start_from,$num_per_page")->fetchAll();
 
         return $data;
 
@@ -621,14 +654,14 @@ class Admin extends Database
     }
 
     //display all pending audiobook
-    function displayPendingAudiobooks($displayAll = "notall", $start_from = 0, $num_per_page = 9)
+    function displayPendingAudiobooks($status, $displayAll = "notall", $start_from = 0, $num_per_page = 9)
     {
         if ($displayAll == "all") {
             $data = $this->connect()->query("SELECT * FROM tbl_audiobook ")->fetchAll();
 
             return $data;
         }
-        $data = $this->connect()->query("SELECT * FROM tbl_audiobook WHERE status = 'pending' limit $start_from,$num_per_page")->fetchAll();
+        $data = $this->connect()->query("SELECT * FROM tbl_audiobook WHERE status = '{$status}' limit $start_from,$num_per_page")->fetchAll();
 
         return $data;
 
@@ -666,6 +699,68 @@ class Admin extends Database
         header("Location:../admin/admin-users.php?error=DeleteSuccess");
         exit();
     }
+
+    //delete research document from database
+    function deleteDocuments($id)
+    {
+        $sql = "DELETE FROM tbl_research_documents WHERE doc_id =?";
+        $stmt = $this->connect()->prepare($sql);
+
+        if (!$stmt->execute([$id])) {
+            header("Location:../admin/admin-acceptedDocuments.php?error=errorDelete");
+            exit();
+        }
+
+        header("Location:../admin/admin-acceptedDocuments.php?q=DeleteSuccess");
+        exit();
+    }
+
+    //delete  podcasts from database
+    function deletePodcasts($id)
+    {
+        $sql = "DELETE FROM tbl_podcasts WHERE podcast_id =?";
+        $stmt = $this->connect()->prepare($sql);
+
+        if (!$stmt->execute([$id])) {
+            header("Location:../admin/admin-acceptedPodcasts.php?error=errorDelete");
+            exit();
+        }
+
+        header("Location:../admin/admin-acceptedPodcasts.php?q=DeleteSuccess");
+        exit();
+    }
+
+    //delete  audiobook from database
+    function deleteAudiobooks($id)
+    {
+        $sql = "DELETE FROM tbl_audiobook WHERE audiobook_id  =?";
+        $stmt = $this->connect()->prepare($sql);
+
+        if (!$stmt->execute([$id])) {
+            header("Location:../admin/admin-acceptedAudiobooks.php?error=errorDelete");
+            exit();
+        }
+
+        header("Location:../admin/admin-acceptedAudiobooks.php?q=DeleteSuccess");
+        exit();
+    }
+
+    //delete  ebooks from database
+    function deleteEbooks($id)
+    {
+        $sql = "DELETE FROM tbl_ebooks WHERE ebooks_id  =?";
+        $stmt = $this->connect()->prepare($sql);
+
+        if (!$stmt->execute([$id])) {
+            header("Location:../admin/admin-acceptedEbooks.php?error=errorDelete");
+            exit();
+        }
+
+        header("Location:../admin/admin-acceptedEbooks.php?q=DeleteSuccess");
+        exit();
+    }
+
+
 
 
     function adminLogout()

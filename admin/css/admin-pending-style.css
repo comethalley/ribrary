@@ -5,9 +5,11 @@
     font-family: 'Nunito Sans', sans-serif;
 
 }
-body{
-    overflow: hidden;
+
+body {
+    overflow: scroll;
 }
+
 main {
     /* background-color: brown; */
     display: grid;
@@ -67,7 +69,7 @@ main {
     right: 0;
     margin: 1rem;
     transition: 400ms ease-in-out;
-   
+
 }
 
 .toast-display {
@@ -105,7 +107,8 @@ main {
     margin: 0;
     margin-right: 5rem;
 }
-.toast-sucess-subtext{
+
+.toast-sucess-subtext {
     font-size: 0.9rem;
     font-weight: 450;
 }
@@ -118,23 +121,27 @@ main {
     right: 0;
     margin: 0.5rem 0.8rem 0 0;
 }
-.hidden{
+
+.hidden {
     transform: translateX(10rem);
     opacity: 0;
 }
-#decline-text{
+
+#decline-text {
     width: 100%;
     padding: 1em;
     resize: none;
 }
+
 /* -------------------- */
 
-.list:nth-of-type(2){
+.list:nth-of-type(2) {
     border-left: 5px solid #4980ff;
     padding-left: 1.688em;
 }
+
 .list:nth-of-type(2) .link:nth-of-type(1) {
-    background-color:#4980ff;
+    background-color: #4980ff;
     border-radius: 8px;
 }
 

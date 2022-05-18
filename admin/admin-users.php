@@ -55,16 +55,18 @@ if (!isset($_SESSION['admin_name'])) {
                     <thead>
                         <tr class="table-header">
                             <th scope="col">No.</th>
-                            <th scope="col">User ID</th>
+
                             <th scope="col">First</th>
                             <th scope="col">Last</th>
                             <th scope="col">Email</th>
+                            <th scope="col">Membership</th>
+                            <th scope="col">User ID</th>
                             <th scope="col">Recent Login</th>
                             <th scope="col">Status</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
-                    <tbody class="action">
+                    <tbody>
 
                         <?php
                         $data = $admin->displayUser();
@@ -73,10 +75,11 @@ if (!isset($_SESSION['admin_name'])) {
                         ?>
                             <tr>
                                 <td> <?php echo $count ?></td>
-                                <td> <?php echo $row["User_id"] ?></td>
-                                <td> <?php echo $row["firstname"] ?></td>
-                                <td> <?php echo $row["lastname"] ?></td>
+                                <td class="capitalize"> <?php echo $row["firstname"] ?></td>
+                                <td class="capitalize"> <?php echo $row["lastname"] ?></td>
                                 <td> <?php echo $row["Username"] ?></td>
+                                <td class="capitalize"> <?php echo $row["subscription"] ?></td>
+                                <td> <?php echo $row["User_id"] ?></td>
                                 <td> <?php echo $row["recent_login"] ?></td>
                                 <td>
                                     <p class="user-status"> <?php echo $row["user_status"] ?></p>

@@ -17,7 +17,7 @@
                 <li class="list">
                     <!--  -->
                     <a href="admin-pendingAdmin.php" class="link">
-                        <i class="fa fa-solid fa-users"></i>Pending Admins</a>
+                        <i class="fa fa-solid fa-user"></i>Pending Admins</a>
                 </li>
 
                 <li class="list">
@@ -34,22 +34,55 @@
 
                 <li class="list">
                     <a href="admin-documents.php" class="link">
-                        <i class="fa fa-solid fa-users"></i>Pending Documents</a>
+                        <i class="fa fa-solid fa-file"></i>Pending Documents</a>
                 </li>
 
                 <li class="list">
                     <a href="admin-pendingPodcasts.php" class="link">
-                        <i class="fa fa-solid fa-users"></i>Pending Podcasts</a>
+                        <i class="fa fa-solid fa-podcast"></i>Pending Podcasts</a>
                 </li>
 
                 <li class="list">
                     <a href="admin-pendingAudiobooks.php" class="link">
-                        <i class="fa fa-solid fa-users"></i>Pending Audiobooks</a>
+                        <i class="fa fa-solid fa-file-audio"></i>Pending Audiobooks</a>
                 </li>
 
                 <li class="list">
                     <a href="admin-pendingEbooks.php" class="link">
-                        <i class="fa fa-solid fa-users"></i>Pending Ebooks</a>
+                        <i class="fa fa-solid fa-book"></i>Pending Ebooks</a>
+                </li>
+
+            <?php
+            }
+            ?>
+
+            <?php
+            if ($_SESSION["role"] == 'main admin') {
+            ?>
+
+                <li class="list">
+                    <a href="admin-acceptedDocuments.php" class="link">
+                        <i class="fa fa-solid fa-users"></i>Documents</a>
+                </li>
+
+                <li class="list">
+                    <a href="admin-acceptedPodcasts.php" class="link">
+                        <i class="fa fa-solid fa-users"></i>Podcasts</a>
+                </li>
+
+                <li class="list">
+                    <a href="admin-acceptedAudiobooks.php" class="link">
+                        <i class="fa fa-solid fa-users"></i>Audiobooks</a>
+                </li>
+
+                <li class="list">
+                    <a href="admin-acceptedEbooks.php" class="link">
+                        <i class="fa fa-solid fa-users"></i>Ebooks</a>
+                </li>
+
+                <li class="list">
+                    <a href="admin-tickets.php" class="link">
+                        <i class="fa fa-solid fa-users"></i>Tickets</a>
                 </li>
 
             <?php
@@ -86,7 +119,7 @@
             <li class="list">
                 <!---->
                 <a href="../functions/admin-logout-function.php" class="link logout">
-                    <i class="bi bi-box-arrow-right"></i>logout</a>
+                    <i class="fa fa-solid fa-arrow-right-from-bracket"></i>logout</a>
             </li>
 
         </ul>

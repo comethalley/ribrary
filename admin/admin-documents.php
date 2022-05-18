@@ -27,7 +27,7 @@ if (!isset($_SESSION['admin_name'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DOCUMENTS</title>
+    <title>Pending Documents</title>
 
     <!-- GOOGLE FONT LINK -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -144,7 +144,7 @@ if (!isset($_SESSION['admin_name'])) {
                     <tbody class="action">
 
                         <?php
-                        $data = $admin->displayUploadedDocuments('', $start_from, $num_per_page);
+                        $data = $admin->displayUploadedDocuments('pending','', $start_from, $num_per_page);
                         $count = $start_from + 1;
                         foreach ($data as $row) {
 
@@ -252,7 +252,7 @@ if (!isset($_SESSION['admin_name'])) {
                 <!-- PAGE BUTTON  -->
                 <div class="pagination">
                     <?php
-                    $data = $admin->displayUploadedDocuments("all");
+                    $data = $admin->displayUploadedDocuments('pending',"all");
                     $total_record = count($data);
 
                     $total_page = ceil($total_record / $num_per_page);

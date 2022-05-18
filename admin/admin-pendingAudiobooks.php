@@ -136,7 +136,7 @@ if (!isset($_SESSION['admin_name'])) {
                     <tbody class="action">
 
                         <?php
-                        $data = $admin->displayPendingAudiobooks('', $start_from, $num_per_page);
+                        $data = $admin->displayPendingAudiobooks('pending', '', $start_from, $num_per_page);
                         $count = $start_from + 1;
                         foreach ($data as $row) {
 
@@ -243,7 +243,7 @@ if (!isset($_SESSION['admin_name'])) {
                 <!-- PAGE BUTTON  -->
                 <div class="pagination">
                     <?php
-                    $data = $admin->displayPendingAudiobooks("all");
+                    $data = $admin->displayPendingAudiobooks('pending', "all");
                     $total_record = count($data);
 
                     $total_page = ceil($total_record / $num_per_page);
@@ -312,7 +312,7 @@ if (!isset($_SESSION['admin_name'])) {
             }, 3000)
         }
 
-        //Accept button function 
+        //Accept and Decline button function 
         action.addEventListener('click', function(e) {
             if (e.target.classList.contains('acceptBtn')) {
                 $('#acceptModal').modal('show');
