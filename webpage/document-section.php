@@ -44,6 +44,10 @@ if (isset($_GET['search-document'])) {
     .navbar {
       z-index: 1;
     }
+    .hide {
+      display: none;
+    }
+
   </style>
 
 </head>
@@ -430,6 +434,7 @@ if (isset($_GET['search-document'])) {
         if (parameter) {
           hideCategories()
           document.querySelector('.categories-hidden').classList.remove('hide')
+          console.log(document.querySelector('.categories-hidden'))
         }
 
         // SEARCH DOCUMENTS
