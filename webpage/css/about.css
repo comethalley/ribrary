@@ -18,3 +18,12 @@
 	text-align: justify;
 
 }
+
+#about-us-header{
+	width: 100%;
+	min-height: 80vh;
+	background-image: linear-gradient(rgba(71, 71, 71, 0.45), rgba(71, 71, 71, 0.45)), url('../img/book-kid.jpg');
+	background-size: cover;
+	background-position: center;
+	align-items: center;
+}

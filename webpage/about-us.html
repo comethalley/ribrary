@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/transitions.css">
     <link rel="stylesheet" href="css/about.css">
     <title>About Us</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <style> 
   .columns {
     flex: 33.33%;
@@ -26,146 +27,139 @@
 </style>
 </style>
 </head>
-<header>
-  <div class="header">
-    <div class="navbar">
-      <h3>Ribrary Logo</h3>
-      <ul>
-        <li><a href="login-and-signup-page.html">Login</a></li>
-        <li><a href="about-us.html">About Us</a></li>
-      </ul>
-    </div>
+<header id="about-us-header">
+      <nav class="navbar navbar-expand-lg navbar-dark mx-0 w-100  bg-*">
+        <a class="navbar-brand" href="ebook-section.php">
+          <img src="img/ribrary-logo-white.png" width="50" height="50" class="d-inline-block" alt="logo.png">
+          Ribrary
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav ml-3 mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="Login-and-SignUp-page.html">Sign In</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="about-us.html">About Us<span class="sr-only">(current)</span></a>
+            </li>    
+          </ul>
+      </nav>
 
-    <div class="content-header">
-      <h2><center>The only thing that you absolutely have to know, is the location of the Ribrary</center></h2>
-      <h3><center>Digital Library and Online Social Reading</center></h3>
+    <div class="content-header text-center">
+      <h1 class="display-1" style="color:white;">"The only thing that you absolutely have to know, is the location of the Ribrary"</h1>
+      <p class = "display-4" style="color:white;font-size: 20px;">Online Digital Library</p>
       <br>
     </div>
-  </div>  
-</header>
+  </div>
+</header>    
 <body>
-  <div class="backdrop">
-     <h1>About Us</h1>
-     <p>
+  <div class="container1 mx-auto p-5">
+    <div class="row my-5">
+      <div class="col-12">
+        <h1 class="display-3">About Us</h1>
+        <p class ="lead" style="font-size: 18px;"> Ribrary is an online reading platform that aims to connect people who is interested in reading and listening such as ebooks and audiobooks. The website also offers podcast for entertainment purposes. The platform allows users to upload their research and let everyone provide a feeback about it. Sit back and relax and choose Ribrary.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 border rounded-2">
+        <h1 class="display-4 text-center">Mission</h1><hr>
+        <p class = "lead" style="font-size: 15px;">Our mission is to create a platform where everyone enjoy reading, listening and watching in their leisure time.</p>
+      </div>
+      <div class="col-md-6 border rounded-2">
+        <h1 class="display-4 text-center">Vision</h1><hr>
+        <p class = "lead" style="font-size: 15px;">Our vision is to be number pick in digital library all across.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 my-3">
+        <h1 class = "display-3 text-center">Meet Our Team</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <p class = "lead" style="font-size: 30px;">System Designers</p>
+      </div>
+      <div class="col-4 text-center">
+        <img src="img/orilla.jpg" class="img-thumbnail rounded-circle" style = "height:200px;width:200px;">
+        <p class = "lead" style="font-size: 18px;"> Orilla, Joshua A. </p>
+      </div>
+      <div class="col-4 text-center">
+        <img src="img/estupa.jpg" class="img-thumbnail rounded-circle" style = "height:200px;width:200px;">
+        <p class = "lead" style="font-size: 18px;"> Estupa, Robert </p>
+      </div>
+      <div class="col-4 text-center">
+        <img src="img/aerol.jpg" class="img-thumbnail rounded-circle" style = "height:200px;width:200px;">
+        <p class = "lead" style="font-size: 18px;"> Toledo, John Aerol </p>
+      </div>
+      <div class="col-4 text-center">
+        <img src="img/whacky.jpg" class="img-thumbnail rounded-circle" style = "height:200px;width:200px;" >
+        <p class = "lead" style="font-size: 18px;"> Maliwat, Whacky </p>
+      </div>
+      <div class="col-4 text-center">
+        <img src="img/villa.jpg" class="img-thumbnail rounded-circle" style = "height:200px;width:200px;" >
+        <p class = "lead" style="font-size: 18px;"> Villa, Charles Johann  </p>
+      </div>
+      <div class="col-4 text-center">
+        <img src="img/mylene.jpg" class="img-thumbnail rounded-circle" style = "height:200px;width:200px;" >
+        <p class = "lead" style="font-size: 18px;"> Cortiguera, Mylene Grace </p>
+      </div>
+    </div>
+    
+    <div class="row mt-5">
+      <div class="col-12">
+        <p class = "lead" style="font-size: 30px;">Programmers</p>
+      </div>
+      <div class="col-4 text-center">
+        <img src="img/jason.jpg" class="img-thumbnail rounded-circle" style = "height:200px;width:200px;">
+        <p class = "lead" style="font-size: 18px;"> Yecyec, Jason </p>
+      </div>
+      <div class="col-4 text-center">
+        <img src="img/bonita.png" class="img-thumbnail rounded-circle" style = "height:200px;width:200px;">
+        <p class = "lead" style="font-size: 18px;"> Bonita, Kenneth </p>
+      </div>
+      <div class="col-4 text-center">
+        <img src="img/kenzo.jpg" class="img-thumbnail rounded-circle" style = "height:200px;width:200px;">
+        <p class = "lead" style="font-size: 18px;"> Rivas, Kenzo </p>
+      </div>
+      <div class="col-6 text-center">
+        <img src="img/rovin.jpg" class="img-thumbnail rounded-circle" style = "height:200px;width:200px;" >
+        <p class = "lead" style="font-size: 18px;"> Naranja, Rovin </p>
+      </div>
+      <div class="col-6 text-center">
+        <img src="img/aeron.jpg" class="img-thumbnail rounded-circle" style = "height:200px;width:200px;" >
+        <p class = "lead" style="font-size: 18px;"> Omega, Aeron Jay  </p>
+      </div>
+    </div>
 
-    <br>
-
-    Digital Library and Online Social Reading is a socal reading platform that aims to connect people who is interested in reading or writing a book. The website let the user to choose their favorite books and read it for later. For users who aim to be a successful writer or just want to share a story to the platform is perfect for those person. The platform allows users to write and publish stories and be read by other users. 
-
-    </br>
-
-    <br>
-
-   It's an electronic or online library where one can have access to books,journals,novels,articles,or any other information over net. Either general reader or a research scholar may have access to a number of e-libraries sitting at home itself.
-
-    </br>
-
-    <br>
-
-   An ordered collection of heterogeneous electronic documents (including books) equipped with a navigation and search tool. It can be a website where various texts are gradually accumulated (more literary, but also any others up to computer programs) and media files, each of which is self-sufficient and at any time can be in demand by the reader. Electronic libraries can be universal, seeking to the widest choice of material (as a library Moshkova or Librusk), and more specialized, as a fundamental electronic.
-   <br>
-   <br>
-   <h1><center>Mission & Vision</center> </h1>
-   <br>
-   <div class="containers">
-     <div class="columns">
-     <h2>Mission</h2>
-     <p>WKWKWKWKWKWKWKWKWKWKWWKWKWKWKWKWKWKWKWKWKWKWK</p>
-     </div>
-     <div class="columns">
-       <h2>Vision</h2>
-     <p>WKWKWKWKWKWKWKWKWKWKWWKWKWKWKWKWKWKWKWKWKWKWK</p>
-     </div>
-   </div>
-   <br>
-   <br>
-   <h1><center>Meet Our Team </center></h1>
-   <h1><center>System Designers</center></h1>
-   <br>
-   <div class="containers">
-     <div class="columns">
-     <h2> Orilla, Joshua A. </h2>
-     <p><center><img src="img/orilla.jpg" height="100%" width="200px"></center></p>
-     </div>
-     <div class="columns">
-       <h2> Estupa, Robert </h2>
-     <p><center><img src="img/estupa.gif" height="200px" width="200px"></center></p>
-     </div>
-     <div class="columns">
-       <h2>Toledo, John Aerol</h2>
-     <p><center><img src="img/aerol.jpg" height="200px" width="200px"></center></p>
-     </div>
+    <div class="row mt-5">
+      <div class="col-12">
+        <p class = "lead" style="font-size: 30px;">Database Manager</p>
+      </div>
+      <div class="col-6 text-center">
+        <img src="img/ceron.jpg" class="img-thumbnail rounded-circle" style = "height:200px;width:200px;">
+        <p class = "lead" style="font-size: 18px;"> Ceron, David </p>
+      </div>
+      <div class="col-6 text-center">
+        <img src="img/sean.jpg" class="img-thumbnail rounded-circle" style = "height:200px;width:200px;">
+        <p class = "lead" style="font-size: 18px;"> Labong, Sean </p>
+      </div>
+      <div class="col-4 text-center">
+        <img src="img/jellamie.jpg" class="img-thumbnail rounded-circle" style = "height:200px;width:200px;">
+        <p class = "lead" style="font-size: 18px;"> Manlangit, Jellamie </p>
+      </div>
+      <div class="col-4 text-center">
+        <img src="img/kobe.jpg" class="img-thumbnail rounded-circle" style = "height:200px;width:200px;" >
+        <p class = "lead" style="font-size: 18px;"> Elona, John Andrey </p>
+      </div>
+      <div class="col-4 text-center">
+        <img src="img/jose.jpg" class="img-thumbnail rounded-circle" style = "height:200px;width:200px;" >
+        <p class = "lead" style="font-size: 18px;"> Jose, Mark Justin  </p>
+      </div>
+    </div>
   </div>
-  <div class="containers">
-     <div class="columns">
-       <h2> Maliwat, Whacky </h2>
-     <p><center><img src="img/whacky.jpg" height="200px" width="200px"></center></p>
-     </div>
-     <div class="columns">
-       <h2> Villa, Charles Johann </h2>
-     <p><center><img src="img/villa.jpg" height="200px" width="200px"></center></p>
-     </div>
-     <div class="columns">
-       <h2> Cortiguera, Mylene Grace </h2>
-     <p><center><img src="img/mylene.jpg" height="200px" width="200px"></center></p>
-     </div>
-  </div>
-  <br>
-  <h1><center>Programmers</center></h1>
-  <br>
-  <div class="containers">
-     <div class="columns">
-       <h2> Yecyec, Jason </h2>
-     <p><center><img src="img/jason.jpg" height="200px" width="200px"></center></p>
-     </div>
-     <div class="columns">
-       <h2> Rivas, Kenzo </h2>
-     <p><center><img src="img/kenzo.jpg" height="200px" width="200px"></center></p>
-     </div>
-     <div class="columns">
-       <h2>Omega, Aeron Jay</h2>
-     <p><center><img src="img/aeron.jpg" height="200px" width="200px"></center></p>
-     </div>
-  </div>
-  <div class="containers">
-     <div class="columns">
-       <h2> Bonita, Kenneth </h2>
-     <p><center><img src="img/bonita.png" height="200px" width="200px"></center></p>
-     </div>
-     <div class="columns">
-       <h2>Naranja, Rovin</h2>
-     <p><center><img src="img/rovin.jpg" height="200px" width="200px"></center></p>
-     </div>
-  </div>
-  <br>
-  <h1><center>Database</center></h1>
-  <br>
-  <div class="containers">
-     <div class="columns">
-       <h2> Ceron, David </h2>
-     <p><center><img src="img/ceron.jpg" height="200px" width="200px"></center></p>
-     </div>
-     <div class="columns">
-       <h2> Labong, Sean </h2>
-     <p><center><img src="img/sean.jpg" height="200px" width="200px"></center></p>
-     </div>
-  </div>
-    <div class="containers">
-     <div class="columns">
-       <h2> Manlangit, Jellamie </h2>
-     <p><center><img src="img/jellamie.jpg" height="200px" width="200px"></center></p>
-     </div>
-     <div class="columns">
-       <h2> Elona, John Andrey </h2>
-     <p><center><img src="img/kobe.jpg" height="200px" width="200px"></center></p>
-     </div>
-     <div class="columns">
-       <h2> Jose, Mark Justin </h2>
-     <p><center><img src="img/jose.jpg" height="200px" width="200px"></center></p>
-     </div>
-  </div>
-</p>
-</div>
 </body>
 </div>
 </html>
