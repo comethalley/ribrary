@@ -514,6 +514,42 @@ VALUES (?,?,?,(SELECT User_id FROM tbl_user WHERE user_id = ?),?);";
         }
     }
 
+    //insert to membership table 
+
+    function membership($card_info, $card_holder, $billing_address, $user_id)
+    {
+        $sql = "INSERT INTO tbl_membership (credit_info, card_holder, billing_address, date_and_time,user_id)
+        VALUES (?,?,?,?,(SELECT User_id FROM tbl_user WHERE user_id = ?));";
+
+        // prepared statement
+        $stmt = $this->connect()->prepare($sql);
+
+        //if execution fail
+        if (!$stmt->execute([$card_info, $card_holder, $billing_address, $this->date, $user_id])) {
+            header("Location:../webpage/payment.php?error=stmtfailpayment");
+            $connect = null;
+            exit();
+        }
+
+        //update subscription 
+        $this->updateSubscription($user_id, 'subscribed');
+
+        header("Location:../webpage/membership.php?q=success");
+        exit();
+    }
+
+    //update subscription
+    function updateSubscription($user_id, $subscribed)
+    {
+        // prepared statement
+        $stmt2 = $this->connect()->prepare("UPDATE tbl_user  SET subscription = ? WHERE  User_id = ?");
+
+        //if did not exe    cute error, else continue
+        if (!$stmt2->execute([$subscribed, $user_id])) {
+            header("Location:../webpage/payment.php?error=stmtfailUpdate");
+        }
+    }
+
 
     function searchAudiobook($data)
     {

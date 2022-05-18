@@ -165,6 +165,18 @@ CREATE TABLE tbl_reviews (
 	userName varchar(255) not null
 );
 
+CREATE TABLE tbl_membership (
+	membership_id int(255) AUTO_INCREMENT PRIMARY KEY not null,
+	credit_info varchar(255) not null,
+	card_holder varchar(255) not null,
+	billing_address varchar(200) not null,
+	date_and_time varchar(60) not null,
+   user_id int(20) NOT NULL,
+  PRIMARY KEY (membership_id),
+  FOREIGN KEY (user_id) REFERENCES tbl_user( User_id)
+
+);
+
 
 CREATE TABLE `tbl_accpt_docs` (
   `doc_no` int(255) NOT NULL AUTO_INCREMENT,

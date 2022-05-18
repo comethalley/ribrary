@@ -6,7 +6,7 @@ $userdata = $user->emailExist($_SESSION["email"]);
 <header>
     <div class="container">
         <div class="list">
-            <button class="links">Settings</button>
+            <button class="links"> <a href="membership.php">Settings</a></button>
             <button class="links"><a href="ticket.php">Help & Support</button>
 
             <?php
