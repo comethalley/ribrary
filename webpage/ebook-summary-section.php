@@ -7,6 +7,7 @@ if (!isset($_SESSION['id'])) {
   include '../includes/autoload-class.php';
   include 'view-functions.php';
   $user = new User();
+  $userData = $user->emailExist($_SESSION['email']);
 }
 
 if (isset($_GET['file']) && isset($_GET['ebook_file'])) {
@@ -43,52 +44,52 @@ if (isset($_GET['file']) && isset($_GET['ebook_file'])) {
 </head>
 
 <body>
-<!-- HEADER -->
-<?php include 'header.php' ?>
+  <!-- HEADER -->
+  <?php include 'header.php' ?>
 
-<nav class="navbar sticky-top navbar-expand-lg navbar-dark mx-0 w-100" style="background-color: #485665;">
-  <a class="navbar-brand" href="ebook-section.php">
-    <img src="img/ribrary-logo-white.png" width="50" height="50" class="d-inline-block" alt="logo.png">
-    Ribrary
-  </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  <nav class="navbar sticky-top navbar-expand-lg navbar-dark mx-0 w-100" style="background-color: #485665;">
+    <a class="navbar-brand" href="ebook-section.php">
+      <img src="img/ribrary-logo-white.png" width="50" height="50" class="d-inline-block" alt="logo.png">
+      Ribrary
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-    <ul class="navbar-nav ml-3 mr-auto mt-2 mt-lg-0">
-      <li class="nav-item active">
-        <a class="nav-link" href="ebook-section.php">Ebook<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="audiobook-section.php">Audiobook</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="podcast-section.php">Podcast</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="document-section.php">Research Document</a>
-      </li>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav ml-3 mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="ebook-section.php">Ebook<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="audiobook-section.php">Audiobook</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="podcast-section.php">Podcast</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="document-section.php">Research Document</a>
+        </li>
 
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search">
-      <button class="btn btn btn-outline-light my-2 my-sm-0 mr-5" type="submit">Search</button>
-    </form>
-</nav>
-<div class="dropdown my-3 mx-3 float-right">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
-    Categories
-  </button>
-  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-    <a class="dropdown-item text-dark" href="#">Health</a>
-    <a class="dropdown-item text-dark" href="#">Physical</a>
-    <a class="dropdown-item text-dark" href="#">Political</a>
-    <a class="dropdown-item text-dark" href="#">Science</a>
-    <a class="dropdown-item text-dark" href="#">Technology</a>
-    <a class="dropdown-item text-dark" href="#">Case Study</a>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search">
+        <button class="btn btn btn-outline-light my-2 my-sm-0 mr-5" type="submit">Search</button>
+      </form>
+  </nav>
+  <div class="dropdown my-3 mx-3 float-right">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+      Categories
+    </button>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+      <a class="dropdown-item text-dark" href="#">Health</a>
+      <a class="dropdown-item text-dark" href="#">Physical</a>
+      <a class="dropdown-item text-dark" href="#">Political</a>
+      <a class="dropdown-item text-dark" href="#">Science</a>
+      <a class="dropdown-item text-dark" href="#">Technology</a>
+      <a class="dropdown-item text-dark" href="#">Case Study</a>
+    </div>
   </div>
-</div>
 
 
 
@@ -120,9 +121,19 @@ if (isset($_GET['file']) && isset($_GET['ebook_file'])) {
                 </ul>
 
                 <input type="hidden" name="file" value="<?php echo $ebook_file ?>">
-         
+
                 <div class="card-body">
-                  <button class="btn btn-primary">Start Reading</button>
+                  <?php
+                  if ($userData['subscription'] == "subscribed") {
+                  ?>
+                    <button class="btn btn-primary">Start Reading</button>
+                  <?php
+                  } else {
+                  ?>
+                    <button class="btn btn-primary showModal">Start Reading</button>
+                  <?php
+                  }
+                  ?>
                 </div>
               </form>
             </div>
@@ -153,6 +164,23 @@ if (isset($_GET['file']) && isset($_GET['ebook_file'])) {
     <!-- SCRIPT -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+    <script>
+      const showModal = document.querySelector('.showModal')
+
+      if (showModal) {
+        showModal.addEventListener('click', function(e) {
+          e.preventDefault()
+
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: " It looks like you haven't subscribe!",
+            footer: '<a href="membership.php">Subscribe now and be a member!</a>'
+          })
+
+        })
+      }
+    </script>
 </body>
 
 </html>

@@ -7,6 +7,7 @@ if (!isset($_SESSION['id'])) {
   include '../includes/autoload-class.php';
   include 'view-functions.php';
   $user = new User();
+  $userData = $user->emailExist($_SESSION['email']);
 }
 
 if (isset($_GET['doc_file'])) {
@@ -21,7 +22,7 @@ if (isset($_GET['doc_file'])) {
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/sections.css">
   <link rel="stylesheet" href="css/transitions.css">
@@ -120,9 +121,19 @@ if (isset($_GET['doc_file'])) {
                 </ul>
 
                 <input type="hidden" name="file" value="<?php echo $doc_file ?>">
-         
+
                 <div class="card-body">
-                  <button class="btn btn-primary">Start Reading</button>
+                  <?php
+                  if ($userData['subscription'] == "subscribed") {
+                  ?>
+                    <button class="btn btn-primary">Start Reading</button>
+                  <?php
+                  } else {
+                  ?>
+                    <button class="btn btn-primary showModal">Start Reading</button>
+                  <?php
+                  }
+                  ?>
                 </div>
               </form>
             </div>
@@ -153,6 +164,23 @@ if (isset($_GET['doc_file'])) {
     <!-- SCRIPT -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+    <script>
+      const showModal = document.querySelector('.showModal')
+
+      if (showModal) {
+        showModal.addEventListener('click', function(e) {
+          e.preventDefault()
+
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: " It looks like you haven't subscribe!",
+            footer: '<a href="membership.php">Subscribe now and be a member!</a>'
+          })
+
+        })
+      }
+    </script>
 </body>
 
 </html>

@@ -11,9 +11,9 @@ if (isset($_SESSION["id"])) {
   exit();
 }
 
-if(isset($_POST['cancel-membsership'])){
+if (isset($_POST['cancel-membsership'])) {
 
-  $user->updateSubscription($_SESSION["id"],'not subscribed');
+  $user->updateSubscription($_SESSION["id"], 'not subscribed');
 }
 
 ?>
@@ -41,7 +41,7 @@ if(isset($_POST['cancel-membsership'])){
 
 <body>
   <nav class="navbar sticky-top navbar-expand-lg navbar-dark mx-0 w-100" style="background-color: #485665;">
-    <a class="navbar-brand" href="books-section.php">
+    <a class="navbar-brand" href="ebook-section.php">
       <img src="img/ribrary-logo-white.png" width="50" height="50" class="d-inline-block" alt="logo.png">
       Ribrary
     </a>
@@ -140,7 +140,7 @@ if(isset($_POST['cancel-membsership'])){
       Swal.fire({
         icon: 'success',
         title: 'Subscribed',
-        text: 'Something went wrong!',
+        text: 'Thank you for being part of our growing community!',
       })
     }
   </script>

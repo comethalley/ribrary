@@ -2,6 +2,7 @@
 $user = new User();
 
 $userdata = $user->emailExist($_SESSION["email"]);
+
 ?>
 <header>
     <div class="container">
@@ -71,7 +72,7 @@ $userdata = $user->emailExist($_SESSION["email"]);
 
             <!-- Notif content -->
             <a href="UserProf.php" id="account-name">
-                <p>Hi, <?php echo $_SESSION['first-name'] ?> <?php echo $_SESSION['last-name'] ?></p>
+                <p>Hi, <?php echo $userdata['firstname'] ?> <?php echo $userdata['lastname'] ?></p>
             </a>
 
             <img src="../functions/uploads/<?php echo $userdata['user_profile'] ?>" alt="" class="user-image">

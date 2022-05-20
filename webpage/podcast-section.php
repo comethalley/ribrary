@@ -7,6 +7,7 @@ if (!isset($_SESSION['id'])) {
   include '../includes/autoload-class.php';
   include 'view-functions.php';
   $user = new User();
+  $userData = $user->emailExist($_SESSION['email']);
 }
 
 // dropdown
@@ -144,15 +145,28 @@ if (isset($_GET['search-podcast'])) {
             $data = $user->displayPodcasts();
             foreach ($data as $row) {
             ?>
-              <div class="col-2 my-2 mx-0 rounded">
+              <div class="col-2 my-2 mx-0 rounded ">
                 <div class="card shadow text-center w-100 h-100">
                   <div>
                     <img src="img/book-icon.png" class="card-img-top" alt="cover" style="width:170px; height:200px">
                   </div>
                   <div class="card-body">
-                    <span style="display:inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 13ch;"><p class="card-title" style = "font-size:16px; font-weight:bold;"><?php echo $row["podcast_name"] ?></p></span>
-                    <p class="card-text" style = "font-size:13px;"><?php echo $row["podcast_host"] ?></p>
-                    <a href="podcast-view.php?file=<?php echo $row["podcast_path"] ?>" class="btn btn-primary">Watch</a>
+                    <span style="display:inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 13ch;">
+                      <p class="card-title" style="font-size:16px; font-weight:bold;"><?php echo $row["podcast_name"] ?></p>
+                    </span>
+                    <p class="card-text" style="font-size:13px;"><?php echo $row["podcast_host"] ?></p>
+                    <?php
+                    if ($userData['subscription'] == "subscribed") {
+                    ?>
+                      <a href="podcast-view.php?file=<?php echo $row["podcast_path"] ?>" class="btn btn-primary">Watch</a>
+                    <?php
+                    } else {
+                    ?>
+                      <button class="btn btn-primary showModal">Watch</button>
+                    <?php
+                    }
+                    ?>
+
                   </div>
                 </div>
               </div>
@@ -182,9 +196,21 @@ if (isset($_GET['search-podcast'])) {
                     <img src="img/book-icon.png" class="card-img-top" alt="cover" style="width:170px; height:200px">
                   </div>
                   <div class="card-body">
-                    <span style="display:inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 13ch;"><p class="card-title" style = "font-size:16px; font-weight:bold;"><?php echo $row["podcast_name"] ?></p></span>
-                    <p class="card-text" style = "font-size:13px;"><?php echo $row["podcast_host"] ?></p>
-                    <a href="podcast-view.php?file=<?php echo $row["podcast_path"] ?>" class="btn btn-primary">Watch</a>
+                    <span style="display:inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 13ch;">
+                      <p class="card-title" style="font-size:16px; font-weight:bold;"><?php echo $row["podcast_name"] ?></p>
+                    </span>
+                    <p class="card-text" style="font-size:13px;"><?php echo $row["podcast_host"] ?></p>
+                    <?php
+                    if ($userData['subscription'] == "subscribed") {
+                    ?>
+                      <a href="podcast-view.php?file=<?php echo $row["podcast_path"] ?>" class="btn btn-primary">Watch</a>
+                    <?php
+                    } else {
+                    ?>
+                      <button class="btn btn-primary showModal">Watch</button>
+                    <?php
+                    }
+                    ?>
                   </div>
                 </div>
               </div>
@@ -214,9 +240,21 @@ if (isset($_GET['search-podcast'])) {
                     <img src="img/book-icon.png" class="card-img-top" alt="cover" style="width:170px; height:200px">
                   </div>
                   <div class="card-body">
-                    <span style="display:inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 13ch;"><p class="card-title" style = "font-size:16px; font-weight:bold;"><?php echo $row["podcast_name"] ?></p></span>
-                    <p class="card-text" style = "font-size:13px;"><?php echo $row["podcast_host"] ?></p>
-                    <a href="podcast-view.php?file=<?php echo $row["podcast_path"] ?>" class="btn btn-primary">Watch</a>
+                    <span style="display:inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 13ch;">
+                      <p class="card-title" style="font-size:16px; font-weight:bold;"><?php echo $row["podcast_name"] ?></p>
+                    </span>
+                    <p class="card-text" style="font-size:13px;"><?php echo $row["podcast_host"] ?></p>
+                    <?php
+                    if ($userData['subscription'] == "subscribed") {
+                    ?>
+                      <a href="podcast-view.php?file=<?php echo $row["podcast_path"] ?>" class="btn btn-primary">Watch</a>
+                    <?php
+                    } else {
+                    ?>
+                      <button class="btn btn-primary showModal">Watch</button>
+                    <?php
+                    }
+                    ?>
                   </div>
                 </div>
               </div>
@@ -235,9 +273,21 @@ if (isset($_GET['search-podcast'])) {
                     <img src="img/book-icon.png" class="card-img-top" alt="cover" style="width:170px; height:200px">
                   </div>
                   <div class="card-body">
-                    <span style="display:inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 13ch;"><p class="card-title" style = "font-size:16px; font-weight:bold;"><?php echo $row["podcast_name"] ?></p></span>
-                    <p class="card-text" style = "font-size:13px;"><?php echo $row["podcast_host"] ?></p>
-                    <a href="podcast-view.php?file=<?php echo $row["podcast_path"] ?>" class="btn btn-primary">Watch</a>
+                    <span style="display:inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 13ch;">
+                      <p class="card-title" style="font-size:16px; font-weight:bold;"><?php echo $row["podcast_name"] ?></p>
+                    </span>
+                    <p class="card-text" style="font-size:13px;"><?php echo $row["podcast_host"] ?></p>
+                    <?php
+                    if ($userData['subscription'] == "subscribed") {
+                    ?>
+                      <a href="podcast-view.php?file=<?php echo $row["podcast_path"] ?>" class="btn btn-primary">Watch</a>
+                    <?php
+                    } else {
+                    ?>
+                      <button class="btn btn-primary showModal">Watch</button>
+                    <?php
+                    }
+                    ?>
                   </div>
                 </div>
               </div>
@@ -271,9 +321,21 @@ if (isset($_GET['search-podcast'])) {
                     <img src="img/book-icon.png" class="card-img-top" alt="cover" style="width:170px; height:200px">
                   </div>
                   <div class="card-body">
-                    <span style="display:inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 13ch;"><p class="card-title" style = "font-size:16px; font-weight:bold;"><?php echo $row["podcast_name"] ?></p></span>
-                    <p class="card-text" style = "font-size:13px;"><?php echo $row["podcast_host"] ?></p>
-                    <a href="podcast-view.php?file=<?php echo $row["podcast_path"] ?>" class="btn btn-primary">Watch</a>
+                    <span style="display:inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 13ch;">
+                      <p class="card-title" style="font-size:16px; font-weight:bold;"><?php echo $row["podcast_name"] ?></p>
+                    </span>
+                    <p class="card-text" style="font-size:13px;"><?php echo $row["podcast_host"] ?></p>
+                    <?php
+                    if ($userData['subscription'] == "subscribed") {
+                    ?>
+                      <a href="podcast-view.php?file=<?php echo $row["podcast_path"] ?>" class="btn btn-primary">Watch</a>
+                    <?php
+                    } else {
+                    ?>
+                      <button class="btn btn-primary showModal">Watch</button>
+                    <?php
+                    }
+                    ?>
                   </div>
                 </div>
               </div>
@@ -304,9 +366,21 @@ if (isset($_GET['search-podcast'])) {
                     <img src="img/book-icon.png" class="card-img-top" alt="cover" style="width:170px; height:200px">
                   </div>
                   <div class="card-body">
-                    <span style="display:inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 13ch;"><p class="card-title" style = "font-size:16px; font-weight:bold;"><?php echo $row["podcast_name"] ?></p></span>
-                    <p class="card-text" style = "font-size:13px;"><?php echo $row["podcast_host"] ?></p>
-                    <a href="podcast-view.php?file=<?php echo $row["podcast_path"] ?>" class="btn btn-primary">Watch</a>
+                    <span style="display:inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 13ch;">
+                      <p class="card-title" style="font-size:16px; font-weight:bold;"><?php echo $row["podcast_name"] ?></p>
+                    </span>
+                    <p class="card-text" style="font-size:13px;"><?php echo $row["podcast_host"] ?></p>
+                    <?php
+                    if ($userData['subscription'] == "subscribed") {
+                    ?>
+                      <a href="podcast-view.php?file=<?php echo $row["podcast_path"] ?>" class="btn btn-primary">Watch</a>
+                    <?php
+                    } else {
+                    ?>
+                      <button class="btn btn-primary showModal">Watch</button>
+                    <?php
+                    }
+                    ?>
                   </div>
                 </div>
               </div>
@@ -346,7 +420,8 @@ if (isset($_GET['search-podcast'])) {
         const categories = document.querySelectorAll('.categories');
         const categoriesForm = document.querySelector('.categories-form')
         const dropdownMenu = document.querySelector('.dropdown-menu');
-        const categoriesValue = document.querySelector('#categories-value');    
+        const categoriesValue = document.querySelector('#categories-value');
+        const showModal = document.querySelector('body')
 
         const url = window.location.search
         const urlParam = new URLSearchParams(url)
@@ -379,8 +454,23 @@ if (isset($_GET['search-podcast'])) {
 
           }
         })
-      </script>
 
+
+        showModal.addEventListener('click', function(e) {
+          if (e.target.classList.contains('showModal')) {
+            e.preventDefault()
+
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: " It looks like you haven't subscribe!",
+              footer: '<a href="membership.php">Subscribe now and be a member!</a>'
+            })
+
+          }
+
+        })
+      </script>
 
 </body>
 

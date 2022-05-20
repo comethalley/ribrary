@@ -535,9 +535,6 @@ VALUES (?,?,?,(SELECT User_id FROM tbl_user WHERE user_id = ?),?,?);";
 
         //update subscription 
         $this->updateSubscription($user_id, 'subscribed');
-
-        header("Location:../webpage/membership.php?q=success");
-        exit();
     }
 
     //update subscription
@@ -549,6 +546,15 @@ VALUES (?,?,?,(SELECT User_id FROM tbl_user WHERE user_id = ?),?,?);";
         //if did not exe    cute error, else continue
         if (!$stmt2->execute([$subscribed, $user_id])) {
             header("Location:../webpage/payment.php?error=stmtfailUpdate");
+            exit();
+        }
+
+        if ($subscribed == 'subscribed') {
+            header("Location:../webpage/membership.php?q=success");
+            exit();
+        } else {
+            header("Location:../webpage/membership.php");
+            exit();
         }
     }
 
