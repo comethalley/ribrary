@@ -148,7 +148,7 @@ if (isset($_GET['search-podcast'])) {
               <div class="col-2 my-2 mx-0 rounded ">
                 <div class="card shadow text-center w-100 h-100">
                   <div>
-                    <img src="img/book-icon.png" class="card-img-top" alt="cover" style="width:170px; height:200px">
+                    <img src="../functions/uploads/<?php echo $row['podcast_cover_path'] ?>" class="card-img-top" alt="cover" style="width:170px; height:200px">
                   </div>
                   <div class="card-body">
                     <span style="display:inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 13ch;">
@@ -193,7 +193,7 @@ if (isset($_GET['search-podcast'])) {
               <div class="col-2 my-2 mx-0 rounded">
                 <div class="card shadow text-center w-100 h-100">
                   <div>
-                    <img src="img/book-icon.png" class="card-img-top" alt="cover" style="width:170px; height:200px">
+                    <img src="../functions/uploads/<?php echo $row['podcast_cover_path'] ?>" class="card-img-top" alt="cover" style="width:170px; height:200px">
                   </div>
                   <div class="card-body">
                     <span style="display:inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 13ch;">
@@ -237,7 +237,7 @@ if (isset($_GET['search-podcast'])) {
               <div class="col-2 my-2 mx-0 rounded">
                 <div class="card shadow text-center w-100 h-100">
                   <div>
-                    <img src="img/book-icon.png" class="card-img-top" alt="cover" style="width:170px; height:200px">
+                    <img src="../functions/uploads/<?php echo $row['podcast_cover_path'] ?>" class="card-img-top" alt="cover" style="width:170px; height:200px">
                   </div>
                   <div class="card-body">
                     <span style="display:inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 13ch;">
@@ -270,7 +270,7 @@ if (isset($_GET['search-podcast'])) {
               <div class="col-2 my-2 mx-0 rounded">
                 <div class="card shadow text-center w-100 h-100">
                   <div>
-                    <img src="img/book-icon.png" class="card-img-top" alt="cover" style="width:170px; height:200px">
+                    <img src="../functions/uploads/<?php echo $row['podcast_cover_path'] ?>" class="card-img-top" alt="cover" style="width:170px; height:200px">
                   </div>
                   <div class="card-body">
                     <span style="display:inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 13ch;">
@@ -318,7 +318,7 @@ if (isset($_GET['search-podcast'])) {
               <div class="col-2 my-2 mx-0 rounded">
                 <div class="card shadow text-center w-100 h-100">
                   <div>
-                    <img src="img/book-icon.png" class="card-img-top" alt="cover" style="width:170px; height:200px">
+                    <img src="../functions/uploads/<?php echo $row['podcast_cover_path'] ?>" class="card-img-top" alt="cover" style="width:170px; height:200px">
                   </div>
                   <div class="card-body">
                     <span style="display:inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 13ch;">
@@ -363,7 +363,7 @@ if (isset($_GET['search-podcast'])) {
               <div class="col-2 my-2 mx-0 rounded">
                 <div class="card shadow text-center w-100 h-100">
                   <div>
-                    <img src="img/book-icon.png" class="card-img-top" alt="cover" style="width:170px; height:200px">
+                    <img src="../functions/uploads/<?php echo $row['podcast_cover_path'] ?>" class="card-img-top" alt="cover" style="width:170px; height:200px">
                   </div>
                   <div class="card-body">
                     <span style="display:inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 13ch;">

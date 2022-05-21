@@ -204,7 +204,7 @@ function getStarRating($path)
                 break;
 
             default:
-                echo 'sdasdas';
+                echo '';
         }
         return $star;
     }

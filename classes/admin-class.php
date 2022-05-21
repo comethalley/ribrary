@@ -475,11 +475,11 @@ class Admin extends Database
 
 
     //insert podcasts to database
-    function upload_podcasts($podcast_name, $podcast_path, $podcast_host, $createdBy, $categories)
+    function upload_podcasts($podcast_name, $podcast_path, $podcast_cover_path, $podcast_host, $createdBy, $categories)
     {
 
-        $sql = "INSERT INTO tbl_podcasts(podcast_name,podcast_path,podcast_host,categories,date_and_time,status,uploaded_by)
-    VALUES (?,?,?,?,?,?,?);";
+        $sql = "INSERT INTO tbl_podcasts(podcast_name,podcast_path,podcast_cover_path,podcast_host,categories,date_and_time,status,uploaded_by)
+    VALUES (?,?,?,?,?,?,?,?);";
 
         $status = 'pending';
 
@@ -487,7 +487,7 @@ class Admin extends Database
         $stmt = $this->connect()->prepare($sql);
 
         //if execution fail
-        if (!$stmt->execute([$podcast_name, $podcast_path, $podcast_host, $categories, $this->date, $status, $createdBy])) {
+        if (!$stmt->execute([$podcast_name, $podcast_path, $podcast_cover_path, $podcast_host, $categories, $this->date, $status, $createdBy])) {
             header("Location:../admin/admin-podcast.php?error=stmtfail");
             $connect = null;
             exit();
@@ -499,26 +499,28 @@ class Admin extends Database
     }
 
     //upload podcast function
-    function checkPodcast($allowed, $fileActualExt, $fileError, $fileTmpName, $createdBy, $fileName, $podcast_host, $categories)
+    function checkPodcast($allowed, $allowed2, $fileActualExt, $file2ActualExt, $fileName, $fileTmpName, $file2TmpName, $admin_name, $host, $categories)
     {
         //check if the file extension is in the array $allowed
-        if (in_array($fileActualExt, $allowed)) {
+        if (in_array($fileActualExt, $allowed) && in_array($file2ActualExt, $allowed2)) {
             //check if there is no error uploading the file
-            if ($fileError === 0) {
 
-                // $fileNameNew = uniqid ('', true).".".$fileActualExt;
-                $fileNameNew = uniqid('', true) . "." . $fileActualExt;
-                $fileDestination = 'uploads/' . $fileNameNew;
+            //seperate filename
+            $newFileName = explode('.', $fileName);
 
-                if (move_uploaded_file($fileTmpName, $fileDestination)) {
-                    // $userId = $_SESSION["id"];
-                    $this->upload_podcasts($fileName, $fileNameNew, $podcast_host, $createdBy, $categories);
-                } else {
-                    echo "move_uploaded_file error";
-                }
+            //podcast
+            $fileNameNew = uniqid('', true) . "." . $fileActualExt;
+            $fileDestination = 'uploads/' . $fileNameNew;
+
+            //cover
+            $fileNameNew2 = uniqid('', true) . "." . $file2ActualExt;
+            $fileDestination2 = 'uploads/' . $fileNameNew2;
+
+            if (move_uploaded_file($fileTmpName, $fileDestination) && move_uploaded_file($file2TmpName, $fileDestination2)) {
+                // $userId = $_SESSION["id"];
+                $this->upload_podcasts($newFileName[0], $fileNameNew, $fileNameNew2, $host, $admin_name, $categories);
             } else {
-                echo "There was an error while uploading the file";
-                echo $fileError;
+                echo "move_uploaded_file error";
             }
         } else {
             echo "You can't upload this type of file!";
@@ -555,6 +557,8 @@ class Admin extends Database
         //check if the file extension is in the array $allowed
         if (in_array($fileActualExt, $allowed) && in_array($file2ctualExt, $allowed2)) {
 
+            //seperate filename
+            $newFileName = explode('.',$filename);
             //audiobook
             $fileNameNew = uniqid('', true) . "." . $fileActualExt;
             $fileDestination = 'uploads/' . $fileNameNew;
@@ -565,7 +569,7 @@ class Admin extends Database
 
             if (move_uploaded_file($fileTmpName, $fileDestination) &&  move_uploaded_file($file2TmpName, $fileDestination2)) {
 
-                $this->upload_audiobook($filename, $fileNameNew, $fileNameNew2, $narrator, $admin_name, $categories, $synopsis, $author);
+                $this->upload_audiobook($newFileName[0], $fileNameNew, $fileNameNew2, $narrator, $admin_name, $categories, $synopsis, $author);
             } else {
                 echo "move_uploaded_file error";
             }
@@ -604,7 +608,10 @@ class Admin extends Database
         //check if the file extension is in the array $allowed
         if (in_array($fileActualExt, $allowed) && in_array($file2ctualExt, $allowed2)) {
 
-            //audiobook
+            //seperate filename
+            $newFileName = explode('.',$filename);
+
+            //ebooks
             $fileNameNew = uniqid('', true) . "." . $fileActualExt;
             $fileDestination = 'uploads/' . $fileNameNew;
 
@@ -614,7 +621,7 @@ class Admin extends Database
 
             if (move_uploaded_file($fileTmpName, $fileDestination) &&  move_uploaded_file($file2TmpName, $fileDestination2)) {
 
-                $this->upload_ebooks($filename, $fileNameNew, $fileNameNew2, $admin_name, $categories, $synopsis, $author);
+                $this->upload_ebooks($newFileName[0], $fileNameNew, $fileNameNew2, $admin_name, $categories, $synopsis, $author);
             } else {
                 echo "move_uploaded_file error";
             }

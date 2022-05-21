@@ -42,10 +42,10 @@ if (!isset($_SESSION['admin_name'])) {
         <!-- include sidebar.php-->
         <?php include 'sidebar.php'; ?>
         <div class="main-container">
-            <h1 class ="text-center"> Welcome to Upload Podcast Section</h1>
+            <h1 class="text-center"> Welcome to Upload Podcast Section</h1>
 
 
-            <form class = "mt-5" action="../functions/admin-uploadPodcast-function.php" method="POST" enctype="multipart/form-data">
+            <form class="mt-5" action="../functions/admin-uploadPodcast-function.php" method="POST" enctype="multipart/form-data">
 
                 <!--<input type="file" name="file" accept=".mp4" id="podcast-video" required>-->
                 <div class="form-row">
@@ -55,11 +55,21 @@ if (!isset($_SESSION['admin_name'])) {
                             <label class="custom-file-label" for="customFile">Choose file</label>
                         </div>
                     </div>
+
                     <div class="col">
-                        <input type="text" name="channel" class="form-control"placeholder="Podcast Channel" id="podcast-channel-input"required>
+                        <div class="custom-file">
+                            <input type="file" name="file2" accept=".jpg, .png" class="custom-file-input" id="customFile" required>
+                            <label class="custom-file-label" for="customFile">Choose file cover</label>
+                        </div>
                     </div>
+
+                    <div class="col">
+                        <input type="text" name="channel" class="form-control" placeholder="Podcast Channel" id="podcast-channel-input" required>
+                    </div>
+
+
                 </div>
-        
+
                 <fieldset class="form-group row my-5">
                     <legend class="col-form-label col-sm-3 float-sm-left pt-0">Select categories :</legend>
                     <div class="col-sm-3">
@@ -137,10 +147,10 @@ if (!isset($_SESSION['admin_name'])) {
 
     <!-- SCRIPT -->
     <script src="js/sidebar-script.js"></script>
-    
+
     <!--input file script-->
     <script type="application/javascript">
-        $('input[type="file"]').change(function(e){
+        $('input[type="file"]').change(function(e) {
             var fileName = e.target.files[0].name;
             $('.custom-file-label').html(fileName);
         });
