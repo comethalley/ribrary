@@ -249,7 +249,7 @@ class User extends Database
             return $data;
             exit();
         } else {
-            $data = $this->connect()->query("SELECT * FROM tbl_research_documents WHERE status = 'accepted'")->fetchAll();
+            $data = $this->connect()->query("SELECT * FROM tbl_research_documents WHERE status = 'accepted' ORDER BY doc_id DESC")->fetchAll();
             return $data;
             exit();
         }
@@ -439,7 +439,7 @@ class User extends Database
             return $data;
             exit();
         } else {
-            $data = $this->connect()->query("SELECT * FROM tbl_audiobook WHERE status = 'accepted'")->fetchAll();
+            $data = $this->connect()->query("SELECT * FROM tbl_audiobook WHERE status = 'accepted' ORDER BY audiobook_id DESC")->fetchAll();
             return $data;
             exit();
         }
@@ -453,7 +453,7 @@ class User extends Database
             return $data;
             exit();
         } else {
-            $data = $this->connect()->query("SELECT * FROM tbl_ebooks WHERE status = 'accepted'")->fetchAll();
+            $data = $this->connect()->query("SELECT * FROM tbl_ebooks WHERE status = 'accepted' ORDER BY ebooks_id DESC")->fetchAll();
             return $data;
             exit();
         }
@@ -491,7 +491,7 @@ class User extends Database
             return $data;
             exit();
         } else {
-            $data = $this->connect()->query("SELECT * FROM tbl_podcasts WHERE status = 'accepted'")->fetchAll();
+            $data = $this->connect()->query("SELECT * FROM tbl_podcasts WHERE status = 'accepted' ORDER BY podcast_id DESC")->fetchAll();
             return $data;
             exit();
         }

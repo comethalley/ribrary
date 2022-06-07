@@ -52,7 +52,7 @@ if (!isset($_SESSION['admin_name'])) {
                     <div class="col">
                         <div class="custom-file">
                             <input type="file" name="file" accept=".mp4" class="custom-file-input" id="customFile" required>
-                            <label class="custom-file-label" for="customFile">Choose file</label>
+                            <label class="custom-file-label" for="customFile">Choose file note: 500mb is maximum</label>
                         </div>
                     </div>
 
@@ -75,26 +75,26 @@ if (!isset($_SESSION['admin_name'])) {
                     <div class="col-sm-3">
                         <div class="form-check">
                             <input type="radio" id="science-fiction" name="categories" value="science fiction" required>
-                            <label for="science-fiction">Science Fiction</label>
+                            <label for="science-fiction">Educational</label>
                         </div>
                         <div class="form-check">
                             <input type="radio" id="fantasy" name="categories" value="fantasy">
-                            <label for="fantasy">Fantasy</label>
+                            <label for="fantasy">Discussion</label>
                         </div>
                         <div class="form-check">
                             <input type="radio" id="mystery" name="categories" value="mystery">
-                            <label for="mystery">Mystery</label>
+                            <label for="mystery">Comedy</label>
                         </div>
                     </div>
 
                     <div class="col-sm-3">
                         <div class="form-check">
                             <input type="radio" id="horror" name="categories" value="horror">
-                            <label for="horror">Horror</label>
+                            <label for="horror">Confession</label>
                         </div>
                         <div class="form-check">
                             <input type="radio" id="adventure" name="categories" value="adventure">
-                            <label for="adventure">Adventure</label>
+                            <label for="adventure">Health</label>
                         </div>
                         <div class="form-check">
                             <input type="radio" id="romance" name="categories" value="romance">
